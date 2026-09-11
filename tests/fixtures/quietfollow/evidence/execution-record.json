@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "harness_identity": {
+    "module": "MODULE6-PLAN-v1",
+    "accepted_plan_commit": "8614c2d3c465ce86ab4332917bc435d4d2b10754",
+    "source_parent": "1d9b6f8242fbea8548a423b172534b8c8d20b6e0",
+    "executing_model": "Unknown",
+    "executing_reasoning": "Unknown"
+  },
+  "cases": [],
+  "metrics": [],
+  "open_findings": [],
+  "reruns": [],
+  "overall_limitation": "Behavioral evaluation does not prove installation, live GitHub routing, production release, or a specific executing model without independent runtime evidence."
+}

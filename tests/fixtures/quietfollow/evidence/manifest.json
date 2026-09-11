@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "module": "MODULE6-PLAN-v1",
+  "repository": {
+    "source_parent": "1d9b6f8242fbea8548a423b172534b8c8d20b6e0",
+    "accepted_plan_commit": "8614c2d3c465ce86ab4332917bc435d4d2b10754",
+    "disposable_product_repository": "initialized-empty",
+    "disposable_product_repository_head": "Unknown"
+  },
+  "snapshots": [
+    {
+      "alias": "accepted-plan",
+      "sha256": "6037149b9a70cdeba4b8f1fd4fcce460b9206730665c8aa69f4ee781eb5c4777"
+    },
+    {
+      "alias": "active-structural-revision",
+      "sha256": "7280143c1ba0c498912b86cb5439f9f87f35fce29e7f1e7d441490d50546dab4"
+    },
+    {
+      "alias": "active-skill-entrypoint",
+      "sha256": "69d473f9dea0ab8930c3d778445db54710c0446e878a50f63946d31fffb095f0"
+    },
+    {
+      "alias": "fixture-agents",
+      "sha256": "dee90b1cd7f9250143a1837fcb8f08318c908a0c5c0f749477d8dc5d1f7cb407"
+    },
+    {
+      "alias": "fixture-project-status",
+      "sha256": "7c80c77f36efdbc71a146f8a1ae07bdf8d45d223e1fa25b274f280607829bd75"
+    },
+    {
+      "alias": "fixture-product-profile",
+      "sha256": "0cb7794cdcbc96e22f5fae7da692c5480b194242b8d6ca5c110b0a5486db9f2c"
+    },
+    {
+      "alias": "fixture-positioning",
+      "sha256": "2bc857e19679d53630a31970c86c00c24e1cfef038bb1dfd49e0540e52db4a57"
+    }
+  ],
+  "permissions": {
+    "public_alias_vocabulary": [
+      "implementation",
+      "executor-a",
+      "executor-b",
+      "observer",
+      "evaluator",
+      "assembler"
+    ],
+    "network": "denied",
+    "external_services": "denied",
+    "github_mutation": "denied",
+    "installation": "denied",
+    "release": "denied",
+    "real_user_data": "denied",
+    "shared_filesystem_isolation": "procedural-only",
+    "verified_os_sandbox": "Unknown"
+  },
+  "roles": [
+    {
+      "alias": "implementation",
+      "requested_model": "gpt-5.6-sol",
+      "requested_reasoning": "medium",
+      "accepted_native_assignment": "Unknown",
+      "runtime_model": "Unknown",
+      "runtime_reasoning": "Unknown",
+      "private_evidence_digest": "sha256:f1af2a6511e31a7e2ab711ad299e02ba9eaffbaadb3672587d6660204a2381bb"
+    }
+  ],
+  "parts": [],
+  "transcript_digests": [],
+  "limitations": [
+    "Shared filesystem boundaries provide procedural isolation only; no operating-system sandbox is proven.",
+    "Requested assignment, accepted native assignment, and independently verified runtime facts are distinct.",
+    "No behavioral case results exist at Task 1."
+  ]
+}
