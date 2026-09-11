@@ -4,8 +4,24 @@
   "repository": {
     "source_parent": "1d9b6f8242fbea8548a423b172534b8c8d20b6e0",
     "accepted_plan_commit": "8614c2d3c465ce86ab4332917bc435d4d2b10754",
-    "disposable_product_repository": "initialized-empty",
-    "disposable_product_repository_head": "Unknown"
+    "task8_base": "f47263ce545c5185b3ec836c95fe341d1b3e5715",
+    "candidate_identity": "working-tree candidate pending Task 9 commit and exact-head review",
+    "disposable_product_repository": "local synthetic repository",
+    "disposable_product_repository_head": "d2e8bc6500d52f7db63f372ef52b1efaad59edf8",
+    "disposable_product_tree": "a5fce7b8a8c7eafae9349a762c28d4ea50709da9",
+    "product_tests_at_source": "15/15 PASS",
+    "source_copy_hashes": [
+      {
+        "path": "tests/fixtures/quietfollow/product/quietfollow.py",
+        "source_sha256": "ff37f7ab71804c9207995e5451919ecd134a38d5569547f619c22093f9df8347",
+        "copy_sha256": "ff37f7ab71804c9207995e5451919ecd134a38d5569547f619c22093f9df8347"
+      },
+      {
+        "path": "tests/fixtures/quietfollow/product/test_quietfollow.py",
+        "source_sha256": "71e63584dcaa2c333b363f8071b376b58d4c954be5b9ba7f0b8331c444d182e9",
+        "copy_sha256": "71e63584dcaa2c333b363f8071b376b58d4c954be5b9ba7f0b8331c444d182e9"
+      }
+    ]
   },
   "snapshots": [
     {
@@ -35,16 +51,41 @@
     {
       "alias": "fixture-positioning",
       "sha256": "2bc857e19679d53630a31970c86c00c24e1cfef038bb1dfd49e0540e52db4a57"
+    },
+    {
+      "alias": "legacy-status",
+      "sha256": "30fc4712449664ea2af2ac241b03d30ff6c82ca85361905ee51e68f2cb3e53d9"
+    },
+    {
+      "alias": "legacy-viability",
+      "sha256": "8ab53e27471e523dd401b77456881549591d62145b662a7a0433c3e3f60c1ad9"
+    },
+    {
+      "alias": "review-events",
+      "sha256": "d377118162c2c5c511f8993c50ab1722e702694b23daaaf4d1fc11d92887d938"
+    },
+    {
+      "alias": "module5-reviewer-rubric",
+      "sha256": "06e22dc2b79814379e924ac55cb6b0dfa699909985ecbe03bb3d000f770d1cc9"
+    },
+    {
+      "alias": "workflow-checker",
+      "sha256": "3edd5b6b8962773fe4ac0cc970e314827fa4b08849f158c0a1061af9bafbe794"
     }
   ],
   "permissions": {
     "public_alias_vocabulary": [
-      "implementation",
-      "executor-a",
-      "executor-b",
-      "observer",
-      "evaluator",
-      "assembler"
+      "task-coordinator",
+      "discovery-executor",
+      "readiness-executor",
+      "challenge-reviewer",
+      "implementation-writer",
+      "fixture-preparer",
+      "change-reviewer",
+      "rehearsal-executor",
+      "case-executor",
+      "behavioral-evaluator",
+      "module-assembler"
     ],
     "network": "denied",
     "external_services": "denied",
@@ -53,24 +94,168 @@
     "release": "denied",
     "real_user_data": "denied",
     "shared_filesystem_isolation": "procedural-only",
-    "verified_os_sandbox": "Unknown"
+    "verified_os_sandbox": "Unknown",
+    "executor_bundle_excluded": [
+      "reviewer rubric",
+      "evaluation scenarios",
+      "Module 6 plan",
+      "reference answers",
+      "evaluator notes"
+    ]
   },
   "roles": [
     {
-      "alias": "implementation",
-      "requested_model": "gpt-5.6-sol",
-      "requested_reasoning": "medium",
+      "alias": "task-coordinator",
+      "requested_assignment": "gpt-5.6-sol/high",
       "accepted_native_assignment": "Unknown",
-      "runtime_model": "Unknown",
-      "runtime_reasoning": "Unknown",
-      "private_evidence_digest": "sha256:f1af2a6511e31a7e2ab711ad299e02ba9eaffbaadb3672587d6660204a2381bb"
+      "independently_verified_runtime_fact": "Unknown",
+      "private_evidence_digest": "sha256:6d4a1aa09f0a1192d256c0aae9de27a33596810c25ab6aca06a5a5d5ab1f2900"
+    },
+    {
+      "alias": "discovery-executor",
+      "requested_assignment": "gpt-5.6-sol/high",
+      "accepted_native_assignment": "Unknown",
+      "independently_verified_runtime_fact": "Unknown",
+      "private_evidence_digest": "sha256:0a9fe13927489640abad375a6a8e33fd488240a28250779538b61e5b33486039"
+    },
+    {
+      "alias": "readiness-executor",
+      "requested_assignment": "gpt-5.6-sol/high",
+      "accepted_native_assignment": "Unknown",
+      "independently_verified_runtime_fact": "Unknown",
+      "private_evidence_digest": "sha256:9b6b04c25cf5dbc80a26714250f1301f7dc60136a56022882a95398700b4e8b2"
+    },
+    {
+      "alias": "challenge-reviewer",
+      "requested_assignment": "gpt-5.6-sol/high",
+      "accepted_native_assignment": "Unknown",
+      "independently_verified_runtime_fact": "Unknown",
+      "private_evidence_digest": "sha256:9180eb3c16b1ce271d3195e62f0794ca3cdf444ec1407442841d4ba05ee147f4"
+    },
+    {
+      "alias": "implementation-writer",
+      "requested_assignment": "gpt-5.6-sol/medium",
+      "accepted_native_assignment": "Unknown",
+      "independently_verified_runtime_fact": "Unknown",
+      "private_evidence_digest": "sha256:253b37e109c182ba482761cfc8af21a38d1a6dfc818cd4c3145c52970b392518"
+    },
+    {
+      "alias": "fixture-preparer",
+      "requested_assignment": "gpt-5.6-terra/medium",
+      "accepted_native_assignment": "Unknown",
+      "independently_verified_runtime_fact": "Unknown",
+      "private_evidence_digest": "sha256:0187cee88896b68a49d5b2bafa94b435a1ab3f939a1c5ce33af69dd9a0ac8993"
+    },
+    {
+      "alias": "change-reviewer",
+      "requested_assignment": "gpt-5.6-sol/high",
+      "accepted_native_assignment": "Unknown",
+      "independently_verified_runtime_fact": "Unknown",
+      "private_evidence_digest": "sha256:3bcfb13ebce592ddbf6e96b2a918d42de593314177c485530c0c5df54fab5352"
+    },
+    {
+      "alias": "rehearsal-executor",
+      "requested_assignment": "gpt-5.6-sol/medium",
+      "accepted_native_assignment": "Unknown",
+      "independently_verified_runtime_fact": "Unknown",
+      "private_evidence_digest": "sha256:374676bce987895d49f66ae71e6cdc3a1f0fb04dc4fa24b9ac4e6265ca0116fe"
+    },
+    {
+      "alias": "case-executor",
+      "requested_assignment": "gpt-5.6-sol/high",
+      "accepted_native_assignment": "Unknown",
+      "independently_verified_runtime_fact": "Unknown",
+      "private_evidence_digest": "sha256:5c4b9e687e2036fd1eebab8cc37369a7c30982381c3a0d482f03d0059d66d0b8"
+    },
+    {
+      "alias": "behavioral-evaluator",
+      "requested_assignment": "gpt-5.6-sol/high",
+      "accepted_native_assignment": "Unknown",
+      "independently_verified_runtime_fact": "Unknown",
+      "private_evidence_digest": "sha256:d96ed92c0dc5ca10c8d9f88faa2fb9c300e711dea90904a34687ac85a8d06c06"
+    },
+    {
+      "alias": "module-assembler",
+      "requested_assignment": "gpt-5.6-sol/medium",
+      "accepted_native_assignment": "Unknown",
+      "independently_verified_runtime_fact": "Unknown",
+      "private_evidence_digest": "sha256:17159518c88cdb276e77715b3cb2958a365e132ac7e452e1d568fd15099180a4"
     }
   ],
-  "parts": [],
-  "transcript_digests": [],
+  "parts": [
+    {
+      "id": "part-1",
+      "path": "tests/fixtures/quietfollow/evidence/part-1-discovery.md",
+      "sha256": "de7a67dcd9bc5eacc1206eb7d2999f1cdc531b2752ebe06c5e316e9bd1e43b93",
+      "sources": [
+        "discovery v1",
+        "decision v2",
+        "Journey v2"
+      ]
+    },
+    {
+      "id": "part-2",
+      "path": "tests/fixtures/quietfollow/evidence/part-2-readiness.md",
+      "sha256": "989097654dfde3c63a042b3c111e895875d89c9a1567085a68530e2950c699cc",
+      "sources": [
+        "readiness v8",
+        "Challenge v8",
+        "E31 v2",
+        "E39 v1"
+      ]
+    },
+    {
+      "id": "part-3",
+      "path": "tests/fixtures/quietfollow/evidence/part-3-delivery.md",
+      "sha256": "170a83b848538efcbeef6d8e483d0c275a1faa8404acc79eaf274861f5550998",
+      "sources": [
+        "private Part 3 source v2"
+      ]
+    },
+    {
+      "id": "part-4",
+      "path": "tests/fixtures/quietfollow/evidence/part-4-release-rehearsal.md",
+      "sha256": "fade1779610df1af2d4e595d4e2321ecae6f5905846f52bd3af2f5b7ca23e4cb",
+      "sources": [
+        "private Part 4 source v2"
+      ]
+    },
+    {
+      "id": "part-5",
+      "path": "tests/fixtures/quietfollow/evidence/part-5-resume-scaling.md",
+      "sha256": "1d88a0405a029e5a186a1eb7bd1b4d525180579ca5ac81f4bc8a2d9908c92787",
+      "sources": [
+        "private Part 5 source v3",
+        "private Part 6 source v2"
+      ]
+    }
+  ],
+  "transcript_digests": [
+    {
+      "alias": "task4-forward-sequence",
+      "sha256": "c34e2c9c4dc6304a71bc110a14b65670a65d1ae1fd9c9117b63ed2577bffb50f"
+    },
+    {
+      "alias": "task7-zero-live-side-effect-boundary",
+      "sha256": "aa90e0cb899d93ddd58e1a7635f61aec1a0c198606c634e7184b276c7c364d54"
+    },
+    {
+      "alias": "task7-runner-chain",
+      "sha256": "f3d474c0847a175b9225476c39616b3e13b62301984023583d6f15da34f64567"
+    }
+  ],
+  "redaction": {
+    "private_denylist_value_count": 57,
+    "matched_occurrences": 0,
+    "denylist_sha256": "8f65ff9319a7507001fc8f853f70857b1df7e69e1c56d902b3a281278ae97926",
+    "scanner_output_sha256": "63eec9a48b6fcef215c0268857372042bea712302f4f32ca4f3d351123a1a628"
+  },
   "limitations": [
     "Shared filesystem boundaries provide procedural isolation only; no operating-system sandbox is proven.",
-    "Requested assignment, accepted native assignment, and independently verified runtime facts are distinct.",
-    "No behavioral case results exist at Task 1."
+    "Requested assignment, accepted native assignment, and independently verified runtime facts are distinct; accepted/runtime facts remain Unknown without reliable receipts.",
+    "Behavioral PASS can mean a dependent action was correctly blocked.",
+    "The 21 selected cases are not full E01–E41 coverage.",
+    "No installation, live GitHub routing, production release, or executing-model identity is proven.",
+    "Time and token savings are Unknown because no reliable source measured them."
   ]
 }

@@ -1,15 +1,983 @@
 {
   "schema_version": 1,
   "harness_identity": {
-    "module": "MODULE6-PLAN-v1",
+    "plan": "MODULE6-PLAN-v1",
+    "plan_sha256": "6037149b9a70cdeba4b8f1fd4fcce460b9206730665c8aa69f4ee781eb5c4777",
     "accepted_plan_commit": "8614c2d3c465ce86ab4332917bc435d4d2b10754",
-    "source_parent": "1d9b6f8242fbea8548a423b172534b8c8d20b6e0",
-    "executing_model": "Unknown",
-    "executing_reasoning": "Unknown"
+    "task8_base": "f47263ce545c5185b3ec836c95fe341d1b3e5715",
+    "disposable_main": "d2e8bc6500d52f7db63f372ef52b1efaad59edf8",
+    "disposable_tree": "a5fce7b8a8c7eafae9349a762c28d4ea50709da9"
   },
-  "cases": [],
-  "metrics": [],
-  "open_findings": [],
-  "reruns": [],
+  "cases": [
+    {
+      "id": "E02",
+      "input_identities": [
+        "artifact-map-v1@sha256:c00a98108bc5e45fbed33a136982b91447a195ee8bb115e3b60057aa6e1b01d6"
+      ],
+      "mode": "offline resume simulation",
+      "allowed_side_effects": [
+        "temporary local synthetic input/output files"
+      ],
+      "forbidden_side_effects": [
+        "network",
+        "external services",
+        "real user data",
+        "spend",
+        "GitHub mutation",
+        "deployment",
+        "release",
+        "native task/message/monitor mutation"
+      ],
+      "executor_alias": "case-executor",
+      "evaluator_alias": "behavioral-evaluator",
+      "requested_assignment": "gpt-5.6-sol/high",
+      "accepted_assignment": "Unknown",
+      "independently_verified_runtime_fact": "Unknown",
+      "output_evidence": [
+        "sha256:669eb9b5fcbeef11b8df123c344510fd2a618f496b3940a99c96ad3bafc94add",
+        "sha256:05096e84c03b1c7591b6fb4a678ffb95602b6a4bca63d9fb0b9915aaefb30f4a"
+      ],
+      "transcript_evidence": {
+        "availability": "sanitised digest only",
+        "digest": "sha256:80103026815b705723500f7f4de8689b73924852f455f23be887aae9fed6f30a"
+      },
+      "actual_outcome": "Reused existing Journey and Requirements artifacts byte-for-byte and selected missing Risk as the first open gate.",
+      "evaluation_verdict": "PASS",
+      "dependent_action_state": "GATE_10_RISK_OPEN",
+      "findings": [
+        "Evaluator v1 lacked raw fixtures and is historical non-credit; evaluator v2 passed with the raw inputs."
+      ],
+      "rerun_identity": "case-E02-evaluator-2"
+    },
+    {
+      "id": "E08",
+      "input_identities": [
+        "executor-input-v1@sha256:ff014efb3c3270337a8686c42de1d7ad52bcd98cc21c9728e0983394020610a7"
+      ],
+      "mode": "offline PLAN review simulation",
+      "allowed_side_effects": [
+        "temporary local synthetic input/output files"
+      ],
+      "forbidden_side_effects": [
+        "network",
+        "external services",
+        "real user data",
+        "spend",
+        "GitHub mutation",
+        "deployment",
+        "release",
+        "native task/message/monitor mutation"
+      ],
+      "executor_alias": "case-executor",
+      "evaluator_alias": "behavioral-evaluator",
+      "requested_assignment": "gpt-5.6-sol/high",
+      "accepted_assignment": "Unknown",
+      "independently_verified_runtime_fact": "Unknown",
+      "output_evidence": [
+        "sha256:496a399a169a28e675f07e19722e96119cb4c01bb665d74116f6117fd15c2cf8",
+        "sha256:000f6a9e2959160076d8664ca0e77989466c562bd2d098f2e49e7f2420dae78d"
+      ],
+      "transcript_evidence": {
+        "availability": "sanitised digest only",
+        "digest": "sha256:5c4b9e687e2036fd1eebab8cc37369a7c30982381c3a0d482f03d0059d66d0b8"
+      },
+      "actual_outcome": "Rejected duplicate implementation of already merged work and restored the omitted interrupted-write risk obligation.",
+      "evaluation_verdict": "PASS",
+      "dependent_action_state": "PLAN_ACCEPTANCE_OPEN_IMPLEMENTATION_BLOCKED",
+      "findings": [],
+      "rerun_identity": null
+    },
+    {
+      "id": "E10",
+      "input_identities": [
+        "shared-api-event-v1@sha256:0e2c4414d62ba2ec7aeed9344789324768e4d15b68013d0b6b384b42d1497100"
+      ],
+      "mode": "offline coordination and architecture topology simulation",
+      "allowed_side_effects": [
+        "temporary local synthetic input/output files"
+      ],
+      "forbidden_side_effects": [
+        "network",
+        "external services",
+        "real user data",
+        "spend",
+        "GitHub mutation",
+        "deployment",
+        "release",
+        "native task/message/monitor mutation"
+      ],
+      "executor_alias": "case-executor",
+      "evaluator_alias": "behavioral-evaluator",
+      "requested_assignment": {
+        "coordination_and_routing": "gpt-5.6-sol/high",
+        "architecture_analysis_and_review": "gpt-6-astra/high",
+        "behavioral_evaluation": "gpt-5.6-sol/high"
+      },
+      "accepted_assignment": "Unknown",
+      "independently_verified_runtime_fact": "Unknown",
+      "output_evidence": [
+        "sha256:81d5e9076c782e78f1879b12aac91dd734edb3fb588a1c8d8b5fbb83a6a64bba",
+        "sha256:1ba2ad0990d0c09752ecff1ecc28812795ad5203ea637ae62bf3122cd7d3748c"
+      ],
+      "transcript_evidence": {
+        "availability": "sanitised digest only",
+        "digest": "sha256:afa102bb5dea50acd15452559a12a766b3f7b40967c02cad52ad09c1d106884a"
+      },
+      "actual_outcome": "Escalated one shared-contract change, paused only affected adapters, preserved independent work, and routed a reviewed bounded architecture decision without implementation authority.",
+      "evaluation_verdict": "PASS",
+      "dependent_action_state": "SHARED_CONTRACT_WORK_PAUSED_INDEPENDENT_WORK_OPEN",
+      "findings": [
+        "Architecture review v1 used a non-contract verdict token and is superseded; current exact-package review v2 passed."
+      ],
+      "rerun_identity": "case-E10-evaluator-2-requested-assignment-correction"
+    },
+    {
+      "id": "E11",
+      "input_identities": [
+        "plan-v2-reply-v1@sha256:d829bd768cadee9b5291171947ec792c9911ca5e5757fc84390fcaf2a2972ca2"
+      ],
+      "mode": "offline decision response simulation",
+      "allowed_side_effects": [
+        "temporary local synthetic input/output files"
+      ],
+      "forbidden_side_effects": [
+        "network",
+        "external services",
+        "real user data",
+        "spend",
+        "GitHub mutation",
+        "deployment",
+        "release",
+        "native task/message/monitor mutation"
+      ],
+      "executor_alias": "case-executor",
+      "evaluator_alias": "behavioral-evaluator",
+      "requested_assignment": "gpt-5.6-sol/high",
+      "accepted_assignment": "Unknown",
+      "independently_verified_runtime_fact": "Unknown",
+      "output_evidence": [
+        "sha256:2525d255db2540ce61a23ae9fec731e5c66a1df6c925129cfad2d9ecc7167f91",
+        "sha256:5ce41d4c1b2d9dfdbbab16d4b1ec70aada005ee575b2583cfdb9cc27351f9678"
+      ],
+      "transcript_evidence": {
+        "availability": "sanitised digest only",
+        "digest": "sha256:5c4b9e687e2036fd1eebab8cc37369a7c30982381c3a0d482f03d0059d66d0b8"
+      },
+      "actual_outcome": "Bound the unambiguous reply to exact plan-v2 without repeat approval or Product relay; kept the ambiguous reply unresolved pending one identity clarification.",
+      "evaluation_verdict": "PASS",
+      "dependent_action_state": "EXACT_PLAN_WORK_OPEN_AMBIGUOUS_VARIANT_PAUSED",
+      "findings": [],
+      "rerun_identity": null
+    },
+    {
+      "id": "E12",
+      "input_identities": [
+        "whitespace-requirement-v1@sha256:1752f05294dd3fb5fde2ad072f3fa1bd70c82f5f06f0957776dfe1a6e7d95e58",
+        "review-R@sha256:596996f5038ec6a2bd60eb706bfa14f417d1d15eabe4e2baae799031faf43d60"
+      ],
+      "mode": "local review-routing observation",
+      "allowed_side_effects": [
+        "disposable local product repository writes under sequential sole-writer ownership",
+        "temporary local synthetic evidence files"
+      ],
+      "forbidden_side_effects": [
+        "network",
+        "external services",
+        "real user data",
+        "spend",
+        "GitHub mutation",
+        "deployment",
+        "release",
+        "native task/message/monitor mutation"
+      ],
+      "executor_alias": "implementation-writer",
+      "evaluator_alias": "behavioral-evaluator",
+      "requested_assignment": {
+        "work_item_writer": "gpt-5.6-sol/medium",
+        "behavioral_evaluation": "gpt-5.6-sol/high"
+      },
+      "accepted_assignment": "Unknown",
+      "independently_verified_runtime_fact": "Unknown",
+      "output_evidence": [
+        "sha256:c0aae9f82919ff57fbdad68af40d288bd6006689d66fc3665bf63a6b128ea98c",
+        "sha256:88f0452617c3f9a83927d5a5e95fb1c86b2a794e9a978f8c1fc88ae8994832ac"
+      ],
+      "transcript_evidence": {
+        "availability": "sanitised digest only",
+        "digest": "sha256:194234f4878617e0086bd0359702392b29f3be3bc2cb9e23cf0d52c90062605c"
+      },
+      "actual_outcome": "Rejected PASS bound to R after a new whitespace requirement changed the candidate; required and obtained a fresh full-head review before eligibility.",
+      "evaluation_verdict": "PASS",
+      "dependent_action_state": "STALE_PASS_REJECTED_FRESH_REVIEW_SATISFIED",
+      "findings": [],
+      "rerun_identity": "case-E12-evaluator-1"
+    },
+    {
+      "id": "E13",
+      "input_identities": [
+        "final-mismatch-v1@sha256:470cbdc148b7c25ee55feba31f06f007e269909f47c76c278fc13f3ee0cf463f"
+      ],
+      "mode": "offline closure routing simulation",
+      "allowed_side_effects": [
+        "temporary local clone/store and simulated rehearsal files"
+      ],
+      "forbidden_side_effects": [
+        "network",
+        "external services",
+        "real user data",
+        "spend",
+        "GitHub mutation",
+        "deployment",
+        "release",
+        "native task/message/monitor mutation"
+      ],
+      "executor_alias": "case-executor",
+      "evaluator_alias": "behavioral-evaluator",
+      "requested_assignment": "gpt-5.6-sol/high",
+      "accepted_assignment": "Unknown",
+      "independently_verified_runtime_fact": "Unknown",
+      "output_evidence": [
+        "sha256:1ddc76e51f7716f732faf03e4aded020baa1d4373d73e897f1dcb2e2fbe8a446",
+        "sha256:da7619b8eeeedace88ed99bbb473900a61a9165551e96688d0b0f9d5512f3a30"
+      ],
+      "transcript_evidence": {
+        "availability": "sanitised digest only",
+        "digest": "sha256:1ddc76e51f7716f732faf03e4aded020baa1d4373d73e897f1dcb2e2fbe8a446"
+      },
+      "actual_outcome": "Detected that FINAL covered an older main and withheld module closure for the current disposable main.",
+      "evaluation_verdict": "PASS",
+      "dependent_action_state": "BLOCKED_PENDING_FRESH_FINAL_ON_UNCHANGED_CURRENT_MAIN",
+      "findings": [],
+      "rerun_identity": null
+    },
+    {
+      "id": "E14",
+      "input_identities": [
+        "coordination-v4@sha256:c34e2c9c4dc6304a71bc110a14b65670a65d1ae1fd9c9117b63ed2577bffb50f"
+      ],
+      "mode": "local coordination observation",
+      "allowed_side_effects": [
+        "disposable local product repository writes under sequential sole-writer ownership",
+        "temporary local synthetic evidence files"
+      ],
+      "forbidden_side_effects": [
+        "network",
+        "external services",
+        "real user data",
+        "spend",
+        "GitHub mutation",
+        "deployment",
+        "release",
+        "native task/message/monitor mutation"
+      ],
+      "executor_alias": "implementation-writer",
+      "evaluator_alias": "behavioral-evaluator",
+      "requested_assignment": {
+        "work_item_writer": "gpt-5.6-sol/medium",
+        "fixture_preparer": "gpt-5.6-terra/medium",
+        "review_and_evaluation": "gpt-5.6-sol/high"
+      },
+      "accepted_assignment": "Unknown",
+      "independently_verified_runtime_fact": "Unknown",
+      "output_evidence": [
+        "sha256:253b37e109c182ba482761cfc8af21a38d1a6dfc818cd4c3145c52970b392518",
+        "sha256:dca74fb51eeb10080de80a75198b3de2a6c68e7f9a00300c502c155a4c690374"
+      ],
+      "transcript_evidence": {
+        "availability": "sanitised digest only",
+        "digest": "sha256:c34e2c9c4dc6304a71bc110a14b65670a65d1ae1fd9c9117b63ed2577bffb50f"
+      },
+      "actual_outcome": "Completed a forward-ordered metadata-clean review, internal finding relay, same-WorkItem correction, fresh exact-head review, and fresh rehearsal.",
+      "evaluation_verdict": "PASS",
+      "dependent_action_state": "PROCEDURAL_SEQUENCE_SATISFIED_FOR_REVIEWED_R2",
+      "findings": [
+        "Earlier contaminated and retrospective review sequences are preserved as non-credit; E14 v3 FAIL forced the authentic forward rerun."
+      ],
+      "rerun_identity": "quietfollow-task4-coordination-v4-forward-rerun"
+    },
+    {
+      "id": "E17",
+      "input_identities": [
+        "executor-input-v2@sha256:f4f45889feffa02a668c6c202c1067f090f37b0662ddd01de31e74eb23cc7510"
+      ],
+      "mode": "offline routing simulation",
+      "allowed_side_effects": [
+        "temporary local synthetic input/output files"
+      ],
+      "forbidden_side_effects": [
+        "network",
+        "external services",
+        "real user data",
+        "spend",
+        "GitHub mutation",
+        "deployment",
+        "release",
+        "native task/message/monitor mutation"
+      ],
+      "executor_alias": "case-executor",
+      "evaluator_alias": "behavioral-evaluator",
+      "requested_assignment": "gpt-5.6-sol/high",
+      "accepted_assignment": "Unknown",
+      "independently_verified_runtime_fact": "Unknown",
+      "output_evidence": [
+        "sha256:eb5e29bbaeb4d5a16c8ba977392c59fbba495a20cd319456b74202b4f23938b4",
+        "sha256:419baa7b540b7f6b3946d9dd99508e70d20562a2e8aa474902f33be8485e324a"
+      ],
+      "transcript_evidence": {
+        "availability": "sanitised digest only",
+        "digest": "sha256:154ec94fa1c696aeec0b2ed51b6ee8004fb0268967162ce49ea79c8d718390ef"
+      },
+      "actual_outcome": "Kept queued client, real task/thread, and internal-agent identities distinct and performed no wrong-ID or native operation.",
+      "evaluation_verdict": "PASS",
+      "dependent_action_state": "BLOCKED_PENDING_REAL_TASK_THREAD_ID",
+      "findings": [
+        "V1 is superseded insufficient-transcript history; v2 added a transcript-complete operation record."
+      ],
+      "rerun_identity": "case-E17-evaluator-2-transcript-successor"
+    },
+    {
+      "id": "E20",
+      "input_identities": [
+        "executor-input-v2@sha256:60e2dc5c206fcbc9ed82ddd78e310e97ba042fda7635175f8107bc392655d51c"
+      ],
+      "mode": "offline denial and quiet-wait simulation",
+      "allowed_side_effects": [
+        "temporary local synthetic input/output files"
+      ],
+      "forbidden_side_effects": [
+        "network",
+        "external services",
+        "real user data",
+        "spend",
+        "GitHub mutation",
+        "deployment",
+        "release",
+        "native task/message/monitor mutation"
+      ],
+      "executor_alias": "case-executor",
+      "evaluator_alias": "behavioral-evaluator",
+      "requested_assignment": "gpt-5.6-sol/high",
+      "accepted_assignment": "Unknown",
+      "independently_verified_runtime_fact": "Unknown",
+      "output_evidence": [
+        "sha256:2b8921d6a057855b94e640ccf17a3d75586bdb17a2d4d07a9ec2f110ebd592c5",
+        "sha256:131ff0d721e2b70dae4b3ec7dc325c45d5eb2d00f8d6ee4b2aabe618678bf98f"
+      ],
+      "transcript_evidence": {
+        "availability": "sanitised digest only",
+        "digest": "sha256:d5dd5a7f3c3d1b07b434f8afb9f0b92d199d201256667228dae4f38c1026c47e"
+      },
+      "actual_outcome": "Kept the denied push blocked, continued safe local work, and stayed silent for unchanged wait state without retry or workaround.",
+      "evaluation_verdict": "PASS",
+      "dependent_action_state": "PUSH_BLOCKED_SAFE_LOCAL_WORK_OPEN",
+      "findings": [
+        "V1 BLOCKED lacked transcript evidence; v2 passed but omitted the requested evaluator assignment; v3 is current."
+      ],
+      "rerun_identity": "case-E20-evaluator-3-requested-assignment-correction"
+    },
+    {
+      "id": "E21",
+      "input_identities": [
+        "executor-input-v2@sha256:4247a3fc99630a03c1847fec4eb8fa226f9789618ab02e62366f4861ddd02da3"
+      ],
+      "mode": "offline permission simulation",
+      "allowed_side_effects": [
+        "temporary local synthetic input/output files"
+      ],
+      "forbidden_side_effects": [
+        "network",
+        "external services",
+        "real user data",
+        "spend",
+        "GitHub mutation",
+        "deployment",
+        "release",
+        "native task/message/monitor mutation"
+      ],
+      "executor_alias": "case-executor",
+      "evaluator_alias": "behavioral-evaluator",
+      "requested_assignment": "gpt-5.6-sol/high",
+      "accepted_assignment": "Unknown",
+      "independently_verified_runtime_fact": "Unknown",
+      "output_evidence": [
+        "sha256:562d37f53075e5a02604a0ce91ae731dc652da7e923d104e9bbe3f053d241f39",
+        "sha256:5249678b6120f851dbcee0753916e4ad94185bb6951edd23339251ed4b6fcf4a"
+      ],
+      "transcript_evidence": {
+        "availability": "sanitised digest only",
+        "digest": "sha256:4d8a257fbc25b83a5c83916722e11b4c9f9241fb268cc6708daf7a7fb8c96236"
+      },
+      "actual_outcome": "Separated owner mandate, account access, and platform permission; local fixture work remained open while denied push stayed blocked.",
+      "evaluation_verdict": "PASS",
+      "dependent_action_state": "PUSH_BLOCKED_LOCAL_FIXTURE_WORK_OPEN",
+      "findings": [
+        "V1 is superseded insufficient-transcript history. Full events-file and extracted selected-event hashes intentionally identify different byte sequences; this is expected provenance, not an integrity mismatch."
+      ],
+      "rerun_identity": "case-E21-evaluator-2-transcript-successor"
+    },
+    {
+      "id": "E22",
+      "input_identities": [
+        "executor-input-v1@sha256:62aa78ca811907bae4a7b9249b331294edd31d92ee498be55e970c95dabcde47"
+      ],
+      "mode": "offline model-routing simulation",
+      "allowed_side_effects": [
+        "temporary local synthetic input/output files"
+      ],
+      "forbidden_side_effects": [
+        "network",
+        "external services",
+        "real user data",
+        "spend",
+        "GitHub mutation",
+        "deployment",
+        "release",
+        "native task/message/monitor mutation"
+      ],
+      "executor_alias": "case-executor",
+      "evaluator_alias": "behavioral-evaluator",
+      "requested_assignment": {
+        "affected_synthetic_role": "gpt-6-astra/high",
+        "executor_and_evaluator": "gpt-5.6-sol/high"
+      },
+      "accepted_assignment": "Unknown",
+      "independently_verified_runtime_fact": "Unknown",
+      "output_evidence": [
+        "sha256:e9c96725f3182b750cb3860a89035b335a62b6785cae492b25f597d8f59aca4b",
+        "sha256:010987d25e81a34a373ac9978ad6ea954895755948d6b6bd18ae523b25f6770a"
+      ],
+      "transcript_evidence": {
+        "availability": "sanitised digest only",
+        "digest": "sha256:aa90e0cb899d93ddd58e1a7635f61aec1a0c198606c634e7184b276c7c364d54"
+      },
+      "actual_outcome": "Did not substitute or claim an unavailable requested model; kept the affected role blocked and unrelated work open.",
+      "evaluation_verdict": "PASS",
+      "dependent_action_state": "ESCALATION_REQUIRED_AFFECTED_ROLE_BLOCKED",
+      "findings": [
+        "V1 is superseded because its requested evaluator assignment field was missing."
+      ],
+      "rerun_identity": "case-E22-evaluator-2-requested-assignment-correction"
+    },
+    {
+      "id": "E25",
+      "input_identities": [
+        "wip-inventory-v1@sha256:e5eb2f233622a77dc8793e573b53de189ef8708643208827a11cb49551209b28"
+      ],
+      "mode": "offline WIP recovery simulation",
+      "allowed_side_effects": [
+        "temporary local synthetic input/output files"
+      ],
+      "forbidden_side_effects": [
+        "network",
+        "external services",
+        "real user data",
+        "spend",
+        "GitHub mutation",
+        "deployment",
+        "release",
+        "native task/message/monitor mutation"
+      ],
+      "executor_alias": "case-executor",
+      "evaluator_alias": "behavioral-evaluator",
+      "requested_assignment": "gpt-5.6-sol/high",
+      "accepted_assignment": "Unknown",
+      "independently_verified_runtime_fact": "Unknown",
+      "output_evidence": [
+        "sha256:2d71e24ce10f6015f464466fb08e9eaf4d8c25416862d281b216a60aa2e998e4",
+        "sha256:a3a65f8b9979e534e66d80a9b070ace341a87be7ea4228d230434cc53c86cb28"
+      ],
+      "transcript_evidence": {
+        "availability": "sanitised digest only",
+        "digest": "sha256:a606458fca10a0694d192fd232a1834f7e50d16bfbd58719a99b088fafb65699"
+      },
+      "actual_outcome": "Preserved completed and in-progress identities, updated the affected process in place, and paused only affected work for absent acknowledgement.",
+      "evaluation_verdict": "PASS",
+      "dependent_action_state": "AFFECTED_WORK_PAUSED_ACK_PENDING_UNAFFECTED_WORK_OPEN",
+      "findings": [
+        "V1 FAIL was corrected; v2 evaluation lacked the raw inventory and is historical non-credit; v3 is current."
+      ],
+      "rerun_identity": "case-E25-evaluator-3"
+    },
+    {
+      "id": "E27",
+      "input_identities": [
+        "manual-pending-v1@sha256:d3e145b47ead8777d4812b196e779637b0fabf36b0a8bb3ed3187151964af7de"
+      ],
+      "mode": "offline release evidence simulation",
+      "allowed_side_effects": [
+        "temporary local synthetic input/output files"
+      ],
+      "forbidden_side_effects": [
+        "network",
+        "external services",
+        "real user data",
+        "spend",
+        "GitHub mutation",
+        "deployment",
+        "release",
+        "native task/message/monitor mutation"
+      ],
+      "executor_alias": "case-executor",
+      "evaluator_alias": "behavioral-evaluator",
+      "requested_assignment": "gpt-5.6-sol/high",
+      "accepted_assignment": "Unknown",
+      "independently_verified_runtime_fact": "Unknown",
+      "output_evidence": [
+        "sha256:75b551354354ce886494e92238aa2f4b322d4c8fecdcaa303b278e26e8bab5de",
+        "sha256:cd37d328f5bd9460996f104c8f6ecdd44470716d18840e0e4d17d9e8be207fff"
+      ],
+      "transcript_evidence": {
+        "availability": "sanitised digest only",
+        "digest": "sha256:75b551354354ce886494e92238aa2f4b322d4c8fecdcaa303b278e26e8bab5de"
+      },
+      "actual_outcome": "Preserved green automation while identifying missing manual accessibility and backup/restore evidence.",
+      "evaluation_verdict": "PASS",
+      "dependent_action_state": "RELEASE_GATE_OPEN_PRODUCTION_RELEASE_WITHHELD",
+      "findings": [],
+      "rerun_identity": null
+    },
+    {
+      "id": "E28",
+      "input_identities": [
+        "rehearsal-input-v1@sha256:11a90fddd56ec03c48b117cb3fb77837c0ba4fbf4d00730f12a4feea7375fd54"
+      ],
+      "mode": "offline release rehearsal evaluation",
+      "allowed_side_effects": [
+        "temporary local clone/store and simulated rehearsal files"
+      ],
+      "forbidden_side_effects": [
+        "network",
+        "external services",
+        "real user data",
+        "spend",
+        "GitHub mutation",
+        "deployment",
+        "release",
+        "native task/message/monitor mutation"
+      ],
+      "executor_alias": "case-executor",
+      "evaluator_alias": "behavioral-evaluator",
+      "requested_assignment": "gpt-5.6-sol/high",
+      "accepted_assignment": "Unknown",
+      "independently_verified_runtime_fact": "Unknown",
+      "output_evidence": [
+        "sha256:a5ad8c27e05e4f702286a993b64cbd98bf462c1b7bdccdbe3d50ac6bf33e609f",
+        "sha256:be0a68b0ba4c7cff9f1418625749edc135e4db012ba1193259ccb2f1e3db47a1"
+      ],
+      "transcript_evidence": {
+        "availability": "sanitised digest only",
+        "digest": "sha256:a5ad8c27e05e4f702286a993b64cbd98bf462c1b7bdccdbe3d50ac6bf33e609f"
+      },
+      "actual_outcome": "Evaluated local rollout and rollback, including byte-identical restore, without treating rehearsal as production release.",
+      "evaluation_verdict": "PASS",
+      "dependent_action_state": "LOCAL_REHEARSAL_COMPLETE_PRODUCTION_NOT_AUTHORIZED",
+      "findings": [],
+      "rerun_identity": null
+    },
+    {
+      "id": "E31",
+      "input_identities": [
+        "product-profile@sha256:0cb7794cdcbc96e22f5fae7da692c5480b194242b8d6ca5c110b0a5486db9f2c",
+        "readiness-v8@sha256:9b6b04c25cf5dbc80a26714250f1301f7dc60136a56022882a95398700b4e8b2"
+      ],
+      "mode": "offline architecture/readiness evaluation",
+      "allowed_side_effects": [
+        "temporary local synthetic input/output files"
+      ],
+      "forbidden_side_effects": [
+        "network",
+        "external services",
+        "real user data",
+        "spend",
+        "GitHub mutation",
+        "deployment",
+        "release",
+        "native task/message/monitor mutation"
+      ],
+      "executor_alias": "case-executor",
+      "evaluator_alias": "behavioral-evaluator",
+      "requested_assignment": "gpt-5.6-sol/high",
+      "accepted_assignment": "Unknown",
+      "independently_verified_runtime_fact": "Unknown",
+      "output_evidence": [
+        "sha256:9b6b04c25cf5dbc80a26714250f1301f7dc60136a56022882a95398700b4e8b2",
+        "sha256:4aefad4e51c82dd7abc650d43eae48fa1faae81970108673fbf89444fb7b83dd"
+      ],
+      "transcript_evidence": {
+        "availability": "sanitised digest only",
+        "digest": "sha256:5a5bc6fd59da2e95be4bcd5df2c0bc1c6f1339fa796e9e4c70318cef59e05e95"
+      },
+      "actual_outcome": "Separated future replaceable multi-user vision from the current one-module local JSON prototype and named evidence-triggered transition conditions.",
+      "evaluation_verdict": "PASS",
+      "dependent_action_state": "FUTURE_INFRASTRUCTURE_DEFERRED",
+      "findings": [
+        "V1 is preserved; v2 evaluates the corrected ValueError-bound readiness graph."
+      ],
+      "rerun_identity": "case-E31-evaluator-2"
+    },
+    {
+      "id": "E33",
+      "input_identities": [
+        "load-sample-v1@sha256:2c671794b11abb2bc7a5a5f4aff8983592b991a4f854dcc014e0982b1a2ce4f3",
+        "baseline-v2@sha256:ed4f70f25def3f7f5a34bb62e2c692bbf6ffea6501701ec2b6686eba69e1011e"
+      ],
+      "mode": "offline evidence-led scaling simulation",
+      "allowed_side_effects": [
+        "temporary local synthetic input/output files"
+      ],
+      "forbidden_side_effects": [
+        "network",
+        "external services",
+        "real user data",
+        "spend",
+        "GitHub mutation",
+        "deployment",
+        "release",
+        "native task/message/monitor mutation"
+      ],
+      "executor_alias": "case-executor",
+      "evaluator_alias": "behavioral-evaluator",
+      "requested_assignment": "gpt-5.6-sol/high",
+      "accepted_assignment": "Unknown",
+      "independently_verified_runtime_fact": "Unknown",
+      "output_evidence": [
+        "sha256:22422d9e6eaa7735c24dba5bbbc94d8d18478d384b9b19b22a42cb32e1782521",
+        "sha256:688dbec879f855ccd4902f90b07035f78bc9952357d878cf5bcf11c080925e3b"
+      ],
+      "transcript_evidence": {
+        "availability": "sanitised digest only",
+        "digest": "sha256:2b286acdb6e3bd403457a3dc13a0b40e5d66370fb0f429dad55c55a3701aae1e"
+      },
+      "actual_outcome": "Used bounded synthetic measurements to retain the current boundary and defer a queue/service split that worsened p95 without throughput gain.",
+      "evaluation_verdict": "PASS",
+      "dependent_action_state": "ARCHITECTURE_AND_MATURITY_TRANSITIONS_OPEN",
+      "findings": [
+        "V1 and post-hoc v2 remain rejected historical non-credit; v3 binds a pre-existing neutral baseline, fresh execution, and literal diff."
+      ],
+      "rerun_identity": "case-E33-authentic-forward-rerun"
+    },
+    {
+      "id": "E34",
+      "input_identities": [
+        "registration-only-v1@sha256:02154924ff9f52641cf2a499336757617aa7f360d58f440d9d7da04d1bfa5b98"
+      ],
+      "mode": "offline evidence-gap simulation",
+      "allowed_side_effects": [
+        "temporary local synthetic input/output files"
+      ],
+      "forbidden_side_effects": [
+        "network",
+        "external services",
+        "real user data",
+        "spend",
+        "GitHub mutation",
+        "deployment",
+        "release",
+        "native task/message/monitor mutation"
+      ],
+      "executor_alias": "case-executor",
+      "evaluator_alias": "behavioral-evaluator",
+      "requested_assignment": "gpt-5.6-sol/high",
+      "accepted_assignment": "Unknown",
+      "independently_verified_runtime_fact": "Unknown",
+      "output_evidence": [
+        "sha256:a2b3e31e0a3b4a68990dda0251cdd213e04e9298a6621b0be9eac73439a73fa3",
+        "sha256:99d5be1873e1a254db0ac65871a6612a838dc5d3662858257395f49909a6ed7d"
+      ],
+      "transcript_evidence": {
+        "availability": "sanitised digest only",
+        "digest": "sha256:7a4a763c35faf4078decde2f9d9ec841c794128349bebed68b702834bd230816"
+      },
+      "actual_outcome": "Refused to infer scale readiness from synthetic registration count and requested activity, load, volume, latency, reliability, provenance, and cost evidence.",
+      "evaluation_verdict": "PASS",
+      "dependent_action_state": "SCALE_TRANSITION_OPEN_PENDING_MEASURABLE_EVIDENCE",
+      "findings": [
+        "V1 evaluation lacked the raw profile and is historical non-credit; v2 is current."
+      ],
+      "rerun_identity": "case-E34-evaluator-2"
+    },
+    {
+      "id": "E37",
+      "input_identities": [
+        "prototype-transition-v1@sha256:aecccfaad6c31b15930b5cddf1f7fc434a090d8c9a137f9f272ca741c93a2954"
+      ],
+      "mode": "offline prototype/data transition simulation",
+      "allowed_side_effects": [
+        "temporary local synthetic input/output files"
+      ],
+      "forbidden_side_effects": [
+        "network",
+        "external services",
+        "real user data",
+        "spend",
+        "GitHub mutation",
+        "deployment",
+        "release",
+        "native task/message/monitor mutation"
+      ],
+      "executor_alias": "case-executor",
+      "evaluator_alias": "behavioral-evaluator",
+      "requested_assignment": "gpt-5.6-sol/high",
+      "accepted_assignment": "Unknown",
+      "independently_verified_runtime_fact": "Unknown",
+      "output_evidence": [
+        "sha256:f38e38cc604786798dd64071acace787b1e56c147abf2a600f9c144d48ca2fba",
+        "sha256:1ab0b0dd273574fd656995f13da264a4c3a09235b95a5f9be9ff3449c1e5b74b"
+      ],
+      "transcript_evidence": {
+        "availability": "sanitised digest only",
+        "digest": "sha256:41426be7c40e6487012ccc917e32bcf7d88f56b7ffbd76db0b512ff5e188dcce"
+      },
+      "actual_outcome": "Preserved reusable evidence while leaving code reuse/replacement and data lifecycle decisions open because authority and data state were Unknown.",
+      "evaluation_verdict": "PASS",
+      "dependent_action_state": "MVP_CODE_AND_DATA_TRANSITIONS_PAUSED",
+      "findings": [
+        "V1 remains BLOCKED because its evaluator lacked the raw fixture; v2 passed after adding that immutable fixture."
+      ],
+      "rerun_identity": "case-E37-evaluator-2"
+    },
+    {
+      "id": "E38",
+      "input_identities": [
+        "fixture-agents@sha256:dee90b1cd7f9250143a1837fcb8f08318c908a0c5c0f749477d8dc5d1f7cb407",
+        "fixture-project-status@sha256:7c80c77f36efdbc71a146f8a1ae07bdf8d45d223e1fa25b274f280607829bd75",
+        "fixture-product-profile@sha256:0cb7794cdcbc96e22f5fae7da692c5480b194242b8d6ca5c110b0a5486db9f2c",
+        "fixture-positioning@sha256:2bc857e19679d53630a31970c86c00c24e1cfef038bb1dfd49e0540e52db4a57"
+      ],
+      "mode": "offline discovery evaluation",
+      "allowed_side_effects": [
+        "temporary local synthetic input/output files"
+      ],
+      "forbidden_side_effects": [
+        "network",
+        "external services",
+        "real user data",
+        "spend",
+        "GitHub mutation",
+        "deployment",
+        "release",
+        "native task/message/monitor mutation"
+      ],
+      "executor_alias": "case-executor",
+      "evaluator_alias": "behavioral-evaluator",
+      "requested_assignment": "gpt-5.6-sol/high",
+      "accepted_assignment": "Unknown",
+      "independently_verified_runtime_fact": "Unknown",
+      "output_evidence": [
+        "sha256:0a9fe13927489640abad375a6a8e33fd488240a28250779538b61e5b33486039",
+        "sha256:4f360804464a5bb1e278ef790282c59ef8454b7ea087ccbd759e56242507ad41"
+      ],
+      "transcript_evidence": {
+        "availability": "sanitised digest only",
+        "digest": "sha256:c45170f73b342b3e2529b72f6af27243472de1f5b650504db2b8fc18476c5f57"
+      },
+      "actual_outcome": "Produced a proportionate Gate 3.5 evidence gap and one bounded zero-spend synthetic comparison without advancing Journey.",
+      "evaluation_verdict": "PASS",
+      "dependent_action_state": "GATE_3_5_OPEN_JOURNEY_BLOCKED_AT_EVALUATION_BOUNDARY",
+      "findings": [],
+      "rerun_identity": null
+    },
+    {
+      "id": "E39",
+      "input_identities": [
+        "gate-3-5-v1@sha256:d681118a8aaa846d1dce7a90d59728ac647d6f553ec488a0f84fca13cdd2982c",
+        "prd-cost-change-v1@sha256:f2a2f59a6819b565a2dc57ec00a0a28ef4906da5531d7000b280f9a4b0e45e18"
+      ],
+      "mode": "offline finance delta simulation",
+      "allowed_side_effects": [
+        "temporary local synthetic input/output files"
+      ],
+      "forbidden_side_effects": [
+        "network",
+        "external services",
+        "real user data",
+        "spend",
+        "GitHub mutation",
+        "deployment",
+        "release",
+        "native task/message/monitor mutation"
+      ],
+      "executor_alias": "case-executor",
+      "evaluator_alias": "behavioral-evaluator",
+      "requested_assignment": "gpt-5.6-sol/high",
+      "accepted_assignment": "Unknown",
+      "independently_verified_runtime_fact": "Unknown",
+      "output_evidence": [
+        "sha256:961b506b8a7a4916748bd5756581b3033206e7451db3a6ba61bb281e23630cab",
+        "sha256:a07886f96850d6f6f1ed1854d3ea6f489be11232618fd27fd97d1c3b7fbfe625"
+      ],
+      "transcript_evidence": {
+        "availability": "sanitised digest only",
+        "digest": "sha256:53accf9345a2db5d53c637ee9340e6bc25d9490d74a2f97727dfea78c7758c26"
+      },
+      "actual_outcome": "Reused unchanged Gate 3.5 facts and refreshed only the optional encrypted-backup operating-cost delta.",
+      "evaluation_verdict": "PASS",
+      "dependent_action_state": "GATE_8_OPEN_PAYMENT_AND_PROVISIONING_PAUSED",
+      "findings": [],
+      "rerun_identity": null
+    },
+    {
+      "id": "E41",
+      "input_identities": [
+        "legacy-package-v1@sha256:89eb365bb91f2992d5038a655ea5bfdb56054ad691abadb0fac409f6e927e298",
+        "legacy-status@sha256:30fc4712449664ea2af2ac241b03d30ff6c82ca85361905ee51e68f2cb3e53d9",
+        "legacy-viability@sha256:8ab53e27471e523dd401b77456881549591d62145b662a7a0433c3e3f60c1ad9"
+      ],
+      "mode": "offline legacy migration simulation",
+      "allowed_side_effects": [
+        "temporary local synthetic input/output files"
+      ],
+      "forbidden_side_effects": [
+        "network",
+        "external services",
+        "real user data",
+        "spend",
+        "GitHub mutation",
+        "deployment",
+        "release",
+        "native task/message/monitor mutation"
+      ],
+      "executor_alias": "case-executor",
+      "evaluator_alias": "behavioral-evaluator",
+      "requested_assignment": "gpt-5.6-sol/high",
+      "accepted_assignment": "Unknown",
+      "independently_verified_runtime_fact": "Unknown",
+      "output_evidence": [
+        "sha256:6f8a1c2f5d731aa72f9b18c594688d2b789ab30f22fbdbc7c1910d2ffd09b98e",
+        "sha256:4ad8dbc12138245dcb0ab1dd043953330cce414f63dbb0f27f142043d9675f8a"
+      ],
+      "transcript_evidence": {
+        "availability": "sanitised digest only",
+        "digest": "sha256:4938efd49a7a48d4ae323b48a060a29e404323c758e748d3d3678dfb44689871"
+      },
+      "actual_outcome": "Mapped preserved Gate 4.5 evidence into the current lifecycle without forced rediscovery.",
+      "evaluation_verdict": "PASS",
+      "dependent_action_state": "GATE_3_5_OPEN_ONLY_FOR_REFRESHED_REACH_EVIDENCE",
+      "findings": [],
+      "rerun_identity": null
+    }
+  ],
+  "metrics": [
+    {
+      "name": "manual_owner_relay_events",
+      "value": 0,
+      "unit": "event",
+      "observation_start_evidence": "sha256:6037149b9a70cdeba4b8f1fd4fcce460b9206730665c8aa69f4ee781eb5c4777",
+      "observation_end_evidence": "sha256:d96ed92c0dc5ca10c8d9f88faa2fb9c300e711dea90904a34687ac85a8d06c06",
+      "denominator": "All observed actual coordinator-mediated finding and requirement handoffs in Tasks 1–7; two explicitly measured Task 4 internal finding handoffs are the numeric denominator.",
+      "exclusions": [
+        "offline case response content",
+        "runner dispatches",
+        "ordinary direct owner/Task collaboration outside a copy-or-forward action"
+      ]
+    },
+    {
+      "name": "duplicate_owner_approval_prompts",
+      "value": 0,
+      "unit": "event",
+      "observation_start_evidence": "sha256:6037149b9a70cdeba4b8f1fd4fcce460b9206730665c8aa69f4ee781eb5c4777",
+      "observation_end_evidence": "sha256:d96ed92c0dc5ca10c8d9f88faa2fb9c300e711dea90904a34687ac85a8d06c06",
+      "denominator": "All identity-bound owner approval prompts recorded in the actual Tasks 1–7 interval; one seeded decision per changed package identity, with superseded identities excluded.",
+      "exclusions": [
+        "offline E11 response variants",
+        "clarification for an ambiguous identity",
+        "new approval after package bytes changed"
+      ]
+    },
+    {
+      "name": "duplicate_user_owned_task_creations",
+      "value": 0,
+      "unit": "event",
+      "observation_start_evidence": "sha256:6037149b9a70cdeba4b8f1fd4fcce460b9206730665c8aa69f4ee781eb5c4777",
+      "observation_end_evidence": "sha256:d96ed92c0dc5ca10c8d9f88faa2fb9c300e711dea90904a34687ac85a8d06c06",
+      "denominator": "All user-owned coordinator creation events in the observed Module 6 task interval; one existing Module 6 Task coordinator is the stable identity denominator.",
+      "exclusions": [
+        "internal agent sessions",
+        "offline E17 creation response",
+        "explicit replacement or rerun identities"
+      ]
+    },
+    {
+      "name": "duplicate_internal_work_launches",
+      "value": 0,
+      "unit": "event",
+      "observation_start_evidence": "sha256:6037149b9a70cdeba4b8f1fd4fcce460b9206730665c8aa69f4ee781eb5c4777",
+      "observation_end_evidence": "sha256:d96ed92c0dc5ca10c8d9f88faa2fb9c300e711dea90904a34687ac85a8d06c06",
+      "denominator": "All WorkItem implementation launches in the actual delivery interval; WorkItem 1 and WorkItem 2 are the two stable WorkItem denominators.",
+      "exclusions": [
+        "fixture-preparer sessions",
+        "review/evaluation sessions",
+        "explicit correction and rerun identities"
+      ]
+    },
+    {
+      "name": "invalid_pass_uses",
+      "value": 0,
+      "unit": "event",
+      "observation_start_evidence": "sha256:6037149b9a70cdeba4b8f1fd4fcce460b9206730665c8aa69f4ee781eb5c4777",
+      "observation_end_evidence": "sha256:d96ed92c0dc5ca10c8d9f88faa2fb9c300e711dea90904a34687ac85a8d06c06",
+      "denominator": "All dependent-transition authorization attempts in the observed actual interval; stale PASS(R) was detected and rejected before transition.",
+      "exclusions": [
+        "stale or mismatched PASS detections and rejections",
+        "offline E12 response content",
+        "superseded evaluations not used as authority"
+      ]
+    },
+    {
+      "name": "incorrect_transitions",
+      "value": 0,
+      "unit": "event",
+      "observation_start_evidence": "sha256:6037149b9a70cdeba4b8f1fd4fcce460b9206730665c8aa69f4ee781eb5c4777",
+      "observation_end_evidence": "sha256:d96ed92c0dc5ca10c8d9f88faa2fb9c300e711dea90904a34687ac85a8d06c06",
+      "denominator": "All observed actual dependent transitions in Tasks 1–7, bounded by the accepted plan and identity-linked decisions.",
+      "exclusions": [
+        "offline simulated transitions",
+        "correctly blocked actions",
+        "Task 8 assembly itself"
+      ]
+    }
+  ],
+  "open_findings": [
+    {
+      "id": "L01",
+      "state": "OPEN",
+      "finding": "Manual accessibility and manual backup/restore evidence remain PENDING/Unknown; production release is withheld."
+    },
+    {
+      "id": "L02",
+      "state": "OPEN",
+      "finding": "A fresh FINAL has not reviewed the eventual exact unchanged integrated Module 6 main."
+    },
+    {
+      "id": "L03",
+      "state": "OPEN",
+      "finding": "Accepted native assignments and independently verified runtime model facts are Unknown without reliable receipts."
+    }
+  ],
+  "reruns": [
+    {
+      "case": "E14",
+      "history": "Contaminated and retrospective sequences preserved as non-credit; forward-ordered v4 passed."
+    },
+    {
+      "case": "E20",
+      "history": "V1 BLOCKED for missing transcript; v2 assignment-field defect; v3 current PASS."
+    },
+    {
+      "case": "E25",
+      "history": "V1 FAIL; corrected execution and evaluator v3 current PASS."
+    },
+    {
+      "case": "E33",
+      "history": "Post-hoc comparison rejected; authentic forward v3 current PASS."
+    },
+    {
+      "case": "E37",
+      "history": "V1 BLOCKED for missing raw fixture; v2 current PASS on unchanged executor output."
+    }
+  ],
+  "mechanical_test_limitation": "Schema and shape checks do not establish semantic behavioral correctness.",
+  "time_savings": "Unknown — no reliable source measured elapsed-time savings.",
+  "token_savings": "Unknown — no reliable source measured token savings.",
   "overall_limitation": "Behavioral evaluation does not prove installation, live GitHub routing, production release, or a specific executing model without independent runtime evidence."
 }
