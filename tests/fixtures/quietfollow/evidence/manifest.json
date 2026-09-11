@@ -5,7 +5,7 @@
     "source_parent": "1d9b6f8242fbea8548a423b172534b8c8d20b6e0",
     "accepted_plan_commit": "8614c2d3c465ce86ab4332917bc435d4d2b10754",
     "task8_base": "f47263ce545c5185b3ec836c95fe341d1b3e5715",
-    "candidate_identity": "working-tree candidate pending Task 9 commit and exact-head review",
+    "candidate_identity": "local committed candidate; exact head and review state are owned by Task 9 task-local evidence and final review record; integration and FINAL are unperformed",
     "disposable_product_repository": "local synthetic repository",
     "disposable_product_repository_head": "d2e8bc6500d52f7db63f372ef52b1efaad59edf8",
     "disposable_product_tree": "a5fce7b8a8c7eafae9349a762c28d4ea50709da9",
@@ -71,6 +71,14 @@
     {
       "alias": "workflow-checker",
       "sha256": "3edd5b6b8962773fe4ac0cc970e314827fa4b08849f158c0a1061af9bafbe794"
+    },
+    {
+      "alias": "e13-corrected-input-v2",
+      "sha256": "455942df13e29b42ff5cb508854c8cbb261ae037c4c5324633b959f4c9b89752"
+    },
+    {
+      "alias": "e13-evaluator-input-v2",
+      "sha256": "5680630fb33e2a3dbd90e1877bb20a33fd0e4a0fdcd2500e6ea7c7bb3e1edf2c"
     }
   ],
   "permissions": {
@@ -215,9 +223,10 @@
     {
       "id": "part-4",
       "path": "tests/fixtures/quietfollow/evidence/part-4-release-rehearsal.md",
-      "sha256": "fade1779610df1af2d4e595d4e2321ecae6f5905846f52bd3af2f5b7ca23e4cb",
+      "sha256": "168662f63ba45ca3e700e3ba850ef4df5ad23033dc2db986bd882ce7459f0518",
       "sources": [
-        "private Part 4 source v2"
+        "private Part 4 source v2",
+        "corrected independent E13 v2"
       ]
     },
     {
@@ -242,13 +251,21 @@
     {
       "alias": "task7-runner-chain",
       "sha256": "f3d474c0847a175b9225476c39616b3e13b62301984023583d6f15da34f64567"
+    },
+    {
+      "alias": "e13-executor-record-v2",
+      "sha256": "80f7259ca208dc381d2d649634cd22cc9d4cfbf48fc2b349dcbd298a3c0ae34a"
+    },
+    {
+      "alias": "e13-evaluation-v2",
+      "sha256": "e957ea4857f395aa784885412d4d486b09f9ce7e875e0dd4ac2a96d79697de4f"
     }
   ],
   "redaction": {
     "private_denylist_value_count": 57,
     "matched_occurrences": 0,
     "denylist_sha256": "8f65ff9319a7507001fc8f853f70857b1df7e69e1c56d902b3a281278ae97926",
-    "scanner_output_sha256": "63eec9a48b6fcef215c0268857372042bea712302f4f32ca4f3d351123a1a628"
+    "scanner_output_sha256": "75655fb081a32eee61308c520fbcfae534190a7cd7c4f95f5e02a7473708299f"
   },
   "limitations": [
     "Shared filesystem boundaries provide procedural isolation only; no operating-system sandbox is proven.",

@@ -1,14 +1,15 @@
 # Project status
 
-Date: 2026-09-11. Product: Product Development Workflow.
+Date: 2026-09-12. Product: Product Development Workflow.
 
 ## Current stage
 
-Module 6 Task 8 has assembled the local QuietFollow pilot candidate on exact base
-`f47263ce545c5185b3ec836c95fe341d1b3e5715`. The candidate contains the reviewed local product
-copy, five public evidence parts, a 21-case execution record, and mechanical evidence-contract
-tests. It is an uncommitted candidate pending Task 9 identity, verification, and exact-head Change
-Review; it is not integrated or `DONE`.
+Module 6 has a local committed candidate descended from exact base
+`f47263ce545c5185b3ec836c95fe341d1b3e5715`. It contains the reviewed local product copy, five
+public evidence parts, a 21-case execution record, and mechanical evidence-contract tests. Exact
+candidate head and review state are owned by Task 9 task-local evidence and its final review record,
+so this durable navigation does not embed a self-referential commit identity. Integration and FINAL
+are unperformed; the module is not `DONE`.
 
 Navigate from [validation.md](validation.md) to the five-part human-readable chain. Machine-readable
 identity, source/copy hashes, role facts, permissions, and limitations are in
@@ -24,12 +25,11 @@ E37–E39, and E41. Current behavioral verdicts are recorded separately from dep
 This is local synthetic evidence, not full E01–E41 coverage and not proof of installation, live
 GitHub routing, production behavior, production release, or executing-model identity.
 
-The first unmet gate is Task 9: the assembled tracked candidate does not yet have a local candidate
-commit and independent exact-head Change Review. Manual accessibility and backup/restore evidence
-also remain PENDING/Unknown, and a later fresh FINAL would be required on exact unchanged integrated
-main before module closure.
+Manual accessibility and backup/restore evidence remain PENDING/Unknown. The exact Task 9 review
+state is kept in the task-local final review record. Integration is unperformed, and a distinct
+fresh FINAL on exact unchanged integrated main remains required before module closure.
 
 ## Next action
 
-Run Task 9 verification, create the local candidate commit, and obtain independent Change Review
-on that exact unchanged head; any correction must receive a new review.
+Owner/Product decides whether to authorize Task 10 integration for the exact locally reviewed
+candidate identified by Task 9's final review record.

@@ -215,7 +215,8 @@
     {
       "id": "E13",
       "input_identities": [
-        "final-mismatch-v1@sha256:470cbdc148b7c25ee55feba31f06f007e269909f47c76c278fc13f3ee0cf463f"
+        "final-mismatch-v2@sha256:455942df13e29b42ff5cb508854c8cbb261ae037c4c5324633b959f4c9b89752",
+        "e13-evaluator-input-v2@sha256:5680630fb33e2a3dbd90e1877bb20a33fd0e4a0fdcd2500e6ea7c7bb3e1edf2c"
       ],
       "mode": "offline closure routing simulation",
       "allowed_side_effects": [
@@ -237,18 +238,20 @@
       "accepted_assignment": "Unknown",
       "independently_verified_runtime_fact": "Unknown",
       "output_evidence": [
-        "sha256:1ddc76e51f7716f732faf03e4aded020baa1d4373d73e897f1dcb2e2fbe8a446",
-        "sha256:da7619b8eeeedace88ed99bbb473900a61a9165551e96688d0b0f9d5512f3a30"
+        "sha256:80f7259ca208dc381d2d649634cd22cc9d4cfbf48fc2b349dcbd298a3c0ae34a",
+        "sha256:e957ea4857f395aa784885412d4d486b09f9ce7e875e0dd4ac2a96d79697de4f"
       ],
       "transcript_evidence": {
         "availability": "sanitised digest only",
-        "digest": "sha256:1ddc76e51f7716f732faf03e4aded020baa1d4373d73e897f1dcb2e2fbe8a446"
+        "digest": "sha256:80f7259ca208dc381d2d649634cd22cc9d4cfbf48fc2b349dcbd298a3c0ae34a"
       },
-      "actual_outcome": "Detected that FINAL covered an older main and withheld module closure for the current disposable main.",
+      "actual_outcome": "Corrected independent v2 detected that FINAL covered older main A, refused module closure, and required a fresh FINAL bound to current B commit d2e8bc6500d52f7db63f372ef52b1efaad59edf8 and 40-hex tree a5fce7b8a8c7eafae9349a762c28d4ea50709da9.",
       "evaluation_verdict": "PASS",
-      "dependent_action_state": "BLOCKED_PENDING_FRESH_FINAL_ON_UNCHANGED_CURRENT_MAIN",
-      "findings": [],
-      "rerun_identity": null
+      "dependent_action_state": "BLOCKED_PENDING_FRESH_FINAL",
+      "findings": [
+        "E13 v1 is preserved as superseded non-credit evidence: it used malformed 41-hex tree a5fce7b8a8cc8eafae9349a762c28d4ea50709da9; corrected independent v2 replaces its behavioral credit."
+      ],
+      "rerun_identity": "case-E13-evaluator-2-corrected-tree"
     },
     {
       "id": "E14",

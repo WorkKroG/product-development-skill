@@ -3,9 +3,10 @@
 Date: 2026-09-11. Plan: `MODULE6-PLAN-v1` at
 `sha256:6037149b9a70cdeba4b8f1fd4fcce460b9206730665c8aa69f4ee781eb5c4777`.
 The accepted plan commit is `8614c2d3c465ce86ab4332917bc435d4d2b10754`; Task 8 started from
-exact clean tracked base `f47263ce545c5185b3ec836c95fe341d1b3e5715`. The candidate is the
-uncommitted Task 8 tracked path set listed below; Task 9, not this record, assigns a commit identity
-and performs exact-head Change Review.
+exact clean tracked base `f47263ce545c5185b3ec836c95fe341d1b3e5715`. Module 6 now has a local
+committed candidate containing the path set listed below. Exact head and review state are owned by
+Task 9 task-local evidence and its final review record rather than embedded self-referentially here.
+Integration and FINAL are unperformed.
 
 This is a local synthetic behavioral pilot, not installation, live GitHub routing, production
 release, or full E01–E41 coverage. Schema tests validate structure, not semantic correctness.
@@ -60,7 +61,7 @@ include a correctly blocked dependent action; it is not transition authority by 
 | E10 | Offline topology | Escalated shared contract, paused affected work, preserved independent work, routed reviewed bounded decision. | PASS | Shared-contract work paused; no implementation authority. | Non-contract-token review superseded; evaluator v2 current. | `1ba2ad0990d0c09752ecff1ecc28812795ad5203ea637ae62bf3122cd7d3748c` |
 | E11 | Offline decision | Bound exact reply without repeat approval; ambiguous reply requested one clarification. | PASS | Exact work open; ambiguous variant paused. | No rerun. | `5ce41d4c1b2d9dfdbbab16d4b1ec70aada005ee575b2583cfdb9cc27351f9678` |
 | E12 | Local routing | Rejected stale PASS(R) and required fresh full-head review. | PASS | Fresh exact-head review satisfied. | Stale detection was not an invalid use. | `88f0452617c3f9a83927d5a5e95fb1c86b2a794e9a978f8c1fc88ae8994832ac` |
-| E13 | Offline closure | Rejected FINAL for older main. | PASS | Fresh FINAL on unchanged current main required. | No closure performed. | `da7619b8eeeedace88ed99bbb473900a61a9165551e96688d0b0f9d5512f3a30` |
+| E13 | Offline closure | Corrected independent v2 rejected FINAL for older main A and bound the fresh route to current B commit/tree. | PASS | `BLOCKED_PENDING_FRESH_FINAL`. | V1 malformed 41-hex tree is preserved as superseded non-credit; rerun `case-E13-evaluator-2-corrected-tree`. | `e957ea4857f395aa784885412d4d486b09f9ce7e875e0dd4ac2a96d79697de4f` |
 | E14 | Local coordination | Completed clean review → internal finding relay → correction → fresh review/rehearsal. | PASS | R2 sequence satisfied. | Earlier contaminated/retrospective attempts non-credit; v4 current. | `dca74fb51eeb10080de80a75198b3de2a6c68e7f9a00300c502c155a4c690374` |
 | E17 | Offline routing | Preserved ID types and made no wrong-ID/native call. | PASS | Blocked pending real task/thread ID. | v1 insufficient transcript; v2 current. | `419baa7b540b7f6b3946d9dd99508e70d20562a2e8aa474902f33be8485e324a` |
 | E20 | Offline denial/wait | Honored denial, continued safe work, stayed silent on unchanged wait. | PASS | Push blocked; local work open. | v1 BLOCKED, v2 field defect, v3 current. | `131ff0d721e2b70dae4b3ec7dc325c45d5eb2d00f8d6ee4b2aabe618678bf98f` |
@@ -101,8 +102,9 @@ excluded from actual native counts.
 - Seeded facts are not observations of real users, market, scale, production capacity, or cost.
 - Accessibility and manual backup/restore evidence remain PENDING/Unknown. Production release is
   withheld and not authorized.
-- A fresh FINAL has not reviewed an exact unchanged integrated Module 6 main. That is the first
-  unmet module-closure gate; Task 9 exact-head Change Review must occur first.
+- The local committed candidate's exact head and review state are owned by Task 9 task-local
+  evidence and its final review record. Integration and FINAL are unperformed; a fresh FINAL has
+  not reviewed an exact unchanged integrated Module 6 main, so module closure remains open.
 - Time savings are Unknown and token savings are Unknown because no reliable source measured them.
 - No public push, PR, merge into the real product repository, installation, deployment, production
   release, external service access, spend, or real-data action occurred.

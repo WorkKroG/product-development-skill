@@ -107,6 +107,60 @@ class PilotEvidenceContractTest(unittest.TestCase):
             self.assertEqual(copy["source_sha256"], copy["copy_sha256"])
             self.assertEqual(copy["copy_sha256"], digest)
 
+    def test_disposable_product_tree_and_e13_use_corrected_current_identity(self):
+        manifest = json.loads((EVIDENCE / "manifest.json").read_text(encoding="utf-8"))
+        tree = manifest["repository"]["disposable_product_tree"]
+        self.assertRegex(tree, r"^[0-9a-f]{40}$")
+        self.assertEqual("a5fce7b8a8c7eafae9349a762c28d4ea50709da9", tree)
+
+        record = json.loads(EXECUTION.read_text(encoding="utf-8"))
+        case = next(case for case in record["cases"] if case["id"] == "E13")
+        self.assertEqual(
+            {
+                "final-mismatch-v2@sha256:455942df13e29b42ff5cb508854c8cbb261ae037c4c5324633b959f4c9b89752",
+                "e13-evaluator-input-v2@sha256:5680630fb33e2a3dbd90e1877bb20a33fd0e4a0fdcd2500e6ea7c7bb3e1edf2c",
+            },
+            set(case["input_identities"]),
+        )
+        self.assertEqual(
+            [
+                "sha256:80f7259ca208dc381d2d649634cd22cc9d4cfbf48fc2b349dcbd298a3c0ae34a",
+                "sha256:e957ea4857f395aa784885412d4d486b09f9ce7e875e0dd4ac2a96d79697de4f",
+            ],
+            case["output_evidence"],
+        )
+        self.assertEqual("BLOCKED_PENDING_FRESH_FINAL", case["dependent_action_state"])
+        self.assertEqual("case-E13-evaluator-2-corrected-tree", case["rerun_identity"])
+        self.assertTrue(
+            any("superseded non-credit" in finding for finding in case["findings"])
+        )
+
+    def test_navigation_tracks_committed_candidate_and_one_next_action(self):
+        manifest = json.loads((EVIDENCE / "manifest.json").read_text(encoding="utf-8"))
+        self.assertEqual(
+            "local committed candidate; exact head and review state are owned by Task 9 "
+            "task-local evidence and final review record; integration and FINAL are unperformed",
+            manifest["repository"]["candidate_identity"],
+        )
+
+        project_status = (ROOT / "docs/PROJECT_STATUS.md").read_text(encoding="utf-8")
+        validation = (ROOT / "docs/validation.md").read_text(encoding="utf-8")
+        for text in (project_status, validation):
+            self.assertNotIn("uncommitted candidate", text)
+            self.assertNotIn("pending Task 9 commit", text)
+            self.assertIn("local committed candidate", text)
+            self.assertIn("integration", text.lower())
+            self.assertIn("FINAL", text)
+        self.assertEqual(1, project_status.count("\n## Next action\n"))
+        next_action = " ".join(
+            project_status.split("\n## Next action\n", 1)[1].split()
+        )
+        self.assertIn(
+            "Owner/Product decides whether to authorize Task 10 integration for the exact "
+            "locally reviewed candidate identified by Task 9's final review record.",
+            next_action,
+        )
+
     def test_public_evidence_contains_no_private_runtime_bindings(self):
         text = "\n".join(
             path.read_text(encoding="utf-8")
