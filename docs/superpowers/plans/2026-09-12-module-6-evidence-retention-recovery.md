@@ -40,12 +40,14 @@ package, network access, GitHub service action, or external tool is required.
   `codex/module6-quietfollow-pilot`.
 - Initial addendum commit: `21c1509dce231069e1ec49dd36d751ff85999e08`, tree
   `b85abfd07edcd56f2ec1b410796b1101c7ea5057`, sole parent the recovery predecessor
-  above. Correction round 1 uses that initial addendum commit as its sole parent and changes only
-  this addendum. The corrected containing commit/hash are supplied by the plan-author report and
-  exact PLAN-review package, never self-recorded in these tracked bytes.
-- The addendum identity remains `MODULE6-RECOVERY-PLAN-v1`; correction round 1 supersedes only the
-  initial addendum bytes for execution authority. A PLAN reviewer must bind the corrected bytes and
-  commit explicitly; the initial bytes remain immutable Git history and confer no execution credit.
+  above. Correction round 1 is `8a9f04bcb2d15a1127dcbd1f354ab66accd2e5b6`, tree
+  `7faf24e1f4fe32541ff4e03211a14472be259048`, with sole parent the initial addendum and only this
+  addendum changed. Correction round 2 uses `8a9f04bcb2d15a1127dcbd1f354ab66accd2e5b6`
+  as its sole parent and again changes only this addendum. The newest containing commit/hash are
+  supplied by the plan-author report and exact PLAN-review package, never self-recorded here.
+- The addendum identity remains `MODULE6-RECOVERY-PLAN-v1`; each correction supersedes the prior
+  addendum bytes only for execution authority. A PLAN reviewer must bind the newest bytes and
+  commit explicitly; prior bytes remain immutable Git history and confer no execution credit.
 - Predecessor Module 6 implementation base:
   `f47263ce545c5185b3ec836c95fe341d1b3e5715`.
 - Predecessor Module 6 accepted plan commit:
@@ -102,7 +104,8 @@ fresh complete review of the new exact head.
 ## Global Constraints
 
 - Execute on an isolated `codex/` branch/worktree rooted at the accepted corrected-addendum commit.
-  Before any recovery write, verify that the corrected plan commit has sole parent
+  Before any recovery write, verify that the newest corrected plan commit has sole parent
+  `8a9f04bcb2d15a1127dcbd1f354ab66accd2e5b6`, that correction round 1 has sole parent
   `21c1509dce231069e1ec49dd36d751ff85999e08`, that the initial addendum has sole parent
   `b0e0c85dd0bf50e84ba1ce14ed4a985be7676002`, that the predecessor plan hash still matches, and
   that tracked/index state is clean.
@@ -155,8 +158,12 @@ fresh complete review of the new exact head.
 - Correction round 1 modifies only that same addendum over sole parent
   `21c1509dce231069e1ec49dd36d751ff85999e08`; its required subject is
   `docs: harden Module 6 recovery plan`.
-- Exact changed-path allowlist for either plan commit is the one path above. No recovery-candidate
-  path belongs in either plan-history commit, and no plan path belongs in a candidate commit.
+- Correction round 2 modifies only that same addendum over sole parent
+  `8a9f04bcb2d15a1127dcbd1f354ab66accd2e5b6`; its subject is
+  `docs: complete Module 6 evidence schemas`.
+- Exact changed-path allowlist for every plan-history commit is the one path above. No
+  recovery-candidate path belongs in a plan-history commit, and no plan path belongs in a candidate
+  commit.
 
 ### Durable ignored recovery workspace
 
@@ -171,6 +178,7 @@ inputs/<group>/<EID>/<attempt-id>/
 executions/<group>/<EID>/<attempt-id>/
 evaluations/<group>/<EID>/<attempt-id>/
 transcripts/<group>/<EID>/<attempt-id>/
+transcripts/roles/<role-alias>/<session-alias>/native-receipt.txt
 product-repo/repository/
 product-repo/reviews/
 product-repo/rehearsals/
@@ -182,9 +190,15 @@ checks/execution-evidence-audit-v<N>.json
 checks/execution-evidence-current.json
 checks/digest-resolution-v<N>.json
 checks/bundle-contamination.json
-checks/private-denylist.txt
-checks/private-denylist.sha256
-checks/redaction-scan-precommit-v1.json
+checks/bundle-contamination-scan-v<N>.json
+checks/private-denylist-v<N>.txt
+checks/private-denylist-v<N>.sha256
+checks/public-alias-vocabulary.txt
+checks/public-alias-vocabulary.sha256
+checks/prebound-public-sessions-v<N>.json
+checks/prebound-public-session-receipts/<session-alias>.txt
+checks/public-content-hashes-precommit-v<N>.json
+checks/redaction-scan-precommit-v<N>.json
 checks/public-content-hashes-<candidate-head>.json
 checks/redaction-scan-<candidate-head>.json
 checks/product-git-verification.json
@@ -210,7 +224,11 @@ an ignored path. Later review records may advance the root manifest without chan
 execution generation.
 For report paths, `N` is that group's or schema review's positive monotonic sequence; prior report
 bytes are never overwritten. `<candidate-head>` is replaced with the exact lowercase 40-hex commit
-already created before that ignored report, so it is not a tracked self-reference.
+already created before that ignored report, so it is not a tracked self-reference. `<group>` is one
+of the four exact group IDs, `<EID>` is its assigned selected case, and `<attempt-id>` is the
+case-derived `EID-r<positive integer>`. `<role-alias>` is an exact ownership-table alias and
+`<session-alias>` is the retained globally unique private session alias; angle brackets are notation
+only and never literal path bytes.
 
 ### Tracked recovery candidate allowlist
 
@@ -362,10 +380,36 @@ paths in the group table; the three logical IDs resolve to distinct current/shar
 `review_verdict` equals the retained group-review bytes and is one of `PASS` or
 `CHANGES_REQUIRED`.
 
-### Per-attempt files
+### Normative JSON conventions and reusable records
 
-For every one of E02, E08, E10, E11, E12, E13, E14, E17, E20, E21, E22, E25, E27, E28,
-E31, E33, E34, E37, E38, E39, and E41, retain:
+Every recovery-produced `.json` file is UTF-8, ends with one LF, contains one JSON object, and is
+serialized with sorted object keys and no duplicate keys. Every `.jsonl` file is UTF-8, ends with
+one LF, and contains one compact JSON object per nonempty line. An "exact" key set rejects missing
+and unknown keys. JSON booleans never satisfy an integer field. Every string is nonempty unless a
+literal value or nullable rule is stated. `sha256` means lowercase 64-hex; `git_oid` means lowercase
+40-hex; `logical_id` and `alias` match `^[A-Za-z0-9][A-Za-z0-9._-]*$`; `case_id` belongs to the
+ordered 21-case set; `attempt_id` is exactly `<case_id>-r<positive integer>`; and every relative
+path satisfies the root canonical-POSIX rules. Every `.sha256` sidecar has exactly the ASCII bytes
+`<digest><two spaces><basename>\n`, where the lowercase digest recomputes the sibling named by the
+basename; no absolute or parent path is permitted. Every plan-produced Markdown or text report is
+nonempty UTF-8 ending in one LF, and its root artifact record supplies its exact digest/size.
+
+These reusable records have exact keys:
+
+| Record | Exact keys and rules |
+|---|---|
+| `AssignmentRequest` | `{role_alias, model, reasoning}`; model is `gpt-5.6-sol`, `gpt-5.6-terra`, or `gpt-6-astra`; reasoning is `medium` or `high`; pair equals the role table |
+| `ObservedAssignment` | `{role_alias, value, receipt_logical_id}`; `value` is `Unknown` or a nonempty native assignment string; receipt is null iff value is `Unknown`, otherwise joins the current case or shared non-case `session_receipt` artifact |
+| `RuntimeFact` | `{role_alias, value, receipt_logical_id}` with the same null/join rule; requested or self-reported values are not runtime proof |
+| `LogicalRef` | `{logical_id, kind, sha256}`; kind is one root artifact-kind enum value and the ID/digest/kind join exactly one artifact |
+| `PrivateFinding` | `{id, severity, state, requirement, observed, impact, evidence_logical_ids}`; severity is `Critical`, `Important`, or `Minor`; state is `open` or `resolved`; evidence IDs are a nonempty unique array joining retained artifacts |
+| `StringEffectSet` | sorted unique array of nonempty strings; allowed and forbidden sets are disjoint |
+
+No other shape may be called by one of these names.
+
+### Exact per-attempt retained schemas
+
+For every selected case retain these ten paths for each attempt:
 
 ```text
 inputs/<group>/<EID>/<attempt-id>/source-manifest.json
@@ -380,24 +424,289 @@ transcripts/<group>/<EID>/<attempt-id>/operations.jsonl
 transcripts/<group>/<EID>/<attempt-id>/session-receipt.json
 ```
 
-`source-manifest.json` binds the tested harness source, case inputs, permissions, and allowed/
-forbidden effects. `executor-bundle-manifest.json` lists every file visible in the intentionally
-supplied bundle and its digest. `result-record.json` records the actual outcome without a verdict.
-`evaluator-input.json` adds the exact reviewer-only rubric section and raw-evidence logical IDs.
-`evaluator-output.json` records findings, `evaluation_verdict`, `dependent_action_state`, and
-recommended correction without editing executor output. `operations.jsonl` records ordered
-dispatch/tool/file/Git/test operations and results sufficient to verify prohibited-effect claims.
-`session-receipt.json` keeps requested, accepted, and independently verified model facts separate.
+`source-manifest.json` has exactly:
 
-The physical executor bundle is the directory named by `source-manifest.json.bundle_root`. Its
-bundle manifest has exactly `schema_version=1`, `case_id`, `attempt_id`,
-`contamination_contract_sha256`, and `files`. Each `files[]` record has exactly `relative_path`,
-`kind`, `sha256`, and `byte_count`. Before dispatch and again after output, the recorder recursively
-enumerates every regular bundle file, rejects every symlink/special/escaped path, and requires exact
-set equality with `files[].relative_path`. It recomputes every file digest/size and scans every exact
-byte sequence. `executor-prompt.txt` is outside the bundle directory but is always separately
-hashed and scanned by its required logical ID. An unlisted contaminated file or contaminated prompt
-therefore fails the attempt.
+| Key | Type and invariant |
+|---|---|
+| `schema_version` | integer `1` |
+| `case_id`, `attempt_id`, `group_id` | exact case/attempt/group identity; group matches fixed partition |
+| `bundle_root` | recovery-root-relative canonical directory exactly `inputs/<group>/<case>/<attempt>/bundle` |
+| `harness_sources`, `case_inputs` | nonempty arrays of `SourceBinding`; logical IDs are unique across both |
+| `permissions` | exact `PermissionBoundary` |
+| `executor_assignment` | exact `AssignmentRequest` for the case executor |
+| `created_sequence` | positive integer preceding executor dispatch |
+
+`SourceBinding` has exactly `{logical_id, origin_class, origin_alias, sha256, byte_count,
+bundle_relative_path}`. `origin_class` is `tracked-binding`, `retained-private`, or
+`synthetic-fixture`; `origin_alias` is a stable alias, never a private path; byte count is a
+nonnegative integer; bundle path is canonical relative to `bundle_root`. Each binding joins exactly
+one listed bundle file with the same path/digest/size. `PermissionBoundary` has exactly `{mode,
+allowed_effects, forbidden_effects}`; mode is `offline-simulation`, `local-synthetic-product`, or
+`read-only-analysis`, and the two effect values are `StringEffectSet` records.
+
+`executor-bundle-manifest.json` has exactly `{schema_version, case_id, attempt_id, bundle_root,
+contamination_contract_sha256, files}`. Version is integer `1`; identities/root equal the source
+manifest; contamination digest resolves `checks/bundle-contamination.json`; `files` is nonempty and
+has exact set equality with independently enumerated regular files below `bundle_root`. Each file
+record has exactly `{relative_path, kind, sha256, byte_count}`; kind is `harness-source`,
+`case-input`, `authority-input`, or `product-fixture`; path is unique canonical bundle-relative;
+digest/size equal actual bytes. No rubric, evaluator, plan, prior verdict, author conversation, or
+unlisted file is allowed.
+
+`result-record.json` has exactly:
+
+| Key | Type and invariant |
+|---|---|
+| `schema_version` | integer `1` |
+| `case_id`, `attempt_id`, `executor_alias` | current identities; alias equals a session-receipt executor alias |
+| `bundle_manifest_logical_id`, `executor_output_logical_id`, `operations_logical_id` | three distinct logical IDs joining the named current artifacts |
+| `actual_outcome` | nonempty factual string; contains no verdict field or rubric judgment |
+| `completion_state` | `completed`, `blocked`, or `interrupted` |
+| `observed_effects` | array of exact `ObservedEffect` records ordered by sequence |
+| `prohibited_effect_observed` | boolean equal to whether any effect has `authorization='forbidden-observed'` |
+| `completed_sequence` | positive integer equal to the terminal executor operation sequence |
+
+`ObservedEffect` has exactly `{sequence, effect_kind, authorization, target_alias, result}`.
+Sequence is positive and strictly increasing; effect kind is `file-read`, `file-write`, `local-git`,
+`local-test`, `local-tool`, `agent-dispatch`, or `none`; authorization is `allowed`,
+`forbidden-blocked`, or `forbidden-observed`; target is a public/private stable alias, not an
+absolute path/native ID; result is a nonempty observation.
+
+`evaluator-input.json` has exactly `{schema_version, case_id, attempt_id, evaluator_alias,
+rubric_source, source_manifest_ref, bundle_manifest_ref, result_record_ref, executor_output_ref,
+operations_ref, session_receipt_ref, evaluator_assignment, assembled_sequence}`. Version is integer
+`1`; evaluator alias differs from every executor alias. `rubric_source` is exact `{logical_id,
+section_id, sha256}` where section ID equals the case ID and digest is the exact isolated rubric
+section bytes. The six `*_ref` fields are exact `LogicalRef` records with respectively
+`raw_input`, `bundle_manifest`, `result_record`, `executor_output`, `transcript`, and
+`session_receipt` kinds and current case/attempt joins. Assignment is exact `AssignmentRequest`;
+sequence is after executor completion and before evaluator dispatch.
+
+`evaluator-output.json` has exactly `{schema_version, case_id, attempt_id, evaluator_alias,
+evaluator_input_logical_id, findings, evaluation_verdict, dependent_action_state,
+recommended_correction, completed_sequence}`. Version is integer `1`; input ID joins the exact
+current evaluator input; findings is an array of `PrivateFinding`; verdict is `PASS`, `FAIL`, or
+`BLOCKED`; dependent state is nonempty and not the verdict; recommended correction is JSON null for
+PASS without findings and otherwise a nonempty observable correction/blocker string; sequence is
+the terminal evaluator operation. Verdict/state equal the root/public current case records.
+
+Each `operations.jsonl` line has exactly `{schema_version, case_id, attempt_id, sequence,
+actor_alias, phase, operation, authorization, target_alias, input_logical_ids, output_logical_ids,
+result, exit_code}`. Version is integer `1`; all lines share case/attempt; sequence is exactly
+`1..line_count`; actor joins a session; phase is `preparation`, `dispatch`, `execution`,
+`evaluation`, or `review`; operation is `file-read`, `file-write`, `agent-dispatch`, `local-git`,
+`local-test`, `local-tool`, `review`, or `no-op`; authorization is `allowed`,
+`forbidden-blocked`, or `forbidden-observed`; target is a stable alias; logical-ID arrays are sorted
+unique and join artifacts already available/created at that sequence; result is nonempty;
+`exit_code` is integer or null. At least one executor dispatch, executor terminal event, evaluator
+dispatch, and evaluator terminal event is present. Any prohibited observed effect makes the current
+case ineligible for PASS unless the rubric explicitly treats that observation as the expected
+failure; the finding remains visible.
+
+`session-receipt.json` has exactly `{schema_version, case_id, attempt_id, sessions}`. Version is
+integer `1`; sessions is a nonempty ordered array of exact `{role_alias, session_alias, role_class,
+requested_assignment, accepted_native_assignment, independently_verified_runtime_fact,
+start_sequence, end_sequence}` records. Role class is `executor`, `evaluator`, `analyst`, or
+`reviewer`; assignment/facts use the reusable records; sequence bounds are positive and join
+operations. Session aliases are unique; at least one executor and exactly one evaluator exist; the
+evaluator session/role aliases differ from every executor. E10 may have its two routing executors,
+analyst, reviewer, and evaluator in the same receipt, still as distinct sessions. Session aliases
+are globally unique across all case receipts and non-case role records. A non-case authoritative
+native receipt, when one exists, is retained as nonempty UTF-8/LF text under
+`transcripts/roles/<role-alias>/<session-alias>/native-receipt.txt`; its logical ID is the only
+non-null receipt reference allowed in that role's `ObservedAssignment`/`RuntimeFact`.
+
+The two `.txt` prompts and executor output are nonempty UTF-8/LF text artifacts. The executor prompt
+is outside `bundle_root` but has a required logical ID, digest, and byte count; contamination scans
+its exact bytes. The evaluator prompt is hashed but exempt from executor contamination because it
+is created only after executor output closes. Before dispatch and after output, independently
+enumerate the physical bundle, reject symlink/special/escaped nodes, require exact bundle-manifest
+set equality, recompute all bytes, and scan them plus the executor prompt.
+
+### Exact group schemas
+
+`reports/<group>-manifest-v<N>.json` has exactly `{schema_version, group_id, sequence, case_ids,
+current_attempts, artifact_logical_ids, group_report_logical_id, source_schema_sha256,
+binding_snapshot_sha256, closed_sequence}`. Version is integer `1`; sequence N is positive;
+case IDs equal the group partition; `current_attempts` is an exact object with one key per case and
+its current attempt ID; artifact IDs are sorted unique and equal every case artifact owned by the
+group except this manifest/report/review; report ID joins the version-matched Markdown report; two
+digests are lowercase 64-hex; closed sequence follows all case evaluations.
+
+`reports/<group>-review-v<N>.json` has exactly `{schema_version, review_kind, group_id,
+review_sequence, reviewer_alias, reviewer_session_alias, requested_assignment, accepted_native_assignment,
+independently_verified_runtime_fact, group_manifest_ref, group_report_ref, case_ids, findings,
+verdict, completed_sequence}`. Version is integer `1`; review kind is `group-review`; group/sequence
+match the reviewed manifest version; reviewer alias is the exact group reviewer and its globally
+unique session alias identifies this dispatch; assignment/facts use reusable records;
+manifest/report refs are `LogicalRef`; case IDs match the group; findings are
+`PrivateFinding`; verdict is `PASS` or `CHANGES_REQUIRED`, with PASS permitted only when no open
+Critical/Important finding remains; completed sequence follows group close. Group Markdown report
+is nonempty UTF-8/LF and contains no unannotated private path/native ID.
+
+### Exact shared-input, review, check, and audit schemas
+
+Every recovery-created neutral JSON case input uses `SyntheticInput`: exact keys
+`{schema_version, input_identity, case_ids, input_kind, facts, source_refs, created_sequence}`.
+Version is integer `1`; identity is a logical ID; case IDs are a nonempty ordered subset of the
+fixed partition; input kind is `artifact-map`, `plan-event`, `decision-event`, `permission-event`,
+`identity-event`, `model-event`, `load-sample`, `registration-sample`, `prototype-transition`,
+`viability-record`, `cost-change`, `release-readiness`, or `rehearsal`; source refs are sorted unique
+`LogicalRef` records; sequence is positive. `facts` is a nonempty array of exact `{name,
+value_type, value, provenance, certainty}` records. Name is unique; value type is `string`,
+`integer`, `boolean`, `string-list`, or `unknown`; value has that exact JSON type and is null only
+for `unknown`; provenance is `tracked-source`, `retained-source`, or `seeded-synthetic`; certainty
+is `fact`, `hypothesis`, or `Unknown`. This typed fact array replaces open-ended nested fixture
+objects. Byte-exact copied tracked/private JSON remains an input blob, not a recovery-created JSON
+record; its structure is not reinterpreted, and its source/copy digest is carried by `SourceBinding`.
+
+`inputs/binding/binding-snapshot-manifest.json` has exactly `{schema_version, source_head,
+entries, created_sequence}`. Version is integer `1`; head is exact lowercase 40-hex; entries are a
+nonempty sorted array of exact `{logical_id, source_alias, source_path, copy_path, sha256,
+byte_count, equality}`; paths are canonical tracked/recovery relative paths, equality is boolean and
+must be true, and digests/sizes match both bytes. Each group brief has exactly `{schema_version,
+group_id, case_ids, source_schema_sha256, binding_snapshot_sha256, allowed_write_roots,
+forbidden_effects, recorder_assignment, created_sequence}` with version 1, exact partition,
+canonical disjoint roots, `StringEffectSet`, `AssignmentRequest`, and a pre-dispatch sequence.
+
+`checks/prebound-public-sessions-v<N>.json` has exactly `{schema_version, binding_sequence,
+sessions, created_sequence}`. Version is integer `1`; binding sequence equals filename N;
+`sessions` is exactly two records, in order for `redaction-check-recorder` and `public-assembler`.
+Each record has exactly `{role_alias, session_alias, requested_assignment,
+accepted_native_assignment, independently_verified_runtime_fact, private_bindings}`. Assignment
+records use the reusable schemas; session alias is a stable alias; `private_bindings` is a sorted
+unique array of exact `{binding_kind, value}` records, where kind is `task-id`, `thread-id`,
+`client-thread-id`, `agent-id`, `host-id`, `session-id`, `worktree-path`, or `private-url`. It contains
+every native ID/path/URL disclosed while establishing that role and may be empty only when none was
+disclosed. These private values enter the exact denylist, never a public file. Created sequence is
+positive and precedes execution-generation freeze and every public write. If an authoritative
+assignment/runtime receipt exists, its raw nonempty UTF-8/LF bytes are retained below
+`checks/prebound-public-session-receipts/<session-alias>.txt` before this JSON and its logical ID is
+used by the nested reusable record; otherwise the value is `Unknown` and reference null.
+
+`checks/public-alias-vocabulary.txt` is the lexicographically sorted, duplicate-free LF-separated
+set of every backtick-delimited role alias in the first column of the ownership table; there is one
+alias per line and a final LF. No wildcard, native binding, group name, or `.local-handoff` appears
+in that file. Its sidecar follows the exact sidecar schema.
+`checks/private-denylist-v<N>.txt` is likewise sorted, duplicate-free, one nonempty exact private
+value per LF-terminated line; it contains every
+value in `private_bindings` plus every private path/ID/URL/credential-like binding observed before
+public assembly. N equals the version-matched public-session binding sequence, and old versions are
+immutable. The highest version included by the selected generation has artifact credit state
+`current`; earlier denylist/session-binding versions are `superseded`; static vocabulary is
+`shared`. Its sidecar follows the same schema. The literal `.local-handoff` is an additional
+scanner allow-token, not a role-vocabulary entry and never an exemption from exact denylist matches.
+
+`checks/bundle-contamination.json` is the immutable policy and has exactly `{schema_version,
+forbidden_paths, forbidden_labels, forbidden_kinds}`. Version is integer `1`; all three values are
+sorted unique nonempty-string arrays and equal the literal policy in Task 1.7. Each
+`checks/bundle-contamination-scan-v<N>.json` has exactly `{schema_version, scan_sequence,
+policy_sha256, cases, aggregate}`. Version is integer `1`; each case record is exact `{case_id,
+attempt_id, bundle_manifest_logical_id, executor_prompt_logical_id, scanned_files, exact_matches,
+verdict}` with nonnegative integer counts and verdict `PASS` or `CONTAMINATED`; `cases` is the exact
+ordered 21 current case/attempt set. Aggregate is exact `{case_count, scanned_files, exact_matches,
+verdict}`, is recomputed from case records, has case count 21, and is PASS iff every case is PASS and
+total matches are zero.
+
+Every product Change Review in `product-repo/reviews/` has exact keys `{schema_version,
+review_kind, review_identity, reviewer_alias, reviewer_session_alias, requested_assignment, accepted_native_assignment,
+independently_verified_runtime_fact, requirements_refs, candidate, check_refs, findings, verdict,
+completed_sequence}`. Version is integer `1`, kind is `product-change-review`, requirements/checks
+are nonempty arrays of `LogicalRef`; review identity and globally unique reviewer session alias bind
+one dispatch; findings are `PrivateFinding`, and verdict is `PASS` or
+`CHANGES_REQUIRED`. `candidate` has exactly `{branch, base_commit, head_commit, tree, diff_sha256}`;
+branch is the assigned local branch, Git fields have exact lengths, and diff digest binds the full
+binary base..head stream. PASS requires exact reviewed head unchanged and no open required finding.
+
+`product-repo/rehearsals/seed-oracle-v1.json` has exactly `{schema_version, matrix_version,
+c_commit, c_commit_bytes_sha256, selected_index, mutation_id, focused_test, s_commit, s_tree}`.
+Versions are integer `1`; index is 0, 1, or 2; mutation ID is respectively `unknown-contact`,
+`completed-filter`, or `outcome-persistence` according to the fixed matrix; test name must match its
+row; Git/digest fields resolve exact retained objects/bytes. Other rehearsal JSON records use exact
+`ProductGitRecord`: `{schema_version, record_kind, sequence, commits, trees, blobs, commands,
+relationships, verdict}`. Kind is `workitem-history`, `merge-proof`, `stale-pass`, `stale-final`,
+`rollout`, or `rollback`; commits/trees/blobs are sorted exact `{alias, git_oid}` arrays; commands
+are ordered exact `{sequence, argv, exit_code, stdout_sha256, stderr_sha256}` records with argv a
+nonempty string array and exit code integer; relationships are sorted exact `{left_alias,
+relation, right_alias, result}` with relation `parent-of`, `ancestor-of`, `same-tree`,
+`same-blob`, `same-diff`, or `different-head` and boolean result; verdict is `PASS`, `FAIL`, or
+`BLOCKED`.
+
+`reports/task1-schema-review-v<N>.json` has the same exact keys as a product Change Review except
+`review_kind='schema-review'` and `candidate` is exactly `{root_manifest_sha256,
+validator_sha256, validator_tests_sha256, contamination_policy_sha256, binding_snapshot_sha256}`.
+Its requirements/check refs and findings use the common records. No Git candidate fields occur.
+
+`checks/execution-evidence-audit-v<N>.json` has exactly `{schema_version, generation,
+manifest_sha256, root_manifest_sha256, reviewer_alias, reviewer_session_alias, requested_assignment,
+accepted_native_assignment, independently_verified_runtime_fact, derived_counts, missing, extra,
+duplicates, mismatches, findings, verdict, completed_sequence}`. Version is integer `1`;
+generation is N; reviewer session alias is globally unique; assignments use reusable records; four error arrays contain exact `AuditError`
+records `{code, logical_id, relative_path, expected, actual}` where nullable logical ID/path are
+allowed but expected/actual are nonempty. Code is exactly one of `schema`, `missing-file`,
+`extra-file`, `duplicate-logical-id`, `duplicate-path`, `digest`, `size`, `symlink`, `escaped-path`,
+`kind-join`, `case-join`, `attempt-join`, `credit-state`, `required-artifact`,
+`assignment-receipt`, `review-membership`, `public-context`, `public-resolution`,
+`public-conflict`, `public-state`, or `redaction`; findings use `PrivateFinding`; verdict is `PASS` or
+`CHANGES_REQUIRED`. `derived_counts` has exactly the keys `selected_cases`, `current_attempts`,
+`raw_inputs`, `executor_prompts`, `bundle_manifests`, `executor_outputs`, `result_records`,
+`evaluator_inputs`, `evaluator_prompts`, `evaluator_outputs`, `transcripts`, `session_receipts`,
+`product_change_reviews`, `group_manifests`, `group_reports`, and `group_reviews`; each value is
+exact `{observed, required, status}` with nonnegative integers and status `complete` iff equal.
+
+`checks/digest-resolution-v<N>.json` has exactly `{schema_version, candidate_head,
+candidate_tree, selected_generation, selected_generation_sha256, scanned_paths, occurrences,
+class_counts, errors, verdict}`. Version is integer `1`; candidate identities are exact Git OIDs;
+generation/digest match the pointer; `scanned_paths` is exactly the eleven allowlisted paths in
+File Map order. Each occurrence is exact `{public_path, line, json_pointer, syntax, sha256,
+classification_status, logical_id, claim_state, claim_class, evidence_kind, case_id, attempt_id,
+resolved_target_class, resolved_logical_id, resolved_sha256}`. Line is positive; JSON pointer is a
+string and empty only for Markdown/Python; syntax is `json-value`, `markdown-annotation`, or
+`python-binding`; status is `classified`, `unclassified`, or `conflicting`. A classified record has
+non-null logical ID, state `current` or `superseded`, class `retained-private`, `tracked-public`, or
+`superseded-historical`, and a conditional evidence kind; case/attempt are both null only for a
+global claim and otherwise the exact current pair. Its target class is `generation-artifact`,
+`tracked-blob`, or `historical-noncredit`; resolved ID/digest equal the target, except historical
+noncredit permits both null. An unclassified/conflicting record sets every semantic/resolution field
+after `classification_status` to null and has a corresponding `public-context`/`public-conflict`
+error. Errors are `AuditError`; verdict is `PASS` only with zero errors, every occurrence
+classified, and complete current class counts.
+
+`class_counts` has exactly `retained_private_current`, `tracked_public_current`,
+`superseded_historical`, and `all_current`. The first, second, and fourth each have exactly
+`{resolved, total, status}` with status `complete` iff equal. `superseded_historical` has exactly
+`{classified, total, status}` with status `classified` iff equal. Every total is derived from the
+occurrence scan, never copied from a public declaration.
+
+`checks/public-content-hashes-precommit-v<N>.json` and
+`checks/public-content-hashes-<candidate-head>.json` have exactly `{schema_version, phase,
+candidate_head, candidate_tree, files}`. Version is integer `1`; phase is `precommit` or
+`exact-head`; candidate identities and each file's Git blob are null only for precommit. Files are
+exactly eleven records `{path, git_blob, sha256, byte_count}` in File Map order; exact-head values
+are recomputed from committed blobs; byte count is a nonnegative integer, path is the exact
+allowlisted path, and Git blob is a lowercase 40-hex OID when non-null.
+`checks/redaction-scan-precommit-v<N>.json` and the exact-head redaction record both have exactly
+`{schema_version, scan_kind, candidate_head, candidate_tree, content_manifest_sha256,
+denylist_sha256, alias_vocabulary_sha256, scanned_files, exact_matches, portable_matches, matches,
+verdict}`. Kind is `precommit` or `exact-head`; candidate values are null only for precommit;
+schema version is integer `1`, the three digest fields are lowercase 64-hex, and non-null candidate
+identities are lowercase 40-hex;
+`scanned_files` is exactly eleven `{path, sha256, byte_count}` records in File Map order matching
+the content-hash record; counts are nonnegative integers; matches are exact `{path, match_class,
+rule_id, line, matched_sha256}` records with allowlisted path, class `exact` or `portable`, nonempty
+rule ID, positive line, and the digest of
+the exact matched bytes. `exact_matches` and `portable_matches` equal the corresponding match-class
+counts, and verdict is `PASS` only with zero matches. The scan never includes its own digest.
+
+`checks/product-git-verification.json` is `ProductGitRecord` with kind `merge-proof` and includes
+all Step 3.8 commands/relationships. `reports/module-change-review-<candidate-head>.json` uses the
+product Change Review schema with `review_kind='module-change-review'` and candidate branch
+`codex/module6-quietfollow-pilot`; its requirements/check refs include the selected generation,
+archive audit, digest-resolution, redaction, and product-Git records. No other recovery-produced
+JSON/JSONL shape is permitted. New required JSON needs a plan correction and fresh PLAN review;
+untrusted pre-acceptance plan-review JSON files already present in the directory are immutable
+historical inputs, tagged `non-credit`, and validated only as exact artifact bytes, never consumed
+as a recovery-produced record or execution authority.
 
 ### Current and superseded identity rules
 
@@ -440,90 +749,126 @@ whose exact keys are `schema_version=1`, `selected_generation=N`, `manifest_sha2
 `manifest_logical_id`, `audit_logical_id`, `audit_sha256`, and `selected_at_sequence`.
 The pointer has no other keys: generation/sequence are positive integers, IDs are unique nonempty
 strings joining root-manifest artifacts, and digests are lowercase 64-hex matching actual bytes.
-The audit has exactly `schema_version=1`, integer `generation`, `manifest_sha256`,
-`root_manifest_sha256`, `reviewer_alias`, requested/accepted/runtime assignment objects,
-`derived_counts`, arrays `missing`, `extra`, `duplicates`, `mismatches`, and `verdict`; its verdict is
-`PASS` only when all four error arrays are empty and every derived required-kind numerator equals
-its independently observed denominator.
+The audit obeys the exhaustive audit schema above.
 
 Any case, product-review, group-review, contamination, or archive-audit correction after freeze
 creates generation N+1. Generation N and its sidecar remain byte-identical; N+1 includes the new
-artifacts and all earlier retained attempts/reviews, records N as superseded in the mutable selection
-record, receives a fresh independent audit, and becomes selected only after PASS. Public assembly
-binds only the latest selected generation number/digest. If public files already exist, a new
-generation requires a new public assembly commit, a new exact-head redaction receipt, full checks,
-and fresh Module Change Review.
+artifacts and all earlier retained attempts/reviews and sets its own
+`supersedes_generation=N`. It receives a fresh independent audit. The seven-key mutable pointer is
+then replaced to select only N+1 and its exact manifest/audit identities; it stores no supersession
+field or history. Public assembly binds only the latest selected generation number/digest. If
+public files already exist, a new generation requires a new public assembly commit, a new exact-head
+redaction receipt, full checks, and fresh Module Change Review.
 
 ### Non-tautological private resolver
 
-The private resolver starts from actual tracked public bytes, not root-manifest or public summary
-counts. It parses both public JSON files, collects every current evidence reference and every other
-current SHA-256 claim, and derives denominators by `digest_class`/`kind`. Superseded predecessor
-records are excluded only because their explicit state is `superseded`; no current digest may be
-unresolved. For each
-`retained-private` reference it loads the selected generation by recomputing candidate generation
-file hashes until exactly one matches the public generation digest; joins `logical_id`, `case_id`,
-`attempt_id`, `kind`, and SHA-256 to exactly one generation artifact; then opens the retained file
-via its private relative path and recomputes bytes/size/digest. For each `tracked-public` reference
-it maps the declared stable tracked path, reads the actual tracked file, and recomputes its digest.
-It independently verifies required reference categories per public-current case and rejects a
-public reference missing from the selected generation, an unreferenced claimed current artifact,
-duplicate logical ID, mismatched digest/class/kind/case/attempt, or public private-path field.
-Generation, denylist, snapshot, plan, public-part, execution-record, navigation, evidence-test, and
-product digests are separately joined through their stable logical ID or tracked path and exact
-bytes; the public manifest itself is bound by the external exact-head content-hash record.
-`digest-resolution-v<N>.json` reports recomputed numerator/denominator/misses per category; no
-manifest/public declared count is used as an input to those totals.
+At exact candidate head, the private resolver reads the eleven File Map paths from committed Git
+blobs and independently scans every byte of all eleven, not only the two JSON records. It discovers
+every lowercase 64-hex token, whether bare or prefixed by `sha256:`, records every occurrence, and
+requires one allowed context from the table below. The complete occurrence list is the denominator;
+public totals, manifest counts, assembler reports, and deduplicated hash sets are never denominator
+inputs.
+
+| Public file/context | Required syntax and classification |
+|---|---|
+| public `manifest.json` | JSON Pointer must match the exhaustive pointer rules below; state/class/logical ID come from the containing record |
+| public `execution-record.json` | JSON Pointer must be generation SHA, evidence-ref SHA, predecessor SHA, or another explicitly listed nested SHA field below |
+| README, status, validation, five parts | every SHA claim uses exact text ``sha256:<hex> [evidence=<logical-id>;class=<retained-private|tracked-public|superseded-historical>;state=<current|superseded>;kind=<kind>;case=<EID|none>;attempt=<attempt-id|none>]`` on the same line |
+| `tests/test_pilot_evidence.py` | an actual 64-hex literal may occur only as a value in top-level `EXPECTED_PUBLIC_SHA256: dict[str, str]`; its key is the logical ID and its class/state/kind/case/attempt are supplied by top-level `EXPECTED_PUBLIC_SHA256_META` with an exact five-string tuple |
+
+Allowed manifest SHA pointers are `/recovery/plan_sha256`,
+`/recovery/evidence_generation_sha256`, `/repository/tracked_product_source_sha256`,
+`/repository/tracked_product_test_sha256`, `/snapshots/<index>/sha256`,
+`/tracked_bindings/<index>/sha256`, `/parts/<index>/sha256`, `/redaction/denylist_sha256`, and
+`/superseded_predecessor_evidence/<index>/sha256`. Allowed execution-record pointers are
+`/evidence_generation/sha256`, `/cases/<index>/evidence_refs/<index>/sha256`,
+`/cases/<index>/findings/<index>/evidence_refs/<index>/sha256`,
+`/cases/<index>/predecessor_evidence/<index>/sha256`, and
+`/open_findings/<index>/evidence_refs/<index>/sha256`. No other JSON/Python/Markdown occurrence is
+classified.
+
+The fixed classification for global JSON fields is: recovery plan =
+`tracked-public/current/recovery-plan`; execution generation = `retained-private/current/check`;
+tracked product source/test = `tracked-public/current/product-source` or `product-test`; snapshots =
+`retained-private/current/raw_input`; each tracked binding and part =
+`tracked-public/current/<public_kind>`; denylist = `retained-private/current/check`; and every
+predecessor entry = `superseded-historical/superseded/historical-evidence`. All have null
+case/attempt. Case/open-finding `EvidenceRef` fields supply their own exact class/state/kind and
+case/attempt. Manifest recovery-plan, repository-product, and part logical IDs must be byte-equal to
+their corresponding `TrackedBinding.logical_id`; their duplicated digests therefore have one
+identical semantic target, not conflicting aliases. Markdown annotations and Python metadata use
+the same class/state/kind table; `historical-evidence` is permitted only with
+`superseded-historical/superseded`.
+
+For `retained-private/current`, locate exactly one selected generation by recomputing generation
+file hashes; join logical ID, case, attempt, private artifact kind, and digest; open its retained
+relative path; and recompute size/digest. For `tracked-public/current`, join the public
+`tracked_bindings` record and its exact conditional kind/case-attempt mapping, then recompute the
+exact candidate blob. For `superseded-historical/superseded`, require presence in the predecessor
+array and prohibit current credit; missing historical raw bytes are classified, never counted as
+resolved current evidence. Plan/generation/denylist/snapshot/product/global tracked claims follow
+their explicit logical ID and class record. The public manifest itself is bound only by the external
+exact-head public-content-hash record, avoiding self-hash.
+
+Reject: any unclassified occurrence; unresolved current occurrence; logical ID with different
+digests or semantic tuples across occurrences; one occurrence matching multiple contexts; a
+retained-private claim absent from the selected generation; a tracked-public claim absent from the
+exact candidate; private path/native ID in public metadata; superseded claim presented as current;
+current artifact presented as superseded; wrong kind/case/attempt; or an unreferenced current case
+artifact required by the private schema. Equal byte digests under different logical IDs are allowed
+only when their semantic mappings remain non-conflicting. Emit the exhaustive
+`digest-resolution-v<N>.json` schema above and require all current occurrence counts complete.
 
 ### Tracked public successor schemas
 
 The tracked `tests/fixtures/quietfollow/evidence/manifest.json` has exactly these top-level keys:
 `schema_version`, `module`, `recovery`, `repository`, `snapshots`, `permissions`, `roles`,
 `tracked_bindings`, `parts`, `redaction`, `superseded_predecessor_evidence`, and `limitations`.
-Unknown keys fail validation. Required shapes are:
+Unknown keys fail validation. Its exact nested contracts are:
 
-- `schema_version` is integer `2`; `module` is string `MODULE6-PLAN-v1`.
-- `recovery` has exactly `plan_identity`, `plan_sha256`, `predecessor_candidate_head`,
-  `predecessor_evidence_state`, `predecessor_evidence_reason`, `evidence_generation`,
-  `evidence_generation_logical_id`, and `evidence_generation_sha256`. The state is `superseded`,
-  generation is a positive integer, SHA values are lowercase 64-hex, the logical ID joins the root
-  manifest generation artifact during private review, and no ignored/private path appears.
-- `repository` has exactly `candidate_identity`, `disposable_repository_kind`,
-  `disposable_merged_commit`, `disposable_merged_tree`, `product_test_result`,
-  `tracked_product_source_sha256`, and `tracked_product_test_sha256`. The kind is
-  `local-synthetic`; commit/tree values are lowercase 40-hex identities of the retained repository,
-  not the self-referential harness candidate head; `product_test_result` has exactly integer
-  `passed`, integer `failed`, and string `scope`.
-- `snapshots` is a nonempty array of exact records `{id, source_class, sha256, byte_count}` where
-  `source_class` is `tracked-binding`, `legacy-private-input`, or `synthetic-fixture`; `id` is a
-  stable public alias, never a private path. `permissions` has exactly arrays `allowed`, `forbidden`
-  and boolean `external_actions_performed=false`.
-- `roles` is a nonempty array of exact records `{alias, requested_model, requested_reasoning,
-  accepted_native_assignment, independently_verified_runtime_fact}`. The requested pair must
-  match the role table below; the last two strings are `Unknown` absent authoritative receipts.
-- `tracked_bindings` is an array of exact records `{logical_id, path, kind, sha256}`. `path` is a
-  unique canonical repository-relative POSIX path in the tracked candidate; `kind` is
-  `public_part`, `execution_record`, `navigation`, `product_source`, `product_test`,
-  `evidence_test`, or `validation`; each digest resolves from the exact candidate blob during
-  exact-head review. This array does not list `manifest.json` itself; its bytes are bound externally
-  by the exact-head public-content-hash and redaction records, avoiding a digest fixed point.
-- `parts` is exactly five records `{id, path, sha256, current_case_ids}` for part IDs 1–5 and the
-  file/case mapping in this plan. Paths join one `tracked_bindings` record and digests match.
-- `redaction` has exactly `policy_version=1`, nonempty `denylist_logical_id`, integer
-  `denylist_value_count`, lowercase-64-hex `denylist_sha256`, integer `exact_value_matches=0`,
-  integer `portable_pattern_matches=0`, and
-  `final_receipt_scope='ignored exact-head review evidence'`. The logical ID resolves the retained
-  denylist during private review. It contains no scan artifact path or digest, so the public scan
-  set is not self-referential.
-- `superseded_predecessor_evidence` is a nonempty array of exact records `{logical_id, sha256,
-  state, reason}` where `state='superseded'`; `limitations` is an array of nonempty strings.
+| Field | Exact nested schema |
+|---|---|
+| `schema_version`, `module` | integer `2`; literal `MODULE6-PLAN-v1` |
+| `recovery` | `{plan_identity, plan_logical_id, plan_sha256, predecessor_candidate_head, predecessor_evidence_state, predecessor_evidence_reason, evidence_generation, evidence_generation_logical_id, evidence_generation_sha256}`; identities are nonempty, predecessor head is 40-hex, state is `superseded`, generation positive, digests 64-hex; logical IDs join exact plan/generation bytes |
+| `repository` | `{candidate_identity, disposable_repository_kind, disposable_merged_commit, disposable_merged_tree, product_test_result, tracked_product_source_logical_id, tracked_product_source_sha256, tracked_product_test_logical_id, tracked_product_test_sha256}`; kind is `local-synthetic`; Git IDs are 40-hex; `product_test_result` is exactly `{passed, failed, scope}` with nonnegative integers, passed 15, failed 0, and scope `exact-disposable-merged-tree` |
+| `snapshots[]` | exactly `{logical_id, source_class, sha256, byte_count}`; class is `tracked-binding`, `legacy-private-input`, or `synthetic-fixture`; size nonnegative; each logical ID joins selected-generation bytes |
+| `permissions` | exactly `{allowed, forbidden, external_actions_performed, public_alias_vocabulary}`; allowed/forbidden are disjoint `StringEffectSet`; external flag is false; vocabulary is the sorted unique exact alias set declared in the role table, with no native IDs |
+| `roles[]` | exactly `{alias, requested_model, requested_reasoning, accepted_native_assignment, independently_verified_runtime_fact}`; one sorted unique record for every role that produced or reviewed current credited evidence and no unused role; alias is in vocabulary; requested pair equals role table; fact strings are `Unknown` absent authoritative receipts |
+| `tracked_bindings[]` | exact `TrackedBinding` below; exactly thirteen bindings for the ten non-manifest candidate files plus corrected addendum and two read-only product files |
+| `parts[]` | exactly `{id, logical_id, path, sha256, current_case_attempts}`; IDs/paths are the fixed five-part mapping; case-attempt records match current public cases and the corresponding tracked binding |
+| `redaction` | exactly `{policy_version, denylist_logical_id, denylist_value_count, denylist_sha256, exact_value_matches, portable_pattern_matches, final_receipt_scope}`; version 1, counts nonnegative with both matches zero, receipt scope literal `ignored exact-head review evidence`; ID/digest join the selected generation's current versioned denylist and value count equals its independently counted lines; no scan path/digest |
+| `superseded_predecessor_evidence[]` | exactly `{logical_id, sha256, state, reason}`; state `superseded`, reason nonempty; these claims never receive current credit |
+| `limitations` | array of nonempty unique strings |
+
+`TrackedBinding` has exactly `{logical_id, path, public_kind, sha256, case_attempts}`.
+`public_kind` is `public-part`, `execution-record`, `navigation`, `validation`, `evidence-test`,
+`recovery-plan`, `product-source`, or `product-test`. `case_attempts` is an ordered array of exact
+`{case_id, attempt_id}` records; it is empty only for the global recovery plan and otherwise names
+every current case represented by that file. Path/digest resolve the exact candidate blob. The
+manifest itself is excluded to avoid a digest fixed point and is bound by the ignored exact-head
+content record. The five part bindings have exactly these case sets; every record uses the case's
+current attempt:
+
+| Part binding | Exact cases |
+|---|---|
+| `part-1-discovery` | E38 |
+| `part-2-readiness` | E31, E39 |
+| `part-3-delivery` | E12, E14 |
+| `part-4-release-rehearsal` | E13, E27, E28 |
+| `part-5-resume-scaling` | E02, E08, E10, E11, E17, E20, E21, E22, E25, E33, E34, E37, E41 |
+
+README, status, validation, execution-record, and evidence-test bindings map all 21 current
+case-attempt pairs; product source/test map E12, E13, E14, E27, E28; recovery plan maps none. A
+tracked-public case reference is valid only when its `kind` equals binding `public_kind` and its
+case/attempt occurs in that binding. This is the sole tracked-public kind/case/attempt conversion.
 
 The tracked `tests/fixtures/quietfollow/evidence/execution-record.json` has exactly these top-level
 keys: `schema_version`, `harness_identity`, `evidence_generation`, `cases`, `verdict_totals`,
 `resolution_summary`, `metrics`, `open_findings`, `reruns`, `mechanical_test_limitation`, and
-`overall_limitation`. Unknown keys fail validation. `schema_version` is integer `2`;
-`harness_identity` is a nonempty stable label rather than a self-head; `evidence_generation` has
-exactly integer `number` and lowercase-64-hex `sha256` matching public manifest `recovery`.
+`overall_limitation`. Unknown keys fail validation. Version is integer `2`; `harness_identity` is
+exactly `{plan_identity, recovery_plan_identity, predecessor_candidate_head, candidate_state}` with
+literal plan identities, 40-hex predecessor, and state `local-synthetic-unintegrated`;
+`evidence_generation` is exactly `{number, logical_id, sha256}` matching manifest recovery.
 
 `cases` is the exact 21-case set, one record per ID, and each record has exactly:
 
@@ -537,34 +882,50 @@ predecessor_evidence
 ```
 
 `mode` is one of `offline-simulation`, `local-synthetic-product`, or `read-only-analysis`;
-`mode_detail`, `actual_outcome`, and `dependent_action_state` are nonempty strings; allowed/
-forbidden side effects, executor aliases, findings, and rerun history are arrays; evaluator alias is
-nonempty; verdict is `PASS`, `FAIL`, or `BLOCKED`. Assignment fields use the same exact role/value
-records as the root case schema. `predecessor_evidence` is a nonempty array of exact records
-`{logical_id, sha256, state, reason}` with state `superseded`.
+`mode_detail`, `actual_outcome`, and `dependent_action_state` are nonempty strings. Side-effect
+arrays are disjoint `StringEffectSet`; executor aliases are a nonempty unique subset of public alias
+vocabulary; evaluator alias is in vocabulary and absent from executor aliases. Assignment arrays
+use public `AssignmentRequest`, `{role_alias, value}` accepted records, and `{role_alias, value}`
+runtime records, with identical role sets and `Unknown` defaults. Verdict is `PASS`, `FAIL`, or
+`BLOCKED`.
 
-Each `evidence_refs[]` record has exactly `{logical_id, kind, digest_class, sha256, case_id,
-attempt_id}`. `digest_class` is `retained-private` or `tracked-public`; other fields must match the
-current case/attempt and the exact artifact-kind enum. A retained-private reference joins the
-selected ignored generation during exact-head review through logical ID plus digest, without
-publishing its path. A tracked-public reference joins `manifest.json.tracked_bindings` by logical
-ID and digest. The five evidence-reference classes `raw_input`, `executor_output`,
-`evaluator_input`, `evaluator_output`, and `transcript` are nonempty for every case; session and
-result records are also required by the private archive schema.
+Public `EvidenceRef` has exactly `{logical_id, kind, digest_class, sha256, state, case_id,
+attempt_id}`. Digest class is `retained-private` or `tracked-public`; state is always `current`
+(historical refs use the separate predecessor schema). For `retained-private`, kind is one of
+`raw_input`, `executor_prompt`, `bundle_manifest`, `executor_output`, `result_record`,
+`evaluator_input`, `evaluator_prompt`, `evaluator_output`, `transcript`, or `session_receipt`, and
+the full tuple joins one selected-generation artifact. For `tracked-public`, kind is one
+`TrackedBinding.public_kind`, and the tuple joins its `case_attempts` mapping. The five kinds
+`raw_input`, `executor_output`, `evaluator_input`, `evaluator_output`, and `transcript` are nonempty
+per case; private schema additionally requires prompt/bundle/result/receipt.
+
+Each case `findings[]` record has exactly `{id, severity, state, summary, evidence_refs}`; severity
+is `Critical`, `Important`, or `Minor`; state is `open` or `resolved`; refs are nonempty
+`EvidenceRef` arrays. Each `rerun_history[]` record has exactly `{attempt_id, credit_state,
+supersedes, correction_reason, evaluation_verdict, dependent_action_state}`; credit state is
+`current`, `superseded`, or `non-credit`; supersedes/reason are null only on r1; verdict is nullable
+only for incomplete non-credit attempts. The nonempty array lists every retained attempt in sequence
+and ends with exactly one current attempt. `predecessor_evidence[]` is nonempty and has exact
+`{logical_id, sha256, state, reason}` records with state `superseded`.
 
 `verdict_totals` has exactly integer `PASS`, `FAIL`, `BLOCKED`, and `total`; tests recompute these
-from `cases`. `resolution_summary` is an object keyed by each public evidence kind, each value
-exactly `{resolved, total, result}` with nonnegative integers and `result='complete'` only when
-equal. These public counts are derived consistency claims, not private resolution proof. `metrics`
+from `cases`. `resolution_summary` has exactly `retained_private_current`,
+`tracked_public_current`, `superseded_historical`, and `all_current`. The first, second, and fourth
+use exact `{resolved, total, status}` with nonnegative integers and status `complete` iff equal;
+the historical record uses exact `{classified, total, status}` with status `classified` iff equal.
+These are public consistency claims recomputed from public occurrences, not private proof. `metrics`
 is an array with exactly one record for each of `manual_owner_relay_events`,
 `duplicate_owner_approval_prompts`, `duplicate_user_owned_task_creations`,
 `duplicate_internal_work_launches`, `invalid_pass_uses`, and `incorrect_transitions`; each record
 has exactly `{name, value, unit, observation_start_ref, observation_end_ref, denominator,
 exclusions}`, with integer value, `unit='event'`, two stable evidence logical IDs, nonempty
 denominator, and string-array exclusions. `open_findings[]` has exactly `{id, severity, state,
-summary, evidence_refs}` with severity `Critical`, `Important`, or `Minor` and state `open` or
-`resolved`. `reruns[]` has exactly `{case_id, attempt_id, supersedes, correction_reason, state}`
-with state `current`, `superseded`, or `non-credit`. The two limitation fields are nonempty strings.
+summary, evidence_refs}` with severity `Critical`, `Important`, or `Minor`, state exactly `open`,
+and evidence refs exact `EvidenceRef` records (case/attempt may be null only for a
+global tracked/private claim). `reruns[]` has exactly `{case_id, current_attempt_id,
+prior_attempt_ids}`; it contains exactly the ordered cases with at least one prior attempt, and prior
+IDs are ordered and equal that case's non-current rerun-history IDs.
+The two limitation fields are nonempty strings.
 
 Permanent tests are portable: they read only tracked files, validate the two schemas and internal
 tracked joins, and work in a clean clone. They must neither open nor mention the ignored recovery
@@ -583,8 +944,9 @@ portable aliases, never private paths.
 | `coordination` | E08, E10, E11, E17, E20, E21, E22 | `inputs/coordination`, `executions/coordination`, `evaluations/coordination`, `transcripts/coordination`; `reports/coordination-*` | plan/decision/API/identity/denial/model fixtures |
 
 Each group writer consumes the frozen Task 1 schema and copies case inputs into its own assigned
-directories. It produces a `group-manifest.json`, group report, and one independent group-review
-record. No group writer updates the root manifest or public files. Parallel dispatch may begin only
+directories. It produces one version-matched `reports/<group>-manifest-v<N>.json`, Markdown group
+report, and independent `reports/<group>-review-v<N>.json`. No group writer updates the root
+manifest or public files. Parallel dispatch may begin only
 after the Task coordinator records the same frozen schema digest and input-snapshot digest in all
 four briefs. `delivery-release` is the only group whose workflow may write `product-repo/**`;
 within that group, recorder and Git writers use only the disjoint/sequential paths in the role table.
@@ -603,16 +965,19 @@ conversation to decide where a case belongs:
 
 ### Exact role, model, and write ownership
 
-Every alias below is a distinct session unless a row explicitly says it is the same sequential
-owner. Requested assignment is recorded before dispatch. Accepted native assignment and runtime
-fact remain `Unknown` unless separate authoritative receipts establish them.
+Every alias below is a stable role alias. Every dispatch receives a new globally unique private
+`session_alias`, including a correction or fresh re-review that reuses the same stable role alias;
+distinctness is proven by the retained case receipt or review record, never by inventing a new
+public alias. Requested assignment is recorded before dispatch. Accepted native assignment and
+runtime fact remain `Unknown` unless separate authoritative receipts establish them.
 
 | Role aliases | Requested model/reasoning | Allowed write location | Responsibility and transfer rule |
 |---|---|---|---|
 | `plan-author` | `gpt-5.6-sol/high` | this tracked addendum during plan-history commits; ignored `plan-author-report*.md` only | Plan-only writer; relinquishes tracked ownership before PLAN review or recovery execution. |
 | `task-coordinator` | `gpt-5.6-sol/high` | no artifact bytes; dispatch/state only | Sequences roles and never materializes another role's output. |
-| `schema-binding-writer` | `gpt-5.6-sol/medium` | `inputs/binding/**`, `checks/archive-validator.py`, `checks/archive-validator-tests.py`, `checks/bundle-contamination.json`, four group briefs | Ends ownership before group dispatch. |
-| `root-manifest-writer` | `gpt-5.6-sol/medium` | root `manifest.json`/`manifest.sha256`, `checks/execution-evidence-*`, `checks/digest-resolution-*`, `reports/task1-schema-review-v<N>.json` | Only root/inventory/generation writer; receives closed role/group records sequentially. |
+| `schema-binding-writer` | `gpt-5.6-sol/medium` | `inputs/binding/**`, `checks/archive-validator.py`, `checks/archive-validator-tests.py`, `checks/bundle-contamination.json`, `checks/public-alias-vocabulary.txt` and sidecar, four group briefs | Ends ownership before group dispatch; freezes the static alias set before any group or public-writing session starts. |
+| `root-manifest-writer` | `gpt-5.6-sol/medium` | root `manifest.json`/`manifest.sha256`, `checks/execution-evidence-*`, `checks/digest-resolution-*`, `reports/task1-schema-review-v<N>.json`, and non-case raw receipts under `transcripts/roles/**` | Only root/inventory/generation writer and non-case receipt materializer; receives closed role/group records sequentially. |
+| `redaction-check-recorder` | `gpt-5.6-sol/medium` | only versioned `checks/prebound-public-sessions-v<N>.json`, optional `checks/prebound-public-session-receipts/**`, `checks/private-denylist-v<N>.txt` and sidecar, `checks/public-content-hashes-precommit-v<N>.json`, and `checks/redaction-scan-precommit-v<N>.json` | Establishes its own and assembler bindings before generation freeze, records every disclosed private binding, and performs precommit scans; never edits public bytes. |
 | `discovery-recorder`, `resume-recorder`, `coordination-recorder` | `gpt-5.6-terra/medium` | only their exact disjoint group `inputs/`, `executions/`, `evaluations/`, `transcripts/`, and `reports/*` roots | Materialize neutral fixtures and immutable payloads returned by executors/evaluators/reviewers; never write another group. |
 | `delivery-recorder` | `gpt-5.6-terra/medium` | delivery group `inputs/`, `executions/`, `evaluations/`, `transcripts/`, `reports/delivery-release-*`, `product-repo/reviews/**`, and `product-repo/rehearsals/**` except `seed-oracle-v1.json` | Materializes delivery role/reviewer payloads; never writes `product-repo/repository/**` or the seed oracle. |
 | `E02-executor`, `E08-executor`, `E10-routing-executor-1`, `E10-routing-executor-2`, `E11-executor`, `E12-executor`, `E13-executor`, `E14-executor`, `E17-executor`, `E20-executor`, `E21-executor`, `E22-executor`, `E25-executor`, `E27-executor`, `E28-executor`, `E31-executor`, `E33-executor`, `E34-executor`, `E37-executor`, `E38-executor`, `E39-executor`, `E41-executor` | `gpt-5.6-sol/high` | no direct workspace write; returns exact prompt-bound payload to owning recorder | Fresh case/discovery/coordination execution; E13, E27, and E28 are necessarily three different sessions/artifacts. |
@@ -622,8 +987,8 @@ fact remain `Unknown` unless separate authoritative receipts establish them.
 | `E02-evaluator`, `E08-evaluator`, `E10-evaluator`, `E11-evaluator`, `E12-evaluator`, `E13-evaluator`, `E14-evaluator`, `E17-evaluator`, `E20-evaluator`, `E21-evaluator`, `E22-evaluator`, `E25-evaluator`, `E27-evaluator`, `E28-evaluator`, `E31-evaluator`, `E33-evaluator`, `E34-evaluator`, `E37-evaluator`, `E38-evaluator`, `E39-evaluator`, `E41-evaluator` | `gpt-5.6-sol/high` | no direct workspace write; returns exact JSON payload to owning recorder | One distinct evaluator per case, never its executor; specifically E13/E27/E28 have three distinct evaluators. |
 | `wi1-change-reviewer`, `S-change-reviewer`, `R-change-reviewer`, `B-change-reviewer` | `gpt-5.6-sol/high` | no direct workspace write; returns review payload to `delivery-recorder` | Fresh full product Change Review of the exact named head. |
 | `schema-reviewer`, `discovery-group-reviewer`, `delivery-group-reviewer`, `resume-group-reviewer`, `coordination-group-reviewer`, `archive-auditor`, `module-change-reviewer`, `plan-reviewer` | `gpt-5.6-sol/high` | no direct workspace write; return payload to current recorder/root writer | Independent requirements/candidate review; no author conversation. |
-| `public-assembler` | `gpt-5.6-sol/medium` | only eleven tracked candidate paths plus `reports/public-assembly-report-v<N>.md` | Sole tracked writer; ownership begins only after selected archive audit PASS and ends at candidate commit. |
-| `exact-head-check-recorder` | `gpt-5.6-sol/medium` | ignored `checks/public-content-hashes-<candidate-head>.json`, `checks/redaction-scan-<candidate-head>.json`, `reports/task9-report-<candidate-head>.md`, `reports/module-change-review-<candidate-head>.json`, `reports/task9-recommendation-<candidate-head>.md` | Records post-commit read-only checks/review payloads; cannot edit tracked bytes. |
+| `public-assembler` | `gpt-5.6-sol/medium` | only eleven tracked candidate paths plus `reports/public-assembly-report-v<N>.md` | Sole tracked writer; its session is prebound before generation freeze, but tracked ownership begins only after selected archive audit PASS and ends at candidate commit. |
+| `exact-head-check-recorder` | `gpt-5.6-sol/medium` | ignored `checks/public-content-hashes-<candidate-head>.json`, `checks/redaction-scan-<candidate-head>.json`, `checks/product-git-verification.json`, `reports/task9-report-<candidate-head>.md`, `reports/module-change-review-<candidate-head>.json`, `reports/task9-recommendation-<candidate-head>.md` | Records post-commit read-only checks/review payloads; cannot edit tracked bytes. |
 
 Agent payloads are immutable return values; only the designated recorder materializes them under
 its allowed directory and hashes the exact bytes. Each ownership handoff is an ordered event in the
@@ -661,10 +1026,12 @@ dispatch, external actions, and cleanup of predecessor evidence.
   git status --short
   shasum -a 256 docs/superpowers/plans/2026-09-11-module-6-quietfollow-pilot.md
   git rev-parse 21c1509dce231069e1ec49dd36d751ff85999e08^
-  git diff --name-only 21c1509dce231069e1ec49dd36d751ff85999e08...HEAD
+  git rev-parse 8a9f04bcb2d15a1127dcbd1f354ab66accd2e5b6^
+  git diff --name-only 8a9f04bcb2d15a1127dcbd1f354ab66accd2e5b6...HEAD
   ```
 
   Expected: `HEAD` is the accepted addendum commit; its sole parent is
+  `8a9f04bcb2d15a1127dcbd1f354ab66accd2e5b6`; correction round 1's sole parent is
   `21c1509dce231069e1ec49dd36d751ff85999e08`; the initial addendum's sole parent is
   `b0e0c85dd0bf50e84ba1ce14ed4a985be7676002`; tracked state is clean; predecessor plan digest is
   `6037149b9a70cdeba4b8f1fd4fcce460b9206730665c8aa69f4ee781eb5c4777`; the
@@ -674,7 +1041,8 @@ dispatch, external actions, and cleanup of predecessor evidence.
 
   Create ignored `checks/archive-validator-tests.py`. Its valid fixture contains all 21 cases,
   every required per-attempt filename/category, all four groups, a fully enumerated actual tree,
-  and a valid sidecar. Write separate negative tests for: unknown/missing/wrong-type keys at every
+  a valid sidecar, and at least one valid instance of every recovery-produced JSON/JSONL schema and
+  every nested record defined above. Write separate negative tests for: unknown/missing/wrong-type keys at every
   schema level; an actual unlisted file; a declared missing file; duplicate path; duplicate logical
   ID; absolute, empty, backslash, `//`, `.`, and `..` paths; symlink file; symlink ancestor; FIFO or
   other special node where the platform permits; escaped root; digest, byte-count, empty-file, and
@@ -685,6 +1053,11 @@ dispatch, external actions, and cleanup of predecessor evidence.
   prompt digest mismatch; forbidden logical kind; forbidden exact bytes in any listed or unlisted
   bundle file and in `executor-prompt.txt`; selected-generation digest/number mismatch; and public
   resolution whose summary count lies or whose logical reference has no exact filesystem byte.
+  For public contracts, mutate every nested record once, every enum once, every required
+  resolution-summary key once, retained/tracked conditional kinds, tracked part case/attempt maps,
+  public finding/rerun/evidence refs, and all eleven allowed SHA contexts. Add failures for an
+  unclassified Markdown/Python/JSON digest, conflicting duplicate logical ID, and
+  superseded-as-current claim. Add the paired alias allow/reject corpus from Task 7.1.
 
 - [ ] **Step 1.3: Run the validator tests RED.**
 
@@ -713,10 +1086,11 @@ dispatch, external actions, and cleanup of predecessor evidence.
   ID to exactly one artifact; it never reads a declared count or kind summary. `validate_bundle`
   enumerates its physical root independently and scans every actual byte plus the separately hashed
   prompt. `validate_generation` recomputes the generation and sidecar identities and its required
-  artifact set. `resolve_public_current` starts only from actual public case references and public
-  tracked bindings, locates exactly one selected generation by digest, opens every joined byte, and
-  computes its own denominators. The entry point emits deterministic sorted JSON and exits zero
-  only for zero errors.
+  artifact set. `resolve_public_current` reads all eleven exact committed public blobs, discovers
+  and classifies every 64-hex occurrence under the allowed-context table, locates exactly one
+  selected generation by digest, opens every joined private/tracked byte, and computes denominators
+  from occurrences. The entry point emits deterministic sorted JSON and exits zero only for zero
+  errors.
 
 - [ ] **Step 1.5: Run validator tests GREEN and freeze their bytes.**
 
@@ -738,24 +1112,34 @@ dispatch, external actions, and cleanup of predecessor evidence.
 
   ```json
   {
-    "forbidden_paths": [
-      "tests/scenarios.md",
-      "EVALUATION.md",
-      "docs/superpowers/plans/2026-09-11-module-6-quietfollow-pilot.md",
-      "docs/superpowers/plans/2026-09-12-module-6-evidence-retention-recovery.md"
+    "schema_version": 1,
+    "forbidden_kinds": [
+      "author_conversation",
+      "evaluation",
+      "expected_answer",
+      "prior_verdict",
+      "rubric"
     ],
     "forbidden_labels": [
-      "Observable PASS:",
-      "Observable FAIL:",
       "BLOCKED rule:",
-      "expected verdict",
-      "evaluator notes"
+      "Observable FAIL:",
+      "Observable PASS:",
+      "evaluator notes",
+      "expected verdict"
+    ],
+    "forbidden_paths": [
+      "EVALUATION.md",
+      "docs/superpowers/plans/2026-09-11-module-6-quietfollow-pilot.md",
+      "docs/superpowers/plans/2026-09-12-module-6-evidence-retention-recovery.md",
+      "tests/scenarios.md"
     ]
   }
   ```
 
-  Also reject files whose logical kind is `rubric`, `evaluation`, `expected_answer`,
-  `author_conversation`, or `prior_verdict`.
+  Serialize exactly as the policy schema requires. Also materialize
+  `checks/public-alias-vocabulary.txt` from the exact role-table set, its sidecar, and validator
+  tests proving set equality and rejection of wildcard/native-ID entries. These static bytes are
+  frozen before any group or public role dispatch.
 
 - [ ] **Step 1.8: Review and freeze shared contracts.**
 
@@ -794,8 +1178,9 @@ payment/provisioning, public files, and other groups' directories.
 
 - [ ] **Step 2.2: Run bundle contamination validation before executor dispatch.**
 
-  Store the complete validator JSON alongside each executor bundle. Any match makes that attempt
-  `non-credit`; rebuild a clean bundle under the next attempt ID before dispatch.
+  Record the validator invocation/result in that attempt's `operations.jsonl`; the versioned
+  aggregate `bundle-contamination-scan-v<N>.json` is the only separate scan JSON. Any match makes
+  that attempt `non-credit`; rebuild a clean bundle under the next attempt ID before dispatch.
 
 - [ ] **Step 2.3: Dispatch distinct executors.**
 
@@ -945,8 +1330,8 @@ GitHub/service actions, actual release/deploy, tracked product edits, and concur
   Create an immutable local FINAL-like review record bound to reviewed pre-merge A, then present
   exact current merged M and tree to fresh `E13-executor`, requested `gpt-5.6-sol/high`. Its bundle,
   prompt, output, result record, operations, and receipt are E13-only. It decides without an expected
-  answer; distinct `E13-evaluator`, requested `gpt-5.6-sol/high`, checks refusal/closure behavior
-  and binds its verdict to new A/M identities. This is a local rehearsal record, never Module FINAL.
+  answer. Close and hash this executor attempt before Step 3.10; evaluation occurs once in Step
+  3.11. This is a local rehearsal record, never Module FINAL.
 
 - [ ] **Step 3.10: Rerun E27/E28 on the exact reviewed merged tree.**
 
@@ -954,18 +1339,20 @@ GitHub/service actions, actual release/deploy, tracked product edits, and concur
   separate E27/E28 bundles, prompts, outputs, result records, operations, and receipts. E27 inspects
   rollout/readiness facts for exact M. E28 copies a synthetic store, runs the smoke path, restores
   the copy, and verifies byte-identical reload at exact M. Record manual accessibility and manual
-  backup/restore as actually observed (`PENDING`/`Unknown` when not performed). Distinct
-  `E27-evaluator` and `E28-evaluator`, both requested `gpt-5.6-sol/high`, must not convert green
-  automation into release readiness or label the rehearsal production.
+  backup/restore as actually observed (`PENDING`/`Unknown` when not performed). Close and hash both
+  executor attempts before Step 3.11; neither evaluator is dispatched in this step.
 
 - [ ] **Step 3.11: Independently evaluate all five cases and review the group.**
 
-  First dispatch five distinct case executors: E12 routing, E13 closure, E14 review/correction
-  coordination, E27 readiness, and E28 rollback rehearsal. Each is requested
-  `gpt-5.6-sol/high`, has its own complete per-attempt artifacts, and receives no evaluator rubric
-  or seed oracle. Then use five distinct case evaluators, also requested `gpt-5.6-sol/high`; none
-  evaluates its own output and E13/E27/E28 do not share a session. `delivery-recorder` alone
-  materializes returned payloads. A fresh group reviewer verifies Git ancestry, trees/blobs, review
+  Confirm the already closed E13/E27/E28 executor artifacts from Steps 3.9–3.10. Dispatch only the
+  remaining fresh `E12-executor` and `E14-executor`, once each, requested `gpt-5.6-sol/high`, with
+  separate prompt/bundle/output/result/operations/receipt artifacts and no rubric or seed oracle.
+  After all five executor attempts are closed, dispatch exactly once each `E12-evaluator`,
+  `E13-evaluator`, `E14-evaluator`, `E27-evaluator`, and `E28-evaluator`, requested
+  `gpt-5.6-sol/high`. Each evaluator consumes only its corresponding immutable attempt; none shares
+  a session or evaluates its own output. E13 checks stale-FINAL refusal; E27 preserves manual gaps;
+  E28 checks rehearsal/rollback labeling. `delivery-recorder` alone materializes returned payloads.
+  A fresh group reviewer verifies Git ancestry, trees/blobs, review
   independence, no leaked oracle, all transcript operations, stale-review invalidation,
   rollout/rollback, and actual verdicts. Store
   `reports/delivery-release-review-v1.json`.
@@ -1098,28 +1485,47 @@ tracked/public writes, and cleanup.
   no overlap or omission and exactly one current attempt per case. A group-review finding remains
   open; aggregation does not waive it.
 
-- [ ] **Step 6.2: Build the root manifest and freeze generation v1.**
+- [ ] **Step 6.2: Build the pre-freeze root manifest.**
 
   Independently enumerate every actual regular file and require exact equality with root artifacts.
   Include every case attempt artifact, product Git record and Change Review needed by a public
-  claim, and all four group manifests/reports/reviews. Generate the root sidecar. Write
-  `checks/execution-evidence-manifest-v1.json` from the exact schema above, write its sidecar, make
-  both read-only, and never mutate, rename, or delete them. The generation excludes itself, its
-  sidecar, its future audit, its mutable selection pointer, and later Module review records.
+  claim, and all four version-matched group manifests/reports/reviews. Generate the root sidecar,
+  but do not freeze an execution generation until Steps 6.3–6.4 add the final contamination and
+  redaction-binding inputs.
 
-- [ ] **Step 6.3: Validate generation v1 mechanically.**
-
-  Run the validator against v1 and the actual filesystem. It must independently derive the exact
-  21 current attempts, required categories, product-review and four group-review membership, and
-  recompute all bytes/digests; no declared count is accepted as proof. Any error blocks audit.
-
-- [ ] **Step 6.4: Re-run contamination checks across all current executor bundles.**
+- [ ] **Step 6.3: Re-run contamination checks across all current executor bundles.**
 
   Scan both paths and exact bytes against the denyset. Record per-case results and one aggregate
   zero-match result. An executor bundle match makes that attempt non-credit; return only that case
-  to a new attempt and repeat its independent evaluation/review.
+  to a new attempt and repeat its independent evaluation/review. Preserve the aggregate under the
+  next `checks/bundle-contamination-scan-v<N>.json` sequence.
 
-- [ ] **Step 6.5: Audit and select only an audited append-only generation.**
+- [ ] **Step 6.4: Prebind public roles and freeze the exact redaction inputs.**
+
+  Establish `redaction-check-recorder` and `public-assembler` as two distinct sessions now, before
+  any public write. The recorder materializes `checks/prebound-public-sessions-v1.json`, including every
+  native ID/path/URL the platform disclosed for either role; accepted/runtime assignment fields
+  remain `Unknown` absent authoritative receipts. From all retained artifacts and those bindings,
+  materialize the complete exact `checks/private-denylist-v1.txt` and sidecar. Re-verify the Task 1
+  alias-vocabulary bytes/sidecar. The assembler remains idle and has no tracked ownership until
+  Step 7.3. If either role is later replaced or a new public-writing binding is disclosed, preserve
+  these bytes, create
+  the next denylist/receipt identities, and freeze/audit a successor generation before restarting
+  public assembly.
+
+- [ ] **Step 6.5: Freeze and mechanically validate execution generation v1.**
+
+  Regenerate the root manifest/sidecar after Steps 6.3–6.4. Write
+  `checks/execution-evidence-manifest-v1.json` from the exact schema above, including the
+  contamination result, public-role binding receipt, private denylist/vocabulary and sidecars,
+  every case attempt, product Git/Change Review, and four group manifest/report/review sets. Write
+  its sidecar, make both read-only, and never mutate, rename, or delete them. The generation excludes
+  itself, its sidecar, its future audit, its mutable selection pointer, and later public/Module
+  review outputs. Run the validator against v1 and actual filesystem; independently derive the exact
+  21 current attempts, required categories and reviews, enumerate all included bytes, and recompute
+  every digest. No declared count is proof; any error blocks audit.
+
+- [ ] **Step 6.6: Audit and select only an audited append-only generation.**
 
   A fresh `archive-auditor`, requested `gpt-5.6-sol/high`, receives v1, its sidecar, actual retained
   bytes, fixed schemas, group reviews, and product Git evidence. It enumerates independently,
@@ -1171,7 +1577,14 @@ file edits, plan edits, verdict improvement, self-referential head, and unlisted
   - both public records have exactly the schema-v2 keys/types/enums above, public-current refs join
     by stable logical ID/digest, and verdict/resolution totals are recomputed; and
   - permanent test source contains no ignored recovery-root dependency and passes in a clean
-    tracked-only export.
+    tracked-only export;
+  - alias tests allow `task-coordinator`, `.local-handoff`, and every exact role-table alias, while
+    rejecting `task_0123456789abcdef0123456789abcdef`,
+    `thread:123e4567-e89b-12d3-a456-426614174000`,
+    `client_thread_0123456789abcdef0123456789abcdef`,
+    `agent_0123456789abcdef0123456789abcdef`,
+    `host_0123456789abcdef0123456789abcdef`, and
+    `01ARZ3NDEKTSV4RRFFQ69G5FAV` plus representative POSIX/Windows/UNC paths.
 
 - [ ] **Step 7.2: Run focused tests RED before changing public records.**
 
@@ -1199,25 +1612,43 @@ file edits, plan edits, verdict improvement, self-referential head, and unlisted
   results. `docs/validation.md` lists all 21 actual verdicts/states and resolution totals.
   `README.md` and `docs/PROJECT_STATUS.md` state local synthetic recovery, current Task 9 evidence
   state, no full E01–E41/live/production proof, first unmet gate, and one next action. Do not embed
-  the candidate commit/tree; ignored Task 9 records own those post-commit identities.
+  the candidate commit/tree; ignored Task 9 records own those post-commit identities. Render every
+  Markdown SHA-256 occurrence using the exact resolver annotation grammar, and place every Python
+  64-hex literal only in the two exact top-level expectation mappings.
 
-- [ ] **Step 7.5: Build and apply the exact private denylist before staging.**
+- [ ] **Step 7.5: Apply the frozen exact denylist before staging.**
 
-  Create a sorted UTF-8 newline file containing every actual worktree/archive/disposable/temp path,
-  task/thread/client/agent ID, private URL, credential-like value if any, username-bearing path,
-  and other runtime binding observed in retained artifacts. Exclude only stable public aliases and
-  the historical literal `.local-handoff`. Hash the denylist and scan all eleven public candidate
-  paths for exact nonempty byte matches. Reject the exact UTF-8 substrings `/Users/`, `/private/`,
-  `/tmp/`, and `/var/`; regexes `[A-Za-z]:[\\\\/]`, `\\\\\\\\[^\\\\]+[\\\\]`,
-  `[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}`,
-  and `(?:thread|task|client|agent|host)[_-]?[A-Za-z0-9]{8,}`; and JSON keys
+  `redaction-check-recorder` consumes the selected-generation copies of the Task 6 private denylist,
+  prebound-session receipt, and Task 1 public-alias vocabulary. It first proves that the same
+  prebound `public-assembler` performed every tracked write and that no replacement/native binding
+  was introduced. Otherwise, do not stage: preserve the generation, add the newly observed binding
+  to successor denylist/receipt bytes, freeze and independently audit generation N+1, and restart
+  assembly from the accepted pre-assembly head. Scan all eleven public candidate paths for every
+  exact nonempty denylist byte; exact denylist values have no exemption. The historical literal
+  `.local-handoff` is one additional exact allowed literal, not a role alias. Reject the exact UTF-8
+  substrings `/Users/`, `/private/`, `/tmp/`, and `/var/`; path regexes
+  `[A-Za-z]:[\\\\/]` and `\\\\\\\\[^\\\\]+[\\\\]`; canonical UUID regex
+  `[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}`;
+  native prefixed-ID regex
+  `(?:task|thread|client_thread|agent|host)_[0-9a-fA-F]{32,64}`; colon UUID regex
+  `(?:task|thread|client-thread|agent|host):[0-9a-fA-F-]{36}`; and uppercase/lowercase ULID regex
+  `01[0-9A-HJKMNP-TV-Za-hjkmnp-tv-z]{24}`. Apply exact alias exemption only after tokenization:
+  tokenize maximal ASCII runs with boundary expression
+  `(?<![A-Za-z0-9-])[A-Za-z][A-Za-z0-9-]*(?![A-Za-z0-9-])`; mask a whole token only for the portable
+  native-ID regex pass iff its bytes equal one vocabulary line. Exact-denylist, path, JSON-key, UUID,
+  and ULID checks always inspect the unmasked bytes. Substrings and prefixed/suffixed variants are not
+  exempt. Thus `task-coordinator` and every other vocabulary line are allowed, while the real IDs
+  above are rejected. Also reject JSON keys
   `absolute_path`, `archive_root`, `worktree_path`, `task_id`, `thread_id`, `client_thread_id`,
   `agent_id`, `host_id`, `session_id`, `private_url`, `credential`, and `token`. The scanner parses
   JSON keys structurally and scans all other exact bytes as UTF-8 with decoding errors reported.
-  Store publicly only policy version, denylist value count/digest, zero exact/pattern match
+  Store publicly only policy version, frozen denylist value count/digest, zero exact/pattern match
   counts, and the final-receipt scope. Never store the scan artifact path or digest in the public
   byte set it scans. Preserve this pre-commit result as ignored
-  `checks/redaction-scan-precommit-v1.json`.
+  `checks/redaction-scan-precommit-v1.json`, bound to
+  `checks/public-content-hashes-precommit-v1.json`; a restarted assembly uses the next shared
+  precommit sequence for both files without overwriting v1. Run the paired allow/reject corpus from
+  Step 7.1 against the same scanner implementation before accepting zero matches.
 
 - [ ] **Step 7.6: Run focused tests GREEN and verify source bindings.**
 
@@ -1232,8 +1663,9 @@ file edits, plan edits, verdict improvement, self-referential head, and unlisted
   Verify all prose/table totals derive from JSON; every public digest resolves; every prior current
   identity is explicitly superseded; no PASS was forced; no private content leaked; and exact
   changed paths are a subset of the eleven-path allowlist. Store
-  `reports/public-assembly-report-v1.md` and regenerate the root archive manifest/sidecar. A later
-  assembly correction writes the next sequence instead of overwriting it.
+  `reports/public-assembly-report-v1.md`, relinquish tracked/report ownership, then have
+  `root-manifest-writer` regenerate the root archive manifest/sidecar. A later assembly correction
+  writes the next report sequence instead of overwriting it.
 
 **Commit guidance:** do not amend predecessor commits. Stage only actually changed allowlisted
 paths and create one local successor commit with message
@@ -1272,10 +1704,13 @@ actions, cleanup, and integration.
 
 - [ ] **Step 8.2: Verify JSON, digests, redaction, and immutability.**
 
-  Parse every tracked/ignored JSON record. Run the non-tautological resolver from the 21 actual
-  public-current case references through the selected generation and actual filesystem bytes;
-  require independently derived 100% resolution for every required kind with zero missing,
-  duplicate, or mismatch. Rerun archive and contamination checks. Hash each of the eleven exact
+  Parse every tracked/ignored JSON record. Run the non-tautological resolver over all eleven exact
+  committed public blobs: enumerate every SHA-256 occurrence, classify it under the only allowed
+  JSON/Markdown/Python contexts, join every current claim through the selected generation or exact
+  tracked binding, and classify superseded history without credit. Derive the denominator from that
+  scan and require 100% current resolution with zero unclassified, unresolved,
+  duplicate-conflicting, superseded-as-current, kind, case, attempt, or byte mismatch. Rerun archive
+  and contamination checks. Hash each of the eleven exact
   committed public blobs into ignored `checks/public-content-hashes-<head>.json`, binding exact
   candidate head/tree and per-file path/hash. Scan exactly those bytes using the exact denylist and
   portable patterns, then write ignored `checks/redaction-scan-<head>.json` with schema/policy,
@@ -1289,8 +1724,9 @@ actions, cleanup, and integration.
 
   Check three distinct scopes:
 
-  - initial plan commit versus `b0e0c85dd0bf50e84ba1ce14ed4a985be7676002`, and corrected plan
-    commit versus `21c1509dce231069e1ec49dd36d751ff85999e08`: exactly the one addendum path each;
+  - initial plan commit versus `b0e0c85dd0bf50e84ba1ce14ed4a985be7676002`, correction round 1
+    versus `21c1509dce231069e1ec49dd36d751ff85999e08`, and correction round 2 versus
+    `8a9f04bcb2d15a1127dcbd1f354ab66accd2e5b6`: exactly the one addendum path each;
   - recovery candidate commit versus accepted addendum commit: only actually changed paths from
     the eleven-path candidate allowlist;
   - full Module 6 candidate versus `f47263ce545c5185b3ec836c95fe341d1b3e5715`: predecessor
@@ -1353,9 +1789,11 @@ Task 10, FINAL, push, PR, integration, merge, publication, install, deployment, 
 - [ ] **Step 9.2: Dispatch distinct full Module Change Review.**
 
   Request native `gpt-5.6-sol/high`. Reviewer first verifies clean identity, then independently
-  resolves 100% of current input/output/evaluator/transcript digests, checks all 21 semantics
-  against exact rubric, validates prohibited side effects and model facts, examines product Git
-  candidates/reviews/ancestry, reviews every tracked diff, and checks scope/redaction/retention.
+  reruns the all-eleven-blob occurrence scan, classifies every SHA-256 claim, and resolves 100% of
+  current input/output/evaluator/transcript and tracked-public claims with no unclassified or
+  conflicting occurrence. It checks all 21 semantics against the exact rubric, validates prohibited
+  side effects and model facts, examines product Git candidates/reviews/ancestry, reviews every
+  tracked diff, and checks scope/redaction/retention.
 
 - [ ] **Step 9.3: Handle review findings without invalid identity reuse.**
 
@@ -1377,7 +1815,8 @@ Task 10, FINAL, push, PR, integration, merge, publication, install, deployment, 
 
 - [ ] **Step 9.5: Preserve evidence after finishing.**
 
-  Regenerate the root manifest and sidecar to include final review/recommendation records, make
+  Have `root-manifest-writer` regenerate the root manifest and sidecar to include final
+  review/recommendation records, make
   case artifacts and every generation read-only, verify their digests once more, and leave the
   entire ignored recovery directory in place for the later Task 10 decision. A clean Module review
   and Task 9 recommendation are late retained consumers: public records make no digest claim about
@@ -1420,8 +1859,9 @@ accepted/runtime facts remain independently sourced or `Unknown`.
   changed.
 - On product-repository drift, pause delivery/release only, preserve other groups, and restore a
   clean forward sequence through a new commit/review identity. Never reset away retained history.
-- On public redaction failure, do not stage. Correct public sanitisation from retained raw bytes,
-  rerun regression/redaction/digest checks, commit a successor, and obtain fresh review.
+- On precommit public redaction failure, do not stage; correct sanitisation and rerun checks. On an
+  exact-head redaction failure, correct from retained raw bytes in a new successor commit, rerun all
+  regression/redaction/digest checks, and obtain fresh review.
 - The archive is ignored local evidence, not publication scope and not a guaranteed backup. Copying
   it outside this worktree, deleting it, or changing its retention after the Task 10 decision needs
   a separate explicit owner/Product decision. This plan performs no cleanup.
@@ -1431,9 +1871,9 @@ accepted/runtime facts remain independently sourced or `Unknown`.
 `MODULE6-RECOVERY-PLAN-v1` reaches its bounded Task 9 outcome only when:
 
 1. The predecessor plan remains byte-identical at its accepted hash and this addendum is the only
-   file changed in correction-round commit with sole parent
-   `21c1509dce231069e1ec49dd36d751ff85999e08`; the initial addendum commit remains the only file
-   changed over `b0e0c85dd0bf50e84ba1ce14ed4a985be7676002`.
+   file changed in the newest correction commit with sole parent
+   `8a9f04bcb2d15a1127dcbd1f354ab66accd2e5b6`; earlier plan commits retain their exact one-file
+   deltas and parents.
 2. The durable ignored workspace contains content-addressed raw inputs, executor outputs, evaluator
    inputs/outputs, transcript/operation records, product Git history, checks, reports, and review
    records; `/private/tmp` is not authoritative.
@@ -1452,8 +1892,9 @@ accepted/runtime facts remain independently sourced or `Unknown`.
    inputs, executor outputs, evaluator inputs/outputs, transcripts, and product review artifacts
    with zero missing or mismatched bytes; all earlier generations remain retained and immutable.
 9. One public assembler updates only justified allowlisted paths; README is in permanent redaction
-   coverage and asserts the local-synthetic boundary; all new public digests resolve to retained raw
-   or tracked bytes.
+   coverage and asserts the local-synthetic boundary; the exact-head resolver enumerates every
+   SHA-256 occurrence in all eleven committed blobs and all classified current claims resolve to
+   retained raw or exact tracked bytes with no conflicting/unclassified occurrence.
 10. Exact-value denylist and portable-pattern scans find no private path, ID, URL, credential, or
     content in public output; the ignored archive is excluded from publication.
 11. Full unit tests, focused evidence tests, product tests, baseline 7/7, C01–C12, JSON, digest,
@@ -1488,7 +1929,7 @@ It reviews:
 - verification, correction invalidation, Task 9 stopping point, and forbidden Task 10/FINAL actions.
 
 `PLAN_PASS` requires no unresolved Critical or Important finding and binds exact corrected-addendum
-bytes, containing commit, parent `21c1509dce231069e1ec49dd36d751ff85999e08`, initial addendum
-commit/parent, and predecessor plan hash. Any later addendum correction creates a new plan-only
+bytes, containing commit, parent `8a9f04bcb2d15a1127dcbd1f354ab66accd2e5b6`, both earlier
+addendum commits/parents, and predecessor plan hash. Any later addendum correction creates a new plan-only
 commit and requires a fresh complete PLAN review. Acceptance authorizes execution only through the
 Task 9 bounded recommendation described here.
