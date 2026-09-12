@@ -46,6 +46,9 @@ package, network access, GitHub service action, or external tool is required.
   as its sole parent and again changes only this addendum, producing
   `f40c37e8e2bed1309605b9b0e8f17046699fa6af`, tree
   `ca14a1714100e59e3263059be246fff0723bc6be`. Correction round 3 uses that commit as its sole
+  parent and changes only this addendum, producing
+  `fde1b8cfe14f526bdd6561ed4309df1975dddc77`, tree
+  `b99447187f33848bb31affe108741336c679e316`. Correction round 4 uses that commit as its sole
   parent and changes only this addendum. The newest containing commit/hash are
   supplied by the plan-author report and exact PLAN-review package, never self-recorded here.
 - The addendum identity remains `MODULE6-RECOVERY-PLAN-v1`; each correction supersedes the prior
@@ -108,6 +111,7 @@ fresh complete review of the new exact head.
 
 - Execute on an isolated `codex/` branch/worktree rooted at the accepted corrected-addendum commit.
   Before any recovery write, verify that the newest corrected plan commit has sole parent
+  `fde1b8cfe14f526bdd6561ed4309df1975dddc77`, that correction round 3 has sole parent
   `f40c37e8e2bed1309605b9b0e8f17046699fa6af`, that correction round 2 has sole parent
   `8a9f04bcb2d15a1127dcbd1f354ab66accd2e5b6`, that correction round 1 has sole parent
   `21c1509dce231069e1ec49dd36d751ff85999e08`, that the initial addendum has sole parent
@@ -130,7 +134,8 @@ fresh complete review of the new exact head.
   edits or deletes the failed, blocked, contaminated, or superseded attempt.
 - Executor and evaluator are distinct roles. A case executor receives no rubric verdict, expected
   outcome, observable PASS/FAIL text, evaluator notes, prior verdict, or author conversation.
-  Evaluators receive the exact case rubric, input bundle manifest, raw output, and operation record,
+  Evaluators receive the exact isolated case-rubric artifact, input bundle manifest, raw output,
+  immutable executor-operation snapshot, and immutable executor-session snapshot,
   but not executor reasoning/conversation beyond the retained submitted output/transcript.
 - Requested model/reasoning, platform-accepted native assignment, and independently verified
   runtime model/reasoning are three separate fields. Use `"Unknown"` unless an authoritative
@@ -168,6 +173,9 @@ fresh complete review of the new exact head.
 - Correction round 3 modifies only that same addendum over sole parent
   `f40c37e8e2bed1309605b9b0e8f17046699fa6af`; its subject is
   `docs: make Module 6 evidence lifecycle reproducible`.
+- Correction round 4 modifies only that same addendum over sole parent
+  `fde1b8cfe14f526bdd6561ed4309df1975dddc77`; its subject is
+  `docs: close Module 6 evidence reference gaps`.
 - Exact changed-path allowlist for every plan-history commit is the one path above. No
   recovery-candidate path belongs in a plan-history commit, and no plan path belongs in a candidate
   commit.
@@ -187,6 +195,9 @@ inputs/<group>/<EID>/<attempt-id>/
 executions/<group>/<EID>/<attempt-id>/
 evaluations/<group>/<EID>/<attempt-id>/
 transcripts/<group>/<EID>/<attempt-id>/
+evaluations/<group>/<EID>/<attempt-id>/rubric-section.md
+transcripts/<group>/<EID>/<attempt-id>/executor-operations.jsonl
+transcripts/<group>/<EID>/<attempt-id>/executor-session-receipt.json
 transcripts/roles/<role-alias>/<session-alias>/native-receipt.txt
 transcripts/metrics/coordination-observation.jsonl
 product-repo/repository/
@@ -216,6 +227,7 @@ checks/redaction-scan-precommit-v<N>.json
 checks/public-content-hashes-<candidate-head>.json
 checks/redaction-scan-<candidate-head>.json
 checks/product-git-verification.json
+checks/product-git-verification-<candidate-head>.json
 reports/<group>-report-v<N>.md
 reports/<group>-manifest-v<N>.json
 reports/<group>-review-v<N>.json
@@ -311,7 +323,7 @@ Each artifact record has exactly these keys:
 | `logical_id` | unique nonempty string matching `^[A-Za-z0-9][A-Za-z0-9._-]*$` |
 | `case_id` | one selected E-case string for case evidence; JSON `null` for shared/product/group/check/review evidence |
 | `attempt_id` | `<case_id>-r<sequence>` for case evidence; JSON `null` otherwise |
-| `kind` | one of `raw_input`, `executor_prompt`, `bundle_manifest`, `executor_output`, `result_record`, `evaluator_input`, `evaluator_prompt`, `evaluator_output`, `transcript`, `session_receipt`, `product_git`, `check`, `report`, `review` |
+| `kind` | one of `raw_input`, `executor_prompt`, `bundle_manifest`, `executor_output`, `result_record`, `executor_operation_snapshot`, `executor_session_snapshot`, `rubric_section`, `evaluator_input`, `evaluator_prompt`, `evaluator_output`, `transcript`, `session_receipt`, `product_git`, `check`, `report`, `review` |
 | `relative_path` | unique canonical POSIX path relative to recovery root |
 | `sha256` | lowercase 64-hex digest of exact file bytes |
 | `byte_count` | nonnegative integer equal to actual file size |
@@ -393,7 +405,7 @@ Each `attempts[]` record has exactly `attempt_id`, `sequence`, `credit_state`, `
 `current`, `superseded`, or `non-credit`; exactly one attempt is `current`, and it equals
 `current_attempt_id`. Terminal phase is `pre-dispatch`, `executor-running`, `executor-closed`,
 `evaluator-prepared`, `evaluator-running`, or `evaluator-closed`. Terminal reason is `complete`,
-`pre-dispatch-contamination`, `interrupted`, `malformed-artifact`, `corrupt-artifact`, or
+`pre-dispatch-contamination`, `pre-evaluation-contamination`, `interrupted`, `malformed-artifact`, `corrupt-artifact`, or
 `prohibited-effect`. Current/superseded credit requires phase `evaluator-closed`, reason `complete`,
 a valid evaluator verdict, and only `valid` artifacts. `non-credit` requires a non-`complete`
 reason and may end at any phase. The first attempt has `supersedes=null` and
@@ -413,6 +425,9 @@ Both attempt `logical_ids` and case `current_logical_ids` have exactly:
   "bundle_manifests": [],
   "executor_outputs": [],
   "result_records": [],
+  "executor_operation_snapshots": [],
+  "executor_session_snapshots": [],
+  "rubric_sections": [],
   "evaluator_inputs": [],
   "evaluator_prompts": [],
   "evaluator_outputs": [],
@@ -421,7 +436,7 @@ Both attempt `logical_ids` and case `current_logical_ids` have exactly:
 }
 ```
 
-For every attempt, the union of all ten arrays equals exactly every actual case-attempt artifact in
+For every attempt, the union of all thirteen arrays equals exactly every actual case-attempt artifact in
 the root inventory and selected generation; no logical ID or existing byte may be omitted, and no
 missing file may be declared or fabricated. Current/superseded attempts have every array nonempty.
 For non-credit attempts, `R` below means nonempty and valid except that the artifact named by a
@@ -429,18 +444,31 @@ For non-credit attempts, `R` below means nonempty and valid except that the arti
 `O` means list the family iff one or more files actually exist, with no synthesized byte; `—` means
 the array must be empty and no file of that family may exist:
 
-| Terminal phase | raw inputs | executor prompt | bundle manifest | executor output | result record | evaluator input | evaluator prompt | evaluator output | transcript | session receipt |
+| Terminal phase | raw inputs | executor prompt | bundle manifest | executor output | result record | evaluator input | evaluator prompt | evaluator output | final transcript | final session receipt |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
 | `pre-dispatch` | R | R | R | — | — | — | — | — | R | — |
-| `executor-running` | R | R | R | O | O | — | — | — | R | R |
+| `executor-running` | R | R | R | O | — | — | — | — | R | R |
 | `executor-closed` | R | R | R | R | R | — | — | — | R | R |
 | `evaluator-prepared` | R | R | R | R | R | R | R | — | R | R |
 | `evaluator-running` | R | R | R | R | R | R | R | O | R | R |
 | `evaluator-closed` | R | R | R | R | R | R | R | R | R | R |
 
+The remaining three immutable evaluator-bound families follow this exact matrix:
+
+| Terminal phase | executor operation snapshot | executor session snapshot | rubric section |
+|---|---:|---:|---:|
+| `pre-dispatch` | — | — | — |
+| `executor-running` | — | — | — |
+| `executor-closed` | R | R | — |
+| `evaluator-prepared` | R | R | R |
+| `evaluator-running` | R | R | R |
+| `evaluator-closed` | R | R | R |
+
 An attempt ID is opened only after the four `pre-dispatch` families exist durably; a failure before
 that boundary is a shared preparation incident, not a case attempt. `pre-dispatch-contamination`
-is valid only at `pre-dispatch`; `prohibited-effect` only after executor dispatch; interruption or
+is valid only at `pre-dispatch`; `pre-evaluation-contamination` only at `evaluator-prepared` after
+all of that phase's required bytes are retained but before evaluator dispatch; `prohibited-effect`
+only after executor dispatch; interruption or
 malformation/corruption may close the current phase. A `malformed` JSON/JSONL artifact is retained
 and exempt only from its own inner schema parse, never from root path/size/current-byte digest
 checks; the terminal error must name it. The validator derives phase-family coverage and actual
@@ -496,7 +524,7 @@ free-standing digest or any other deferred target.
 
 ### Exact per-attempt retained schemas
 
-For every complete current/superseded attempt retain all ten paths below. A non-credit attempt
+For every complete current/superseded attempt retain all thirteen paths below. A non-credit attempt
 retains only the phase-conditional subset that actually exists under the same canonical locations:
 
 ```text
@@ -505,6 +533,9 @@ inputs/<group>/<EID>/<attempt-id>/executor-bundle-manifest.json
 inputs/<group>/<EID>/<attempt-id>/executor-prompt.txt
 executions/<group>/<EID>/<attempt-id>/executor-output.txt
 executions/<group>/<EID>/<attempt-id>/result-record.json
+transcripts/<group>/<EID>/<attempt-id>/executor-operations.jsonl
+transcripts/<group>/<EID>/<attempt-id>/executor-session-receipt.json
+evaluations/<group>/<EID>/<attempt-id>/rubric-section.md
 evaluations/<group>/<EID>/<attempt-id>/evaluator-input.json
 evaluations/<group>/<EID>/<attempt-id>/evaluator-prompt.txt
 evaluations/<group>/<EID>/<attempt-id>/evaluator-output.json
@@ -547,8 +578,8 @@ unlisted file is allowed.
 | Key | Type and invariant |
 |---|---|
 | `schema_version` | integer `1` |
-| `case_id`, `attempt_id`, `executor_alias` | current identities; alias equals a session-receipt executor alias |
-| `bundle_manifest_logical_id`, `executor_output_logical_id`, `operations_logical_id` | three distinct logical IDs joining the named current artifacts |
+| `case_id`, `attempt_id`, `executor_alias` | exact same-attempt identities; alias equals a session-receipt executor alias |
+| `bundle_manifest_logical_id`, `executor_output_logical_id`, `executor_operations_logical_id` | three distinct logical IDs joining the named same-attempt artifacts with that attempt's credit state; the operation ID is the immutable executor snapshot, not the later final transcript |
 | `actual_outcome` | nonempty factual string; contains no verdict field or rubric judgment |
 | `completion_state` | `completed`, `blocked`, or `interrupted` |
 | `observed_effects` | array of exact `ObservedEffect` records ordered by sequence |
@@ -561,20 +592,53 @@ Sequence is positive and strictly increasing; effect kind is `file-read`, `file-
 `forbidden-blocked`, or `forbidden-observed`; target is a public/private stable alias, not an
 absolute path/native ID; result is a nonempty observation.
 
+At executor close, the recorder creates two immutable snapshots before any rubric/evaluator byte.
+`executor-operations.jsonl` contains exactly the complete line prefix of final `operations.jsonl`
+from sequence 1 through the single terminal executor operation; every line uses the operations
+schema below, the last phase is `execution`, and its artifact kind is
+`executor_operation_snapshot`. Its exact bytes, including the final LF, must be a byte prefix of
+the final transcript; later evaluator/preparation lines may only append and may never change that
+prefix. Its logical ID is `<attempt-id>-executor-operations`.
+
+`executor-session-receipt.json` has exactly `{schema_version, case_id, attempt_id,
+closed_sequence, sessions}`. Version is integer `1`; close sequence equals the terminal executor
+operation; sessions is the nonempty ordered exact executor/analyst/reviewer session prefix known at
+that boundary, using the same nested session record defined for the final receipt, and contains no
+evaluator. Its logical ID is `<attempt-id>-executor-session-receipt` and artifact kind is
+`executor_session_snapshot`. In final `session-receipt.json`, the first N session objects must be
+deep-equal to this immutable array in the same order, with evaluator sessions appended only after
+evaluator dispatch. Neither snapshot is rewritten after hashing. At `executor-closed` the final
+transcript equals the operation snapshot; at later phases it has that exact prefix. The final
+receipt's pre-evaluator session prefix always equals the session snapshot. Missing, changed, or
+future-event-filled snapshots invalidate the attempt.
+
+Only after both executor snapshots close does the recorder extract
+`evaluations/<group>/<EID>/<attempt-id>/rubric-section.md`. From the byte-exact retained binding copy
+of `tests/scenarios.md`, concatenate without normalization: (a) bytes from offset zero through the
+byte immediately before the first line beginning `### E` followed by exactly two digits and ` — `;
+then (b) bytes from the unique line beginning `### <EID> — ` through the byte immediately before
+the next such case-heading line, or EOF for E41. Preserve all LF bytes and require exactly one
+matching case heading. The resulting nonempty artifact has logical ID
+`<attempt-id>-rubric-section`, kind `rubric_section`, and a root digest/size record. It is created
+only for the evaluator, never copied into `bundle_root`, never cited by executor artifacts, and is
+byte-compared by rerunning this extraction from the frozen binding copy.
+
 `evaluator-input.json` has exactly `{schema_version, case_id, attempt_id, evaluator_alias,
-rubric_source, source_manifest_ref, bundle_manifest_ref, result_record_ref, executor_output_ref,
-operations_ref, session_receipt_ref, evaluator_assignment, assembled_sequence}`. Version is integer
-`1`; evaluator alias differs from every executor alias. `rubric_source` is exact `{logical_id,
-section_id, sha256}` where section ID equals the case ID and digest is the exact isolated rubric
-section bytes. The six `*_ref` fields are exact `LogicalRef` records with respectively
-`raw_input`, `bundle_manifest`, `result_record`, `executor_output`, `transcript`, and
-`session_receipt` kinds and current case/attempt joins. Assignment is exact `AssignmentRequest`;
-sequence is after executor completion and before evaluator dispatch.
+rubric_section_ref, source_manifest_ref, bundle_manifest_ref, result_record_ref,
+executor_output_ref, executor_operations_ref, executor_session_receipt_ref, evaluator_assignment,
+assembled_sequence}`. Version is integer `1`; evaluator alias differs from every executor alias.
+The seven `*_ref` fields are exact `LogicalRef` records with respectively `rubric_section`,
+`raw_input`, `bundle_manifest`, `result_record`, `executor_output`,
+`executor_operation_snapshot`, and `executor_session_snapshot` kinds and exact same-attempt joins
+with that attempt's credit state. Assignment is exact `AssignmentRequest`; sequence is after the two executor
+snapshots and rubric extraction are immutable and before evaluator dispatch. It never cites final
+`operations.jsonl` or final `session-receipt.json`, so later evaluator events cannot stale the
+dispatched input.
 
 `evaluator-output.json` has exactly `{schema_version, case_id, attempt_id, evaluator_alias,
 evaluator_input_logical_id, findings, evaluation_verdict, dependent_action_state,
 recommended_correction, completed_sequence}`. Version is integer `1`; input ID joins the exact
-current evaluator input; findings is an array of `PrivateFinding`; verdict is `PASS`, `FAIL`, or
+same-attempt evaluator input with that attempt's credit state; findings is an array of `PrivateFinding`; verdict is `PASS`, `FAIL`, or
 `BLOCKED`; dependent state is nonempty and not the verdict; recommended correction is JSON null for
 PASS without findings and otherwise a nonempty observable correction/blocker string; sequence is
 the terminal evaluator operation. Verdict/state equal the root/public current case records.
@@ -618,9 +682,13 @@ no receipt is duplicated across both locations.
 The two `.txt` prompts and executor output are nonempty UTF-8/LF text artifacts. The executor prompt
 is outside `bundle_root` but has a required logical ID, digest, and byte count; contamination scans
 its exact bytes. The evaluator prompt is hashed but exempt from executor contamination because it
-is created only after executor output closes. Before dispatch and after output, independently
+and the isolated rubric section are created only after executor output and both executor snapshots
+close. Before dispatch and after output, independently
 enumerate the physical bundle, reject symlink/special/escaped nodes, require exact bundle-manifest
-set equality, recompute all bytes, and scan them plus the executor prompt.
+set equality, recompute all bytes, and scan them plus the executor prompt. Before evaluation, also
+prove that neither the rubric artifact path nor any exact rubric-section byte occurs as a bundle
+member; a match closes that attempt as pre-evaluation contamination and non-credit without
+dispatching the evaluator.
 
 ### Exact group schemas
 
@@ -786,15 +854,18 @@ allowed but expected/actual are nonempty. Code is exactly one of `schema`, `miss
 `extra-file`, `duplicate-logical-id`, `duplicate-path`, `digest`, `size`, `symlink`, `escaped-path`,
 `kind-join`, `case-join`, `attempt-join`, `credit-state`, `required-artifact`,
 `assignment-receipt`, `review-membership`, `public-context`, `public-resolution`,
-`public-conflict`, `public-state`, `phase-join`, `snapshot-join`, `stream-join`,
-`metric-boundary`, `live-inventory`, or `redaction`; findings use `PrivateFinding`; verdict is `PASS` or
+`public-conflict`, `public-lexical`, `public-multiple-context`, `public-state`, `phase-join`,
+`snapshot-join`, `stream-join`,
+`immutable-prefix`, `rubric-extraction`, `mutable-reference`, `metric-boundary`, `live-inventory`,
+or `redaction`; findings use `PrivateFinding`; verdict is `PASS` or
 `CHANGES_REQUIRED`. `derived_counts` has exactly the keys `selected_cases`, `current_attempts`,
 `superseded_attempts`, `non_credit_attempts`, `all_attempt_artifacts`,
 `raw_inputs`, `executor_prompts`, `bundle_manifests`, `executor_outputs`, `result_records`,
+`executor_operation_snapshots`, `executor_session_snapshots`, `rubric_sections`,
 `evaluator_inputs`, `evaluator_prompts`, `evaluator_outputs`, `transcripts`, `session_receipts`,
 `product_change_reviews`, `group_manifests`, `group_reports`, and `group_reviews`; each value is
 exact `{observed, required, status}` with nonnegative integers and status `complete` iff equal.
-For the ten artifact-family keys and `all_attempt_artifacts`, observed is derived from all actual artifacts across every
+For the thirteen artifact-family keys and `all_attempt_artifacts`, observed is derived from all actual artifacts across every
 attempt and required is independently derived from every attempt's terminal-phase matrix; it is not
 fixed at 21. `superseded_attempts` and `non_credit_attempts` are independently counted from attempt
 histories and require those same derived totals. `selected_cases` and `current_attempts` each
@@ -806,25 +877,44 @@ retained without inflating current behavioral credit.
 candidate_tree, selected_generation, selected_generation_sha256, scanned_paths, occurrences,
 class_counts, errors, verdict}`. Version is integer `1`; candidate identities are exact Git OIDs;
 generation/digest match the pointer; `scanned_paths` is exactly the eleven allowlisted paths in
-File Map order. Each occurrence is exact `{public_path, line, json_pointer, syntax, sha256,
+File Map order. Each occurrence is exact `{public_path, line, column, start_byte, end_byte,
+json_pointer, syntax, discovery_rules, raw_candidate, lexical_status, canonical_sha256,
 classification_status, logical_id, claim_state, claim_class, evidence_kind, case_id, attempt_id,
-resolved_target_class, resolved_logical_id, resolved_sha256}`. Line is positive; JSON pointer is a
-string and empty only for Markdown/Python; syntax is `json-value`, `markdown-annotation`, or
-`python-binding`; status is `classified`, `unclassified`, or `conflicting`. A classified record has
-non-null logical ID, state `current` or `superseded`, class `retained-private`, `tracked-public`, or
-`superseded-historical`, and a conditional evidence kind; case/attempt are both null only for a
-global claim and otherwise the exact current pair. Its target class is `generation-artifact`,
-`tracked-blob`, or `historical-noncredit`; resolved ID/digest equal the target, except historical
-noncredit permits both null. An unclassified/conflicting record sets every semantic/resolution field
-after `classification_status` to null and has a corresponding `public-context`/`public-conflict`
-error. Errors are `AuditError`; verdict is `PASS` only with zero errors, every occurrence
-classified, and complete current class counts.
+resolved_target_class, resolved_logical_id, resolved_sha256}`. Line/column are positive; byte
+offsets are zero-based with `end_byte >= start_byte`; JSON Pointer is a string and is nonempty only
+for a structurally discovered JSON value. `syntax` is `json-value`, `markdown-annotation`,
+`python-binding`, or `raw-token`; `discovery_rules` is the sorted nonempty subset of
+`boundary-hex64`, `sha256-prefix`, and `json-sha-key`; and `raw_candidate` is the exact decoded
+candidate payload or JSON source lexeme. It may be empty only for an empty `sha256:` payload.
+Candidates with the same exact path/span are one occurrence with merged discovery rules; overlapping
+nonidentical spans are separate occurrences and a multiple-context match is never hidden by
+deduplication.
+
+`lexical_status` is `canonical`, `uppercase`, `wrong-length`, `nonhex`, or `wrong-type`. A string
+is canonical only when it matches exactly `[0-9a-f]{64}`; an otherwise 64-character hexadecimal
+string containing `A`–`F` is uppercase; other string lengths are wrong-length; a 64-character
+nonhex string is nonhex; and a structurally discovered non-string JSON value is wrong-type.
+`canonical_sha256` equals `raw_candidate` only for canonical status and is null otherwise.
+`classification_status` is `classified`, `unclassified`, `conflicting`, or `malformed`; every
+noncanonical candidate is malformed. A classified record has non-null logical ID, state `current`
+or `superseded`, class `retained-private`, `tracked-public`, or `superseded-historical`, and a
+conditional evidence kind; case/attempt are both null only for a global claim and otherwise the
+exact current pair. Its target class is `generation-artifact`, `tracked-blob`, or
+`historical-noncredit`; resolved ID/digest equal the target, except historical noncredit permits
+both null. An unclassified, conflicting, or malformed record sets every semantic/resolution field
+after `classification_status` to null and has respectively a `public-context`, `public-conflict`, or
+`public-lexical` error. A candidate matching more than one allowed semantic context is conflicting
+and also emits `public-multiple-context`. Errors are `AuditError`; verdict is `PASS` only with zero
+errors, every occurrence classified, and every class count complete.
 
 `class_counts` has exactly `retained_private_current`, `tracked_public_current`,
-`superseded_historical`, and `all_current`. The first, second, and fourth each have exactly
-`{resolved, total, status}` with status `complete` iff equal. `superseded_historical` has exactly
-`{classified, total, status}` with status `classified` iff equal. Every total is derived from the
-occurrence scan, never copied from a public declaration.
+`superseded_historical`, `all_current`, and `all_candidates`. The first, second, and fourth each
+have exactly `{resolved, total, status}` with status `complete` iff equal.
+`superseded_historical` has exactly `{classified, total, status}` with status `classified` iff
+equal. `all_candidates` has exactly `{accepted, total, status}` with status `complete` iff every
+discovered occurrence is classified and accepted equals total. Every total, including malformed
+and conflicting candidates, is derived from the occurrence scan and is never copied from a public
+declaration.
 
 `checks/public-content-hashes-precommit-v<N>.json` and
 `checks/public-content-hashes-<candidate-head>.json` have exactly `{schema_version, phase,
@@ -846,8 +936,18 @@ rule ID, positive line, and the digest of
 the exact matched bytes. `exact_matches` and `portable_matches` equal the corresponding match-class
 counts, and verdict is `PASS` only with zero matches. The scan never includes its own digest.
 
-`checks/product-git-verification.json` is `ProductGitRecord` with kind `merge-proof` and includes
-all Step 3.8 commands/relationships. `reports/module-change-review-<candidate-head>.json` uses the
+The initial Task 8 exact-head record is `checks/product-git-verification.json`, has
+`record_id=product-git-verification`, and is a `ProductGitRecord` with kind `merge-proof`. A later
+candidate correction uses the new immutable path
+`checks/product-git-verification-<candidate-head>.json` and exact unique
+`record_id=product-git-verification-<candidate-head>`; it never overwrites the initial record or a
+prior candidate-headed record. Each such record contains the complete fresh Task 8 rerun of every
+Step 3.8 command/relationship and owns only streams below
+`product-repo/command-streams/<record-id>/`. It cannot cite or reuse a Step 3 stream. These JSON and
+stream bytes are late `shared` root artifacts: they are created after the selected generation,
+remain outside that immutable generation, are included by the following live-root refresh, remain
+retained through the Task 10 decision, and are consumed by the exact-head module review.
+`reports/module-change-review-<candidate-head>.json` uses the
 product Change Review schema with `review_kind='module-change-review'` and candidate branch
 `codex/module6-quietfollow-pilot`; its requirements/check refs include the selected generation,
 archive audit, digest-resolution, redaction, and product-Git records. No other recovery-produced
@@ -935,18 +1035,40 @@ redaction receipt, full checks, and fresh Module Change Review.
 ### Non-tautological private resolver
 
 At exact candidate head, the private resolver reads the eleven File Map paths from committed Git
-blobs and independently scans every byte of all eleven, not only the two JSON records. It discovers
-every lowercase 64-hex token, whether bare or prefixed by `sha256:`, records every occurrence, and
-requires one allowed context from the table below. The complete occurrence list is the denominator;
-public totals, manifest counts, assembler reports, and deduplicated hash sets are never denominator
-inputs.
+blobs and independently scans every byte of all eleven, not only the two JSON records. All files
+must be valid UTF-8. The exact raw lexer performs both of these byte-preserving passes over every
+blob:
+
+1. emit each case-insensitive boundary-delimited 64-hex candidate matching
+   `(?<![0-9A-Fa-f])[0-9A-Fa-f]{64}(?![0-9A-Fa-f])`;
+2. at every exact lowercase ASCII `sha256:` prefix, emit the maximal immediately following payload
+   matching `[A-Za-z0-9._+-]*`, including an empty payload, so wrong-length, nonhex, and uppercase
+   prefixed claims remain visible.
+
+JSON blobs additionally undergo a strict structural parse. The resolver visits every value whose
+object key is exactly `sha256` or ends in `_sha256`, regardless of its JSON value type, and emits a
+`json-sha-key` occurrence from the exact source span. For an unescaped ASCII JSON string, that span
+is the payload between quotes and `raw_candidate` is those exact bytes; this lets the raw and
+structural discoveries merge. For an escaped string or a non-string value, the span and
+`raw_candidate` are the complete JSON value token; an escaped token is `nonhex` and a non-string is
+`wrong-type`. Markdown and Python are classified from raw
+source bytes; parsing them may locate an allowed annotation or top-level binding but may not discard
+any raw candidate. A canonical candidate found by two discovery rules at the same path and exact
+payload byte span is one occurrence with merged rules. Different or overlapping spans remain
+separate. Raw JSON parse failure is itself an error, but all candidates found by the raw passes are
+still reported. Occurrences sort by File Map path order, then `start_byte`, `end_byte`, and
+`raw_candidate`. Every lexical/context error identifies its occurrence by public path and exact
+span in `AuditError.actual`; parser/schema errors without a candidate still block PASS but do not
+invent an occurrence. The complete occurrence list—including uppercase, malformed, unclassified, and
+conflicting candidates—is the denominator; public totals, manifest counts, assembler reports, and
+deduplicated hash sets are never denominator inputs.
 
 | Public file/context | Required syntax and classification |
 |---|---|
 | public `manifest.json` | JSON Pointer must match the exhaustive pointer rules below; state/class/logical ID come from the containing record |
 | public `execution-record.json` | JSON Pointer must be generation SHA, evidence-ref SHA, predecessor SHA, or another explicitly listed nested SHA field below |
 | README, status, validation, five parts | every SHA claim uses exact text ``sha256:<hex> [evidence=<logical-id>;class=<retained-private|tracked-public|superseded-historical>;state=<current|superseded>;kind=<kind>;case=<EID|none>;attempt=<attempt-id|none>]`` on the same line |
-| `tests/test_pilot_evidence.py` | an actual 64-hex literal may occur only as a value in top-level `EXPECTED_PUBLIC_SHA256: dict[str, str]`; its key is the logical ID and its class/state/kind/case/attempt are supplied by top-level `EXPECTED_PUBLIC_SHA256_META` with an exact five-string tuple |
+| `tests/test_pilot_evidence.py` | a canonical 64-hex literal may occur only as a value in top-level `EXPECTED_PUBLIC_SHA256: dict[str, str]`; its key is the logical ID and its class/state/kind/case/attempt are supplied by top-level `EXPECTED_PUBLIC_SHA256_META` with an exact five-string tuple |
 
 Allowed manifest SHA pointers are `/recovery/plan_sha256`,
 `/recovery/evidence_generation_sha256`, `/repository/tracked_product_source_sha256`,
@@ -961,7 +1083,10 @@ Allowed manifest SHA pointers are `/recovery/plan_sha256`,
 `/metrics/<index>/observation_end/transcript_ref/sha256`. Metric pointers must be identical global
 retained-private/current/transcript joins to the selected-generation metric log; their sequence
 fields must join existing ordered lines and satisfy the public metric arithmetic. No other
-JSON/Python/Markdown occurrence is classified.
+JSON/Python/Markdown occurrence is classified. Only a canonical lowercase 64-hex candidate may
+reach context classification. Uppercase bare or prefixed values, prefixed values of the wrong
+length or with nonhex characters, and malformed values at SHA-designated JSON keys are
+`malformed` even when their surrounding context would otherwise be allowed.
 
 The fixed classification for global JSON fields is: recovery plan =
 `tracked-public/current/recovery-plan`; execution generation = `retained-private/current/check`;
@@ -986,14 +1111,15 @@ resolved current evidence. Plan/generation/denylist/snapshot/product/global trac
 their explicit logical ID and class record. The public manifest itself is bound only by the external
 exact-head public-content-hash record, avoiding self-hash.
 
-Reject: any unclassified occurrence; unresolved current occurrence; logical ID with different
+Reject: any malformed or unclassified occurrence; unresolved current occurrence; logical ID with different
 digests or semantic tuples across occurrences; one occurrence matching multiple contexts; a
 retained-private claim absent from the selected generation; a tracked-public claim absent from the
 exact candidate; private path/native ID in public metadata; superseded claim presented as current;
 current artifact presented as superseded; wrong kind/case/attempt; or an unreferenced current case
 artifact required by the private schema. Equal byte digests under different logical IDs are allowed
 only when their semantic mappings remain non-conflicting. Emit the exhaustive
-`digest-resolution-v<N>.json` schema above and require all current occurrence counts complete.
+`digest-resolution-v<N>.json` schema above and require both all-current and all-candidates counts
+complete.
 
 ### Tracked public successor schemas
 
@@ -1069,20 +1195,22 @@ Public `EvidenceRef` has exactly `{logical_id, kind, digest_class, sha256, state
 attempt_id}`. Digest class is `retained-private` or `tracked-public`; state is always `current`
 (historical refs use the separate predecessor schema). For `retained-private`, kind is one of
 `raw_input`, `executor_prompt`, `bundle_manifest`, `executor_output`, `result_record`,
+`executor_operation_snapshot`, `executor_session_snapshot`, `rubric_section`,
 `evaluator_input`, `evaluator_prompt`, `evaluator_output`, `transcript`, or `session_receipt`, and
 the full tuple joins one selected-generation artifact. Case and attempt are null only for the one
 global metric transcript ref; that ref has kind `transcript` and joins
 `transcripts/metrics/coordination-observation.jsonl`. For `tracked-public`, kind is one
 `TrackedBinding.public_kind`, and the tuple joins its `case_attempts` mapping. The five kinds
 `raw_input`, `executor_output`, `evaluator_input`, `evaluator_output`, and `transcript` are nonempty
-per case; private schema additionally requires prompt/bundle/result/receipt.
+per case; the private complete-attempt schema additionally requires all thirteen exact families,
+including both immutable executor snapshots and the isolated rubric section.
 
 Each case `findings[]` record has exactly `{id, severity, state, summary, evidence_refs}`; severity
 is `Critical`, `Important`, or `Minor`; state is `open` or `resolved`; refs are nonempty
 `EvidenceRef` arrays. Each `rerun_history[]` record has exactly `{attempt_id, credit_state,
 terminal_phase, terminal_reason, supersedes, correction_reason, evaluation_verdict,
 dependent_action_state, retained_artifact_logical_ids}`. State/phase/reason and predecessor fields
-equal the private attempt contract. Retained IDs are the sorted union of the attempt's ten family
+equal the private attempt contract. Retained IDs are the sorted union of the attempt's thirteen family
 arrays, so every actual artifact is represented and no nonexistent artifact is named.
 Verdict/dependent state are non-null and equal valid evaluator-output bytes iff such bytes exist;
 both are null when the attempt ended before a valid evaluator result or its result is
@@ -1185,7 +1313,7 @@ runtime fact remain `Unknown` unless separate authoritative receipts establish t
 | `wi1-change-reviewer`, `S-change-reviewer`, `R-change-reviewer`, `B-change-reviewer` | `gpt-5.6-sol/high` | no direct workspace write; returns review payload to `delivery-recorder` | Fresh full product Change Review of the exact named head. |
 | `schema-reviewer`, `discovery-group-reviewer`, `delivery-group-reviewer`, `resume-group-reviewer`, `coordination-group-reviewer`, `archive-auditor`, `module-change-reviewer`, `plan-reviewer` | `gpt-5.6-sol/high` | no direct workspace write; return payload to current recorder/root writer | Independent requirements/candidate review; no author conversation. |
 | `public-assembler` | `gpt-5.6-sol/medium` | only eleven tracked candidate paths plus `reports/public-assembly-report-v<N>.md` | Sole tracked writer; its session is prebound before generation freeze, but tracked ownership begins only after selected archive audit PASS and ends at candidate commit. |
-| `exact-head-check-recorder` | `gpt-5.6-sol/medium` | ignored `checks/public-content-hashes-<candidate-head>.json`, `checks/redaction-scan-<candidate-head>.json`, `checks/product-git-verification.json`, `reports/task9-report-<candidate-head>.md`, `reports/module-change-review-<candidate-head>.json`, `reports/task9-recommendation-<candidate-head>.md` | Records post-commit read-only checks/review payloads; cannot edit tracked bytes. |
+| `exact-head-check-recorder` | `gpt-5.6-sol/medium` | ignored `checks/public-content-hashes-<candidate-head>.json`, `checks/redaction-scan-<candidate-head>.json`, initial `checks/product-git-verification.json` or successor `checks/product-git-verification-<candidate-head>.json`, respectively `product-repo/command-streams/product-git-verification/**` or `product-repo/command-streams/product-git-verification-<candidate-head>/**`, `reports/task9-report-<candidate-head>.md`, `reports/module-change-review-<candidate-head>.json`, `reports/task9-recommendation-<candidate-head>.md` | Sole sequential Task 8 recorder; reruns read-only Git commands, materializes their new exact streams/record after the selected generation, closes all late bytes before live-root refresh, and cannot edit tracked or frozen-generation bytes. |
 
 Agent payloads are immutable return values; only the designated recorder materializes them under
 its allowed directory and hashes the exact bytes. Each ownership handoff is an ordered event in the
@@ -1225,10 +1353,12 @@ dispatch, external actions, and cleanup of predecessor evidence.
   git rev-parse 21c1509dce231069e1ec49dd36d751ff85999e08^
   git rev-parse 8a9f04bcb2d15a1127dcbd1f354ab66accd2e5b6^
   git rev-parse f40c37e8e2bed1309605b9b0e8f17046699fa6af^
-  git diff --name-only f40c37e8e2bed1309605b9b0e8f17046699fa6af...HEAD
+  git rev-parse fde1b8cfe14f526bdd6561ed4309df1975dddc77^
+  git diff --name-only fde1b8cfe14f526bdd6561ed4309df1975dddc77...HEAD
   ```
 
   Expected: `HEAD` is the accepted addendum commit; its sole parent is
+  `fde1b8cfe14f526bdd6561ed4309df1975dddc77`; correction round 3's sole parent is
   `f40c37e8e2bed1309605b9b0e8f17046699fa6af`; correction round 2's sole parent is
   `8a9f04bcb2d15a1127dcbd1f354ab66accd2e5b6`; correction round 1's sole parent is
   `21c1509dce231069e1ec49dd36d751ff85999e08`; the initial addendum's sole parent is
@@ -1250,7 +1380,13 @@ dispatch, external actions, and cleanup of predecessor evidence.
   kind, or credit state; every terminal-phase/reason combination; a missing `R` family, an invented
   `O` family, a forbidden later-phase family, a current/superseded incomplete attempt, a non-credit
   `complete` attempt, an omitted actual non-credit artifact, and a fabricated output/evaluator/
-  receipt file; receipt aliases that are not
+  receipt file; a missing executor operation/session snapshot; evaluator input referencing the
+  later mutable final transcript/receipt; stale snapshots whose declared closure sequence precedes
+  the actual executor terminal event; a final transcript whose executor prefix differs by one
+  byte; a final session prefix that changes/reorders an executor session; a snapshot containing a
+  future evaluator event; missing/wrong-kind/wrong-digest rubric ref; non-unique/wrong rubric
+  heading extraction; normalized or altered rubric bytes; rubric path or exact bytes inside the
+  executor bundle; receipt aliases that are not
   distinct; accepted/runtime receipt mismatch; bundle unlisted/missing/symlink file; bundle and
   prompt digest mismatch; forbidden logical kind; forbidden exact bytes in any listed or unlisted
   bundle file and in `executor-prompt.txt`; selected-generation digest/number mismatch; and public
@@ -1259,11 +1395,16 @@ dispatch, external actions, and cleanup of predecessor evidence.
   resolution-summary key once, retained/tracked conditional kinds, tracked part case/attempt maps,
   public finding/rerun/evidence refs, and all eleven allowed SHA contexts. Add failures for an
   unclassified Markdown/Python/JSON digest, conflicting duplicate logical ID, and
-  superseded-as-current claim. Add the paired alias allow/reject corpus from Task 7.1.
+  superseded-as-current claim. In each Markdown, JSON-string/text, and Python source context add an
+  uppercase boundary-delimited bare digest, an uppercase `sha256:` payload, and wrong-length,
+  nonhex, and empty `sha256:` payloads; also add uppercase/malformed strings and non-string values
+  at every SHA-designated JSON key shape. Assert every candidate becomes an occurrence/error and
+  increases the discovered denominator. Add the paired alias
+  allow/reject corpus from Task 7.1.
   Add failures for a nonexistent/wrong-kind/wrong-digest schema or binding ref; generation/snapshot
   mismatch; stale mutable live manifest after every late-record phase; missing ProductGit stdout or
   stderr, a fabricated stream declaration, wrong command-stream digest, and a legitimate empty
-  stream incorrectly rejected; and metric nonexistent/wrong-kind/wrong-digest transcript,
+  stream incorrectly rejected; reused Step 3 streams or duplicate Task 8 record ID; and metric nonexistent/wrong-kind/wrong-digest transcript,
   nonexistent line, swapped boundaries, duplicate exclusion, or mismatched denominator/value.
 
 - [ ] **Step 1.3: Run the validator tests RED.**
@@ -1282,8 +1423,10 @@ dispatch, external actions, and cleanup of predecessor evidence.
   key sets, enums, terminal-phase/reason family matrix, the live-root two exclusions, the immutable
   snapshot eight exclusions, and contamination
   denyset. Implement concrete functions named `actual_inventory`, `validate_root_schema`,
-  `validate_inventory`, `validate_case_joins`, `validate_bundle`, `validate_generation`, and
-  `resolve_public_current`, with these mandatory algorithms and no manifest-derived shortcuts.
+  `validate_inventory`, `validate_case_joins`, `validate_executor_snapshots`,
+  `extract_rubric_section`, `validate_bundle`, `validate_generation`,
+  `discover_public_sha_candidates`, and `resolve_public_current`, with these mandatory algorithms
+  and no manifest-derived shortcuts.
   `actual_inventory`
   recursively uses `os.scandir` plus `lstat`, errors on every symlink/special/unresolved/escaped
   node, hashes all regular files except exactly the applicable live-root or snapshot exclusion set,
@@ -1293,13 +1436,18 @@ dispatch, external actions, and cleanup of predecessor evidence.
   logical IDs/paths and exact byte count/digest/nonempty policy. `validate_case_joins` derives the
   current attempt, phase-conditional kind coverage, every actual attempt's files, and role/session
   relationships by joining each logical
-  ID to exactly one artifact; it never reads a declared count or kind summary. `validate_bundle`
+  ID to exactly one artifact; it never reads a declared count or kind summary.
+  `validate_executor_snapshots` enforces the exact transcript byte-prefix and receipt array-prefix
+  relationships and rejects any evaluator event in either immutable snapshot.
+  `extract_rubric_section` implements the exact byte-offset algorithm above and compares those
+  bytes/digest/path to the declared rubric artifact. `validate_bundle`
   enumerates its physical root independently and scans every actual byte plus the separately hashed
   prompt. `validate_generation` recomputes snapshot, generation, and sidecar identities; requires
   generation artifacts to equal snapshot artifacts; and checks every current/superseded/non-credit
   attempt's actual membership while deriving semantic counts only from complete current attempts.
+  `discover_public_sha_candidates` implements the exact structural/raw lexer above.
   `resolve_public_current` reads all eleven exact committed public blobs, discovers
-  and classifies every 64-hex occurrence under the allowed-context table, locates exactly one
+  and classifies every canonical or malformed SHA candidate under the allowed-context table, locates exactly one
   selected generation by digest, opens every joined private/tracked byte, and computes denominators
   from occurrences. The entry point emits deterministic sorted JSON and exits zero only for zero
   errors.
@@ -1321,7 +1469,9 @@ dispatch, external actions, and cleanup of predecessor evidence.
   `recovery-schema-source-v1`, bind their accepted commit/digest in the snapshot entry, and never
   include them in an executor bundle. Make all copies read-only after hashing. Every group brief
   and manifest uses a `LogicalRef` to this file plus a ref to the completed binding-snapshot
-  manifest; neither carries a free-standing source digest.
+  manifest; neither carries a free-standing source digest. The reviewer rubric copy path is
+  exactly `inputs/binding/reviewer/tests/scenarios.md`; its source/copy byte equality is required
+  before any per-attempt rubric extraction.
 
 - [ ] **Step 1.7: Define the exact executor contamination denyset.**
 
@@ -1415,8 +1565,10 @@ payment/provisioning, public files, and other groups' directories.
 
 - [ ] **Step 2.4: Dispatch distinct evaluators after outputs are immutable.**
 
-  Each evaluator receives only its exact rubric section, source/bundle manifests, executor output,
-  and operation record. Request `gpt-5.6-sol/high`. The evaluator returns one JSON verdict bound to
+  After the recorder freezes and validates the two executor snapshots and exact rubric-section
+  artifact, each evaluator receives only those three refs, source/bundle manifests, result record,
+  and executor output. It never receives a ref to a file that will later mutate. Request
+  `gpt-5.6-sol/high`. The evaluator returns one JSON verdict bound to
   exact digests and states the dependent gate/action separately; `discovery-recorder` materializes
   and hashes it without alteration.
 
@@ -1580,7 +1732,8 @@ GitHub/service actions, actual release/deploy, tracked product edits, and concur
   Confirm the already closed E13/E27/E28 executor artifacts from Steps 3.9–3.10. Dispatch only the
   remaining fresh `E12-executor` and `E14-executor`, once each, requested `gpt-5.6-sol/high`, with
   separate prompt/bundle/output/result/operations/receipt artifacts and no rubric or seed oracle.
-  After all five executor attempts are closed, dispatch exactly once each `E12-evaluator`,
+  After all five executor attempts and their immutable executor snapshots/rubric-section artifacts
+  are closed and byte-validated, dispatch exactly once each `E12-evaluator`,
   `E13-evaluator`, `E14-evaluator`, `E27-evaluator`, and `E28-evaluator`, requested
   `gpt-5.6-sol/high`. Each evaluator consumes only its corresponding immutable attempt; none shares
   a session or evaluates its own output. E13 checks stale-FINAL refusal; E27 preserves manual gaps;
@@ -1626,7 +1779,9 @@ rewrite, public files, and other groups' directories.
 
 - [ ] **Step 4.3: Evaluate independently.**
 
-  Each evaluator receives exact rubric and immutable raw evidence only after execution closes.
+  Each evaluator receives the exact retained rubric-section ref and immutable executor
+  output/result/operation/session snapshot refs only after execution closes. Final transcript and
+  receipt remain distinct append-only lifecycle records and are never evaluator-input refs.
   Record `FAIL` for lifecycle/history loss, `BLOCKED` for missing score-critical evidence, and
   separate dependent state for correctly paused actions. `resume-recorder` alone materializes the
   returned evaluator payload.
@@ -1722,7 +1877,7 @@ tracked/public writes, and cleanup.
 
   Require every group recorder and Product Git writer to relinquish ownership. Close the append-only
   metric observation log with its terminal event. Independently enumerate all actual artifacts of
-  every current/superseded/non-credit attempt; the ten-family phase contract determines retention,
+  every current/superseded/non-credit attempt; the thirteen-family phase contract determines retention,
   while only complete current attempts enter semantic/current denominators. Validate every
   ProductGit command ref against its exact stdout/stderr bytes. Do not create a generation or cite
   the mutable live root manifest yet.
@@ -1928,7 +2083,11 @@ paths and create one local successor commit with message
 
 ## Task 8: Run full verification and announce READY_FOR_CHANGE_REVIEW
 
-**Files:** ignored check outputs and Task 9 report only; tracked candidate is read-only.
+**Files:** ignored check outputs and Task 9 report only; specifically the exact-head checker owns
+`checks/public-content-hashes-<candidate-head>.json`, `checks/redaction-scan-<candidate-head>.json`,
+the applicable initial `checks/product-git-verification.json` or successor
+`checks/product-git-verification-<candidate-head>.json`, and only that
+verification record's `product-repo/command-streams/<record-id>/**`; tracked candidate is read-only.
 
 **Interfaces:**
 
@@ -1936,7 +2095,8 @@ paths and create one local successor commit with message
 - Produces: exact verification package, diff/path/immutability proof, and
   `READY_FOR_CHANGE_REVIEW` evidence pointer.
 
-**Allowed effects:** read-only verification and ignored report/check files.
+**Allowed effects:** read-only verification and sequential ignored report/check/command-stream
+writes by `exact-head-check-recorder` after all earlier producers have relinquished those paths.
 
 **Forbidden effects:** tracked edits, review dispatch before failures are resolved, external
 actions, cleanup, and integration.
@@ -1960,12 +2120,17 @@ actions, cleanup, and integration.
 - [ ] **Step 8.2: Verify JSON, digests, redaction, and immutability.**
 
   Parse every tracked/ignored JSON record. Run the non-tautological resolver over all eleven exact
-  committed public blobs: enumerate every SHA-256 occurrence, classify it under the only allowed
-  JSON/Markdown/Python contexts, join every current claim through the selected generation or exact
-  tracked binding, and classify superseded history without credit. Derive the denominator from that
-  scan and require 100% current resolution with zero unclassified, unresolved,
+  committed public blobs: apply both raw candidate passes and the structural SHA-designated JSON-key
+  pass, enumerate canonical and malformed SHA candidates, classify canonical values under the only
+  allowed JSON/Markdown/Python contexts, join every current claim through the selected generation
+  or exact tracked binding, and classify superseded history without credit. Derive the denominator
+  from that scan and require every discovered candidate accepted, 100% current resolution, and zero
+  uppercase, malformed, unclassified, multiple-context, unresolved,
   duplicate-conflicting, superseded-as-current, kind, case, attempt, or byte mismatch. Rerun archive
-  and contamination checks. Hash each of the eleven exact
+  and contamination checks. The post-selection archive check recomputes every immutable snapshot/
+  generation member and sidecar against its frozen scope; it does not compare that historical
+  snapshot to the now-larger live root. Exact equality for all late files is instead enforced by
+  the live-root manifest refresh in Step 8.7. Hash each of the eleven exact
   committed public blobs into ignored `checks/public-content-hashes-<head>.json`, binding exact
   candidate head/tree and per-file path/hash. Scan exactly those bytes using the exact denylist and
   portable patterns, then write ignored `checks/redaction-scan-<head>.json` with schema/policy,
@@ -1982,7 +2147,8 @@ actions, cleanup, and integration.
   - initial plan commit versus `b0e0c85dd0bf50e84ba1ce14ed4a985be7676002`, correction round 1
     versus `21c1509dce231069e1ec49dd36d751ff85999e08`, and correction round 2 versus
     `8a9f04bcb2d15a1127dcbd1f354ab66accd2e5b6`, and accepted correction round 3 versus
-    `f40c37e8e2bed1309605b9b0e8f17046699fa6af`: exactly the one addendum path each;
+    `f40c37e8e2bed1309605b9b0e8f17046699fa6af`, and accepted correction round 4 versus
+    `fde1b8cfe14f526bdd6561ed4309df1975dddc77`: exactly the one addendum path each;
   - recovery candidate commit versus accepted addendum commit: only actually changed paths from
     the eleven-path candidate allowlist;
   - full Module 6 candidate versus `f47263ce545c5185b3ec836c95fe341d1b3e5715`: predecessor
@@ -1993,13 +2159,24 @@ actions, cleanup, and integration.
 
 - [ ] **Step 8.4: Verify disposable Git authenticity.**
 
+  Transfer sole ownership of the exact Task 8 paths to `exact-head-check-recorder` only after the
+  selected generation and its audit are closed. For the first candidate, set
+  `record_id=product-git-verification`, use `checks/product-git-verification.json`, and create fresh
+  streams only under `product-repo/command-streams/product-git-verification/`. For a corrected
+  candidate, set `record_id=product-git-verification-<candidate-head>`, use the matching
+  candidate-headed JSON path, and create fresh streams below that exact new record ID. Never reuse
+  a Step 3 command stream, overwrite an earlier Task 8 record, or mutate the selected generation.
+
   Independently resolve every named commit/tree/blob, parent edge, branch base, review head, stale
-  review relation, merge ancestor, and final source/test blob. Re-run all Step 3.8 commands using
+  review relation, merge ancestor, and final source/test blob. Re-run all Step 3.8 commands once
+  using
   exact captured SHA values and require C→S→R→B first-parent edges, M parents A/B, M tree equal B
   tree, first-parent merge diff equal A..B, empty second-parent diff, two successful ancestor
-  checks, resolvable objects, and tracked/public product blob equality. Store commands/results under
-  `checks/product-git-verification.json`; require every recorded command to join its exact retained
-  stdout/stderr files, including legitimate empty streams.
+  checks, resolvable objects, and tracked/public product blob equality. Capture fresh exact
+  stdout/stderr bytes for every command, including legitimate empty streams, close and hash all
+  streams first, then close the unique `ProductGitRecord`; require every ref to join that record's
+  exact own stream path/digest. The record and streams are late shared artifacts retained for the
+  module review and Task 10 decision, not members of the already selected immutable generation.
 
 - [ ] **Step 8.5: Attempt quick validation without installing dependencies.**
 
@@ -2016,7 +2193,9 @@ actions, cleanup, and integration.
 
 - [ ] **Step 8.7: Refresh the live root inventory before review dispatch.**
 
-  After every Task 8 check/report byte is closed, have `root-manifest-writer` regenerate and
+  After every Task 8 check/report byte—including the closed exact-head ProductGit record and all of
+  its command streams—is closed and `exact-head-check-recorder` has relinquished those paths, have
+  `root-manifest-writer` regenerate and
   exact-inventory-validate live `manifest.json`/sidecar with
   `as_of_phase=post-exact-head-verification`. Establish the `module-change-reviewer` session and
   retain any authoritative non-case receipt before selecting the final review package; otherwise
@@ -2060,7 +2239,8 @@ Task 10, FINAL, push, PR, integration, merge, publication, install, deployment, 
 - [ ] **Step 9.2: Dispatch distinct full Module Change Review.**
 
   Request native `gpt-5.6-sol/high`. Reviewer first verifies clean identity, then independently
-  reruns the all-eleven-blob occurrence scan, classifies every SHA-256 claim, and resolves 100% of
+  reruns the all-eleven-blob raw/structural occurrence scan, rejects every uppercase or malformed
+  candidate, classifies every canonical SHA-256 claim, and resolves 100% of
   current input/output/evaluator/transcript and tracked-public claims with no unclassified or
   conflicting occurrence. It checks all 21 semantics against the exact rubric, validates prohibited
   side effects and model facts, examines product Git candidates/reviews/ancestry, reviews every
@@ -2145,7 +2325,7 @@ accepted/runtime facts remain independently sourced or `Unknown`.
 
 1. The predecessor plan remains byte-identical at its accepted hash and this addendum is the only
    file changed in the newest correction commit with sole parent
-   `f40c37e8e2bed1309605b9b0e8f17046699fa6af`; earlier plan commits retain their exact one-file
+   `fde1b8cfe14f526bdd6561ed4309df1975dddc77`; earlier plan commits retain their exact one-file
    deltas and parents.
 2. The durable ignored workspace contains content-addressed raw inputs, executor outputs, evaluator
    inputs/outputs, transcript/operation records, product Git history, checks, reports, and review
@@ -2171,8 +2351,9 @@ accepted/runtime facts remain independently sourced or `Unknown`.
    prescribed non-cyclic order, and the live inventory is current before every review.
 9. One public assembler updates only justified allowlisted paths; README is in permanent redaction
    coverage and asserts the local-synthetic boundary; the exact-head resolver enumerates every
-   SHA-256 occurrence in all eleven committed blobs and all classified current claims resolve to
-   retained raw or exact tracked bytes with no conflicting/unclassified occurrence.
+   canonical or malformed SHA-256 candidate in all eleven committed blobs, requires every candidate
+   to be canonical and singly classified, and resolves all classified current claims to retained raw
+   or exact tracked bytes with no malformed/conflicting/unclassified occurrence.
 10. Exact-value denylist and portable-pattern scans find no private path, ID, URL, credential, or
     content in public output; the ignored archive is excluded from publication.
 11. Full unit tests, focused evidence tests, product tests, baseline 7/7, C01–C12, JSON, digest,
@@ -2207,7 +2388,7 @@ It reviews:
 - verification, correction invalidation, Task 9 stopping point, and forbidden Task 10/FINAL actions.
 
 `PLAN_PASS` requires no unresolved Critical or Important finding and binds exact corrected-addendum
-bytes, containing commit, parent `f40c37e8e2bed1309605b9b0e8f17046699fa6af`, all earlier
+bytes, containing commit, parent `fde1b8cfe14f526bdd6561ed4309df1975dddc77`, all earlier
 addendum commits/parents, and predecessor plan hash. Any later addendum correction creates a new plan-only
 commit and requires a fresh complete PLAN review. Acceptance authorizes execution only through the
 Task 9 bounded recommendation described here.
