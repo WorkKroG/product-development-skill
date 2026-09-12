@@ -67,6 +67,9 @@ package, network access, GitHub service action, or external tool is required.
   parent and changes only this addendum, producing
   `cdf2739a6c59e39fb22712e246dff8e205ff5c9d`, tree
   `2ebdb1ca9ad6da9c949d485bf6991069441eff80`. Correction round 10 uses that commit as its sole
+  parent and changes only this addendum, producing
+  `b08fa8350089503d2c26e5a695c719d4dee2b8eb`, tree
+  `ac1392f73b5bc1694221347c4a1723595efb5a44`. Correction round 11 uses that commit as its sole
   parent and changes only this addendum. The newest containing commit/hash are
   supplied by the plan-author report and exact PLAN-review package, never self-recorded here.
 - The addendum identity remains `MODULE6-RECOVERY-PLAN-v1`; each correction supersedes the prior
@@ -129,7 +132,9 @@ than trusting author or executor summaries.
    `plan-review-v9.json` at SHA-256
    `9034740d0111a9edf5b2b47a8e9cd6ca61b1f3082d49f3087381f4f402011c76` and
    superseded `plan-review-v10.json` at SHA-256
-   `d15b48821d9899cd576ccaf93c84c18b5e2bd8432e366403ed083014f415b68a`; Task 1 reports v1-v3 at
+   `d15b48821d9899cd576ccaf93c84c18b5e2bd8432e366403ed083014f415b68a` and superseded
+   `plan-review-v11.json` at SHA-256
+   `5a55bfe606bec43fb105b36a072f72690e7deb6275a4171013d0cf7f576b4cf1`; Task 1 reports v1-v3 at
    SHA-256 `e72ad2c3d1dd61e103fc466b6d572bb3cf7c75ae40f817932bf46b987cd1cc1f`,
    `4e87495eca8153949b77648eb37c65a17c4a0ef4379b7442946fb8488c45c14c`, and
    `ce4310bccfab4db4d97182af1bb479c6dfdc6b4855ce84f72bd00e196c5a3ed0`; and schema reviews v1/v2
@@ -142,6 +147,14 @@ than trusting author or executor summaries.
    snapshot defined below; the current longer ledger retains that byte-exact prefix. Every
    permanent historical consumer binds that snapshot, never the later mutable path. Do not recreate
    or overwrite the closed snapshot.
+9. Resumed Task 1.2 has one intentional mutable test-only working candidate at
+   `checks/archive-validator-tests.py`, SHA-256
+   `7a1126f4cba873433519b25cab70faaa0d0e858704d8bd4c1936f85405356610`. It is incomplete WIP, not a
+   closed review target or PASS claim. The production validator and builder remain at exact hashes
+   `e66c20dadbf1d26df13e654a45b1406fd22062913133a5d89ce027429bdb6392` and
+   `5b5df5454edacbbcca5c998bc78c7caa2c5b63e480cad6dfda8649f48b8ccbb9`; correction RED v4,
+   implementer report v4, and binding v3 remain absent. Resume from these honest bytes after the
+   fresh correction-round-11 PLAN PASS; do not reset or misstate the WIP as the forensic v2 copy.
 
 Fresh Git identities, retained raw bytes, and current independent reviews take precedence over
 earlier summaries. Any tracked correction after review creates a successor commit and requires a
@@ -150,7 +163,8 @@ fresh complete review of the new exact head.
 ## Global Constraints
 
 - Execute on an isolated `codex/` branch/worktree rooted at the accepted corrected-addendum commit.
-  Before any recovery write, verify that the newest corrected plan commit has sole parent
+  Before any next recovery write, verify that the newest corrected plan commit has sole parent
+  `b08fa8350089503d2c26e5a695c719d4dee2b8eb`, that correction round 10 has sole parent
   `cdf2739a6c59e39fb22712e246dff8e205ff5c9d`, that correction round 9 has sole parent
   `e5b2ef7af65c5c6381a70e7f0327d2fe8c338b3d`, that correction round 8 has sole parent
   `231638b69051ef52b46902c3d309a52d7852b803`, that correction round 7 has sole parent
@@ -253,6 +267,9 @@ fresh complete review of the new exact head.
 - Correction round 10 modifies only that same addendum over sole parent
   `cdf2739a6c59e39fb22712e246dff8e205ff5c9d`; its subject is
   `docs: define pre-dispatch manifest cardinality`.
+- Correction round 11 modifies only that same addendum over sole parent
+  `b08fa8350089503d2c26e5a695c719d4dee2b8eb`; its subject is
+  `docs: allow empty structural SHA candidates`.
 - Exact changed-path allowlist for every plan-history commit is the one path above. No
   recovery-candidate path belongs in a plan-history commit, and no plan path belongs in a candidate
   commit.
@@ -390,7 +407,7 @@ none of `inputs/binding/schema/recovery-plan-v2.md`,
 no `LogicalRef`, artifact logical ID, root-inventory entry, generation membership, dispatch credit,
 or bytes to reconstruct. Those six reserved paths must remain absent forever.
 
-After correction-round-10 `PLAN_PASS`, Step 1.6 creates binding set v3 directly from the verified
+After correction-round-11 `PLAN_PASS`, Step 1.6 creates binding set v3 directly from the verified
 existing v1 copies plus the accepted current plan bytes at
 `inputs/binding/schema/recovery-plan-v3.md`,
 `inputs/binding/binding-snapshot-manifest-v3.json`, and
@@ -1307,14 +1324,33 @@ iff prefix discovery did not match; otherwise it is the exact seven ASCII source
 `alternate-case` for every other matched spelling. JSON Pointer is a string and is nonempty only
 for a structurally discovered JSON value. `syntax` is `json-value`, `markdown-annotation`,
 `python-binding`, or `raw-token`; `discovery_rules` is the sorted nonempty subset of
-`boundary-hex64`, `sha256-prefix`, and `json-sha-key`, and contains `sha256-prefix` iff
+`boundary-hex64`, `sha256-prefix`, and `json-sha-key` in lexicographic order, and contains `sha256-prefix` iff
 `prefix_status` is not `absent`; `raw_candidate` is the exact decoded
-candidate payload or JSON source lexeme. It may be empty only when `prefix_status` is not `absent`.
-Candidates with the same exact path and payload span are one occurrence with merged discovery
-rules; if one source
-is prefix discovery, that occurrence retains its exact prefix spelling and expanded full-claim span.
-Overlapping nonidentical payload spans are separate occurrences ordered by their exact byte spans,
-and a multiple-context match is never hidden by deduplication.
+candidate payload or JSON source lexeme. It may be empty in exactly two cases: (a)
+`sha256-prefix` matched an empty maximal payload, so `start_byte == end_byte` immediately after the
+real seven-byte prefix and the nonempty prefix/claim fields retain that source; or (b)
+`json-sha-key` structurally found an unescaped empty JSON string, so `start_byte == end_byte` at the
+byte position between its quotes, `claim_start_byte == claim_end_byte == start_byte`,
+`json_pointer` is nonempty, `syntax='json-value'`, `prefix_spelling=null`, and
+`prefix_status='absent'`. Case (b)'s `discovery_rules` contains `json-sha-key` and contains another
+raw rule only if that rule independently emitted the same exact path and zero-width payload span.
+Every other prefix-free/raw candidate is nonempty.
+
+The structural empty-string occurrence has `lexical_status='wrong-length'`,
+`canonical_sha256=null`, `classification_status='malformed'`, and every semantic/resolution field
+after `classification_status` null. It emits one `public-lexical` error identified by its exact
+zero-width span and remains in `all_candidates.total`. It is never omitted, represented by the two
+quote bytes, or assigned a fabricated prefix.
+
+Raw and structural candidates merge only when both `public_path` and the exact
+`start_byte..end_byte` payload span are equal. That key, not `raw_candidate`, controls deduplication;
+therefore empty candidates at different positions or paths remain distinct. A merged occurrence
+unions and sorts `discovery_rules`; `json-sha-key` supplies `syntax='json-value'` and the nonempty
+JSON Pointer, while any actual prefix rule supplies prefix spelling and expands the claim
+start. Different or merely overlapping spans remain separate even when their candidate strings are
+identical. Occurrences sort by File Map path order, then `start_byte`, `end_byte`,
+`claim_start_byte`, `claim_end_byte`, joined `discovery_rules`, and `raw_candidate`; a zero-width
+occurrence sorts at its source position. Multiple-context matching is never hidden by merging.
 
 `lexical_status` is `canonical`, `uppercase`, `wrong-length`, `nonhex`, or `wrong-type`. A string
 is canonical only when it matches exactly `[0-9a-f]{64}`; an otherwise 64-character hexadecimal
@@ -1481,16 +1517,26 @@ JSON blobs additionally undergo a strict structural parse. The resolver visits e
 object key is exactly `sha256` or ends in `_sha256`, regardless of its JSON value type, and emits a
 `json-sha-key` occurrence from the exact source span. For an unescaped ASCII JSON string, that span
 is the payload between quotes and `raw_candidate` is those exact bytes; this lets the raw and
-structural discoveries merge. For an escaped string or a non-string value, the span and
+structural discoveries merge only on exact path plus exact payload span. For the exact bytes
+`{"sha256":""}`, the structural value occurrence has a zero-width payload and claim span at the
+position between the quotes, `raw_candidate=""`, `json_pointer='/sha256'`,
+`syntax='json-value'`, `discovery_rules=['json-sha-key']`, `prefix_spelling=null`,
+`prefix_status='absent'`, `lexical_status='wrong-length'`, and
+`classification_status='malformed'`; all semantic/resolution fields are null, it emits
+`public-lexical`, and it increments the exhaustive denominator. For an escaped string or a
+non-string value, the span and
 `raw_candidate` are the complete JSON value token; an escaped token is `nonhex` and a non-string is
 `wrong-type`. Markdown and Python are classified from raw
 source bytes; parsing them may locate an allowed annotation or top-level binding but may not discard
-any raw candidate. A candidate found by the boundary pass and prefix pass at the same path and exact
-payload byte span is one occurrence with merged rules; it retains the prefix pass's exact spelling
-and full claim span. Different or overlapping payload spans remain separate. Raw JSON parse failure
+any raw candidate. Candidates from any raw or structural pass merge only at the same public path and
+exact payload byte span; merged rules are sorted, a structural rule retains its JSON Pointer/value
+syntax, and a prefix rule retains its exact spelling and full claim span. Prefix-free structural
+empty and raw prefixed-empty candidates at different spans or contexts remain distinct even though
+both have `raw_candidate=""`; candidates never merge merely because candidate strings are equal.
+Different or overlapping payload spans remain separate. Raw JSON parse failure
 is itself an error, but all candidates found by the raw passes are
-still reported. Occurrences sort by File Map path order, then `start_byte`, `end_byte`, and
-`raw_candidate`. Every lexical/context error identifies its occurrence by public path and exact
+still reported. Occurrences use the complete deterministic ordering defined by the occurrence
+schema, including zero-width positions. Every lexical/context error identifies its occurrence by public path and exact
 span in `AuditError.actual`; parser/schema errors without a candidate still block PASS but do not
 invent an occurrence. The complete occurrence list—including uppercase, malformed, unclassified, and
 conflicting candidates—is the denominator; public totals, manifest counts, assembler reports, and
@@ -1765,19 +1811,21 @@ ownership are sequential.
 
 - Preserve every existing Task 1 byte. The immutable progress-ledger snapshot, three v2 forensic
   targets, and recovery-history record are completed Step 1.1 outputs and must not be recreated;
-  continue by creating only versioned binding-set v3, N>=3 review targets, new RED evidence, and
-  successor review records at the paths above.
-- Correct the validator, validator tests, and live-manifest builder fixed working files only after
-  their current bytes have been preserved in the v2 forensic target.
+  preserve the intentional test-only Task 1.2 WIP and continue by creating only versioned binding-
+  set v3, N>=3 review targets, new RED evidence, and successor review records at the paths above.
+- The validator and live-manifest builder fixed working bytes still equal their v2 forensic copies;
+  the validator-test fixed path has advanced to the exact incomplete WIP hash above while its v2
+  forensic copy remains the older closed hash. Resume that WIP; do not overwrite or relabel either
+  identity.
 - Do not modify tracked files.
 
 **Interfaces:**
 
-- Consumes: accepted correction-round-10 addendum commit, exact predecessor identities, completed
+- Consumes: accepted correction-round-11 addendum commit, exact predecessor identities, completed
   immutable Step 1.1 outputs, current
-  tracked binding files, Task 1 reports v1-v3, schema reviews v1/v2, and current fixed validator/
-  live-manifest-builder bytes, the exact pre-append `progress.md` precondition, and verified absence
-  of binding sequence 2.
+  tracked binding files, Task 1 reports v1-v3, schema reviews v1/v2, current fixed validator/builder
+  bytes, the exact test-only WIP hash, the exact pre-append `progress.md` precondition, and verified
+  absence of binding sequence 2.
 - Produces: honest quarantined history, immutable forensic and N>=3 review targets, corrected exact
   schemas, binding set v3, four v3 briefs, the complete later-phase and pre-dispatch physical CLI
   fixtures, and a fresh schema-review PASS gate before any group dispatch.
@@ -1806,10 +1854,12 @@ dispatch, external actions, and cleanup of predecessor evidence.
   git rev-parse 231638b69051ef52b46902c3d309a52d7852b803^
   git rev-parse e5b2ef7af65c5c6381a70e7f0327d2fe8c338b3d^
   git rev-parse cdf2739a6c59e39fb22712e246dff8e205ff5c9d^
-  git diff --name-only cdf2739a6c59e39fb22712e246dff8e205ff5c9d...HEAD
+  git rev-parse b08fa8350089503d2c26e5a695c719d4dee2b8eb^
+  git diff --name-only b08fa8350089503d2c26e5a695c719d4dee2b8eb...HEAD
   ```
 
   Expected: `HEAD` is the accepted addendum commit; its sole parent is
+  `b08fa8350089503d2c26e5a695c719d4dee2b8eb`; correction round 10's sole parent is
   `cdf2739a6c59e39fb22712e246dff8e205ff5c9d`; correction round 9's sole parent is
   `e5b2ef7af65c5c6381a70e7f0327d2fe8c338b3d`; correction round 8's sole parent is
   `231638b69051ef52b46902c3d309a52d7852b803`; correction round 7's sole parent is
@@ -1832,7 +1882,9 @@ dispatch, external actions, and cleanup of predecessor evidence.
   `plan-review-v9.json` at SHA-256
   `9034740d0111a9edf5b2b47a8e9cd6ca61b1f3082d49f3087381f4f402011c76` and superseded
   `plan-review-v10.json` at SHA-256
-  `d15b48821d9899cd576ccaf93c84c18b5e2bd8432e366403ed083014f415b68a`.
+  `d15b48821d9899cd576ccaf93c84c18b5e2bd8432e366403ed083014f415b68a` and superseded
+  `plan-review-v11.json` at SHA-256
+  `5a55bfe606bec43fb105b36a072f72690e7deb6275a4171013d0cf7f576b4cf1`.
 
   Do not repeat the already completed freeze. Read-verify the regular read-only
   `history/progress-ledger-snapshot-v1.md` at exactly 18,640 bytes and SHA-256
@@ -1844,14 +1896,19 @@ dispatch, external actions, and cleanup of predecessor evidence.
   paths and all six planned v3 paths to remain absent. Any mismatch blocks without reconstruction,
   overwrite, deletion, or progress mutation.
 
-  Before any fixed Task 1 candidate is edited, verify exact current hashes
+  Before the next fixed Task 1 candidate edit, verify exact current hashes
   `e66c20dadbf1d26df13e654a45b1406fd22062913133a5d89ce027429bdb6392` for
   `checks/archive-validator.py` and
-  `3b883a5a35e33a3ab325c400096b5eaf7bdbdc4103f652e55aab451cb5038eac` for
+  `7a1126f4cba873433519b25cab70faaa0d0e858704d8bd4c1936f85405356610` for the intentional
+  incomplete test-only WIP at
   `checks/archive-validator-tests.py`, plus
   `5b5df5454edacbbcca5c998bc78c7caa2c5b63e480cad6dfda8649f48b8ccbb9` for
-  `checks/build-live-manifest.py`. Require the three completed forensic copies to have those same
-  respective digests and the exact unique IDs/kinds already recorded. Also verify the two
+  `checks/build-live-manifest.py`. Require the three completed forensic copies to retain respective
+  digests `e66c20dadbf1d26df13e654a45b1406fd22062913133a5d89ce027429bdb6392`,
+  `3b883a5a35e33a3ab325c400096b5eaf7bdbdc4103f652e55aab451cb5038eac`, and
+  `5b5df5454edacbbcca5c998bc78c7caa2c5b63e480cad6dfda8649f48b8ccbb9` with their exact unique
+  IDs/kinds. The changed test working hash does not rewrite or supersede its forensic copy. Require
+  correction RED v4, implementer report v4, and all v3 binding paths still absent. Also verify the two
   historical review digests, all five declared ref-pointer values, and all 24 finding-label pointer
   values. Do not invoke the known-defective
   live-manifest builder or claim an honest refreshed inventory yet; no consumer may use the stale
@@ -1860,9 +1917,12 @@ dispatch, external actions, and cleanup of predecessor evidence.
   `schema-binding-writer` for Step 1.2. A hash mismatch is `PLAN_BLOCKED`; do not overwrite or infer
   replacement bytes.
 
-- [ ] **Step 1.2: Extend archive-validator tests with recovery and exhaustive fixture cases first.**
+- [ ] **Step 1.2: Resume archive-validator test WIP with recovery and exhaustive fixture cases first.**
 
-  Extend ignored `checks/archive-validator-tests.py`. Its complete valid physical CLI fixture uses
+  Resume the exact test-only `checks/archive-validator-tests.py` WIP at SHA-256
+  `7a1126f4cba873433519b25cab70faaa0d0e858704d8bd4c1936f85405356610`; do not reset it to the v2
+  forensic target or claim it as reviewed. Extend that ignored candidate. Its complete valid
+  physical CLI fixture uses
   `as_of_phase=post-generation-selection` and must contain
   `inputs/binding/binding-snapshot-manifest-v3.json` and its exact source/copy bytes; all 21 cases;
   every required per-attempt filename/category; all four groups; a fully enumerated actual tree;
@@ -1911,6 +1971,27 @@ dispatch, external actions, and cleanup of predecessor evidence.
   every form creates an occurrence with exact original prefix/payload/full-claim spans, emits at
   least one error, and increments `all_candidates.total`; assert alternate-case plus a canonical
   64-hex payload merges with the independent boundary-pass occurrence but remains malformed.
+  Add `PublicShaEmptyStructuralOccurrenceTests` over exact UTF-8 bytes. For
+  `{"sha256":""}`, require exactly one occurrence at line 1/column 12 with
+  `start_byte=end_byte=claim_start_byte=claim_end_byte=11`, `raw_candidate=""`,
+  `json_pointer='/sha256'`, `syntax='json-value'`, `discovery_rules=['json-sha-key']`, null prefix,
+  `prefix_status='absent'`, `lexical_status='wrong-length'`, null canonical digest,
+  `classification_status='malformed'`, all semantic/resolution fields null, one exact
+  `public-lexical` error, and `all_candidates.total=1`. Fail implementations that omit it, include
+  either quote in its span/candidate, or invent a prefix. For standalone exact bytes `sha256:`,
+  require one distinct prefixed-empty occurrence with payload span `7..7`, claim span `0..7`, exact
+  `prefix_spelling='sha256:'`, `prefix_status='canonical-lowercase'`, empty JSON Pointer,
+  `syntax='raw-token'`,
+  `discovery_rules=['sha256-prefix']`, wrong-length/malformed, denominator one, and a lexical error.
+  For exact bytes `{"sha256":"","other":"sha256:"}`, require the structural empty at `11..11`
+  and the prefixed empty at `29..29`/claim `22..29` as two occurrences despite equal empty
+  candidates. Add two canonical JSON SHA values with identical digest text at different byte spans
+  and require two occurrences; add one canonical SHA value whose structural and boundary passes
+  have the same path/span and require exactly one occurrence with sorted merged rules. Changing
+  only path or either span prevents merge. An escaped string retains the complete nonempty JSON
+  token and is `nonhex`; a non-string retains its complete token and is `wrong-type`. Assert
+  deterministic zero-width ordering and that every discovered malformed occurrence increments the
+  denominator.
   Add the paired alias
   allow/reject corpus from Task 7.1.
   Add phase-cardinality negatives for: any case or group record in a pre-dispatch phase; any
@@ -2005,8 +2086,10 @@ dispatch, external actions, and cleanup of predecessor evidence.
   python3 -B .superpowers/sdd/2026-09-12-module-6-evidence-retention-recovery/checks/archive-validator-tests.py
   ```
 
-  Expected: FAIL first on the newly specified phase-cardinality probes because the current
-  validator requires full case/group records during pre-dispatch Task 1 phases. It also still
+  Expected: FAIL, including an exact structural-empty JSON SHA occurrence probe because the current
+  occurrence contract/validator cannot represent its prefix-free zero-width payload honestly, plus
+  the phase-cardinality probes because the current validator requires full case/group records
+  during pre-dispatch Task 1 phases. It also still
   bypasses full recovery validation when the
   binding snapshot is absent, has no exact recovery-history/review-target schema, permits a broad
   non-PASS review-ref bypass, has no absent-sequence-2/direct-v1-to-v3 binding contract,
@@ -2084,8 +2167,11 @@ dispatch, external actions, and cleanup of predecessor evidence.
   positive/end-to-end fixtures. Do not treat registry membership or unknown-key rejection as proof
   of the nested contract.
   `discover_public_sha_candidates` implements the exact structural/raw lexer above, including
-  ASCII case-insensitive prefix-label discovery, source-spelling/span retention, and deterministic
-  same-payload merging with the independent boundary pass.
+  ASCII case-insensitive prefix-label discovery, source-spelling/span retention, the exact
+  prefix-free structural-empty branch, and deterministic merge keyed only by public path plus exact
+  payload span. It emits zero-width structural empty and prefixed-empty occurrences without
+  conflating them, retains complete tokens for escaped/non-string JSON values, and never omits,
+  quotes, or fabricates a prefix for an empty structural value.
   `resolve_public_current` reads all eleven exact committed public blobs, discovers
   and classifies every canonical or malformed SHA candidate under the allowed-context table, locates exactly one
   selected generation by digest, opens every joined private/tracked byte, and computes denominators
@@ -2114,8 +2200,9 @@ dispatch, external actions, and cleanup of predecessor evidence.
 - [ ] **Step 1.5: Run validator tests GREEN and close the working candidate.**
 
   Expected: all tests, including the exact historical incidents, general no-bypass matrix, seven
-  v2-finding regressions, the pre-dispatch cardinality fixture, and complete later-phase physical
-  CLI fixture, PASS. Run the complete fixture at `post-generation-selection` through the
+  v2-finding regressions, exact structural/prefixed-empty SHA occurrence and span/dedup regressions,
+  the pre-dispatch cardinality fixture, and complete later-phase physical CLI fixture, PASS. Run
+  the complete fixture at `post-generation-selection` through the
   real entry point and require independently enumerated `declared_files == actual_files`, every
   one of the 31 registered families visited, all join consumers invoked, complete synthetic v1/v3,
   absent sequence 2, exact 21/4 cardinality, and zero errors. Separately run the ordinary CLI on the
@@ -2138,7 +2225,7 @@ dispatch, external actions, and cleanup of predecessor evidence.
 
   Do not overwrite the unversioned v1 plan copy, snapshot, or briefs. Reverify every existing
   tracked/source-to-v1-copy binding byte and reverify all six reserved v2 paths remain absent.
-  Copy the exact accepted correction-round-10 addendum from execution `HEAD` directly to
+  Copy the exact accepted correction-round-11 addendum from execution `HEAD` directly to
   `inputs/binding/schema/recovery-plan-v3.md`, assign `recovery-schema-source-v3`, record exact
   HEAD/digest/size/equality, and make it read-only. Create
   `inputs/binding/binding-snapshot-manifest-v3.json`, logical ID
@@ -2225,7 +2312,7 @@ dispatch, external actions, and cleanup of predecessor evidence.
 
 - [ ] **Step 1.8a: Dispatch one fresh independent schema review v3.**
 
-  Give a fresh `schema-reviewer`, requested `gpt-5.6-sol/high`, the exact correction-round-10 plan,
+  Give a fresh `schema-reviewer`, requested `gpt-5.6-sol/high`, the exact correction-round-11 plan,
   active binding set and briefs, all Task 1 reports/RED logs, both quarantined reviews plus the
   recovery record (including absent sequence-2 history) and exact
   `progress-ledger-snapshot-v1` requirements ref, the seven immutable v3
@@ -2681,7 +2768,7 @@ tracked/public writes, and cleanup.
   every actual current/superseded/non-credit case-attempt artifact, Product Git/Change Review, metric
   log, both exact schema-review incidents, the recovery-history record, every forensic/compliant
   review target and N>=3 schema review, every immutable progress-ledger snapshot existing at scope
-  close, every retained plan review including superseded v7/v8/v9/v10, and four group manifest/report/review
+  close, every retained plan review including superseded v7/v8/v9/v10/v11, and four group manifest/report/review
   sets. The mutable `progress.md` is not a generation
   member. Include every actual v1 and active v3 binding artifact, with all downstream refs on v3;
   include no binding-v2 artifact because sequence 2 exists only as nested non-artifact history in
@@ -2917,7 +3004,12 @@ actions, cleanup, and integration.
   non-tautological resolver over all eleven exact
   committed public blobs: apply the independent boundary-hex pass, ASCII case-insensitive prefix-
   label pass with exact spelling/payload/full-claim spans, and structural SHA-designated JSON-key
-  pass; enumerate canonical and malformed SHA candidates; classify canonical values under the only
+  pass; enumerate canonical and malformed SHA candidates, including the exact prefix-free zero-
+  width structural occurrence for every unescaped empty SHA-key string and the distinct raw
+  prefixed-empty occurrence wherever present. Require exact spans/prefix nullability/status,
+  wrong-length/malformed fields, null semantic fields, lexical errors, denominator inclusion, and
+  merge only by public path plus exact payload span; reject omission, quote inclusion, fabricated
+  prefix, equal-string conflation, or nondeterministic zero-width order. Classify canonical values under the only
   allowed JSON/Markdown/Python contexts, join every current claim through the selected generation
   or exact tracked binding, and classify superseded history without credit. Derive the denominator
   from that scan and require every discovered candidate accepted, 100% current resolution, and zero
@@ -2949,8 +3041,9 @@ actions, cleanup, and integration.
     `169237b48c36870e9bc7a1defcb3d996958a72d2`, and accepted correction round 7 versus
     `d3c0369ce38142832a7347c1ead1140945b2fedd`, accepted correction round 8 versus
     `231638b69051ef52b46902c3d309a52d7852b803`, accepted correction round 9 versus
-    `e5b2ef7af65c5c6381a70e7f0327d2fe8c338b3d`, and accepted correction round 10 versus
-    `cdf2739a6c59e39fb22712e246dff8e205ff5c9d`: exactly the one addendum path each;
+    `e5b2ef7af65c5c6381a70e7f0327d2fe8c338b3d`, accepted correction round 10 versus
+    `cdf2739a6c59e39fb22712e246dff8e205ff5c9d`, and accepted correction round 11 versus
+    `b08fa8350089503d2c26e5a695c719d4dee2b8eb`: exactly the one addendum path each;
   - recovery candidate commit versus accepted addendum commit: only actually changed paths from
     the eleven-path candidate allowlist;
   - full Module 6 candidate versus `f47263ce545c5185b3ec836c95fe341d1b3e5715`: predecessor
@@ -3039,7 +3132,7 @@ Task 10, FINAL, push, PR, integration, merge, publication, install, deployment, 
   quarantined schema reviews, recovery-history record, forensic targets, every N>=3 immutable
   review target, the exact immutable `progress-ledger-snapshot-v1` artifact and its joined
   requirements ref, superseded `plan-review-v7.json`, `plan-review-v8.json`,
-  `plan-review-v9.json`, and `plan-review-v10.json` at their exact hashes as untrusted finding
+  `plan-review-v9.json`, `plan-review-v10.json`, and `plan-review-v11.json` at their exact hashes as untrusted finding
   input, all Task 1 implementer reports/RED logs, and the fresh schema-review PASS that
   opened dispatch. Exclude
   author/assembler/Implementation
@@ -3067,8 +3160,12 @@ Task 10, FINAL, push, PR, integration, merge, publication, install, deployment, 
   partial state between them.
   The reviewer then independently
   reruns the all-eleven-blob raw/structural occurrence scan, including every ASCII case variant of
-  the prefix label, and rejects every alternate-case label, uppercase payload, or malformed
-  candidate, classifies every canonical SHA-256 claim, and resolves 100% of
+  the prefix label and every structural empty SHA-key string. It requires prefix-free structural
+  empty and raw prefixed-empty occurrences to retain their exact distinct zero-width spans,
+  prefix/null fields, wrong-length/malformed status, lexical errors, denominator membership, and
+  path-plus-span-only merge behavior; it rejects omission, quote spans, fabricated prefixes,
+  equal-string conflation, and nondeterministic ordering. It rejects every alternate-case label,
+  uppercase payload, or malformed candidate, classifies every canonical SHA-256 claim, and resolves 100% of
   current input/output/evaluator/transcript and tracked-public claims with no unclassified or
   conflicting occurrence. It checks all 21 semantics against the exact rubric, validates prohibited
   side effects and model facts, examines product Git candidates/reviews/ancestry, reviews every
@@ -3113,13 +3210,13 @@ use new commits; never amend, squash, reset, or reuse the invalidated review ver
 
 | Gate | Independent reviewer must verify | Blocks |
 |---|---|---|
-| Shared schema review | fresh N>=3 immutable targets, exact refs for every verdict, legacy quarantine, both ordinary physical fixtures, exact empty pre-dispatch root and full later 21/4 root, unconditional validators, path containment, schemas, contamination denyset, group ownership | Task 1.9 and all case dispatch |
+| Shared schema review | fresh N>=3 immutable targets, exact refs for every verdict, legacy quarantine, both ordinary physical fixtures, exact empty pre-dispatch root and full later 21/4 root, unconditional validators, exact zero-width structural/prefixed-empty SHA occurrence schemas and path-plus-span merge tests, path containment, schemas, contamination denyset, group ownership | Task 1.9 and all case dispatch |
 | Per-case evaluation | exact rubric, raw input/output/operations, actual verdict and dependent state | current case credit |
 | Per-group review | complete group artifacts, evaluator independence, digest resolution, side effects | archive aggregation |
 | Product Change Reviews | exact requirements/base/head/full diff/tests without author conversation | local merge and E12/E14 credit |
 | Archive audit | 100% current raw evidence resolution, exact full 21/4 snapshot/generation, no promoted partial root, current/superseded identity, Git authenticity | public assembly |
 | Public assembly self-review | producer/consumer consistency, truthful totals, bindings, redaction, allowlist | candidate commit |
-| Module Change Review | exact full candidate plus retained raw evidence and product history, exact pre-dispatch-empty to selected-generation-21/4 lifecycle | integration recommendation |
+| Module Change Review | exact full candidate plus retained raw evidence and product history, exhaustive canonical/malformed/empty SHA occurrence denominator, exact pre-dispatch-empty to selected-generation-21/4 lifecycle | integration recommendation |
 
 Reviewers are read-only. A reviewer never fixes its own finding, edits a verdict into compliance,
 or accepts a summary in place of raw bytes. Review packages always identify requested assignment;
@@ -3162,7 +3259,7 @@ accepted/runtime facts remain independently sourced or `Unknown`.
 
 1. The predecessor plan remains byte-identical at its accepted hash and this addendum is the only
    file changed in the newest correction commit with sole parent
-   `cdf2739a6c59e39fb22712e246dff8e205ff5c9d`; earlier plan commits retain their exact one-file
+   `b08fa8350089503d2c26e5a695c719d4dee2b8eb`; earlier plan commits retain their exact one-file
    deltas and parents.
 2. The durable ignored workspace contains content-addressed raw inputs, executor outputs, evaluator
    inputs/outputs, transcript/operation records, product Git history, checks, reports, and review
@@ -3209,7 +3306,11 @@ accepted/runtime facts remain independently sourced or `Unknown`.
 9. One public assembler updates only justified allowlisted paths; README is in permanent redaction
    coverage and asserts the local-synthetic boundary; the exact-head resolver enumerates every
    canonical or malformed SHA-256 candidate in all eleven committed blobs, including every ASCII
-   case spelling of a `sha256:` label and its maximal payload; it requires every accepted prefixed
+   case spelling of a `sha256:` label and its maximal payload plus every structural SHA-key value.
+   An unescaped empty SHA-key string is one prefix-free zero-width wrong-length/malformed occurrence
+   with null semantic fields, a lexical error, and denominator credit; a raw prefixed empty is a
+   distinct zero-width occurrence unless exact path and payload span actually match. Merge is based
+   only on path plus exact span, never equal candidate text. The resolver requires every accepted prefixed
    claim to use the exact lowercase label plus a canonical lowercase payload, requires every
    candidate to be singly classified, and resolves all classified current claims to retained raw or
    exact tracked bytes with no alternate-case-label/malformed/conflicting/unclassified occurrence.
@@ -3221,7 +3322,9 @@ accepted/runtime facts remain independently sourced or `Unknown`.
     fully joined v3 binding snapshot, all 31 registered schema families, every join consumer, and
     exact 21/4 cardinality; a separate physical pre-dispatch fixture contains exact empty case/group
     arrays and no case/group artifacts while invoking every validator over every present shared
-    family. No missing-binding or non-PASS conditional bypass exists. A pre-v3 actual root is never
+    family. Focused tests also require exact structural-empty and prefixed-empty occurrence spans,
+    fields, errors, denominator membership, distinctness, and deterministic path-plus-span merge.
+    No missing-binding or non-PASS conditional bypass exists. A pre-v3 actual root is never
     claimed valid and the post-v3 empty-array full actual-root PASS mechanically gates target
     freeze. PyYAML absence remains an explicit quick-
     validation limitation.
@@ -3248,7 +3351,9 @@ v8 at exact SHA-256
 at exact SHA-256
 `9034740d0111a9edf5b2b47a8e9cd6ca61b1f3082d49f3087381f4f402011c76`, superseded plan review
 v10 at exact SHA-256
-`d15b48821d9899cd576ccaf93c84c18b5e2bd8432e366403ed083014f415b68a`, and current public
+`d15b48821d9899cd576ccaf93c84c18b5e2bd8432e366403ed083014f415b68a`, superseded plan review
+v11 at exact SHA-256
+`5a55bfe606bec43fb105b36a072f72690e7deb6275a4171013d0cf7f576b4cf1`, and current public
 evidence/tests without this author's conversation. The reviewer may read current `progress.md`
 only to confirm that its first 18,640 bytes still equal the already closed immutable snapshot; it
 must not cite the mutable path/digest as permanent evidence, recreate the snapshot, or treat any
@@ -3271,13 +3376,14 @@ It reviews:
   immutable N>=3 review targets, general no-bypass review joins,
   and fresh schema PASS gate;
 - current/superseded truthfulness, FAIL/BLOCKED handling, model-fact separation, and digest
-  resolution;
+  resolution, including exact prefix-free structural-empty and raw prefixed-empty occurrence
+  spans/nullability/errors/denominators plus path-and-span-only merge behavior;
 - public allowlist, README boundary/redaction regression, no self-referential head, and private
   publication boundary;
 - verification, correction invalidation, Task 9 stopping point, and forbidden Task 10/FINAL actions.
 
 `PLAN_PASS` requires no unresolved Critical or Important finding and binds exact corrected-addendum
-bytes, containing commit, parent `cdf2739a6c59e39fb22712e246dff8e205ff5c9d`, all earlier
+bytes, containing commit, parent `b08fa8350089503d2c26e5a695c719d4dee2b8eb`, all earlier
 addendum commits/parents, and predecessor plan hash. Any later addendum correction creates a new plan-only
 commit and requires a fresh complete PLAN review. Acceptance authorizes execution only through the
 Task 9 bounded recommendation described here.
