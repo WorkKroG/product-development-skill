@@ -11,6 +11,12 @@ candidate head and review state are owned by Task 9 task-local evidence and its 
 so this durable navigation does not embed a self-referential commit identity. Integration and FINAL
 are unperformed; the module is not `DONE`.
 
+Owner/Product's 2026-09-12 Task 9 ruling adds `README.md` to the Module 6 File Map only for the
+root-navigation correction and regression authorized by finding `M6-CR2-I01`. The accepted plan
+bytes and SHA-256 remain unchanged; README is now the thirteenth candidate File Map path. This
+scope amendment does not authorize Task 10, FINAL, integration, publication, installation, or
+release.
+
 Navigate from [validation.md](validation.md) to the five-part human-readable chain. Machine-readable
 identity, source/copy hashes, role facts, permissions, and limitations are in
 `tests/fixtures/quietfollow/evidence/manifest.json`; per-case outcomes, verdicts, dependent states,

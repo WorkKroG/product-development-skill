@@ -10,7 +10,10 @@ EXECUTION = EVIDENCE / "execution-record.json"
 PUBLIC_EVIDENCE = (
     tuple(EVIDENCE.glob("**/*"))
     + tuple((ROOT / "tests/fixtures/quietfollow/product").glob("*.py"))
-    + (ROOT / "docs/validation.md", ROOT / "docs/PROJECT_STATUS.md")
+    + (
+        ROOT / "docs/validation.md",
+        ROOT / "docs/PROJECT_STATUS.md",
+    )
 )
 SELECTED_CASES = {
     "E02", "E08", "E10", "E11", "E12", "E13", "E14", "E17",
@@ -145,6 +148,8 @@ class PilotEvidenceContractTest(unittest.TestCase):
 
         project_status = (ROOT / "docs/PROJECT_STATUS.md").read_text(encoding="utf-8")
         validation = (ROOT / "docs/validation.md").read_text(encoding="utf-8")
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        readme_flat = " ".join(readme.split())
         for text in (project_status, validation):
             self.assertNotIn("uncommitted candidate", text)
             self.assertNotIn("pending Task 9 commit", text)
@@ -159,6 +164,18 @@ class PilotEvidenceContractTest(unittest.TestCase):
             "Owner/Product decides whether to authorize Task 10 integration for the exact "
             "locally reviewed candidate identified by Task 9's final review record.",
             next_action,
+        )
+        self.assertNotIn("текущий кандидат Module 4", readme_flat)
+        self.assertNotIn(
+            "E01–E41 и синтетический pilot QuietFollow ещё не выполнены",
+            readme_flat,
+        )
+        self.assertIn("Module 6 — текущий локальный committed candidate", readme_flat)
+        self.assertIn("21 выбранного E-case", readme_flat)
+        self.assertIn("не интегрирован и не выпущен", readme_flat)
+        self.assertIn(
+            "не доказывает полное покрытие E01–E41, live-routing или production behavior",
+            readme_flat,
         )
 
     def test_public_evidence_contains_no_private_runtime_bindings(self):
