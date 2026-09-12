@@ -61,6 +61,9 @@ package, network access, GitHub service action, or external tool is required.
   parent and changes only this addendum, producing
   `231638b69051ef52b46902c3d309a52d7852b803`, tree
   `8bc4b812c918b82a39f29fe1fafa9e3c4a38f0ed`. Correction round 8 uses that commit as its sole
+  parent and changes only this addendum, producing
+  `e5b2ef7af65c5c6381a70e7f0327d2fe8c338b3d`, tree
+  `52e4a18c230ee1dab1f6f9817ae2f3047fef4153`. Correction round 9 uses that commit as its sole
   parent and changes only this addendum. The newest containing commit/hash are
   supplied by the plan-author report and exact PLAN-review package, never self-recorded here.
 - The addendum identity remains `MODULE6-RECOVERY-PLAN-v1`; each correction supersedes the prior
@@ -119,7 +122,9 @@ than trusting author or executor summaries.
    `plan-review-v7.json` at SHA-256
    `7d234a640d4d51064a7d0c17485c5166189ab619cd7dc053eff9b6b9b1e65f6b` and
    `plan-review-v8.json` at SHA-256
-   `07f37acba8160b362920989ebbfc3af4db2ff4caae7d3a48f6899602e431990b`; Task 1 reports v1-v3 at
+   `07f37acba8160b362920989ebbfc3af4db2ff4caae7d3a48f6899602e431990b` and
+   `plan-review-v9.json` at SHA-256
+   `9034740d0111a9edf5b2b47a8e9cd6ca61b1f3082d49f3087381f4f402011c76`; Task 1 reports v1-v3 at
    SHA-256 `e72ad2c3d1dd61e103fc466b6d572bb3cf7c75ae40f817932bf46b987cd1cc1f`,
    `4e87495eca8153949b77648eb37c65a17c4a0ef4379b7442946fb8488c45c14c`, and
    `ce4310bccfab4db4d97182af1bb479c6dfdc6b4855ce84f72bd00e196c5a3ed0`; and schema reviews v1/v2
@@ -140,6 +145,7 @@ fresh complete review of the new exact head.
 
 - Execute on an isolated `codex/` branch/worktree rooted at the accepted corrected-addendum commit.
   Before any recovery write, verify that the newest corrected plan commit has sole parent
+  `e5b2ef7af65c5c6381a70e7f0327d2fe8c338b3d`, that correction round 8 has sole parent
   `231638b69051ef52b46902c3d309a52d7852b803`, that correction round 7 has sole parent
   `d3c0369ce38142832a7347c1ead1140945b2fedd`, that correction round 6 has sole parent
   `169237b48c36870e9bc7a1defcb3d996958a72d2`, that correction round 5 has sole parent
@@ -231,6 +237,9 @@ fresh complete review of the new exact head.
 - Correction round 8 modifies only that same addendum over sole parent
   `231638b69051ef52b46902c3d309a52d7852b803`; its subject is
   `docs: correct binding recovery history`.
+- Correction round 9 modifies only that same addendum over sole parent
+  `e5b2ef7af65c5c6381a70e7f0327d2fe8c338b3d`; its subject is
+  `docs: sequence Module 6 binding validation`.
 - Exact changed-path allowlist for every plan-history commit is the one path above. No
   recovery-candidate path belongs in a plan-history commit, and no plan path belongs in a candidate
   commit.
@@ -368,7 +377,7 @@ none of `inputs/binding/schema/recovery-plan-v2.md`,
 no `LogicalRef`, artifact logical ID, root-inventory entry, generation membership, dispatch credit,
 or bytes to reconstruct. Those six reserved paths must remain absent forever.
 
-After correction-round-8 `PLAN_PASS`, Step 1.6 creates binding set v3 directly from the verified
+After correction-round-9 `PLAN_PASS`, Step 1.6 creates binding set v3 directly from the verified
 existing v1 copies plus the accepted current plan bytes at
 `inputs/binding/schema/recovery-plan-v3.md`,
 `inputs/binding/binding-snapshot-manifest-v3.json`, and
@@ -445,6 +454,19 @@ case may be added, omitted, or reordered.
 | `groups` | array of group records defined below |
 | `retention` | object with exactly `authoritative_root='recovery-worktree-relative'`, `retain_through='Task 10 decision'`, `cleanup_authorized=false`, `publication_scope=false` |
 | `limitations` | array of nonempty strings |
+
+`as_of_phase=task1-history-recovered` has one exact lifecycle meaning: the immutable progress
+snapshot, recovery-history record, v2 forensic copies, corrected five fixed working candidates,
+complete binding sets v1 and v3, and the absent/non-artifact sequence-2 state all exist; the
+schema-binding writer has closed and relinquished them; the root writer has regenerated the actual
+live manifest from those bytes; and the full always-invoked archive validator has returned zero
+errors on that actual root. It is never a pre-v3 phase, a synthetic-fixture phase, or a validation
+bypass. Between the Step 1.1 history/forensic write and this post-v3 PASS, the actual live manifest
+is explicitly stale and non-authoritative: no consumer review, case/group/product dispatch,
+generation freeze, or current-inventory claim is permitted. The complete physical synthetic CLI
+fixture is the only validator target in Step 1.5; it proves the full contract before the actual v3
+bytes exist but does not promote the live archive. After this phase is recorded, any mutation makes
+the live manifest stale again until its next prescribed regeneration and full validation.
 
 Each artifact record has exactly these keys:
 
@@ -1695,7 +1717,7 @@ ownership are sequential.
 
 **Interfaces:**
 
-- Consumes: accepted correction-round-8 addendum commit, exact predecessor identities, current
+- Consumes: accepted correction-round-9 addendum commit, exact predecessor identities, current
   tracked binding files, Task 1 reports v1-v3, schema reviews v1/v2, and current fixed validator/
   live-manifest-builder bytes, the exact pre-append `progress.md` precondition, and verified absence
   of binding sequence 2.
@@ -1725,10 +1747,12 @@ dispatch, external actions, and cleanup of predecessor evidence.
   git rev-parse 169237b48c36870e9bc7a1defcb3d996958a72d2^
   git rev-parse d3c0369ce38142832a7347c1ead1140945b2fedd^
   git rev-parse 231638b69051ef52b46902c3d309a52d7852b803^
-  git diff --name-only 231638b69051ef52b46902c3d309a52d7852b803...HEAD
+  git rev-parse e5b2ef7af65c5c6381a70e7f0327d2fe8c338b3d^
+  git diff --name-only e5b2ef7af65c5c6381a70e7f0327d2fe8c338b3d...HEAD
   ```
 
   Expected: `HEAD` is the accepted addendum commit; its sole parent is
+  `e5b2ef7af65c5c6381a70e7f0327d2fe8c338b3d`; correction round 8's sole parent is
   `231638b69051ef52b46902c3d309a52d7852b803`; correction round 7's sole parent is
   `d3c0369ce38142832a7347c1ead1140945b2fedd`; correction round 6's sole parent is
   `169237b48c36870e9bc7a1defcb3d996958a72d2`; correction round 5's sole parent is
@@ -1745,7 +1769,9 @@ dispatch, external actions, and cleanup of predecessor evidence.
   `plan-review-v7.json` at SHA-256
   `7d234a640d4d51064a7d0c17485c5166189ab619cd7dc053eff9b6b9b1e65f6b` and
   `plan-review-v8.json` at SHA-256
-  `07f37acba8160b362920989ebbfc3af4db2ff4caae7d3a48f6899602e431990b`. Before writing any
+  `07f37acba8160b362920989ebbfc3af4db2ff4caae7d3a48f6899602e431990b` and
+  `plan-review-v9.json` at SHA-256
+  `9034740d0111a9edf5b2b47a8e9cd6ca61b1f3082d49f3087381f4f402011c76`. Before writing any
   recovery byte, independently require all six reserved binding-v2 paths in the exact recovery-
   history array to be absent; any present v2 path blocks as fabricated history and must not be
   deleted or adopted. The task coordinator
@@ -1864,6 +1890,20 @@ dispatch, external actions, and cleanup of predecessor evidence.
   `task1-schema-review-v2-forensic` paths remain valid forensic review targets and must not match the
   binding-v2 reserved-path rule.
 
+  Add `Task1BindingLifecycleOrderTests` with two separate roots, never a phase switch in one
+  validator invocation. The synthetic root is a complete physical fixture containing valid v1/v3,
+  absent sequence 2, every one of the 31 families, and every join consumer; the ordinary CLI and
+  every validator run against it and must pass. The actual-root sequence must prove: the strict CLI
+  returns a required-artifact/binding error before v3 exists; Step 1.5 neither invokes that actual-
+  root validation nor marks its live manifest current; no consumer review or dispatch is admitted
+  in the closed pre-v3 interval; a complete source/copy/brief-joined v3 followed by a regenerated
+  `task1-history-recovered` live manifest passes the same always-invoked CLI; and this post-v3 PASS
+  is required before target freeze. Fail an incomplete v3, a phase value set to
+  `task1-history-recovered` before v3, a review/dispatch attempt in the closed interval, any skipped
+  validator, or any fixed/history/binding/live-root mutation between the post-v3 PASS and Step 1.8.
+  There is no `pre-v3`, `fixture-only`, or other relaxed `as_of_phase` enum and no conditional
+  validator bypass.
+
   Add one focused regression for each of the seven schema-review-v2 findings: freeze-time complete
   set/symlink-ancestor containment; every nested semantic and cross-artifact join; all verdict
   review/audit identity and target joins; complete public current/history/metric/global-binding
@@ -1965,29 +2005,36 @@ dispatch, external actions, and cleanup of predecessor evidence.
   never assigns the preserved `checks-build-live-manifest` ID to its corrected fixed-path bytes.
   It rejects every reserved binding-v2 path if one appears, emits no v2 artifact classification,
   and continues to classify only the explicitly separate `task1-schema-review-v2-forensic` paths.
+  In this same interval, materialize the exact `checks/bundle-contamination.json` policy and the
+  lexicographically sorted `checks/public-alias-vocabulary.txt` plus sidecar specified in Step 1.7;
+  test exact policy bytes, alias-set equality, sidecar equality, and representative stable/native-ID
+  allow/reject cases. These two fixed candidates join the validator, tests, and builder as the five
+  sources that must be closed before actual binding-v3 validation and target freeze.
 
 - [ ] **Step 1.5: Run validator tests GREEN and close the working candidate.**
 
   Expected: all tests, including the exact historical incidents, general no-bypass matrix, seven
   v2-finding regressions, and complete physical CLI fixture, PASS. Run that fixture through the
   real entry point and require independently enumerated `declared_files == actual_files`, every
-  one of the 31 registered families visited, all join consumers invoked, and zero errors. Hash the
-  validator, tests, and live-manifest builder fixed files, restore them read-only, and have
-  `schema-binding-writer` relinquish those three code paths. Transfer live-root ownership to
-  `root-manifest-writer`, use the corrected builder to regenerate `manifest.json`/sidecar with
-  `as_of_phase=task1-history-recovered`, and exact-inventory validate the honest v1/v2 review,
-  progress-ledger snapshot, recovery-history, forensic-target, and corrected-builder
-  classifications plus complete v1 and absent/non-artifact v2 binding states. Then run the live
-  archive validator and require zero errors; the root writer relinquishes live-root paths before
-  Step 1.6.
-  They are still working paths; only the N-specific copies made in Step 1.8 are immutable review
-  targets. No test count or 285-file count substitutes for the family/join coverage assertions.
+  one of the 31 registered families visited, all join consumers invoked, complete synthetic v1/v3,
+  absent sequence 2, and zero errors. This invocation targets only the complete physical synthetic
+  fixture. It does not validate the actual recovery root, regenerate its live manifest, assign an
+  actual `as_of_phase`, or claim that its stale live manifest is current before v3 exists.
+
+  Hash the validator, tests, live-manifest builder, contamination policy, alias vocabulary, and
+  vocabulary sidecar; restore all six files read-only; and have `schema-binding-writer` relinquish
+  the five fixed candidate paths and the vocabulary sidecar. The writer retains only its bounded
+  `inputs/binding/**` ownership for Step 1.6. These remain fixed working paths; only the N-specific
+  copies made in Step 1.8 are immutable review targets. The closed interval from Step 1.1 through
+  the actual post-v3 PASS in Step 1.6 permits no consumer review, group/case/product dispatch,
+  generation freeze, or current-live-manifest claim. No test count or file count substitutes for
+  the family/join coverage assertions.
 
 - [ ] **Step 1.6: Create append-only binding set v3 for the corrected plan.**
 
   Do not overwrite the unversioned v1 plan copy, snapshot, or briefs. Reverify every existing
   tracked/source-to-v1-copy binding byte and reverify all six reserved v2 paths remain absent.
-  Copy the exact accepted correction-round-8 addendum from execution `HEAD` directly to
+  Copy the exact accepted correction-round-9 addendum from execution `HEAD` directly to
   `inputs/binding/schema/recovery-plan-v3.md`, assign `recovery-schema-source-v3`, record exact
   HEAD/digest/size/equality, and make it read-only. Create
   `inputs/binding/binding-snapshot-manifest-v3.json`, logical ID
@@ -2006,7 +2053,21 @@ dispatch, external actions, and cleanup of predecessor evidence.
   bundle. The reviewer-rubric copy remains the exact read-only
   `inputs/binding/reviewer/tests/scenarios.md` byte target and must join snapshot v3.
 
-- [ ] **Step 1.7: Define the exact executor contamination denyset.**
+  Before relinquishing `inputs/binding/**`, independently validate every v3 plan source/copy,
+  snapshot entry, v1 carry-forward source/copy, brief/schema/snapshot join, group partition, and
+  read-only byte, and re-require all six reserved v2 paths absent. Close/hash the plan copy,
+  snapshot, and four briefs; then relinquish all binding ownership. Only now transfer live-root
+  ownership to `root-manifest-writer`. The root writer uses the corrected builder to regenerate the
+  actual `manifest.json`/sidecar with `as_of_phase=task1-history-recovered`, enumerating the honest
+  v1/v2 review incidents, immutable progress snapshot, recovery history, forensic targets,
+  corrected fixed candidates, complete materialized v1/v3 binding sets, and absent/non-artifact
+  sequence 2. It exact-inventory-validates the actual root and runs the ordinary full archive CLI,
+  which must invoke all recovery, attempt, review, binding, inventory, and generation validators
+  and return zero errors. There is no relaxed phase path. Close the live manifest and relinquish
+  root ownership. This exact post-v3 actual-root PASS, not the Step 1.5 synthetic PASS, gates Step
+  1.8; any intervening mutation makes the gate stale.
+
+- [ ] **Step 1.7: Verify the exact executor contamination denyset and public alias vocabulary.**
 
   `checks/bundle-contamination.json` must search executor bundle paths and bytes for:
 
@@ -2036,14 +2097,18 @@ dispatch, external actions, and cleanup of predecessor evidence.
   }
   ```
 
-  Serialize exactly as the policy schema requires. Also materialize
-  `checks/public-alias-vocabulary.txt` from the exact role-table set, its sidecar, and validator
-  tests proving set equality and rejection of wildcard/native-ID entries. These static bytes are
-  frozen before any group or public role dispatch.
+  Step 1.4 serialized this object exactly as the policy schema requires and materialized
+  `checks/public-alias-vocabulary.txt` from the exact role-table set plus its sidecar. In this
+  read-only step, recompute their bytes/digests, prove vocabulary-set equality and rejection of
+  wildcard/native-ID entries, and confirm the validator's contamination tests exercised them.
+  Do not rewrite any candidate, binding, history, or live-root byte after the Step 1.6 full PASS.
+  These static bytes are closed before review-target freeze and before any group or public role
+  dispatch.
 
 - [ ] **Step 1.8: Freeze review-specific v3 targets.**
 
-  After Steps 1.2–1.7 pass, require all seven candidate sources closed/read-only and no longer owned
+  After Steps 1.2–1.7 pass, require the Step 1.6 full actual-root post-v3 validation returned zero errors,
+  no byte has changed since it closed, and all seven candidate sources are closed/read-only and no longer owned
   by `schema-binding-writer`; then transfer only target-copy ownership to
   `root-manifest-writer`. Copy each exact source to the seven
   `review-targets/task1-schema-review-v3/` paths, assign the seven v3 logical IDs/kinds from the table,
@@ -2054,7 +2119,7 @@ dispatch, external actions, and cleanup of predecessor evidence.
 
 - [ ] **Step 1.8a: Dispatch one fresh independent schema review v3.**
 
-  Give a fresh `schema-reviewer`, requested `gpt-5.6-sol/high`, the exact correction-round-8 plan,
+  Give a fresh `schema-reviewer`, requested `gpt-5.6-sol/high`, the exact correction-round-9 plan,
   active binding set and briefs, all Task 1 reports/RED logs, both quarantined reviews plus the
   recovery record (including absent sequence-2 history) and exact
   `progress-ledger-snapshot-v1` requirements ref, the seven immutable v3
@@ -2483,7 +2548,9 @@ tracked/public writes, and cleanup.
 
 - [ ] **Step 6.5: Freeze and mechanically validate immutable root-inventory snapshot v1.**
 
-  After Steps 6.2–6.4, prohibit all evidence producers. Enumerate the complete closed regular-file
+  After Steps 6.2–6.4, revalidate the Task 1 lifecycle evidence: complete closed v3, the post-v3
+  actual-root zero-error result at `task1-history-recovered`, no closed-interval dispatch, and the
+  fresh N>=3 schema-review PASS that opened later work. Prohibit all evidence producers. Enumerate the complete closed regular-file
   set with the exact nine exclusions and write
   `checks/root-inventory-snapshot-v1.json` plus its exact sidecar. Require its artifact/case/group
   arrays to equal observed bytes and joins; mark both read-only. Do not mutate them to add the
@@ -2497,7 +2564,7 @@ tracked/public writes, and cleanup.
   every actual current/superseded/non-credit case-attempt artifact, Product Git/Change Review, metric
   log, both exact schema-review incidents, the recovery-history record, every forensic/compliant
   review target and N>=3 schema review, every immutable progress-ledger snapshot existing at scope
-  close, every retained plan review including superseded v7/v8, and four group manifest/report/review
+  close, every retained plan review including superseded v7/v8/v9, and four group manifest/report/review
   sets. The mutable `progress.md` is not a generation
   member. Include every actual v1 and active v3 binding artifact, with all downstream refs on v3;
   include no binding-v2 artifact because sequence 2 exists only as nested non-artifact history in
@@ -2712,6 +2779,13 @@ actions, cleanup, and integration.
   non-artifact history, absence of all six reserved v2 paths/IDs/refs, complete materialized v1/v3
   binding sets, and v3-only current downstream refs; a forensic path under
   `task1-schema-review-v2-forensic` is classified only by its review-target contract. Independently
+  verify the Task 1 lifecycle boundary: Step 1.5's zero-error result came only from a complete
+  synthetic v1/v3 fixture; the actual live root made no current-manifest claim before v3; the
+  binding writer then closed a complete joined v3 and relinquished ownership; and only the ensuing
+  `task1-history-recovered` actual-root regeneration plus full always-invoked zero-error validation
+  opened Step 1.8. Reject an earlier phase claim, consumer/dispatch event in the closed interval,
+  missing validator invocation, or intervening mutation before target freeze.
+  Independently
   open every N>=3 review-specific target and require every candidate,
   requirement, check, finding, assignment, and receipt ref in every PASS/CHANGES_REQUIRED/BLOCKED
   review to join exact retained bytes. Run the complete physical CLI fixture with the active
@@ -2749,8 +2823,9 @@ actions, cleanup, and integration.
     `fde1b8cfe14f526bdd6561ed4309df1975dddc77`, and accepted correction round 5 versus
     `134b90585991ecfa253c3de028142acaea6c301c`, and accepted correction round 6 versus
     `169237b48c36870e9bc7a1defcb3d996958a72d2`, and accepted correction round 7 versus
-    `d3c0369ce38142832a7347c1ead1140945b2fedd`, and accepted correction round 8 versus
-    `231638b69051ef52b46902c3d309a52d7852b803`: exactly the one addendum path each;
+    `d3c0369ce38142832a7347c1ead1140945b2fedd`, accepted correction round 8 versus
+    `231638b69051ef52b46902c3d309a52d7852b803`, and accepted correction round 9 versus
+    `e5b2ef7af65c5c6381a70e7f0327d2fe8c338b3d`: exactly the one addendum path each;
   - recovery candidate commit versus accepted addendum commit: only actually changed paths from
     the eleven-path candidate allowlist;
   - full Module 6 candidate versus `f47263ce545c5185b3ec836c95fe341d1b3e5715`: predecessor
@@ -2838,8 +2913,8 @@ Task 10, FINAL, push, PR, integration, merge, publication, install, deployment, 
   attempts, group reviews, exact-head redaction check, disposable Git repository, both exact
   quarantined schema reviews, recovery-history record, forensic targets, every N>=3 immutable
   review target, the exact immutable `progress-ledger-snapshot-v1` artifact and its joined
-  requirements ref, superseded `plan-review-v7.json` and `plan-review-v8.json` at their exact
-  hashes as untrusted finding
+  requirements ref, superseded `plan-review-v7.json`, `plan-review-v8.json`, and
+  `plan-review-v9.json` at their exact hashes as untrusted finding
   input, all Task 1 implementer reports/RED logs, and the fresh schema-review PASS that
   opened dispatch. Exclude
   author/assembler/Implementation
@@ -2857,6 +2932,9 @@ Task 10, FINAL, push, PR, integration, merge, publication, install, deployment, 
   target bytes regardless of verdict. It also requires binding sequence 2 to remain absent
   non-artifact history, complete v1/v3 binding sets, and v3-only current refs, while treating
   schema-review-v2 forensic targets independently. It requires the complete CLI fixture and fresh schema-review PASS.
+  It separately proves that the fixture-only Step 1.5 result did not validate/promote the pre-v3
+  actual root, and that the post-v3 `task1-history-recovered` full actual-root PASS preceded and
+  gated immutable target freeze with no intervening write or consumer dispatch.
   The reviewer then independently
   reruns the all-eleven-blob raw/structural occurrence scan, including every ASCII case variant of
   the prefix label, and rejects every alternate-case label, uppercase payload, or malformed
@@ -2947,7 +3025,7 @@ accepted/runtime facts remain independently sourced or `Unknown`.
 
 1. The predecessor plan remains byte-identical at its accepted hash and this addendum is the only
    file changed in the newest correction commit with sole parent
-   `231638b69051ef52b46902c3d309a52d7852b803`; earlier plan commits retain their exact one-file
+   `e5b2ef7af65c5c6381a70e7f0327d2fe8c338b3d`; earlier plan commits retain their exact one-file
    deltas and parents.
 2. The durable ignored workspace contains content-addressed raw inputs, executor outputs, evaluator
    inputs/outputs, transcript/operation records, product Git history, checks, reports, and review
@@ -2980,7 +3058,11 @@ accepted/runtime facts remain independently sourced or `Unknown`.
    prescribed non-cyclic order, and the live inventory is current before every review. It includes
    all actual immutable progress snapshots and quarantined/history/forensic/schema-review-target
    bytes, excludes mutable `progress.md` from immutable generations and permanent refs, while only a fresh N>=3
-   schema-review PASS against immutable target copies opens Task 1.9 or group dispatch.
+   schema-review PASS against immutable target copies opens Task 1.9 or group dispatch. Before
+   those targets are frozen, Step 1.5 validates only the complete physical synthetic fixture; the
+   actual live root becomes current only after Step 1.6 closes complete v3, regenerates
+   `task1-history-recovered`, and passes the same full always-invoked validator with no intervening
+   mutation or closed-interval consumer.
 9. One public assembler updates only justified allowlisted paths; README is in permanent redaction
    coverage and asserts the local-synthetic boundary; the exact-head resolver enumerates every
    canonical or malformed SHA-256 candidate in all eleven committed blobs, including every ASCII
@@ -2994,7 +3076,9 @@ accepted/runtime facts remain independently sourced or `Unknown`.
     allowlist, redaction, immutability, diff, and disposable Git ancestry/tree checks pass at the
     exact candidate head. The Task 1 physical CLI fixture contains the active real binding snapshot,
     all 31 registered schema families and every join consumer; no missing-binding or non-PASS
-    conditional bypass exists. PyYAML absence remains an explicit quick-validation limitation.
+    conditional bypass exists. A pre-v3 actual root is never claimed valid and the post-v3 full
+    actual-root PASS mechanically gates target freeze. PyYAML absence remains an explicit quick-
+    validation limitation.
 12. A distinct exact-head Module Change Review independently inspects all requirements/candidate
     bytes and resolves 100% of current raw evidence. Before it, a distinct fresh schema reviewer
     has closed all seven v2 findings and validated every candidate/requirement/check ref regardless
@@ -3014,7 +3098,9 @@ Task 9 report/review findings, prior plan review v6, Task 1 reports v1-v3, both 
 superseded plan review v7 at exact SHA-256
 `7d234a640d4d51064a7d0c17485c5166189ab619cd7dc053eff9b6b9b1e65f6b`, superseded plan review
 v8 at exact SHA-256
-`07f37acba8160b362920989ebbfc3af4db2ff4caae7d3a48f6899602e431990b`, and current public
+`07f37acba8160b362920989ebbfc3af4db2ff4caae7d3a48f6899602e431990b`, superseded plan review v9
+at exact SHA-256
+`9034740d0111a9edf5b2b47a8e9cd6ca61b1f3082d49f3087381f4f402011c76`, and current public
 evidence/tests without this author's conversation. The reviewer may read current `progress.md`
 only to confirm the Task 1.1 freeze precondition; it must not cite that mutable path/digest as
 permanent evidence or require the not-yet-authorized snapshot to exist during this PLAN review.
@@ -3030,6 +3116,7 @@ It reviews:
 - group path ownership, parallelism boundary, and sole public writer;
 - exact v1/v2 quarantine refs/finding labels, recovery-search limits, v2 forensic copies,
   exact absent/non-artifact binding sequence 2, direct v1-to-v3 active binding construction,
+  fixture-only pre-v3 testing, post-v3 full actual-root validation, closed-interval dispatch ban,
   immutable N>=3 review targets, general no-bypass review joins,
   and fresh schema PASS gate;
 - current/superseded truthfulness, FAIL/BLOCKED handling, model-fact separation, and digest
@@ -3039,7 +3126,7 @@ It reviews:
 - verification, correction invalidation, Task 9 stopping point, and forbidden Task 10/FINAL actions.
 
 `PLAN_PASS` requires no unresolved Critical or Important finding and binds exact corrected-addendum
-bytes, containing commit, parent `231638b69051ef52b46902c3d309a52d7852b803`, all earlier
+bytes, containing commit, parent `e5b2ef7af65c5c6381a70e7f0327d2fe8c338b3d`, all earlier
 addendum commits/parents, and predecessor plan hash. Any later addendum correction creates a new plan-only
 commit and requires a fresh complete PLAN review. Acceptance authorizes execution only through the
 Task 9 bounded recommendation described here.
