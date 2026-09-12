@@ -64,6 +64,9 @@ package, network access, GitHub service action, or external tool is required.
   parent and changes only this addendum, producing
   `e5b2ef7af65c5c6381a70e7f0327d2fe8c338b3d`, tree
   `52e4a18c230ee1dab1f6f9817ae2f3047fef4153`. Correction round 9 uses that commit as its sole
+  parent and changes only this addendum, producing
+  `cdf2739a6c59e39fb22712e246dff8e205ff5c9d`, tree
+  `2ebdb1ca9ad6da9c949d485bf6991069441eff80`. Correction round 10 uses that commit as its sole
   parent and changes only this addendum. The newest containing commit/hash are
   supplied by the plan-author report and exact PLAN-review package, never self-recorded here.
 - The addendum identity remains `MODULE6-RECOVERY-PLAN-v1`; each correction supersedes the prior
@@ -124,18 +127,21 @@ than trusting author or executor summaries.
    `plan-review-v8.json` at SHA-256
    `07f37acba8160b362920989ebbfc3af4db2ff4caae7d3a48f6899602e431990b` and
    `plan-review-v9.json` at SHA-256
-   `9034740d0111a9edf5b2b47a8e9cd6ca61b1f3082d49f3087381f4f402011c76`; Task 1 reports v1-v3 at
+   `9034740d0111a9edf5b2b47a8e9cd6ca61b1f3082d49f3087381f4f402011c76` and
+   superseded `plan-review-v10.json` at SHA-256
+   `d15b48821d9899cd576ccaf93c84c18b5e2bd8432e366403ed083014f415b68a`; Task 1 reports v1-v3 at
    SHA-256 `e72ad2c3d1dd61e103fc466b6d572bb3cf7c75ae40f817932bf46b987cd1cc1f`,
    `4e87495eca8153949b77648eb37c65a17c4a0ef4379b7442946fb8488c45c14c`, and
    `ce4310bccfab4db4d97182af1bb479c6dfdc6b4855ce84f72bd00e196c5a3ed0`; and schema reviews v1/v2
    at the exact hashes in the recovery-history table. These are historical incident inputs, not
    authority to infer missing candidate bytes, adopt a mutable dependency named inside a review,
    or bypass current joins.
-8. Mutable `progress.md` is live coordination context only. Before its next append or mutation,
-   Task 1.1 must copy its current 18,640 bytes at exact SHA-256
-   `5e50255f613334839560b676c2bf2dbe7a9fe05a2f01bbd135842385d2e22f2b` to the immutable history
-   snapshot defined below. Every permanent historical consumer binds that snapshot, never the
-   later mutable path.
+8. Mutable `progress.md` is live coordination context only. Task 1.1 has already preserved its
+   exact 18,640-byte prefix at SHA-256
+   `5e50255f613334839560b676c2bf2dbe7a9fe05a2f01bbd135842385d2e22f2b` as the immutable history
+   snapshot defined below; the current longer ledger retains that byte-exact prefix. Every
+   permanent historical consumer binds that snapshot, never the later mutable path. Do not recreate
+   or overwrite the closed snapshot.
 
 Fresh Git identities, retained raw bytes, and current independent reviews take precedence over
 earlier summaries. Any tracked correction after review creates a successor commit and requires a
@@ -145,6 +151,7 @@ fresh complete review of the new exact head.
 
 - Execute on an isolated `codex/` branch/worktree rooted at the accepted corrected-addendum commit.
   Before any recovery write, verify that the newest corrected plan commit has sole parent
+  `cdf2739a6c59e39fb22712e246dff8e205ff5c9d`, that correction round 9 has sole parent
   `e5b2ef7af65c5c6381a70e7f0327d2fe8c338b3d`, that correction round 8 has sole parent
   `231638b69051ef52b46902c3d309a52d7852b803`, that correction round 7 has sole parent
   `d3c0369ce38142832a7347c1ead1140945b2fedd`, that correction round 6 has sole parent
@@ -176,11 +183,14 @@ fresh complete review of the new exact head.
   schema below. It does not apply to another byte, ref, verdict, path, or future review. Missing
   candidate bytes are never reconstructed, and quarantined history never authorizes dispatch or a
   public evidence claim.
-- Treat `progress.md` as a mutable append-only live ledger, not permanent exact evidence. Freeze
-  its mandatory current bytes at the exact immutable v1 path before any next append; exclude the
-  mutable path from every immutable inventory snapshot/generation, and bind only immutable ledger
-  snapshots from recovery history or a review. Any append makes the live root manifest stale until
-  the root writer regenerates it; no consumer review may run while it is stale.
+- Treat `progress.md` as a mutable append-only live ledger, not permanent exact evidence. Preserve
+  the already frozen exact immutable v1 snapshot and verify that it equals the first 18,640 bytes
+  of the current ledger; exclude the mutable path from every immutable inventory snapshot/
+  generation, and bind only immutable ledger snapshots from recovery history or a review. Any
+  append makes the live root manifest stale until the root writer regenerates it; no review that
+  consumes or claims a current root manifest may run while it is stale. The explicitly group-local
+  reviews after Task 1.9 consume only their closed disjoint group packages and make no root-current
+  claim.
 - Executor and evaluator are distinct roles. A case executor receives no rubric verdict, expected
   outcome, observable PASS/FAIL text, evaluator notes, prior verdict, or author conversation.
   Evaluators receive the exact isolated case-rubric artifact, input bundle manifest, raw output,
@@ -240,6 +250,9 @@ fresh complete review of the new exact head.
 - Correction round 9 modifies only that same addendum over sole parent
   `e5b2ef7af65c5c6381a70e7f0327d2fe8c338b3d`; its subject is
   `docs: sequence Module 6 binding validation`.
+- Correction round 10 modifies only that same addendum over sole parent
+  `cdf2739a6c59e39fb22712e246dff8e205ff5c9d`; its subject is
+  `docs: define pre-dispatch manifest cardinality`.
 - Exact changed-path allowlist for every plan-history commit is the one path above. No
   recovery-candidate path belongs in a plan-history commit, and no plan path belongs in a candidate
   commit.
@@ -349,8 +362,8 @@ case-derived `EID-r<positive integer>`. `<role-alias>` is an exact ownership-tab
 `<session-alias>` is the retained globally unique private session alias; angle brackets are notation
 only and never literal path bytes.
 
-`history/progress-ledger-snapshot-v1.md` is the mandatory byte-exact pre-append copy of the current
-`progress.md`: exactly 18,640 bytes, SHA-256
+`history/progress-ledger-snapshot-v1.md` is the completed mandatory byte-exact pre-append copy of
+the then-current `progress.md`: exactly 18,640 bytes, SHA-256
 `5e50255f613334839560b676c2bf2dbe7a9fe05a2f01bbd135842385d2e22f2b`, regular file mode `0444`.
 Its root artifact has logical ID `progress-ledger-snapshot-v1`, kind `raw_input`, producer
 `root-manifest-writer`, credit state `non-credit`, sensitivity `private`, content type
@@ -377,7 +390,7 @@ none of `inputs/binding/schema/recovery-plan-v2.md`,
 no `LogicalRef`, artifact logical ID, root-inventory entry, generation membership, dispatch credit,
 or bytes to reconstruct. Those six reserved paths must remain absent forever.
 
-After correction-round-9 `PLAN_PASS`, Step 1.6 creates binding set v3 directly from the verified
+After correction-round-10 `PLAN_PASS`, Step 1.6 creates binding set v3 directly from the verified
 existing v1 copies plus the accepted current plan bytes at
 `inputs/binding/schema/recovery-plan-v3.md`,
 `inputs/binding/binding-snapshot-manifest-v3.json`, and
@@ -434,8 +447,10 @@ that product-scope change instead of silently expanding this recovery allowlist.
 ## Artifact contracts
 
 The exact ordered case set is `E02, E08, E10, E11, E12, E13, E14, E17, E20, E21, E22, E25,
-E27, E28, E31, E33, E34, E37, E38, E39, E41`. Every schema and derived count uses this order; no
-case may be added, omitted, or reordered.
+E27, E28, E31, E33, E34, E37, E38, E39, E41`. Every schema or derived count that is in a
+post-generation case-bearing state uses this order; no case may be added, omitted, or reordered.
+The four pre-dispatch Task 1 root phases deliberately contain no case or group records at all, as
+defined below; their exact empty arrays are not a shortened case set or a semantic denominator.
 
 ### Root content-addressed manifest
 
@@ -455,18 +470,44 @@ case may be added, omitted, or reordered.
 | `retention` | object with exactly `authoritative_root='recovery-worktree-relative'`, `retain_through='Task 10 decision'`, `cleanup_authorized=false`, `publication_scope=false` |
 | `limitations` | array of nonempty strings |
 
+Root case/group cardinality is determined only by `as_of_phase`:
+
+| Root phase | Exact `cases` value | Exact `groups` value | Physical case/group evidence rule |
+|---|---|---|---|
+| `initial-schema`, `task1-history-recovered`, `pre-schema-review`, `post-schema-review` | `[]` | `[]` | no case-attempt or evaluator artifact and no group manifest/report/review artifact or reference exists |
+| `post-generation-selection`, `post-public-assembly`, `post-exact-head-verification`, `pre-module-review`, `post-module-review` | the exact ordered 21 root case records | the exact four root group records in `discovery-readiness`, `delivery-release`, `resume-scaling`, `coordination` order | every existing strict case/attempt/evaluation/group schema and join below applies |
+
+In a pre-dispatch phase, the inventory must contain zero artifact records with non-null `case_id` or
+`attempt_id`; zero regular files under the canonical per-case `inputs/`, `executions/`,
+`evaluations/`, or `transcripts/` group/EID/attempt roots; and zero
+`reports/<group>-manifest-v<N>.json`, `reports/<group>-report-v<N>.md`, or
+`reports/<group>-review-v<N>.json` files or refs. Placeholder case/group records, empty-attempt case
+records, fabricated evaluator outputs, and premature product/group execution bytes are errors, not
+a way to satisfy cardinality. Shared binding/history/forensic/schema-review-target/schema-review
+and other then-present non-case artifacts remain exhaustively inventoried and validated.
+
+After the fresh schema-review PASS opens Task 1.9, case/group/product execution makes the last
+`post-schema-review` live manifest stale. No partial execution state may be promoted to any
+authoritative root phase, and the root writer does not regenerate the live manifest while fewer
+than all 21 complete current cases and four closed group records exist. Group-local validation and
+reviews use their exact group bytes without treating the stale root manifest as authority. Task 6
+closes all producers, builds the immutable snapshot/generation with the full 21/4 state, audits it,
+selects it, and only then refreshes the root at `post-generation-selection`.
+
 `as_of_phase=task1-history-recovered` has one exact lifecycle meaning: the immutable progress
 snapshot, recovery-history record, v2 forensic copies, corrected five fixed working candidates,
 complete binding sets v1 and v3, and the absent/non-artifact sequence-2 state all exist; the
 schema-binding writer has closed and relinquished them; the root writer has regenerated the actual
 live manifest from those bytes; and the full always-invoked archive validator has returned zero
 errors on that actual root. It is never a pre-v3 phase, a synthetic-fixture phase, or a validation
-bypass. Between the Step 1.1 history/forensic write and this post-v3 PASS, the actual live manifest
+bypass. Its `cases` and `groups` values are both exactly empty under the phase table. Between the
+Step 1.1 history/forensic write and this post-v3 PASS, the actual live manifest
 is explicitly stale and non-authoritative: no consumer review, case/group/product dispatch,
-generation freeze, or current-inventory claim is permitted. The complete physical synthetic CLI
-fixture is the only validator target in Step 1.5; it proves the full contract before the actual v3
-bytes exist but does not promote the live archive. After this phase is recorded, any mutation makes
-the live manifest stale again until its next prescribed regeneration and full validation.
+generation freeze, or current-inventory claim is permitted. The complete later-phase and exact
+pre-dispatch physical synthetic CLI fixtures are the only validator targets in Step 1.5; together
+they prove both branches of the full contract before the actual v3 bytes exist but do not promote
+the live archive. After this phase is recorded, any mutation makes the live manifest stale again
+until its next prescribed regeneration and full validation.
 
 Each artifact record has exactly these keys:
 
@@ -529,8 +570,17 @@ outside snapshot N by construction. No snapshot contains its own digest, generat
 The mutable live ledger is excluded because it may change after the mandatory immutable
 `history/progress-ledger-snapshot-v1.md` closes; every immutable progress snapshot that exists at
 scope close is an ordinary included artifact and may not appear in this exclusion list.
+An immutable execution snapshot is created only in Task 6 after all four groups close, so its
+`cases` and `groups` arrays always use the full 21/4 branch of the root schema. A snapshot with
+either array empty, partial, reordered, or inconsistent with its artifact inventory fails; no
+pre-dispatch root snapshot/generation is created.
 
 ### Root case and group schemas
+
+The record schemas below apply to every member only when the phase-cardinality table requires the
+full arrays. At a pre-dispatch Task 1 phase there are no members to validate, and
+`validate_case_joins` still executes to prove exact emptiness plus physical artifact/ref absence;
+it does not skip these schemas or accept partial records.
 
 Each root `cases[]` record has exactly:
 
@@ -638,6 +688,9 @@ Each root `groups[]` record has exactly `group_id`, `case_ids`, `owned_roots`,
 paths in the group table; the three logical IDs resolve to distinct current/shared artifacts;
 `review_verdict` equals the retained group-review bytes and is one of `PASS` or
 `CHANGES_REQUIRED`.
+At every case-bearing phase, `cases` has exactly 21 records in the global order and `groups` has
+exactly the four records in the phase-table order. Missing, extra, duplicate, reordered, stub, or
+empty-attempt records fail even if the artifact inventory happens to contain matching path names.
 
 ### Normative JSON conventions and reusable records
 
@@ -1353,7 +1406,9 @@ Generation files and sidecars are append-only and never edited, renamed, or dele
 contains exactly `schema_version=1`, `generation=N`, `recovery_plan`, `inventory_snapshot_ref`,
 `inventory_snapshot_sidecar_ref`, `case_ids`, `artifacts`, `current_private_logical_ids`, and
 `supersedes_generation`. `case_ids` is the exact
-21-case set. `inventory_snapshot_ref` is a `LogicalRef` with kind `check`, null case/attempt, and the
+21-case set. Generations exist only after the Task 6 full-state snapshot; the referenced snapshot's
+`cases`/`groups` arrays are therefore exactly 21/4, never the pre-dispatch empty form.
+`inventory_snapshot_ref` is a `LogicalRef` with kind `check`, null case/attempt, and the
 exact logical ID/digest of `checks/root-inventory-snapshot-v<N>.json`;
 `inventory_snapshot_sidecar_ref` has the same rules and joins the exact version-matched `.sha256`
 sidecar. `artifacts` uses the exact
@@ -1708,29 +1763,31 @@ ownership are sequential.
 
 **Files:**
 
-- Preserve every existing Task 1 byte; create only versioned binding-set v3, forensic/review
-  targets, the mandatory immutable progress-ledger snapshot, recovery history, new RED evidence,
-  and successor review records at the paths above.
+- Preserve every existing Task 1 byte. The immutable progress-ledger snapshot, three v2 forensic
+  targets, and recovery-history record are completed Step 1.1 outputs and must not be recreated;
+  continue by creating only versioned binding-set v3, N>=3 review targets, new RED evidence, and
+  successor review records at the paths above.
 - Correct the validator, validator tests, and live-manifest builder fixed working files only after
   their current bytes have been preserved in the v2 forensic target.
 - Do not modify tracked files.
 
 **Interfaces:**
 
-- Consumes: accepted correction-round-9 addendum commit, exact predecessor identities, current
+- Consumes: accepted correction-round-10 addendum commit, exact predecessor identities, completed
+  immutable Step 1.1 outputs, current
   tracked binding files, Task 1 reports v1-v3, schema reviews v1/v2, and current fixed validator/
   live-manifest-builder bytes, the exact pre-append `progress.md` precondition, and verified absence
   of binding sequence 2.
 - Produces: honest quarantined history, immutable forensic and N>=3 review targets, corrected exact
-  schemas, binding set v3, four v3 briefs, a complete physical CLI fixture, and a fresh schema-review
-  PASS gate before any group dispatch.
+  schemas, binding set v3, four v3 briefs, the complete later-phase and pre-dispatch physical CLI
+  fixtures, and a fresh schema-review PASS gate before any group dispatch.
 
 **Allowed effects:** ignored recovery-root writes and read-only Git/filesystem inspection.
 
 **Forbidden effects:** case execution, product-repository creation, tracked writes, evaluator
 dispatch, external actions, and cleanup of predecessor evidence.
 
-- [ ] **Step 1.1: Verify execution identity and predecessor immutability.**
+- [x] **Step 1.1: Verify execution identity and preserve the completed immutable freeze.**
 
   Run:
 
@@ -1748,10 +1805,12 @@ dispatch, external actions, and cleanup of predecessor evidence.
   git rev-parse d3c0369ce38142832a7347c1ead1140945b2fedd^
   git rev-parse 231638b69051ef52b46902c3d309a52d7852b803^
   git rev-parse e5b2ef7af65c5c6381a70e7f0327d2fe8c338b3d^
-  git diff --name-only e5b2ef7af65c5c6381a70e7f0327d2fe8c338b3d...HEAD
+  git rev-parse cdf2739a6c59e39fb22712e246dff8e205ff5c9d^
+  git diff --name-only cdf2739a6c59e39fb22712e246dff8e205ff5c9d...HEAD
   ```
 
   Expected: `HEAD` is the accepted addendum commit; its sole parent is
+  `cdf2739a6c59e39fb22712e246dff8e205ff5c9d`; correction round 9's sole parent is
   `e5b2ef7af65c5c6381a70e7f0327d2fe8c338b3d`; correction round 8's sole parent is
   `231638b69051ef52b46902c3d309a52d7852b803`; correction round 7's sole parent is
   `d3c0369ce38142832a7347c1ead1140945b2fedd`; correction round 6's sole parent is
@@ -1765,24 +1824,25 @@ dispatch, external actions, and cleanup of predecessor evidence.
   `6037149b9a70cdeba4b8f1fd4fcce460b9206730665c8aa69f4ee781eb5c4777`; the
   parent-to-head path set is only this addendum. Stop before writes if any check differs.
 
-  This is the first recovery write and precedes every progress append or other mutation. Verify
+  As the read-only resume check for the already completed first recovery write, verify
   `plan-review-v7.json` at SHA-256
   `7d234a640d4d51064a7d0c17485c5166189ab619cd7dc053eff9b6b9b1e65f6b` and
   `plan-review-v8.json` at SHA-256
   `07f37acba8160b362920989ebbfc3af4db2ff4caae7d3a48f6899602e431990b` and
   `plan-review-v9.json` at SHA-256
-  `9034740d0111a9edf5b2b47a8e9cd6ca61b1f3082d49f3087381f4f402011c76`. Before writing any
-  recovery byte, independently require all six reserved binding-v2 paths in the exact recovery-
-  history array to be absent; any present v2 path blocks as fabricated history and must not be
-  deleted or adopted. The task coordinator
-  relinquishes `progress.md`; the root writer requires it to be a regular 18,640-byte file at
-  SHA-256 `5e50255f613334839560b676c2bf2dbe7a9fe05a2f01bbd135842385d2e22f2b`, copies its exact bytes
-  to `history/progress-ledger-snapshot-v1.md`, verifies source/copy byte equality, size, and digest,
-  assigns the exact `progress-ledger-snapshot-v1` artifact record above, and changes only the copy
-  to mode `0444`. It then writes the snapshot binding into the recovery-history record. Any source
-  mismatch blocks without reconstruction or progress mutation. Only after the immutable copy is
-  closed may append-only ownership of `progress.md` return to the coordinator; the mutable file is
-  never again an exact historical target.
+  `9034740d0111a9edf5b2b47a8e9cd6ca61b1f3082d49f3087381f4f402011c76` and superseded
+  `plan-review-v10.json` at SHA-256
+  `d15b48821d9899cd576ccaf93c84c18b5e2bd8432e366403ed083014f415b68a`.
+
+  Do not repeat the already completed freeze. Read-verify the regular read-only
+  `history/progress-ledger-snapshot-v1.md` at exactly 18,640 bytes and SHA-256
+  `5e50255f613334839560b676c2bf2dbe7a9fe05a2f01bbd135842385d2e22f2b`, and require the first
+  18,640 bytes of the now-longer mutable `progress.md` to be byte-equal to it. Read-verify
+  `checks/task1-schema-review-recovery-history-v1.json` at SHA-256
+  `bdf153c7249b62aa63db067e8db160564e864b2fec5cd04a0f44cef30c62446e` and the three read-only
+  forensic targets at the exact hashes below. Independently require all six reserved binding-v2
+  paths and all six planned v3 paths to remain absent. Any mismatch blocks without reconstruction,
+  overwrite, deletion, or progress mutation.
 
   Before any fixed Task 1 candidate is edited, verify exact current hashes
   `e66c20dadbf1d26df13e654a45b1406fd22062913133a5d89ce027429bdb6392` for
@@ -1790,32 +1850,37 @@ dispatch, external actions, and cleanup of predecessor evidence.
   `3b883a5a35e33a3ab325c400096b5eaf7bdbdc4103f652e55aab451cb5038eac` for
   `checks/archive-validator-tests.py`, plus
   `5b5df5454edacbbcca5c998bc78c7caa2c5b63e480cad6dfda8649f48b8ccbb9` for
-  `checks/build-live-manifest.py`. Transfer ownership to `root-manifest-writer`; copy those exact
-  bytes to the three v2 forensic target paths, verify byte equality, assign the two unique validator
-  forensic IDs and the preserved builder ID defined above, make the copies read-only, and write the
-  exact recovery-history record. Also verify the two
+  `checks/build-live-manifest.py`. Require the three completed forensic copies to have those same
+  respective digests and the exact unique IDs/kinds already recorded. Also verify the two
   historical review digests, all five declared ref-pointer values, and all 24 finding-label pointer
   values. Do not invoke the known-defective
   live-manifest builder or claim an honest refreshed inventory yet; no consumer may use the stale
-  live manifest during this closed correction interval. After the root writer relinquishes its
-  forensic/history output roots, the task coordinator transfers the three fixed code paths to
+  live manifest during this closed correction interval. The completed root-writer outputs remain
+  relinquished; the task coordinator transfers only the three fixed code paths to
   `schema-binding-writer` for Step 1.2. A hash mismatch is `PLAN_BLOCKED`; do not overwrite or infer
   replacement bytes.
 
 - [ ] **Step 1.2: Extend archive-validator tests with recovery and exhaustive fixture cases first.**
 
-  Extend ignored `checks/archive-validator-tests.py`. Its valid physical CLI fixture must contain
+  Extend ignored `checks/archive-validator-tests.py`. Its complete valid physical CLI fixture uses
+  `as_of_phase=post-generation-selection` and must contain
   `inputs/binding/binding-snapshot-manifest-v3.json` and its exact source/copy bytes; all 21 cases;
   every required per-attempt filename/category; all four groups; a fully enumerated actual tree;
   a valid sidecar; all thirty previously defined recovery JSON/JSONL families plus the new
   recovery-history family (31 total); and a valid instance of every nested record and every
   producer/consumer join defined above. A fixture missing either the binding snapshot or any
   registered family is invalid and must exercise the same validation path, never a reduced mode.
+  Add a second valid physical pre-dispatch fixture at `as_of_phase=task1-history-recovered` with
+  complete v1/v3, absent sequence 2, exact `cases=[]`, exact `groups=[]`, zero case/group artifact
+  paths or refs, and every shared binding/history/forensic/check family that exists at that phase.
+  The ordinary CLI invokes every validator on both fixtures: the complete later fixture proves all
+  31 families and joins, while the pre-dispatch fixture proves exact emptiness/absence and fully
+  validates every present shared artifact. Neither fixture selects a reduced validator mode.
   Write separate negative tests for: unknown/missing/wrong-type keys at every
   schema level; an actual unlisted file; a declared missing file; duplicate path; duplicate logical
   ID; absolute, empty, backslash, `//`, `.`, and `..` paths; symlink file; symlink ancestor; FIFO or
   other special node where the platform permits; escaped root; digest, byte-count, empty-file, and
-  sidecar mismatch; duplicate/missing case; wrong group; zero/two current attempts; skipped or
+  sidecar mismatch; duplicate/missing case in a later phase; wrong group; zero/two current attempts; skipped or
   duplicate attempt sequence; bad supersedes edge; current logical ID joining wrong case, attempt,
   kind, or credit state; every terminal-phase/reason combination; a missing `R` family, an invented
   `O` family, a forbidden later-phase family, a current/superseded incomplete attempt, a non-credit
@@ -1848,6 +1913,17 @@ dispatch, external actions, and cleanup of predecessor evidence.
   64-hex payload merges with the independent boundary-pass occurrence but remains malformed.
   Add the paired alias
   allow/reject corpus from Task 7.1.
+  Add phase-cardinality negatives for: any case or group record in a pre-dispatch phase; any
+  non-null case/attempt artifact or canonical case path in a pre-dispatch phase; any premature group
+  manifest/report/review path or ref; a stub/placeholder case with empty attempts; a fabricated
+  evaluator or group review; empty/partial/extra/reordered case or group arrays at
+  `post-generation-selection` or later; and a full 21/4 state mislabeled with a pre-dispatch phase.
+  Also fail any pre-dispatch execution inventory snapshot, generation, audit, or selection pointer,
+  and any later phase missing one element of that complete selected-generation chain.
+  Assert that `validate_case_joins` runs in every one of these tests and reports the exact phase-
+  cardinality/physical-absence failure rather than returning early; separately assert that
+  `validate_generation` and `validate_selected_generation` run and report the matching structural-
+  absence or completeness failure.
   Add failures for a nonexistent/wrong-kind/wrong-digest schema or binding ref; generation/snapshot
   mismatch; stale mutable live manifest after every late-record phase; missing ProductGit stdout or
   stderr, a fabricated stream declaration, wrong command-stream digest, and a legitimate empty
@@ -1891,13 +1967,17 @@ dispatch, external actions, and cleanup of predecessor evidence.
   binding-v2 reserved-path rule.
 
   Add `Task1BindingLifecycleOrderTests` with two separate roots, never a phase switch in one
-  validator invocation. The synthetic root is a complete physical fixture containing valid v1/v3,
-  absent sequence 2, every one of the 31 families, and every join consumer; the ordinary CLI and
-  every validator run against it and must pass. The actual-root sequence must prove: the strict CLI
+  validator invocation. The later-phase synthetic root is a complete physical fixture at
+  `post-generation-selection` containing valid v1/v3, absent sequence 2, the exact 21/4 arrays,
+  every one of the 31 families, and every join consumer; the ordinary CLI and every validator run
+  against it and must pass. The separate valid pre-dispatch fixture has exact empty case/group
+  arrays and no case/group evidence while exercising every validator against all then-present
+  shared families. The actual-root sequence must prove: the strict CLI
   returns a required-artifact/binding error before v3 exists; Step 1.5 neither invokes that actual-
   root validation nor marks its live manifest current; no consumer review or dispatch is admitted
   in the closed pre-v3 interval; a complete source/copy/brief-joined v3 followed by a regenerated
-  `task1-history-recovered` live manifest passes the same always-invoked CLI; and this post-v3 PASS
+  `task1-history-recovered` live manifest with exact empty case/group arrays passes the same
+  always-invoked CLI; and this post-v3 PASS
   is required before target freeze. Fail an incomplete v3, a phase value set to
   `task1-history-recovered` before v3, a review/dispatch attempt in the closed interval, any skipped
   validator, or any fixed/history/binding/live-root mutation between the post-v3 PASS and Step 1.8.
@@ -1925,7 +2005,9 @@ dispatch, external actions, and cleanup of predecessor evidence.
   python3 -B .superpowers/sdd/2026-09-12-module-6-evidence-retention-recovery/checks/archive-validator-tests.py
   ```
 
-  Expected: FAIL because the current validator still bypasses full recovery validation when the
+  Expected: FAIL first on the newly specified phase-cardinality probes because the current
+  validator requires full case/group records during pre-dispatch Task 1 phases. It also still
+  bypasses full recovery validation when the
   binding snapshot is absent, has no exact recovery-history/review-target schema, permits a broad
   non-PASS review-ref bypass, has no absent-sequence-2/direct-v1-to-v3 binding contract,
   misclassifies schema review/builder evidence, and retains the seven v2
@@ -1936,12 +2018,14 @@ dispatch, external actions, and cleanup of predecessor evidence.
 - [ ] **Step 1.4: Repair the ignored validator, resolver, and live-manifest builder to the exact contract.**
 
   `archive-validator.py` defines constants for the exact 21-case set, fixed group partition, exact
-  key sets, enums, terminal-phase/reason family matrix, the live-root two exclusions, the immutable
+  key sets, enums, the exact pre-dispatch/later phase-cardinality table, terminal-phase/reason
+  family matrix, the live-root two exclusions, the immutable
   snapshot nine exclusions, the mandatory progress-snapshot identity, the two exact historical
   incidents/five quarantined refs, and contamination
   denyset. Implement concrete functions named `actual_inventory`, `validate_root_schema`,
   `validate_inventory`, `validate_case_joins`, `validate_executor_snapshots`,
   `extract_rubric_section`, `validate_bundle`, `validate_generation`,
+  `validate_selected_generation`,
   `validate_progress_ledger_snapshot`, `validate_binding_sequence_history`,
   `validate_schema_review_recovery_history`,
   `validate_schema_review_target`,
@@ -1953,18 +2037,28 @@ dispatch, external actions, and cleanup of predecessor evidence.
   and returns the independently
   observed path/size/digest map. `validate_root_schema` enforces every exact key/type/enum in this
   plan. `validate_inventory` requires exact equality of actual and declared path sets plus unique
-  logical IDs/paths and exact byte count/digest/nonempty policy. `validate_case_joins` derives the
-  current attempt, phase-conditional kind coverage, every actual attempt's files, and role/session
-  relationships by joining each logical
-  ID to exactly one artifact; it never reads a declared count or kind summary.
+  logical IDs/paths and exact byte count/digest/nonempty policy. `validate_case_joins` is invoked
+  for every phase. For the four pre-dispatch phases it requires exact empty case/group arrays and
+  independently scans for and rejects every case/attempt/group artifact, path, or ref. For
+  `post-generation-selection` and later it derives the exact ordered 21 cases/four groups, current
+  attempt, phase-conditional kind coverage, every actual attempt's files, and role/session
+  relationships by joining each logical ID to exactly one artifact. It never returns early, reads
+  a declared count or kind summary as proof, or permits a partial/placeholder state.
   `validate_executor_snapshots` enforces the exact transcript byte-prefix and receipt array-prefix
   relationships and rejects any evaluator event in either immutable snapshot.
   `extract_rubric_section` implements the exact byte-offset algorithm above and compares those
   bytes/digest/path to the declared rubric artifact. `validate_bundle`
   enumerates its physical root independently and scans every actual byte plus the separately hashed
   prompt. `validate_generation` recomputes snapshot, generation, and sidecar identities; requires
-  generation artifacts to equal snapshot artifacts; and checks every current/superseded/non-credit
+  every execution snapshot/generation to contain the exact full 21/4 state, requires generation
+  artifacts to equal snapshot artifacts, and checks every current/superseded/non-credit
   attempt's actual membership while deriving semantic counts only from complete current attempts.
+  It and `validate_selected_generation` are still invoked at every pre-dispatch phase: there they
+  require exact structural absence of any execution inventory snapshot, generation, generation
+  audit, or selection pointer because Task 6 has not run. Any premature or partial member is an
+  error. At `post-generation-selection` and later, those functions require the complete audited
+  selected-generation chain and its exact 21/4 state. This is one phase-conditional schema rule,
+  not a skipped validator or relaxed mode.
   `validate_progress_ledger_snapshot` requires the immutable copy's exact v1 identity, bytes, size,
   mode, artifact join, recovery-history binding, N>=3 schema-review requirements join, and selected
   generation/audit membership while forbidding the mutable ledger from immutable inventories or
@@ -2005,6 +2099,12 @@ dispatch, external actions, and cleanup of predecessor evidence.
   never assigns the preserved `checks-build-live-manifest` ID to its corrected fixed-path bytes.
   It rejects every reserved binding-v2 path if one appears, emits no v2 artifact classification,
   and continues to classify only the explicitly separate `task1-schema-review-v2-forensic` paths.
+  The builder accepts only the closed phase table: for a pre-dispatch Task 1 phase it emits exact
+  empty case/group arrays and refuses any premature case/group/product execution byte or ref; for
+  `post-generation-selection` or later it derives and requires the exact 21/4 arrays. It refuses
+  every partial intermediate execution tree and never turns stale partial bytes into a live-root
+  phase. This phase rule changes cardinality only; it never suppresses artifact enumeration or any
+  validator invocation.
   In this same interval, materialize the exact `checks/bundle-contamination.json` policy and the
   lexicographically sorted `checks/public-alias-vocabulary.txt` plus sidecar specified in Step 1.7;
   test exact policy bytes, alias-set equality, sidecar equality, and representative stable/native-ID
@@ -2014,12 +2114,16 @@ dispatch, external actions, and cleanup of predecessor evidence.
 - [ ] **Step 1.5: Run validator tests GREEN and close the working candidate.**
 
   Expected: all tests, including the exact historical incidents, general no-bypass matrix, seven
-  v2-finding regressions, and complete physical CLI fixture, PASS. Run that fixture through the
+  v2-finding regressions, the pre-dispatch cardinality fixture, and complete later-phase physical
+  CLI fixture, PASS. Run the complete fixture at `post-generation-selection` through the
   real entry point and require independently enumerated `declared_files == actual_files`, every
   one of the 31 registered families visited, all join consumers invoked, complete synthetic v1/v3,
-  absent sequence 2, and zero errors. This invocation targets only the complete physical synthetic
-  fixture. It does not validate the actual recovery root, regenerate its live manifest, assign an
-  actual `as_of_phase`, or claim that its stale live manifest is current before v3 exists.
+  absent sequence 2, exact 21/4 cardinality, and zero errors. Separately run the ordinary CLI on the
+  valid pre-dispatch fixture and require exact empty case/group arrays, zero premature paths/refs,
+  all validators invoked, all present shared families checked, and zero errors. These invocations
+  target only physical synthetic fixtures. They do not validate the actual recovery root,
+  regenerate its live manifest, assign an actual `as_of_phase`, or claim that its stale live
+  manifest is current before v3 exists.
 
   Hash the validator, tests, live-manifest builder, contamination policy, alias vocabulary, and
   vocabulary sidecar; restore all six files read-only; and have `schema-binding-writer` relinquish
@@ -2034,7 +2138,7 @@ dispatch, external actions, and cleanup of predecessor evidence.
 
   Do not overwrite the unversioned v1 plan copy, snapshot, or briefs. Reverify every existing
   tracked/source-to-v1-copy binding byte and reverify all six reserved v2 paths remain absent.
-  Copy the exact accepted correction-round-9 addendum from execution `HEAD` directly to
+  Copy the exact accepted correction-round-10 addendum from execution `HEAD` directly to
   `inputs/binding/schema/recovery-plan-v3.md`, assign `recovery-schema-source-v3`, record exact
   HEAD/digest/size/equality, and make it read-only. Create
   `inputs/binding/binding-snapshot-manifest-v3.json`, logical ID
@@ -2061,7 +2165,8 @@ dispatch, external actions, and cleanup of predecessor evidence.
   actual `manifest.json`/sidecar with `as_of_phase=task1-history-recovered`, enumerating the honest
   v1/v2 review incidents, immutable progress snapshot, recovery history, forensic targets,
   corrected fixed candidates, complete materialized v1/v3 binding sets, and absent/non-artifact
-  sequence 2. It exact-inventory-validates the actual root and runs the ordinary full archive CLI,
+  sequence 2, with exact `cases=[]`, exact `groups=[]`, and zero case/group execution artifacts or
+  refs. It exact-inventory-validates the actual root and runs the ordinary full archive CLI,
   which must invoke all recovery, attempt, review, binding, inventory, and generation validators
   and return zero errors. There is no relaxed phase path. Close the live manifest and relinquish
   root ownership. This exact post-v3 actual-root PASS, not the Step 1.5 synthetic PASS, gates Step
@@ -2114,20 +2219,23 @@ dispatch, external actions, and cleanup of predecessor evidence.
   `review-targets/task1-schema-review-v3/` paths, assign the seven v3 logical IDs/kinds from the table,
   compare source/copy bytes and SHA-256, and make every target read-only. Do not reuse the v2
   forensic copies, fixed-path logical IDs, or any v1/v2 declared ID. Regenerate and exact-inventory
-  validate `manifest.json`/sidecar with `as_of_phase=pre-schema-review`; require review/history/
-  target classification and all global actual-artifact logical IDs unique.
+  validate `manifest.json`/sidecar with `as_of_phase=pre-schema-review`; require exact empty
+  case/group arrays, zero premature case/group bytes/refs, review/history/target classification,
+  and all global actual-artifact logical IDs unique.
 
 - [ ] **Step 1.8a: Dispatch one fresh independent schema review v3.**
 
-  Give a fresh `schema-reviewer`, requested `gpt-5.6-sol/high`, the exact correction-round-9 plan,
+  Give a fresh `schema-reviewer`, requested `gpt-5.6-sol/high`, the exact correction-round-10 plan,
   active binding set and briefs, all Task 1 reports/RED logs, both quarantined reviews plus the
   recovery record (including absent sequence-2 history) and exact
   `progress-ledger-snapshot-v1` requirements ref, the seven immutable v3
   targets, current live inventory, and the exact seven v2 findings.
   Exclude Implementation/plan-author conversation and expected verdict. The reviewer must run the
-  complete physical CLI fixture and adversarial checks independently; verify all 31 families, all
-  join consumers, the five exact legacy ref exceptions, 24 exact incident-label exceptions, and
-  general no-bypass rule; then return one
+  later-phase and pre-dispatch physical CLI fixtures and adversarial checks independently; verify
+  all 31 families, all join consumers, both phase-cardinality branches, the five exact legacy ref
+  exceptions, 24 exact incident-label exceptions, and
+  general no-bypass rule; verify the current pre-schema-review root correctly has empty case/group
+  arrays rather than fabricated attempts; then return one
   schema-review record whose seven candidate refs point only to v3 targets.
 
 - [ ] **Step 1.8b: Materialize, validate, and gate the v3 review.**
@@ -2135,7 +2243,8 @@ dispatch, external actions, and cleanup of predecessor evidence.
   `root-manifest-writer` writes the immutable return only to
   `reports/task1-schema-review-v3.json`, validates every candidate/requirements/check ref before
   accepting any verdict, makes the report read-only, and refreshes the live manifest with
-  `as_of_phase=post-schema-review`. PASS is valid only with zero open Critical/Important finding
+  `as_of_phase=post-schema-review`, still with exact empty case/group arrays and zero case/group
+  execution artifacts/refs. PASS is valid only with zero open Critical/Important finding
   and all seven v2 findings demonstrably closed. `CHANGES_REQUIRED` or `BLOCKED` preserves all
   bytes and keeps Task 1.9 plus all group/case/product/public dispatch blocked.
 
@@ -2160,7 +2269,9 @@ dispatch, external actions, and cleanup of predecessor evidence.
   `transcripts/metrics/coordination-observation.jsonl`. Write sequence 1 as
   `observation-start`; append only actual events matching the six metric enums. This role may run
   alongside disjoint group recorders but must relinquish ownership with one terminal
-  `observation-end` before Task 6 scope close. No summary or expected zero is supplied to it.
+  `observation-end` before Task 6 scope close. Once this first dispatch artifact is written, the
+  `post-schema-review` live root becomes stale; do not regenerate it during partial group execution
+  or present it to a consumer as current. No summary or expected zero is supplied to the recorder.
 
 **Commit guidance:** no Git commit; every output is ignored private evidence and is content-bound
 in the root manifest.
@@ -2510,7 +2621,8 @@ tracked/public writes, and cleanup.
 
   Run the archive validator separately on each group manifest. Confirm exact case partition with
   no overlap or omission and exactly one current attempt per case. A group-review finding remains
-  open; aggregation does not waive it.
+  open; aggregation does not waive it. These group-local validations do not consume or refresh the
+  stale root manifest.
 
 - [ ] **Step 6.2: Close the producer evidence set.**
 
@@ -2519,7 +2631,9 @@ tracked/public writes, and cleanup.
   every current/superseded/non-credit attempt; the thirteen-family phase contract determines retention,
   while only complete current attempts enter semantic/current denominators. Validate every
   ProductGit command ref against its exact stdout/stderr bytes. Do not create a generation or cite
-  the mutable live root manifest yet.
+  the mutable live root manifest yet. Its last authoritative phase remains the empty-array
+  `post-schema-review` state and became stale at first dispatch; no partial 1–20-case or 1–3-group
+  root state is created.
 
 - [ ] **Step 6.3: Re-run contamination checks across all current executor bundles.**
 
@@ -2550,7 +2664,10 @@ tracked/public writes, and cleanup.
 
   After Steps 6.2–6.4, revalidate the Task 1 lifecycle evidence: complete closed v3, the post-v3
   actual-root zero-error result at `task1-history-recovered`, no closed-interval dispatch, and the
-  fresh N>=3 schema-review PASS that opened later work. Prohibit all evidence producers. Enumerate the complete closed regular-file
+  fresh N>=3 schema-review PASS that opened later work. Prohibit all evidence producers. Require
+  the snapshot's root-schema state to contain the exact ordered 21 case records and exact four
+  group records, with every current attempt complete and every group report/review join present;
+  empty, partial, placeholder, extra, or reordered arrays fail. Enumerate the complete closed regular-file
   set with the exact nine exclusions and write
   `checks/root-inventory-snapshot-v1.json` plus its exact sidecar. Require its artifact/case/group
   arrays to equal observed bytes and joins; mark both read-only. Do not mutate them to add the
@@ -2564,7 +2681,7 @@ tracked/public writes, and cleanup.
   every actual current/superseded/non-credit case-attempt artifact, Product Git/Change Review, metric
   log, both exact schema-review incidents, the recovery-history record, every forensic/compliant
   review target and N>=3 schema review, every immutable progress-ledger snapshot existing at scope
-  close, every retained plan review including superseded v7/v8/v9, and four group manifest/report/review
+  close, every retained plan review including superseded v7/v8/v9/v10, and four group manifest/report/review
   sets. The mutable `progress.md` is not a generation
   member. Include every actual v1 and active v3 binding artifact, with all downstream refs on v3;
   include no binding-v2 artifact because sequence 2 exists only as nested non-artifact history in
@@ -2586,8 +2703,9 @@ tracked/public writes, and cleanup.
   audit neither hashes itself nor enters v1. On audit PASS, write
   `execution-evidence-current.json` selecting v1 and exact generation/audit digests. Only then
   atomically regenerate and exact-inventory-validate live `manifest.json`/sidecar with
-  `as_of_phase=post-generation-selection`; this live set now includes snapshot, generation, audit,
-  and pointer. On any case, product, group, contamination, or audit correction, preserve every v1
+  `as_of_phase=post-generation-selection`; its cases/groups are the exact 21/4 records already
+  validated in the snapshot/generation, and this live set now includes snapshot, generation,
+  audit, and pointer. On any case, product, group, contamination, or audit correction, preserve every v1
   byte, close a successor set, freeze root-inventory snapshot v2, create execution generation v2
   including all old and successor records, obtain a fresh independent audit, select that execution
   generation v2 only after PASS, then refresh the
@@ -2780,17 +2898,23 @@ actions, cleanup, and integration.
   binding sets, and v3-only current downstream refs; a forensic path under
   `task1-schema-review-v2-forensic` is classified only by its review-target contract. Independently
   verify the Task 1 lifecycle boundary: Step 1.5's zero-error result came only from a complete
-  synthetic v1/v3 fixture; the actual live root made no current-manifest claim before v3; the
+  later-phase synthetic v1/v3 fixture with exact 21/4, while the separate pre-dispatch fixture
+  passed with exact empty case/group arrays and no premature evidence; the actual live root made no current-manifest claim before v3; the
   binding writer then closed a complete joined v3 and relinquished ownership; and only the ensuing
   `task1-history-recovered` actual-root regeneration plus full always-invoked zero-error validation
-  opened Step 1.8. Reject an earlier phase claim, consumer/dispatch event in the closed interval,
-  missing validator invocation, or intervening mutation before target freeze.
+  opened Step 1.8 with exact empty case/group arrays. Reject an earlier phase claim,
+  consumer/dispatch event in the closed interval, premature case/group byte, missing validator
+  invocation, or intervening mutation before target freeze. Require the selected snapshot,
+  generation, and every later live-root phase to contain exact 21/4 arrays; reject an empty or
+  partial later state and prove no intermediate partial root manifest was promoted.
   Independently
   open every N>=3 review-specific target and require every candidate,
   requirement, check, finding, assignment, and receipt ref in every PASS/CHANGES_REQUIRED/BLOCKED
-  review to join exact retained bytes. Run the complete physical CLI fixture with the active
-  binding snapshot present, all 31 schema families, and every join consumer; a reduced or
-  conditional validation path fails. Then run the non-tautological resolver over all eleven exact
+  review to join exact retained bytes. Run the complete later-phase physical synthetic CLI fixture
+  with a fully joined synthetic v3 binding snapshot, all 31 schema families, exact 21/4 arrays, and
+  every join consumer; also run the separate pre-dispatch physical fixture with empty arrays and no
+  case/group evidence. A reduced or conditional validation path fails. Then run the
+  non-tautological resolver over all eleven exact
   committed public blobs: apply the independent boundary-hex pass, ASCII case-insensitive prefix-
   label pass with exact spelling/payload/full-claim spans, and structural SHA-designated JSON-key
   pass; enumerate canonical and malformed SHA candidates; classify canonical values under the only
@@ -2824,8 +2948,9 @@ actions, cleanup, and integration.
     `134b90585991ecfa253c3de028142acaea6c301c`, and accepted correction round 6 versus
     `169237b48c36870e9bc7a1defcb3d996958a72d2`, and accepted correction round 7 versus
     `d3c0369ce38142832a7347c1ead1140945b2fedd`, accepted correction round 8 versus
-    `231638b69051ef52b46902c3d309a52d7852b803`, and accepted correction round 9 versus
-    `e5b2ef7af65c5c6381a70e7f0327d2fe8c338b3d`: exactly the one addendum path each;
+    `231638b69051ef52b46902c3d309a52d7852b803`, accepted correction round 9 versus
+    `e5b2ef7af65c5c6381a70e7f0327d2fe8c338b3d`, and accepted correction round 10 versus
+    `cdf2739a6c59e39fb22712e246dff8e205ff5c9d`: exactly the one addendum path each;
   - recovery candidate commit versus accepted addendum commit: only actually changed paths from
     the eleven-path candidate allowlist;
   - full Module 6 candidate versus `f47263ce545c5185b3ec836c95fe341d1b3e5715`: predecessor
@@ -2913,8 +3038,8 @@ Task 10, FINAL, push, PR, integration, merge, publication, install, deployment, 
   attempts, group reviews, exact-head redaction check, disposable Git repository, both exact
   quarantined schema reviews, recovery-history record, forensic targets, every N>=3 immutable
   review target, the exact immutable `progress-ledger-snapshot-v1` artifact and its joined
-  requirements ref, superseded `plan-review-v7.json`, `plan-review-v8.json`, and
-  `plan-review-v9.json` at their exact hashes as untrusted finding
+  requirements ref, superseded `plan-review-v7.json`, `plan-review-v8.json`,
+  `plan-review-v9.json`, and `plan-review-v10.json` at their exact hashes as untrusted finding
   input, all Task 1 implementer reports/RED logs, and the fresh schema-review PASS that
   opened dispatch. Exclude
   author/assembler/Implementation
@@ -2931,10 +3056,15 @@ Task 10, FINAL, push, PR, integration, merge, publication, install, deployment, 
   exact v1 snapshot rather than mutable `progress.md`, and every N>=3 review ref joins immutable
   target bytes regardless of verdict. It also requires binding sequence 2 to remain absent
   non-artifact history, complete v1/v3 binding sets, and v3-only current refs, while treating
-  schema-review-v2 forensic targets independently. It requires the complete CLI fixture and fresh schema-review PASS.
+  schema-review-v2 forensic targets independently. It requires both exact physical CLI fixtures
+  and the fresh schema-review PASS.
   It separately proves that the fixture-only Step 1.5 result did not validate/promote the pre-v3
-  actual root, and that the post-v3 `task1-history-recovered` full actual-root PASS preceded and
-  gated immutable target freeze with no intervening write or consumer dispatch.
+  actual root, and that the post-v3 `task1-history-recovered` full-validator empty-array actual-root
+  PASS preceded and gated immutable target freeze with no intervening write or consumer dispatch.
+  It requires exact
+  empty case/group arrays and physical case/group evidence absence at every Task 1 root phase, then
+  exact 21/4 in the selected snapshot/generation and every later live-root phase, with no promoted
+  partial state between them.
   The reviewer then independently
   reruns the all-eleven-blob raw/structural occurrence scan, including every ASCII case variant of
   the prefix label, and rejects every alternate-case label, uppercase payload, or malformed
@@ -2983,13 +3113,13 @@ use new commits; never amend, squash, reset, or reuse the invalidated review ver
 
 | Gate | Independent reviewer must verify | Blocks |
 |---|---|---|
-| Shared schema review | fresh N>=3 immutable targets, exact refs for every verdict, legacy quarantine, full physical fixture, path containment, schemas, case set, contamination denyset, group ownership | Task 1.9 and all case dispatch |
+| Shared schema review | fresh N>=3 immutable targets, exact refs for every verdict, legacy quarantine, both ordinary physical fixtures, exact empty pre-dispatch root and full later 21/4 root, unconditional validators, path containment, schemas, contamination denyset, group ownership | Task 1.9 and all case dispatch |
 | Per-case evaluation | exact rubric, raw input/output/operations, actual verdict and dependent state | current case credit |
 | Per-group review | complete group artifacts, evaluator independence, digest resolution, side effects | archive aggregation |
 | Product Change Reviews | exact requirements/base/head/full diff/tests without author conversation | local merge and E12/E14 credit |
-| Archive audit | 100% current raw evidence resolution, current/superseded identity, Git authenticity | public assembly |
+| Archive audit | 100% current raw evidence resolution, exact full 21/4 snapshot/generation, no promoted partial root, current/superseded identity, Git authenticity | public assembly |
 | Public assembly self-review | producer/consumer consistency, truthful totals, bindings, redaction, allowlist | candidate commit |
-| Module Change Review | exact full candidate plus retained raw evidence and product history | integration recommendation |
+| Module Change Review | exact full candidate plus retained raw evidence and product history, exact pre-dispatch-empty to selected-generation-21/4 lifecycle | integration recommendation |
 
 Reviewers are read-only. A reviewer never fixes its own finding, edits a verdict into compliance,
 or accepts a summary in place of raw bytes. Review packages always identify requested assignment;
@@ -3010,6 +3140,13 @@ accepted/runtime facts remain independently sourced or `Unknown`.
 - On shared schema or binding-input drift, pause all undispatched groups; preserve completed group
   evidence; review a new shared schema/snapshot identity; rerun only cases whose inputs/contracts
   changed.
+- On interruption after Task 1.9 but before all 21 cases and four group records close, preserve all
+  actual case/group bytes under their honest attempt and review states and leave the live root
+  manifest stale at its last empty-array `post-schema-review` phase. Do not refresh it with a
+  partial array, create placeholder records, fabricate missing evaluator/group bytes, or select a
+  generation. Resume the remaining authorized groups only after verifying frozen shared inputs;
+  if completion is impossible, retain the partial bytes and report `BLOCKED` without promoting an
+  authoritative root state.
 - On product-repository drift, pause delivery/release only, preserve other groups, and restore a
   clean forward sequence through a new commit/review identity. Never reset away retained history.
 - On precommit public redaction failure, do not stage; correct sanitisation and rerun checks. On an
@@ -3025,7 +3162,7 @@ accepted/runtime facts remain independently sourced or `Unknown`.
 
 1. The predecessor plan remains byte-identical at its accepted hash and this addendum is the only
    file changed in the newest correction commit with sole parent
-   `e5b2ef7af65c5c6381a70e7f0327d2fe8c338b3d`; earlier plan commits retain their exact one-file
+   `cdf2739a6c59e39fb22712e246dff8e205ff5c9d`; earlier plan commits retain their exact one-file
    deltas and parents.
 2. The durable ignored workspace contains content-addressed raw inputs, executor outputs, evaluator
    inputs/outputs, transcript/operation records, product Git history, checks, reports, and review
@@ -3055,14 +3192,20 @@ accepted/runtime facts remain independently sourced or `Unknown`.
    inputs, executor outputs, evaluator inputs/outputs, transcripts, and product review artifacts
    with zero missing or mismatched bytes; all earlier snapshots/generations remain retained and
    immutable. Snapshot, generation, audit, pointer, and refreshed live root inventory follow the
-   prescribed non-cyclic order, and the live inventory is current before every review. It includes
+   prescribed non-cyclic order, and the live inventory is current before every review that consumes
+   the root manifest. Per-group reviews during execution consume only their closed group-local
+   packages while the root remains intentionally stale; they cannot make a root-current claim. The
+   selected snapshot/generation and every later live-root phase contain exact 21/4 arrays, while
+   every Task 1 pre-dispatch phase contains exact empty arrays and zero physical case/group
+   evidence; no partial root state is authoritative. The selected generation includes
    all actual immutable progress snapshots and quarantined/history/forensic/schema-review-target
    bytes, excludes mutable `progress.md` from immutable generations and permanent refs, while only a fresh N>=3
    schema-review PASS against immutable target copies opens Task 1.9 or group dispatch. Before
-   those targets are frozen, Step 1.5 validates only the complete physical synthetic fixture; the
+   those targets are frozen, Step 1.5 validates only the two physical synthetic fixtures; the
    actual live root becomes current only after Step 1.6 closes complete v3, regenerates
-   `task1-history-recovered`, and passes the same full always-invoked validator with no intervening
-   mutation or closed-interval consumer.
+   `task1-history-recovered` with exact empty arrays and no premature execution generation, and
+   passes the same full always-invoked validator with no intervening mutation or closed-interval
+   consumer.
 9. One public assembler updates only justified allowlisted paths; README is in permanent redaction
    coverage and asserts the local-synthetic boundary; the exact-head resolver enumerates every
    canonical or malformed SHA-256 candidate in all eleven committed blobs, including every ASCII
@@ -3074,10 +3217,13 @@ accepted/runtime facts remain independently sourced or `Unknown`.
     content in public output; the ignored archive is excluded from publication.
 11. Full unit tests, focused evidence tests, product tests, baseline 7/7, C01–C12, JSON, digest,
     allowlist, redaction, immutability, diff, and disposable Git ancestry/tree checks pass at the
-    exact candidate head. The Task 1 physical CLI fixture contains the active real binding snapshot,
-    all 31 registered schema families and every join consumer; no missing-binding or non-PASS
-    conditional bypass exists. A pre-v3 actual root is never claimed valid and the post-v3 full
-    actual-root PASS mechanically gates target freeze. PyYAML absence remains an explicit quick-
+    exact candidate head. The complete later-phase Task 1 physical synthetic CLI fixture contains a
+    fully joined v3 binding snapshot, all 31 registered schema families, every join consumer, and
+    exact 21/4 cardinality; a separate physical pre-dispatch fixture contains exact empty case/group
+    arrays and no case/group artifacts while invoking every validator over every present shared
+    family. No missing-binding or non-PASS conditional bypass exists. A pre-v3 actual root is never
+    claimed valid and the post-v3 empty-array full actual-root PASS mechanically gates target
+    freeze. PyYAML absence remains an explicit quick-
     validation limitation.
 12. A distinct exact-head Module Change Review independently inspects all requirements/candidate
     bytes and resolves 100% of current raw evidence. Before it, a distinct fresh schema reviewer
@@ -3100,17 +3246,22 @@ superseded plan review v7 at exact SHA-256
 v8 at exact SHA-256
 `07f37acba8160b362920989ebbfc3af4db2ff4caae7d3a48f6899602e431990b`, superseded plan review v9
 at exact SHA-256
-`9034740d0111a9edf5b2b47a8e9cd6ca61b1f3082d49f3087381f4f402011c76`, and current public
+`9034740d0111a9edf5b2b47a8e9cd6ca61b1f3082d49f3087381f4f402011c76`, superseded plan review
+v10 at exact SHA-256
+`d15b48821d9899cd576ccaf93c84c18b5e2bd8432e366403ed083014f415b68a`, and current public
 evidence/tests without this author's conversation. The reviewer may read current `progress.md`
-only to confirm the Task 1.1 freeze precondition; it must not cite that mutable path/digest as
-permanent evidence or require the not-yet-authorized snapshot to exist during this PLAN review.
+only to confirm that its first 18,640 bytes still equal the already closed immutable snapshot; it
+must not cite the mutable path/digest as permanent evidence, recreate the snapshot, or treat any
+later ledger suffix as a plan input.
 It reviews:
 
 - authority and exact supersession boundary;
 - durable retention, manifest self-exclusion/sidecar, and no cleanup through Task 10 decision;
-- exact snapshot-before-next-append progress lifecycle, immutable snapshot membership, and mutable
-  ledger exclusion from permanent refs/generations;
-- complete 21-case partition and per-attempt artifact contracts;
+- exact completed snapshot-before-append progress lifecycle, immutable snapshot membership, and
+  mutable ledger exclusion from permanent refs/generations;
+- exact empty case/group arrays and physical execution-evidence absence at all four pre-dispatch
+  phases, exact 21/4 snapshot/generation/later phases, unconditional validator invocation, no
+  authoritative partial root, complete case partition, and per-attempt artifact contracts;
 - evaluator separation and executor contamination prevention;
 - authentic disposable Git sequence and product behavior preservation;
 - group path ownership, parallelism boundary, and sole public writer;
@@ -3126,7 +3277,7 @@ It reviews:
 - verification, correction invalidation, Task 9 stopping point, and forbidden Task 10/FINAL actions.
 
 `PLAN_PASS` requires no unresolved Critical or Important finding and binds exact corrected-addendum
-bytes, containing commit, parent `e5b2ef7af65c5c6381a70e7f0327d2fe8c338b3d`, all earlier
+bytes, containing commit, parent `cdf2739a6c59e39fb22712e246dff8e205ff5c9d`, all earlier
 addendum commits/parents, and predecessor plan hash. Any later addendum correction creates a new plan-only
 commit and requires a fresh complete PLAN review. Acceptance authorizes execution only through the
 Task 9 bounded recommendation described here.
