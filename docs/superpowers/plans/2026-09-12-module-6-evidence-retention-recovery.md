@@ -58,6 +58,9 @@ package, network access, GitHub service action, or external tool is required.
   parent and changes only this addendum, producing
   `d3c0369ce38142832a7347c1ead1140945b2fedd`, tree
   `b9db5eb86425e5750abb9c0d713bcf592c36af72`. Correction round 7 uses that commit as its sole
+  parent and changes only this addendum, producing
+  `231638b69051ef52b46902c3d309a52d7852b803`, tree
+  `8bc4b812c918b82a39f29fe1fafa9e3c4a38f0ed`. Correction round 8 uses that commit as its sole
   parent and changes only this addendum. The newest containing commit/hash are
   supplied by the plan-author report and exact PLAN-review package, never self-recorded here.
 - The addendum identity remains `MODULE6-RECOVERY-PLAN-v1`; each correction supersedes the prior
@@ -114,7 +117,9 @@ than trusting author or executor summaries.
 7. Superseded ignored `plan-review-v6.json` at SHA-256
    `fef6cb287773eba84099e7cf939519107f0181f7162983a3f5882198d00ac547` and
    `plan-review-v7.json` at SHA-256
-   `7d234a640d4d51064a7d0c17485c5166189ab619cd7dc053eff9b6b9b1e65f6b`; Task 1 reports v1-v3 at
+   `7d234a640d4d51064a7d0c17485c5166189ab619cd7dc053eff9b6b9b1e65f6b` and
+   `plan-review-v8.json` at SHA-256
+   `07f37acba8160b362920989ebbfc3af4db2ff4caae7d3a48f6899602e431990b`; Task 1 reports v1-v3 at
    SHA-256 `e72ad2c3d1dd61e103fc466b6d572bb3cf7c75ae40f817932bf46b987cd1cc1f`,
    `4e87495eca8153949b77648eb37c65a17c4a0ef4379b7442946fb8488c45c14c`, and
    `ce4310bccfab4db4d97182af1bb479c6dfdc6b4855ce84f72bd00e196c5a3ed0`; and schema reviews v1/v2
@@ -135,6 +140,7 @@ fresh complete review of the new exact head.
 
 - Execute on an isolated `codex/` branch/worktree rooted at the accepted corrected-addendum commit.
   Before any recovery write, verify that the newest corrected plan commit has sole parent
+  `231638b69051ef52b46902c3d309a52d7852b803`, that correction round 7 has sole parent
   `d3c0369ce38142832a7347c1ead1140945b2fedd`, that correction round 6 has sole parent
   `169237b48c36870e9bc7a1defcb3d996958a72d2`, that correction round 5 has sole parent
   `134b90585991ecfa253c3de028142acaea6c301c`, that correction round 4 has sole parent
@@ -222,6 +228,9 @@ fresh complete review of the new exact head.
 - Correction round 7 modifies only that same addendum over sole parent
   `d3c0369ce38142832a7347c1ead1140945b2fedd`; its subject is
   `docs: preserve recovery progress history`.
+- Correction round 8 modifies only that same addendum over sole parent
+  `231638b69051ef52b46902c3d309a52d7852b803`; its subject is
+  `docs: correct binding recovery history`.
 - Exact changed-path allowlist for every plan-history commit is the one path above. No
   recovery-candidate path belongs in a plan-history commit, and no plan path belongs in a candidate
   commit.
@@ -322,7 +331,9 @@ For report and compliant review-target paths, `N` is that group's or schema revi
 monotonic sequence; review-target N is closed before schema-review report N is dispatched, and
 prior target/report bytes are never overwritten. Compliant schema-review targets begin at N=3;
 the literal `task1-schema-review-v2-forensic` directory is a non-credit preservation copy and never
-an accepted review target. `<candidate-head>` is replaced with the exact lowercase 40-hex commit
+an accepted review target. For the three versioned `inputs/binding/**-v<N>` path patterns, N may be
+3 or greater but never 2; the listed patterns do not authorize a sequence-2 file. `<candidate-head>`
+is replaced with the exact lowercase 40-hex commit
 already created before that ignored report, so it is not a tracked self-reference. `<group>` is one
 of the four exact group IDs, `<EID>` is its assigned selected case, and `<attempt-id>` is the
 case-derived `EID-r<positive integer>`. `<role-alias>` is an exact ownership-table alias and
@@ -349,22 +360,32 @@ form a digest cycle.
 The unversioned `inputs/binding/schema/recovery-plan.md`,
 `inputs/binding/binding-snapshot-manifest.json`, and `inputs/binding/group-briefs/<group>.json`
 paths are immutable binding-set v1 history for the accepted pre-correction plan; they are never
-overwritten. Correction round 6 creates binding set v2 at the versioned paths above. Correction
-round 7 creates binding set v3 at `inputs/binding/schema/recovery-plan-v3.md`,
+overwritten. Binding sequence 2 is permanently reserved as `not-materialized`: correction-round-6
+plan bytes never achieved `PLAN_PASS`, its future Step 1.6 never executed, and the filesystem has
+none of `inputs/binding/schema/recovery-plan-v2.md`,
+`inputs/binding/binding-snapshot-manifest-v2.json`, or the four
+`inputs/binding/group-briefs-v2/<group>.json` files. Sequence 2 is non-artifact history only; it has
+no `LogicalRef`, artifact logical ID, root-inventory entry, generation membership, dispatch credit,
+or bytes to reconstruct. Those six reserved paths must remain absent forever.
+
+After correction-round-8 `PLAN_PASS`, Step 1.6 creates binding set v3 directly from the verified
+existing v1 copies plus the accepted current plan bytes at
+`inputs/binding/schema/recovery-plan-v3.md`,
 `inputs/binding/binding-snapshot-manifest-v3.json`, and
-`inputs/binding/group-briefs-v3/<group>.json`; it is active for this plan. The exact accepted
-round-6 plan bytes have logical ID `recovery-schema-source-v2`, the successor snapshot has logical
-ID `binding-snapshot-manifest-v2`, and the four briefs have logical IDs
-`inputs-binding-group-briefs-v2-<group>`. The round-7 equivalents use
+`inputs/binding/group-briefs-v3/<group>.json`. Their unique logical IDs are
 `recovery-schema-source-v3`, `binding-snapshot-manifest-v3`, and
-`inputs-binding-group-briefs-v3-<group>`. A later tracked plan correction increments the binding-set
-version and creates new paths; old binding sets remain retained and non-current. In root inventory,
-the v1 schema source, snapshot, and four briefs are kind `raw_input`, producer
-`schema-binding-writer`, and credit state `superseded`; the v2 counterparts are now also
-`superseded`, while the active v3 counterparts are the same kind/producer with credit state
-`shared`. Their logical IDs are respectively the existing v1 IDs and the unique v2/v3 IDs above. A
-later binding set changes the former active set to `superseded` and
-uses new V-specific IDs; no two actual retained artifacts ever share a logical ID.
+`inputs-binding-group-briefs-v3-<group>`. A later accepted tracked plan correction increments from
+the latest materialized version and creates new paths; it never fills reserved sequence 2. In root
+inventory, the materialized v1 schema source, snapshot, and four briefs are kind `raw_input`,
+producer `schema-binding-writer`, and credit state `superseded`; the active v3 counterparts are the
+same kind/producer with credit state `shared` only after Step 1.6 creates and validates them. No
+path/ID for sequence 2 is classified because no
+such artifact exists. A later binding set changes the formerly active materialized set to
+`superseded` and uses new V-specific IDs; no two actual retained artifacts share a logical ID.
+
+The existing/planned directory `review-targets/task1-schema-review-v2-forensic/` is unrelated to
+binding sequence 2. It retains the separately defined validator/test/builder bytes from rejected
+schema review v2 under forensic IDs; its name never proves or creates a binding-set-v2 artifact.
 
 ### Tracked recovery candidate allowlist
 
@@ -855,21 +876,24 @@ record; its structure is not reinterpreted, and its source/copy digest is carrie
 
 Binding snapshot v1 is the immutable unversioned path
 `inputs/binding/binding-snapshot-manifest.json` and retains its exact v1 keys
-`{schema_version, source_head, entries, created_sequence}` with version integer `1`. Each successor
-binding set V>=2 is `inputs/binding/binding-snapshot-manifest-v<V>.json` and has exactly
+`{schema_version, source_head, entries, created_sequence}` with version integer `1`. Sequence 2 is
+the exact absent/non-artifact reservation in recovery history and does not instantiate this schema.
+Each materialized successor binding set V>=3 is
+`inputs/binding/binding-snapshot-manifest-v<V>.json` and has exactly
 `{schema_version, binding_sequence, source_head, schema_source_logical_id, entries,
 created_sequence}`. Successor schema version is integer `2`; `binding_sequence` is the positive
-path-derived V; head is exact lowercase 40-hex; schema-source ID is
+path-derived V and may not equal 2; head is exact lowercase 40-hex; schema-source ID is
 `recovery-schema-source-v<V>` and joins the versioned exact accepted-plan copy. Entries are a
 nonempty sorted array of exact `{logical_id, source_alias, source_path, copy_path, sha256,
 byte_count, equality}`; paths are canonical tracked/recovery relative paths, equality is boolean and
 must be true, and digests/sizes match both bytes. Historical unversioned v1 group briefs retain the
-previous exact schema without `binding_sequence`. Each successor group brief V>=2 has exactly `{schema_version,
+previous exact schema without `binding_sequence`. Each materialized successor group brief V>=3 has exactly `{schema_version,
 binding_sequence, group_id, case_ids, schema_source_ref, binding_snapshot_ref, allowed_write_roots,
 forbidden_effects, recorder_assignment, created_sequence}` with version integer `2`, exact partition,
 canonical disjoint roots, `StringEffectSet`, `AssignmentRequest`, and a pre-dispatch sequence.
 Binding sequence V matches path `inputs/binding/group-briefs-v<V>/<group>.json` (the unversioned v1
-briefs are retained historical inputs and are not dispatch-eligible). Its two refs are the same
+briefs are retained historical inputs and are not dispatch-eligible); V=2 is invalid and must be
+absent. Its two refs are the same
 exact V-specific `LogicalRef` joins required by the group manifest; changing either
 referenced byte invalidates every brief and requires re-freeze before dispatch.
 
@@ -961,8 +985,8 @@ relation, right_alias, result}` with relation `parent-of`, `ancestor-of`, `same-
 `BLOCKED`.
 
 `checks/task1-schema-review-recovery-history-v1.json` is the sole legacy-quarantine record and has
-exactly `{schema_version, history_identity, incidents, historical_snapshots, dispatch_authority,
-created_sequence}`.
+exactly `{schema_version, history_identity, incidents, historical_snapshots, binding_history,
+dispatch_authority, created_sequence}`.
 Version is integer `1`; identity is literal `task1-schema-review-recovery-history-v1`;
 `dispatch_authority` is literal `none`; sequence is positive. `incidents` is exactly two records in
 v1, v2 order. Each has exactly `{review_path, review_sha256, review_identity, review_kind, verdict,
@@ -984,6 +1008,35 @@ equal bytes, size, and digest and the copy to be read-only. On later validation 
 immutable snapshot and its root-artifact join but does not require the intentionally advanced live
 ledger to retain the old digest. Any other snapshot record, mutable-path ref, reconstructed bytes,
 or reverse reference from the raw snapshot is invalid.
+
+`binding_history` is exactly one record with exactly `{binding_sequence, state, reason,
+reserved_paths, artifact_count, logical_ids, inventory_classification, generation_membership,
+dispatch_credit, retrospective_materialization_forbidden, plan_commit, plan_review_path,
+plan_review_sha256, plan_review_verdict, observed_before_sequence}`. Its exact values are:
+`binding_sequence=2`; `state='not-materialized'`;
+`reason='round-6-plan-did-not-achieve-PLAN_PASS'`; `artifact_count=0`; `logical_ids=[]`;
+`inventory_classification='none-non-artifact-history'`; `generation_membership=false`;
+`dispatch_credit=false`; `retrospective_materialization_forbidden=true`; plan commit
+`d3c0369ce38142832a7347c1ead1140945b2fedd`; review path `plan-review-v7.json`; review SHA-256
+`7d234a640d4d51064a7d0c17485c5166189ab619cd7dc053eff9b6b9b1e65f6b`; review verdict
+`PLAN_CHANGES_REQUIRED`; and `observed_before_sequence` is a positive integer equal to the root
+writer's retained history-closure event and strictly less than v3 snapshot `created_sequence`.
+`reserved_paths` is exactly this sorted array:
+
+```json
+[
+  "inputs/binding/binding-snapshot-manifest-v2.json",
+  "inputs/binding/group-briefs-v2/coordination.json",
+  "inputs/binding/group-briefs-v2/delivery-release.json",
+  "inputs/binding/group-briefs-v2/discovery-readiness.json",
+  "inputs/binding/group-briefs-v2/resume-scaling.json",
+  "inputs/binding/schema/recovery-plan-v2.md"
+]
+```
+
+Every reserved path must be absent. This record is
+nested non-artifact history: none of its path strings or historical metadata is a `LogicalRef`,
+artifact record, digest-resolution claim, or permission to create bytes.
 
 | Review identity | Exact path | Exact retained review SHA-256 | Quarantined JSON pointers |
 |---|---|---|---|
@@ -1028,7 +1081,8 @@ declared_logical_id, basis_ref_pointer, join_treatment}` records. Treatment is a
 and declares the same historical target identity. The exact v1 set is the ten fully expanded
 records `/findings/{0,1,2,3,4}/evidence_logical_ids/0` = `archive-validator-v1`, based on
 `/candidate/validator_ref`, and `/findings/{0,1,2,3,4}/evidence_logical_ids/1` =
-`archive-validator-tests-v1`, based on `/candidate/validator_tests_ref`. The exact v2 set is the
+`archive-validator-tests-v1`, based on `/candidate/validator_tests_ref`. The exact schema-review-v2
+label set is the
 fourteen fully expanded records `/findings/{0,1,2,3,4,6}/evidence_logical_ids/0` =
 `archive-validator-tests-v1`, based on `/candidate/validator_tests_ref`;
 `/findings/{0,1,2,3,4,6}/evidence_logical_ids/1` = `archive-validator-v1`, based on
@@ -1038,8 +1092,9 @@ Braced indices in this paragraph define separate JSON array members, not literal
 stored arrays contain all 24 records individually in ascending numeric JSON-pointer order.
 
 The recovery-history validator first validates the mandatory progress snapshot contract above,
-then hashes/parses both exact review files and requires every listed pointer and declared value to
-byte-equal that review JSON. Only the five exact `LogicalRef`
+requires every binding-sequence-2 reserved path to be absent and the exact nested non-artifact
+record to match plan review v7, then hashes/parses both exact schema-review files and requires every
+listed pointer and declared value to byte-equal that review JSON. Only the five exact `LogicalRef`
 tuples are removed from normal target joining, and only the 24 exact finding-label tuples use their
 incident-local basis instead of the global `PrivateFinding` evidence-ID join. All other candidate,
 requirement, check, finding, assignment, identity, and path rules in both review records still
@@ -1130,7 +1185,8 @@ allowed but expected/actual are nonempty. Code is exactly one of `schema`, `miss
 `executor_operation_snapshots`, `executor_session_snapshots`, `rubric_sections`,
 `evaluator_inputs`, `evaluator_prompts`, `evaluator_outputs`, `transcripts`, `session_receipts`,
 `product_change_reviews`, `group_manifests`, `group_reports`, `group_reviews`, `schema_reviews`,
-`schema_review_targets`, `recovery_history_records`, and `historical_progress_snapshots`; each value is exact `{observed, required,
+`schema_review_targets`, `recovery_history_records`, `historical_progress_snapshots`,
+`materialized_binding_sets`, and `reserved_binding_sequences`; each value is exact `{observed, required,
 status}` with nonnegative integers and status `complete` iff equal.
 For the thirteen artifact-family keys and `all_attempt_artifacts`, observed is derived from all actual artifacts across every
 attempt and required is independently derived from every attempt's terminal-phase matrix; it is not
@@ -1147,6 +1203,12 @@ retained without inflating current behavioral credit.
 the mutable `progress.md` artifact is excluded from this count and from every generation. Their required
 counts derive from filesystem/path classification, not manifest declarations. Missing, extra,
 misclassified, or wrongly credited history/review-target bytes fail the audit.
+`materialized_binding_sets` independently requires exactly the complete v1 and active v3 sets
+(`observed=required=2`) at initial generation freeze; completeness is derived from the six actual
+paths and joins per set, not a declared count. `reserved_binding_sequences` independently requires
+exactly the one sequence-2 recovery-history record plus absence of all six reserved v2 paths
+(`observed=required=1`). A fabricated v2 byte, artifact/ID/ref/classification, or missing/incomplete
+active v3 set fails with `binding-set`.
 
 `checks/digest-resolution-v<N>.json` has exactly `{schema_version, candidate_head,
 candidate_tree, selected_generation, selected_generation_sha256, scanned_paths, occurrences,
@@ -1633,9 +1695,10 @@ ownership are sequential.
 
 **Interfaces:**
 
-- Consumes: accepted correction-round-7 addendum commit, exact predecessor identities, current
+- Consumes: accepted correction-round-8 addendum commit, exact predecessor identities, current
   tracked binding files, Task 1 reports v1-v3, schema reviews v1/v2, and current fixed validator/
-  live-manifest-builder bytes, plus the exact pre-append `progress.md` precondition.
+  live-manifest-builder bytes, the exact pre-append `progress.md` precondition, and verified absence
+  of binding sequence 2.
 - Produces: honest quarantined history, immutable forensic and N>=3 review targets, corrected exact
   schemas, binding set v3, four v3 briefs, a complete physical CLI fixture, and a fresh schema-review
   PASS gate before any group dispatch.
@@ -1661,10 +1724,12 @@ dispatch, external actions, and cleanup of predecessor evidence.
   git rev-parse 134b90585991ecfa253c3de028142acaea6c301c^
   git rev-parse 169237b48c36870e9bc7a1defcb3d996958a72d2^
   git rev-parse d3c0369ce38142832a7347c1ead1140945b2fedd^
-  git diff --name-only d3c0369ce38142832a7347c1ead1140945b2fedd...HEAD
+  git rev-parse 231638b69051ef52b46902c3d309a52d7852b803^
+  git diff --name-only 231638b69051ef52b46902c3d309a52d7852b803...HEAD
   ```
 
   Expected: `HEAD` is the accepted addendum commit; its sole parent is
+  `231638b69051ef52b46902c3d309a52d7852b803`; correction round 7's sole parent is
   `d3c0369ce38142832a7347c1ead1140945b2fedd`; correction round 6's sole parent is
   `169237b48c36870e9bc7a1defcb3d996958a72d2`; correction round 5's sole parent is
   `134b90585991ecfa253c3de028142acaea6c301c`; correction round 4's sole parent is
@@ -1678,7 +1743,12 @@ dispatch, external actions, and cleanup of predecessor evidence.
 
   This is the first recovery write and precedes every progress append or other mutation. Verify
   `plan-review-v7.json` at SHA-256
-  `7d234a640d4d51064a7d0c17485c5166189ab619cd7dc053eff9b6b9b1e65f6b`. The task coordinator
+  `7d234a640d4d51064a7d0c17485c5166189ab619cd7dc053eff9b6b9b1e65f6b` and
+  `plan-review-v8.json` at SHA-256
+  `07f37acba8160b362920989ebbfc3af4db2ff4caae7d3a48f6899602e431990b`. Before writing any
+  recovery byte, independently require all six reserved binding-v2 paths in the exact recovery-
+  history array to be absent; any present v2 path blocks as fabricated history and must not be
+  deleted or adopted. The task coordinator
   relinquishes `progress.md`; the root writer requires it to be a regular 18,640-byte file at
   SHA-256 `5e50255f613334839560b676c2bf2dbe7a9fe05a2f01bbd135842385d2e22f2b`, copies its exact bytes
   to `history/progress-ledger-snapshot-v1.md`, verifies source/copy byte equality, size, and digest,
@@ -1781,6 +1851,19 @@ dispatch, external actions, and cleanup of predecessor evidence.
   selected generation/audit that omits the copy. After capture, advancing only the live ledger must
   pass historical validation and make the live manifest stale until its next regeneration.
 
+  Add `BindingSequenceHistoryTests`: the only valid sequence-2 state is the exact
+  `not-materialized` nested recovery-history record with zero artifacts/IDs, no dispatch or
+  generation credit, the exact plan-review-v7 binding, and all six reserved paths absent. Fail any
+  missing/extra/wrong-key record, different reason/state/review binding, nonzero count, nonempty ID
+  list, phantom `LogicalRef`, root classification, generation member, inventory declaration, or
+  any fabricated v2 path/byte. The positive fixture builds complete active v3 directly from the
+  verified v1 snapshot entries plus accepted-plan v3 source/copy bytes, generates four v3 briefs
+  from the exact partition and v3 refs, requires every v3 snapshot-entry equality and all six v3
+  root-artifact joins, and makes every schema/group/downstream ref use binding sequence 3. Fail
+  incomplete v3, a v3 ref aimed at v1/v2, or an attempt to backfill sequence 2. The
+  `task1-schema-review-v2-forensic` paths remain valid forensic review targets and must not match the
+  binding-v2 reserved-path rule.
+
   Add one focused regression for each of the seven schema-review-v2 findings: freeze-time complete
   set/symlink-ancestor containment; every nested semantic and cross-artifact join; all verdict
   review/audit identity and target joins; complete public current/history/metric/global-binding
@@ -1804,7 +1887,8 @@ dispatch, external actions, and cleanup of predecessor evidence.
 
   Expected: FAIL because the current validator still bypasses full recovery validation when the
   binding snapshot is absent, has no exact recovery-history/review-target schema, permits a broad
-  non-PASS review-ref bypass, misclassifies schema review/builder evidence, and retains the seven v2
+  non-PASS review-ref bypass, has no absent-sequence-2/direct-v1-to-v3 binding contract,
+  misclassifies schema review/builder evidence, and retains the seven v2
   review defects. Capture exact stdout/stderr
   and exit in new immutable `checks/archive-validator-correction-red-v4.txt`; do not overwrite the
   three existing RED logs or any report/review byte.
@@ -1818,7 +1902,8 @@ dispatch, external actions, and cleanup of predecessor evidence.
   denyset. Implement concrete functions named `actual_inventory`, `validate_root_schema`,
   `validate_inventory`, `validate_case_joins`, `validate_executor_snapshots`,
   `extract_rubric_section`, `validate_bundle`, `validate_generation`,
-  `validate_progress_ledger_snapshot`, `validate_schema_review_recovery_history`,
+  `validate_progress_ledger_snapshot`, `validate_binding_sequence_history`,
+  `validate_schema_review_recovery_history`,
   `validate_schema_review_target`,
   `discover_public_sha_candidates`, and `resolve_public_current`, with these mandatory algorithms
   and no manifest-derived shortcuts.
@@ -1844,6 +1929,10 @@ dispatch, external actions, and cleanup of predecessor evidence.
   mode, artifact join, recovery-history binding, N>=3 schema-review requirements join, and selected
   generation/audit membership while forbidding the mutable ledger from immutable inventories or
   permanent refs; after initial capture it never compares later live-ledger bytes to v1.
+  `validate_binding_sequence_history` requires the exact sequence-2 non-artifact record and absence
+  of all six reserved paths/IDs/refs/classifications, distinguishes schema-review-v2 forensic paths
+  by their exact prefix, and requires complete materialized v1/v3 sets with every active downstream
+  ref on v3. It never fabricates or hashes a sequence-2 target.
   `validate_schema_review_recovery_history` compares the recovery record to both exact historical
   review bytes and permits only the five enumerated ref tuples and 24 finding-label tuples to avoid
   their ordinary joins; it rejects any general verdict/family exception.
@@ -1874,6 +1963,8 @@ dispatch, external actions, and cleanup of predecessor evidence.
   classifications defined above. It derives path versions and IDs,
   rejects an unknown schema-review/target shape instead of falling back to a generic check, and
   never assigns the preserved `checks-build-live-manifest` ID to its corrected fixed-path bytes.
+  It rejects every reserved binding-v2 path if one appears, emits no v2 artifact classification,
+  and continues to classify only the explicitly separate `task1-schema-review-v2-forensic` paths.
 
 - [ ] **Step 1.5: Run validator tests GREEN and close the working candidate.**
 
@@ -1886,7 +1977,7 @@ dispatch, external actions, and cleanup of predecessor evidence.
   `root-manifest-writer`, use the corrected builder to regenerate `manifest.json`/sidecar with
   `as_of_phase=task1-history-recovered`, and exact-inventory validate the honest v1/v2 review,
   progress-ledger snapshot, recovery-history, forensic-target, and corrected-builder
-  classifications. Then run the live
+  classifications plus complete v1 and absent/non-artifact v2 binding states. Then run the live
   archive validator and require zero errors; the root writer relinquishes live-root paths before
   Step 1.6.
   They are still working paths; only the N-specific copies made in Step 1.8 are immutable review
@@ -1895,20 +1986,22 @@ dispatch, external actions, and cleanup of predecessor evidence.
 - [ ] **Step 1.6: Create append-only binding set v3 for the corrected plan.**
 
   Do not overwrite the unversioned v1 plan copy, snapshot, or briefs. Reverify every existing
-  tracked/source-to-copy binding byte. Preserve the round-6 v2 set unchanged. Copy the exact
-  accepted correction-round-7 addendum from execution `HEAD` to
+  tracked/source-to-v1-copy binding byte and reverify all six reserved v2 paths remain absent.
+  Copy the exact accepted correction-round-8 addendum from execution `HEAD` directly to
   `inputs/binding/schema/recovery-plan-v3.md`, assign `recovery-schema-source-v3`, record exact
   HEAD/digest/size/equality, and make it read-only. Create
   `inputs/binding/binding-snapshot-manifest-v3.json`, logical ID
-  `binding-snapshot-manifest-v3`, with binding sequence `3`; its entry set uses unchanged existing
-  read-only copies for every still-identical binding and the new v3 plan copy instead of the v2
-  plan copy. No source/copy may be omitted or silently accepted by
+  `binding-snapshot-manifest-v3`, with binding sequence `3`; its entry set is derived directly from
+  the unchanged verified v1 source/copy pairs for every still-identical binding plus the new v3
+  plan source/copy pair. It contains no v2 path, ID, ref, digest, or entry. No source/copy may be
+  omitted or silently accepted by
   matching a prior digest.
 
   Create four new immutable `inputs/binding/group-briefs-v3/<group>.json` records, logical IDs
   `inputs-binding-group-briefs-v3-<group>`, with binding sequence `3` and exact refs
-  `recovery-schema-source-v3` and `binding-snapshot-manifest-v3`; retain all v1/v2 briefs as
-  superseded non-dispatch history. Group manifests and all future rubric extraction use only the
+  `recovery-schema-source-v3` and `binding-snapshot-manifest-v3`; retain only the four actual v1
+  briefs as superseded non-dispatch history. Sequence 2 remains the exact absent reservation in
+  recovery history and is never backfilled. Group manifests and all future rubric extraction use only the
   v3 binding set selected by fresh schema-review PASS. No schema plan byte enters an executor
   bundle. The reviewer-rubric copy remains the exact read-only
   `inputs/binding/reviewer/tests/scenarios.md` byte target and must join snapshot v3.
@@ -1961,9 +2054,10 @@ dispatch, external actions, and cleanup of predecessor evidence.
 
 - [ ] **Step 1.8a: Dispatch one fresh independent schema review v3.**
 
-  Give a fresh `schema-reviewer`, requested `gpt-5.6-sol/high`, the exact correction-round-7 plan,
+  Give a fresh `schema-reviewer`, requested `gpt-5.6-sol/high`, the exact correction-round-8 plan,
   active binding set and briefs, all Task 1 reports/RED logs, both quarantined reviews plus the
-  recovery record and exact `progress-ledger-snapshot-v1` requirements ref, the seven immutable v3
+  recovery record (including absent sequence-2 history) and exact
+  `progress-ledger-snapshot-v1` requirements ref, the seven immutable v3
   targets, current live inventory, and the exact seven v2 findings.
   Exclude Implementation/plan-author conversation and expected verdict. The reviewer must run the
   complete physical CLI fixture and adversarial checks independently; verify all 31 families, all
@@ -1989,7 +2083,8 @@ dispatch, external actions, and cleanup of predecessor evidence.
   writer then creates fresh `review-targets/task1-schema-review-v4/` copies and a fresh v4 review;
   repeat with monotonically increasing N. A finding requiring plan/binding change is
   `PLAN_BLOCKED` pending an authorized plan-only successor, fresh PLAN review, and next binding-set
-  version; do not mutate v2. Every PASS/CHANGES_REQUIRED/BLOCKED record has complete
+  version; do not mutate the materialized v3 set or backfill reserved binding sequence 2. Every
+  PASS/CHANGES_REQUIRED/BLOCKED record has complete
   exact joins. Only the first fresh N>=3 PASS selects the shared contract and permits Step 1.9 and
   later group dispatch; v1/v2 and the forensic/recovery records never do.
 
@@ -2402,10 +2497,12 @@ tracked/public writes, and cleanup.
   every actual current/superseded/non-credit case-attempt artifact, Product Git/Change Review, metric
   log, both exact schema-review incidents, the recovery-history record, every forensic/compliant
   review target and N>=3 schema review, every immutable progress-ledger snapshot existing at scope
-  close, every retained plan review including superseded v7, and four group manifest/report/review
+  close, every retained plan review including superseded v7/v8, and four group manifest/report/review
   sets. The mutable `progress.md` is not a generation
-  member. The absent v1
-  draft targets are not fabricated generation members; only their non-credit declared hashes remain
+  member. Include every actual v1 and active v3 binding artifact, with all downstream refs on v3;
+  include no binding-v2 artifact because sequence 2 exists only as nested non-artifact history in
+  the recovery record. Independently require all six reserved v2 paths absent. The absent
+  schema-review-v1 draft targets are not fabricated generation members; only their non-credit declared hashes remain
   inside the exact recovery-history bytes. Its artifact array must equal snapshot v1's array
   exactly. Write its sidecar, make both read-only, and never mutate, rename, or delete them. Run the
   validator against snapshot/generation and actual filesystem; independently derive the exact 21
@@ -2424,8 +2521,9 @@ tracked/public writes, and cleanup.
   atomically regenerate and exact-inventory-validate live `manifest.json`/sidecar with
   `as_of_phase=post-generation-selection`; this live set now includes snapshot, generation, audit,
   and pointer. On any case, product, group, contamination, or audit correction, preserve every v1
-  byte, close a successor set, freeze snapshot v2, create generation v2 including all old and
-  successor records, obtain a fresh independent audit, select v2 only after PASS, then refresh the
+  byte, close a successor set, freeze root-inventory snapshot v2, create execution generation v2
+  including all old and successor records, obtain a fresh independent audit, select that execution
+  generation v2 only after PASS, then refresh the
   live manifest; repeat consecutively. Public assembly consumes only the latest selected
   generation. Snapshot, generation, audit, pointer, and mutable live inventory have no digest cycle.
 
@@ -2610,7 +2708,11 @@ actions, cleanup, and integration.
   the exact immutable progress-ledger v1 binding, correct review/root classifications, and no
   other bypass. Recompute the progress snapshot's digest/size/mode and require its recovery-history,
   N>=3 schema-review requirements, selected snapshot/generation, and audit joins; reject any
-  immutable membership or permanent ref for mutable `progress.md`. Independently open every N>=3 review-specific target and require every candidate,
+  immutable membership or permanent ref for mutable `progress.md`. Validate the exact sequence-2
+  non-artifact history, absence of all six reserved v2 paths/IDs/refs, complete materialized v1/v3
+  binding sets, and v3-only current downstream refs; a forensic path under
+  `task1-schema-review-v2-forensic` is classified only by its review-target contract. Independently
+  open every N>=3 review-specific target and require every candidate,
   requirement, check, finding, assignment, and receipt ref in every PASS/CHANGES_REQUIRED/BLOCKED
   review to join exact retained bytes. Run the complete physical CLI fixture with the active
   binding snapshot present, all 31 schema families, and every join consumer; a reduced or
@@ -2647,7 +2749,8 @@ actions, cleanup, and integration.
     `fde1b8cfe14f526bdd6561ed4309df1975dddc77`, and accepted correction round 5 versus
     `134b90585991ecfa253c3de028142acaea6c301c`, and accepted correction round 6 versus
     `169237b48c36870e9bc7a1defcb3d996958a72d2`, and accepted correction round 7 versus
-    `d3c0369ce38142832a7347c1ead1140945b2fedd`: exactly the one addendum path each;
+    `d3c0369ce38142832a7347c1ead1140945b2fedd`, and accepted correction round 8 versus
+    `231638b69051ef52b46902c3d309a52d7852b803`: exactly the one addendum path each;
   - recovery candidate commit versus accepted addendum commit: only actually changed paths from
     the eleven-path candidate allowlist;
   - full Module 6 candidate versus `f47263ce545c5185b3ec836c95fe341d1b3e5715`: predecessor
@@ -2735,7 +2838,8 @@ Task 10, FINAL, push, PR, integration, merge, publication, install, deployment, 
   attempts, group reviews, exact-head redaction check, disposable Git repository, both exact
   quarantined schema reviews, recovery-history record, forensic targets, every N>=3 immutable
   review target, the exact immutable `progress-ledger-snapshot-v1` artifact and its joined
-  requirements ref, superseded `plan-review-v7.json` at its exact hash as an untrusted finding
+  requirements ref, superseded `plan-review-v7.json` and `plan-review-v8.json` at their exact
+  hashes as untrusted finding
   input, all Task 1 implementer reports/RED logs, and the fresh schema-review PASS that
   opened dispatch. Exclude
   author/assembler/Implementation
@@ -2750,7 +2854,9 @@ Task 10, FINAL, push, PR, integration, merge, publication, install, deployment, 
   incident-local finding labels are the only target/evidence-ID exceptions, v1 target bytes remain honestly missing, v2 forensic copies
   match exact bytes without repairing reused IDs, the permanent historical ledger target is the
   exact v1 snapshot rather than mutable `progress.md`, and every N>=3 review ref joins immutable
-  target bytes regardless of verdict. It requires the complete CLI fixture and fresh schema-review PASS.
+  target bytes regardless of verdict. It also requires binding sequence 2 to remain absent
+  non-artifact history, complete v1/v3 binding sets, and v3-only current refs, while treating
+  schema-review-v2 forensic targets independently. It requires the complete CLI fixture and fresh schema-review PASS.
   The reviewer then independently
   reruns the all-eleven-blob raw/structural occurrence scan, including every ASCII case variant of
   the prefix label, and rejects every alternate-case label, uppercase payload, or malformed
@@ -2841,15 +2947,18 @@ accepted/runtime facts remain independently sourced or `Unknown`.
 
 1. The predecessor plan remains byte-identical at its accepted hash and this addendum is the only
    file changed in the newest correction commit with sole parent
-   `d3c0369ce38142832a7347c1ead1140945b2fedd`; earlier plan commits retain their exact one-file
+   `231638b69051ef52b46902c3d309a52d7852b803`; earlier plan commits retain their exact one-file
    deltas and parents.
 2. The durable ignored workspace contains content-addressed raw inputs, executor outputs, evaluator
    inputs/outputs, transcript/operation records, product Git history, checks, reports, and review
    records; `/private/tmp` is not authoritative. Exact v1/v2 schema-review incidents, their
    findings, recovery-history record, the exact immutable v1 progress-ledger snapshot, v2 forensic
-   copies, append-only binding sets through active v3, and every
+   copies, actual binding sets v1 and active v3, and every
    N>=3 review target/report remain retained. The two missing v1 draft targets remain explicitly
-   missing and are never reconstructed.
+   missing and are never reconstructed. Binding sequence 2 remains exact `not-materialized`
+   non-artifact history: all six reserved paths/IDs/refs remain absent, it receives no inventory,
+   generation, public, or dispatch credit, and it is never backfilled. The
+   `task1-schema-review-v2-forensic` copies remain unrelated review-target evidence.
 3. All 21 selected cases have fresh from-scratch complete current attempts, explicit
    current/superseded/non-credit identities, separate verdict/dependent state, and requested/
    accepted/runtime fact separation. Every actual artifact from every attempt is retained and in
@@ -2903,7 +3012,9 @@ A distinct read-only PLAN reviewer requested as `gpt-5.6-sol/high` receives this
 its exact containing commit/hash/parent, predecessor plan/hash, current head/tree, binding sources,
 Task 9 report/review findings, prior plan review v6, Task 1 reports v1-v3, both schema reviews,
 superseded plan review v7 at exact SHA-256
-`7d234a640d4d51064a7d0c17485c5166189ab619cd7dc053eff9b6b9b1e65f6b`, and current public
+`7d234a640d4d51064a7d0c17485c5166189ab619cd7dc053eff9b6b9b1e65f6b`, superseded plan review
+v8 at exact SHA-256
+`07f37acba8160b362920989ebbfc3af4db2ff4caae7d3a48f6899602e431990b`, and current public
 evidence/tests without this author's conversation. The reviewer may read current `progress.md`
 only to confirm the Task 1.1 freeze precondition; it must not cite that mutable path/digest as
 permanent evidence or require the not-yet-authorized snapshot to exist during this PLAN review.
@@ -2918,7 +3029,8 @@ It reviews:
 - authentic disposable Git sequence and product behavior preservation;
 - group path ownership, parallelism boundary, and sole public writer;
 - exact v1/v2 quarantine refs/finding labels, recovery-search limits, v2 forensic copies,
-  append-only active binding set v3, immutable N>=3 review targets, general no-bypass review joins,
+  exact absent/non-artifact binding sequence 2, direct v1-to-v3 active binding construction,
+  immutable N>=3 review targets, general no-bypass review joins,
   and fresh schema PASS gate;
 - current/superseded truthfulness, FAIL/BLOCKED handling, model-fact separation, and digest
   resolution;
@@ -2927,7 +3039,7 @@ It reviews:
 - verification, correction invalidation, Task 9 stopping point, and forbidden Task 10/FINAL actions.
 
 `PLAN_PASS` requires no unresolved Critical or Important finding and binds exact corrected-addendum
-bytes, containing commit, parent `d3c0369ce38142832a7347c1ead1140945b2fedd`, all earlier
+bytes, containing commit, parent `231638b69051ef52b46902c3d309a52d7852b803`, all earlier
 addendum commits/parents, and predecessor plan hash. Any later addendum correction creates a new plan-only
 commit and requires a fresh complete PLAN review. Acceptance authorizes execution only through the
 Task 9 bounded recommendation described here.
