@@ -49,6 +49,9 @@ package, network access, GitHub service action, or external tool is required.
   parent and changes only this addendum, producing
   `fde1b8cfe14f526bdd6561ed4309df1975dddc77`, tree
   `b99447187f33848bb31affe108741336c679e316`. Correction round 4 uses that commit as its sole
+  parent and changes only this addendum, producing
+  `134b90585991ecfa253c3de028142acaea6c301c`, tree
+  `f5ecf76ea9b3ae050d7c552ddf3207b58b747902`. Correction round 5 uses that commit as its sole
   parent and changes only this addendum. The newest containing commit/hash are
   supplied by the plan-author report and exact PLAN-review package, never self-recorded here.
 - The addendum identity remains `MODULE6-RECOVERY-PLAN-v1`; each correction supersedes the prior
@@ -111,6 +114,7 @@ fresh complete review of the new exact head.
 
 - Execute on an isolated `codex/` branch/worktree rooted at the accepted corrected-addendum commit.
   Before any recovery write, verify that the newest corrected plan commit has sole parent
+  `134b90585991ecfa253c3de028142acaea6c301c`, that correction round 4 has sole parent
   `fde1b8cfe14f526bdd6561ed4309df1975dddc77`, that correction round 3 has sole parent
   `f40c37e8e2bed1309605b9b0e8f17046699fa6af`, that correction round 2 has sole parent
   `8a9f04bcb2d15a1127dcbd1f354ab66accd2e5b6`, that correction round 1 has sole parent
@@ -176,6 +180,9 @@ fresh complete review of the new exact head.
 - Correction round 4 modifies only that same addendum over sole parent
   `fde1b8cfe14f526bdd6561ed4309df1975dddc77`; its subject is
   `docs: close Module 6 evidence reference gaps`.
+- Correction round 5 modifies only that same addendum over sole parent
+  `134b90585991ecfa253c3de028142acaea6c301c`; its subject is
+  `docs: make SHA prefix discovery exhaustive`.
 - Exact changed-path allowlist for every plan-history commit is the one path above. No
   recovery-candidate path belongs in a plan-history commit, and no plan path belongs in a candidate
   commit.
@@ -878,17 +885,31 @@ candidate_tree, selected_generation, selected_generation_sha256, scanned_paths, 
 class_counts, errors, verdict}`. Version is integer `1`; candidate identities are exact Git OIDs;
 generation/digest match the pointer; `scanned_paths` is exactly the eleven allowlisted paths in
 File Map order. Each occurrence is exact `{public_path, line, column, start_byte, end_byte,
-json_pointer, syntax, discovery_rules, raw_candidate, lexical_status, canonical_sha256,
+claim_start_byte, claim_end_byte, prefix_spelling, prefix_status, json_pointer, syntax,
+discovery_rules, raw_candidate, lexical_status, canonical_sha256,
 classification_status, logical_id, claim_state, claim_class, evidence_kind, case_id, attempt_id,
-resolved_target_class, resolved_logical_id, resolved_sha256}`. Line/column are positive; byte
-offsets are zero-based with `end_byte >= start_byte`; JSON Pointer is a string and is nonempty only
+resolved_target_class, resolved_logical_id, resolved_sha256}`. Line/column are positive and identify
+`claim_start_byte`; byte
+offsets are zero-based and end-exclusive with `end_byte >= start_byte` and
+`claim_end_byte == end_byte`. `start_byte..end_byte` is the exact payload span. For prefix
+discovery, `claim_start_byte == start_byte - 7` and the source bytes from claim start through payload
+end are the full label plus payload; without prefix discovery, `claim_start_byte == start_byte`.
+`prefix_spelling` is JSON null
+iff prefix discovery did not match; otherwise it is the exact seven ASCII source characters matching
+`[sS][hH][aA]256:` and byte-equals the `claim_start_byte..start_byte` source slice.
+`prefix_status` is `absent`, `canonical-lowercase`, or `alternate-case`, with
+`absent` iff the spelling is null, `canonical-lowercase` only for exact `sha256:`, and
+`alternate-case` for every other matched spelling. JSON Pointer is a string and is nonempty only
 for a structurally discovered JSON value. `syntax` is `json-value`, `markdown-annotation`,
 `python-binding`, or `raw-token`; `discovery_rules` is the sorted nonempty subset of
-`boundary-hex64`, `sha256-prefix`, and `json-sha-key`; and `raw_candidate` is the exact decoded
-candidate payload or JSON source lexeme. It may be empty only for an empty `sha256:` payload.
-Candidates with the same exact path/span are one occurrence with merged discovery rules; overlapping
-nonidentical spans are separate occurrences and a multiple-context match is never hidden by
-deduplication.
+`boundary-hex64`, `sha256-prefix`, and `json-sha-key`, and contains `sha256-prefix` iff
+`prefix_status` is not `absent`; `raw_candidate` is the exact decoded
+candidate payload or JSON source lexeme. It may be empty only when `prefix_status` is not `absent`.
+Candidates with the same exact path and payload span are one occurrence with merged discovery
+rules; if one source
+is prefix discovery, that occurrence retains its exact prefix spelling and expanded full-claim span.
+Overlapping nonidentical payload spans are separate occurrences ordered by their exact byte spans,
+and a multiple-context match is never hidden by deduplication.
 
 `lexical_status` is `canonical`, `uppercase`, `wrong-length`, `nonhex`, or `wrong-type`. A string
 is canonical only when it matches exactly `[0-9a-f]{64}`; an otherwise 64-character hexadecimal
@@ -896,7 +917,8 @@ string containing `A`–`F` is uppercase; other string lengths are wrong-length;
 nonhex string is nonhex; and a structurally discovered non-string JSON value is wrong-type.
 `canonical_sha256` equals `raw_candidate` only for canonical status and is null otherwise.
 `classification_status` is `classified`, `unclassified`, `conflicting`, or `malformed`; every
-noncanonical candidate is malformed. A classified record has non-null logical ID, state `current`
+noncanonical payload or `alternate-case` prefix is malformed. A classified record has non-null
+logical ID, state `current`
 or `superseded`, class `retained-private`, `tracked-public`, or `superseded-historical`, and a
 conditional evidence kind; case/attempt are both null only for a global claim and otherwise the
 exact current pair. Its target class is `generation-artifact`, `tracked-blob`, or
@@ -1041,9 +1063,10 @@ blob:
 
 1. emit each case-insensitive boundary-delimited 64-hex candidate matching
    `(?<![0-9A-Fa-f])[0-9A-Fa-f]{64}(?![0-9A-Fa-f])`;
-2. at every exact lowercase ASCII `sha256:` prefix, emit the maximal immediately following payload
-   matching `[A-Za-z0-9._+-]*`, including an empty payload, so wrong-length, nonhex, and uppercase
-   prefixed claims remain visible.
+2. at every ASCII case-insensitive label matching `[sS][hH][aA]256:`, emit the maximal immediately
+   following payload matching `[A-Za-z0-9._+-]*`, including an empty payload, and retain the exact
+   seven-byte label spelling, payload span, and full label-plus-payload claim span. This pass exposes
+   alternate-case labels and empty, wrong-length, nonhex, uppercase, or overlong payloads.
 
 JSON blobs additionally undergo a strict structural parse. The resolver visits every value whose
 object key is exactly `sha256` or ends in `_sha256`, regardless of its JSON value type, and emits a
@@ -1053,9 +1076,10 @@ structural discoveries merge. For an escaped string or a non-string value, the s
 `raw_candidate` are the complete JSON value token; an escaped token is `nonhex` and a non-string is
 `wrong-type`. Markdown and Python are classified from raw
 source bytes; parsing them may locate an allowed annotation or top-level binding but may not discard
-any raw candidate. A canonical candidate found by two discovery rules at the same path and exact
-payload byte span is one occurrence with merged rules. Different or overlapping spans remain
-separate. Raw JSON parse failure is itself an error, but all candidates found by the raw passes are
+any raw candidate. A candidate found by the boundary pass and prefix pass at the same path and exact
+payload byte span is one occurrence with merged rules; it retains the prefix pass's exact spelling
+and full claim span. Different or overlapping payload spans remain separate. Raw JSON parse failure
+is itself an error, but all candidates found by the raw passes are
 still reported. Occurrences sort by File Map path order, then `start_byte`, `end_byte`, and
 `raw_candidate`. Every lexical/context error identifies its occurrence by public path and exact
 span in `AuditError.actual`; parser/schema errors without a candidate still block PASS but do not
@@ -1083,9 +1107,11 @@ Allowed manifest SHA pointers are `/recovery/plan_sha256`,
 `/metrics/<index>/observation_end/transcript_ref/sha256`. Metric pointers must be identical global
 retained-private/current/transcript joins to the selected-generation metric log; their sequence
 fields must join existing ordered lines and satisfy the public metric arithmetic. No other
-JSON/Python/Markdown occurrence is classified. Only a canonical lowercase 64-hex candidate may
-reach context classification. Uppercase bare or prefixed values, prefixed values of the wrong
-length or with nonhex characters, and malformed values at SHA-designated JSON keys are
+JSON/Python/Markdown occurrence is classified. Only a canonical lowercase 64-hex payload may reach
+context classification, and any context requiring a prefix additionally requires exact lowercase
+`sha256:` spelling. An alternate-case prefix is malformed even when its payload is canonical.
+Uppercase bare or prefixed values, prefixed values of the wrong length or with nonhex characters,
+and malformed values at SHA-designated JSON keys are
 `malformed` even when their surrounding context would otherwise be allowed.
 
 The fixed classification for global JSON fields is: recovery plan =
@@ -1354,10 +1380,12 @@ dispatch, external actions, and cleanup of predecessor evidence.
   git rev-parse 8a9f04bcb2d15a1127dcbd1f354ab66accd2e5b6^
   git rev-parse f40c37e8e2bed1309605b9b0e8f17046699fa6af^
   git rev-parse fde1b8cfe14f526bdd6561ed4309df1975dddc77^
-  git diff --name-only fde1b8cfe14f526bdd6561ed4309df1975dddc77...HEAD
+  git rev-parse 134b90585991ecfa253c3de028142acaea6c301c^
+  git diff --name-only 134b90585991ecfa253c3de028142acaea6c301c...HEAD
   ```
 
   Expected: `HEAD` is the accepted addendum commit; its sole parent is
+  `134b90585991ecfa253c3de028142acaea6c301c`; correction round 4's sole parent is
   `fde1b8cfe14f526bdd6561ed4309df1975dddc77`; correction round 3's sole parent is
   `f40c37e8e2bed1309605b9b0e8f17046699fa6af`; correction round 2's sole parent is
   `8a9f04bcb2d15a1127dcbd1f354ab66accd2e5b6`; correction round 1's sole parent is
@@ -1395,11 +1423,18 @@ dispatch, external actions, and cleanup of predecessor evidence.
   resolution-summary key once, retained/tracked conditional kinds, tracked part case/attempt maps,
   public finding/rerun/evidence refs, and all eleven allowed SHA contexts. Add failures for an
   unclassified Markdown/Python/JSON digest, conflicting duplicate logical ID, and
-  superseded-as-current claim. In each Markdown, JSON-string/text, and Python source context add an
-  uppercase boundary-delimited bare digest, an uppercase `sha256:` payload, and wrong-length,
-  nonhex, and empty `sha256:` payloads; also add uppercase/malformed strings and non-string values
-  at every SHA-designated JSON key shape. Assert every candidate becomes an occurrence/error and
-  increases the discovered denominator. Add the paired alias
+  superseded-as-current claim. Define exact test constants `L64 = "a" * 64`, `U64 = "A" * 64`,
+  `G64 = "g" * 64`, and `L65 = "a" * 65`. In each Markdown, JSON raw-text/string, and Python
+  source context add exactly `SHA256:abc`, `Sha256:`, `sHa256:` + `L64`, `SHA256:` + `U64`,
+  `Sha256:` + `G64`, and `SHA256:` + `L65`. The expected prefix status is `alternate-case` for
+  every form; payload statuses are respectively `wrong-length`, `wrong-length`, `canonical`,
+  `uppercase`, `nonhex`, and `wrong-length`. Also retain the lowercase-label cases for an uppercase
+  payload and wrong-length/nonhex/empty payloads, an uppercase boundary-delimited bare digest, and
+  uppercase/malformed strings and non-string values at every SHA-designated JSON key shape. Assert
+  every form creates an occurrence with exact original prefix/payload/full-claim spans, emits at
+  least one error, and increments `all_candidates.total`; assert alternate-case plus a canonical
+  64-hex payload merges with the independent boundary-pass occurrence but remains malformed.
+  Add the paired alias
   allow/reject corpus from Task 7.1.
   Add failures for a nonexistent/wrong-kind/wrong-digest schema or binding ref; generation/snapshot
   mismatch; stale mutable live manifest after every late-record phase; missing ProductGit stdout or
@@ -1445,7 +1480,9 @@ dispatch, external actions, and cleanup of predecessor evidence.
   prompt. `validate_generation` recomputes snapshot, generation, and sidecar identities; requires
   generation artifacts to equal snapshot artifacts; and checks every current/superseded/non-credit
   attempt's actual membership while deriving semantic counts only from complete current attempts.
-  `discover_public_sha_candidates` implements the exact structural/raw lexer above.
+  `discover_public_sha_candidates` implements the exact structural/raw lexer above, including
+  ASCII case-insensitive prefix-label discovery, source-spelling/span retention, and deterministic
+  same-payload merging with the independent boundary pass.
   `resolve_public_current` reads all eleven exact committed public blobs, discovers
   and classifies every canonical or malformed SHA candidate under the allowed-context table, locates exactly one
   selected generation by digest, opens every joined private/tracked byte, and computes denominators
@@ -2120,12 +2157,13 @@ actions, cleanup, and integration.
 - [ ] **Step 8.2: Verify JSON, digests, redaction, and immutability.**
 
   Parse every tracked/ignored JSON record. Run the non-tautological resolver over all eleven exact
-  committed public blobs: apply both raw candidate passes and the structural SHA-designated JSON-key
-  pass, enumerate canonical and malformed SHA candidates, classify canonical values under the only
+  committed public blobs: apply the independent boundary-hex pass, ASCII case-insensitive prefix-
+  label pass with exact spelling/payload/full-claim spans, and structural SHA-designated JSON-key
+  pass; enumerate canonical and malformed SHA candidates; classify canonical values under the only
   allowed JSON/Markdown/Python contexts, join every current claim through the selected generation
   or exact tracked binding, and classify superseded history without credit. Derive the denominator
   from that scan and require every discovered candidate accepted, 100% current resolution, and zero
-  uppercase, malformed, unclassified, multiple-context, unresolved,
+  alternate-case-prefix, uppercase-payload, malformed, unclassified, multiple-context, unresolved,
   duplicate-conflicting, superseded-as-current, kind, case, attempt, or byte mismatch. Rerun archive
   and contamination checks. The post-selection archive check recomputes every immutable snapshot/
   generation member and sidecar against its frozen scope; it does not compare that historical
@@ -2148,7 +2186,8 @@ actions, cleanup, and integration.
     versus `21c1509dce231069e1ec49dd36d751ff85999e08`, and correction round 2 versus
     `8a9f04bcb2d15a1127dcbd1f354ab66accd2e5b6`, and accepted correction round 3 versus
     `f40c37e8e2bed1309605b9b0e8f17046699fa6af`, and accepted correction round 4 versus
-    `fde1b8cfe14f526bdd6561ed4309df1975dddc77`: exactly the one addendum path each;
+    `fde1b8cfe14f526bdd6561ed4309df1975dddc77`, and accepted correction round 5 versus
+    `134b90585991ecfa253c3de028142acaea6c301c`: exactly the one addendum path each;
   - recovery candidate commit versus accepted addendum commit: only actually changed paths from
     the eleven-path candidate allowlist;
   - full Module 6 candidate versus `f47263ce545c5185b3ec836c95fe341d1b3e5715`: predecessor
@@ -2239,7 +2278,8 @@ Task 10, FINAL, push, PR, integration, merge, publication, install, deployment, 
 - [ ] **Step 9.2: Dispatch distinct full Module Change Review.**
 
   Request native `gpt-5.6-sol/high`. Reviewer first verifies clean identity, then independently
-  reruns the all-eleven-blob raw/structural occurrence scan, rejects every uppercase or malformed
+  reruns the all-eleven-blob raw/structural occurrence scan, including every ASCII case variant of
+  the prefix label, and rejects every alternate-case label, uppercase payload, or malformed
   candidate, classifies every canonical SHA-256 claim, and resolves 100% of
   current input/output/evaluator/transcript and tracked-public claims with no unclassified or
   conflicting occurrence. It checks all 21 semantics against the exact rubric, validates prohibited
@@ -2325,7 +2365,7 @@ accepted/runtime facts remain independently sourced or `Unknown`.
 
 1. The predecessor plan remains byte-identical at its accepted hash and this addendum is the only
    file changed in the newest correction commit with sole parent
-   `fde1b8cfe14f526bdd6561ed4309df1975dddc77`; earlier plan commits retain their exact one-file
+   `134b90585991ecfa253c3de028142acaea6c301c`; earlier plan commits retain their exact one-file
    deltas and parents.
 2. The durable ignored workspace contains content-addressed raw inputs, executor outputs, evaluator
    inputs/outputs, transcript/operation records, product Git history, checks, reports, and review
@@ -2351,9 +2391,11 @@ accepted/runtime facts remain independently sourced or `Unknown`.
    prescribed non-cyclic order, and the live inventory is current before every review.
 9. One public assembler updates only justified allowlisted paths; README is in permanent redaction
    coverage and asserts the local-synthetic boundary; the exact-head resolver enumerates every
-   canonical or malformed SHA-256 candidate in all eleven committed blobs, requires every candidate
-   to be canonical and singly classified, and resolves all classified current claims to retained raw
-   or exact tracked bytes with no malformed/conflicting/unclassified occurrence.
+   canonical or malformed SHA-256 candidate in all eleven committed blobs, including every ASCII
+   case spelling of a `sha256:` label and its maximal payload; it requires every accepted prefixed
+   claim to use the exact lowercase label plus a canonical lowercase payload, requires every
+   candidate to be singly classified, and resolves all classified current claims to retained raw or
+   exact tracked bytes with no alternate-case-label/malformed/conflicting/unclassified occurrence.
 10. Exact-value denylist and portable-pattern scans find no private path, ID, URL, credential, or
     content in public output; the ignored archive is excluded from publication.
 11. Full unit tests, focused evidence tests, product tests, baseline 7/7, C01–C12, JSON, digest,
@@ -2388,7 +2430,7 @@ It reviews:
 - verification, correction invalidation, Task 9 stopping point, and forbidden Task 10/FINAL actions.
 
 `PLAN_PASS` requires no unresolved Critical or Important finding and binds exact corrected-addendum
-bytes, containing commit, parent `fde1b8cfe14f526bdd6561ed4309df1975dddc77`, all earlier
+bytes, containing commit, parent `134b90585991ecfa253c3de028142acaea6c301c`, all earlier
 addendum commits/parents, and predecessor plan hash. Any later addendum correction creates a new plan-only
 commit and requires a fresh complete PLAN review. Acceptance authorizes execution only through the
 Task 9 bounded recommendation described here.
