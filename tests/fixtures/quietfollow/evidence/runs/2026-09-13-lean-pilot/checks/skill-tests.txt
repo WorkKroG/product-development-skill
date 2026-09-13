@@ -1,0 +1,59 @@
+MODULE6-LEAN-SKILL-v1 Task 2 verification
+Date: 2026-09-13
+Base: cc9acaa48c93583ea6944075bbacbe547a4100f3
+
+Pre-edit baseline
+
+Command: python3 -B -m unittest tests.test_skill_contract -v
+Exit status: 0
+Relevant output: Ran 26 tests; OK.
+
+Command: python3 -B -m unittest tests.test_check_workflow -v
+Exit status: 0
+Relevant output: Ran 104 tests; OK.
+
+Command: python3 scripts/check_workflow.py --root . --review-state tests/fixtures/review-state/valid-final.json --json
+Exit status: 0
+Relevant output: revision sha256:c4455953cb3ee993a370a1919960ce9822e5266e7bb85268cddfa079ff5c57c6; C01-C12 passed; failed was empty. C12 states that structural checks do not prove behavioral correctness.
+
+Post-edit checks
+
+Command: shasum -a 256 -c tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/candidate/skill-after.sha256
+Exit status: 0
+Relevant output:
+skills/product-development-workflow/SKILL.md: OK
+skills/product-development-workflow/references/agentic-development.md: OK
+skills/product-development-workflow/references/quality-gates.md: OK
+skills/product-development-workflow/assets/role-prompts.md: OK
+skills/product-development-workflow/assets/work-item-and-review-templates.md: OK
+
+Command: shasum -a 256 tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/candidate/skill-after.sha256
+Exit status: 0
+Relevant output: c3e8c4dc28d76464118ae7aaa9175980dce7fac40f896e521ee67b1428707fdd  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/candidate/skill-after.sha256
+
+Command: python3 -B -m unittest tests.test_skill_contract -v
+Exit status: 0
+Relevant output: Ran 26 tests; OK.
+
+Command: python3 -B -m unittest tests.test_check_workflow -v
+Exit status: 0
+Relevant output: Ran 104 tests; OK.
+
+Command: python3 scripts/check_workflow.py --root . --review-state tests/fixtures/review-state/valid-final.json --json
+Exit status: 0
+Relevant output: revision sha256:04d70cbec574e25a7957670c57ba4ae0fe0d0608e458a957dff383947bc80966; C01-C12 passed; failed was empty. C12 states that structural checks do not prove behavioral correctness.
+
+Command: python3 <SKILL_CREATOR>/scripts/quick_validate.py skills/product-development-workflow
+Exit status: 1
+Relevant stderr: ModuleNotFoundError: No module named 'yaml'
+Limitation: the bundled Skill Creator validator could not start because PyYAML is unavailable. No dependency was installed, as required.
+
+Additional scope and identity checks
+
+Command: shasum -a 256 -c tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/candidate/skill-before.sha256
+Exit status: 1
+Relevant output: the five approved skill paths reported FAILED; shasum reported 5 computed checksums did not match. This confirms the prior sums no longer all match.
+
+Command: git diff --check
+Exit status: 0
+Relevant output: none.
