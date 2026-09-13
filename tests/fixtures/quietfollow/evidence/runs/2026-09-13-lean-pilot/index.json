@@ -242,7 +242,14 @@
         "mode": "0444",
         "closed": true
       },
-      "evaluation": null,
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E12/attempt-02/evaluation.md",
+        "prefix_sha256": "fbe311996323e4bc0ce61fc9d295a164524a4a2b8385da60eba6e7ddc3a86ef7",
+        "prefix_bytes": 2913,
+        "whole_sha256": null,
+        "whole_bytes": null,
+        "closed": false
+      },
       "executor": {
         "alias": "case-E12-executor-02",
         "requested_model": "gpt-5.6-sol",
