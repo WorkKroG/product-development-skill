@@ -786,7 +786,13 @@
       "attempt": 2,
       "current": true,
       "credit": "pending",
-      "request": null,
+      "request": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E13/attempt-02/request.md",
+        "sha256": "a7a7e184740bf9b875d0d704897f51cca548c593d7b05f5c75f6e428f7f7585e",
+        "bytes": 2904,
+        "mode": "0444",
+        "frozen": true
+      },
       "response": null,
       "evaluation": null,
       "executor": {
@@ -814,7 +820,7 @@
         "dispatch_receipt": null
       },
       "verdict": "PENDING",
-      "dependent_state": "PENDING_FINAL_M",
+      "dependent_state": "PENDING_OUTER_EXECUTION",
       "limitations": [
         "Attempt 02 restarts only E13 after attempt 01 was quarantined for a public privacy violation; M remains unchanged."
       ],
