@@ -826,7 +826,15 @@
           "bytes": 3590,
           "mode": "0444",
           "frozen": true,
-          "response": null,
+          "response": {
+            "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E13/attempt-02/support/final-M.md",
+            "sha256": "8c3c985733827f1a968c9c77a0ad5ae8cbd84de3ac1e90a6c1a7f536fb178f86",
+            "bytes": 6652,
+            "mode": "0444",
+            "closed": true,
+            "verdict": "FINAL_PASS",
+            "finding_count": 0
+          },
           "actor": {
             "alias": "case-E13-final-M-02",
             "requested_model": "gpt-6-astra",
@@ -835,9 +843,13 @@
             "accepted_reasoning": "Unknown",
             "verified_runtime_model": "Unknown",
             "verified_runtime_reasoning": "Unknown",
-            "fact_source": "Unknown",
-            "platform_session_id": "Unknown",
-            "dispatch_receipt": null
+            "fact_source": "native dispatch result; exact metadata retained privately",
+            "platform_session_id": "private-nonempty-verified",
+            "dispatch_receipt": {
+              "sha256": "33d14da270194c7d9579b4b54f4e3c3248e639947517930afbb2688a1a65cd3b",
+              "contains_distinct_nonempty_platform_task_identity": true,
+              "public_value_withheld": true
+            }
           }
         }
       ],
