@@ -569,7 +569,7 @@
         "dispatch_receipt": null
       },
       "verdict": "PENDING",
-      "dependent_state": "PENDING_CORRECTION_D",
+      "dependent_state": "PENDING_CHANGE_REVIEW_D",
       "limitations": [
         "The private candidate-C writer dispatch receipt is locally retained with SHA-256 d2d7630ae1bbf874bbe270010444db207c570d460e52f6eca4b6a13cd1670be3; accepted and verified runtime model/reasoning remain Unknown.",
         "The writer handoff reported a non-full-index diff serialization; coordinator verification established the required full-index B..C identity as e093ffce59765feef1df089d739fa2ae4dc53b7b1a780c3d6b9551b6a712cca9 / 6055 bytes before review dispatch."
@@ -638,6 +638,27 @@
               "contains_distinct_nonempty_platform_task_identity": true,
               "public_value_withheld": true
             }
+          }
+        },
+        {
+          "kind": "change-review-D-request",
+          "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E14/attempt-01/support/change-review-D-request.md",
+          "sha256": "516058fd60ced9992009103b07aef6056d98b80f707aa29d1c1bc1db461655e1",
+          "bytes": 3424,
+          "mode": "0444",
+          "frozen": true,
+          "response": null,
+          "actor": {
+            "alias": "case-E14-change-review-D-01",
+            "requested_model": "gpt-5.6-sol",
+            "requested_reasoning": "high",
+            "accepted_model": "Unknown",
+            "accepted_reasoning": "Unknown",
+            "verified_runtime_model": "Unknown",
+            "verified_runtime_reasoning": "Unknown",
+            "fact_source": "Unknown",
+            "platform_session_id": "Unknown",
+            "dispatch_receipt": null
           }
         }
       ],
