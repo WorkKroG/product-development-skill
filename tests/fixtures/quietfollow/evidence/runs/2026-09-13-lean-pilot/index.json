@@ -235,7 +235,13 @@
         "mode": "0444",
         "frozen": true
       },
-      "response": null,
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E12/attempt-02/response.md",
+        "sha256": "0fe99e7f9abb14834cd5bb61b13382bcda912dbbbfb79b4d0c548f2112381db0",
+        "bytes": 5926,
+        "mode": "0444",
+        "closed": true
+      },
       "evaluation": null,
       "executor": {
         "alias": "case-E12-executor-02",
@@ -245,9 +251,13 @@
         "accepted_reasoning": "Unknown",
         "verified_runtime_model": "Unknown",
         "verified_runtime_reasoning": "Unknown",
-        "fact_source": "Unknown",
-        "platform_session_id": "Unknown",
-        "dispatch_receipt": null
+        "fact_source": "native dispatch result; exact metadata retained privately",
+        "platform_session_id": "private-nonempty-verified",
+        "dispatch_receipt": {
+          "sha256": "2ff275a113a3012cae1ef2560a2fff617a82e77c5443a21ec1a5aa91efc3ea5a",
+          "contains_distinct_nonempty_platform_task_identity": true,
+          "public_value_withheld": true
+        }
       },
       "evaluator": {
         "alias": "case-E12-evaluator-02",
@@ -262,7 +272,7 @@
         "dispatch_receipt": null
       },
       "verdict": "PENDING",
-      "dependent_state": "PENDING_OUTER_EXECUTION",
+      "dependent_state": "PENDING_INDEPENDENT_EVALUATION",
       "limitations": [
         "Attempt 02 restarts only the E12 request/support flow after attempt 01 was preserved as non-credit for dependent-request ordering."
       ],
