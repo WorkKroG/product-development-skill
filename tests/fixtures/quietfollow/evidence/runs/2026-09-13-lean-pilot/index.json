@@ -897,8 +897,21 @@
         "mode": "0444",
         "frozen": true
       },
-      "response": null,
-      "evaluation": null,
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E27/attempt-01/response.md",
+        "sha256": "a6db206ab85bcd9d2daaa980fabdd0c4fa0072d5b9171010b26cc297c026e441",
+        "bytes": 5620,
+        "mode": "0444",
+        "closed": true
+      },
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E27/attempt-01/evaluation.md",
+        "prefix_sha256": "1479e706e647625372cc0dfe6050375a6b3d719fcd5ebb463bda876885d56df0",
+        "prefix_bytes": 1538,
+        "whole_sha256": null,
+        "whole_bytes": null,
+        "closed": false
+      },
       "executor": {
         "alias": "case-E27-executor-01",
         "requested_model": "gpt-5.6-sol",
@@ -907,9 +920,13 @@
         "accepted_reasoning": "Unknown",
         "verified_runtime_model": "Unknown",
         "verified_runtime_reasoning": "Unknown",
-        "fact_source": "Unknown",
-        "platform_session_id": "Unknown",
-        "dispatch_receipt": null
+        "fact_source": "native dispatch result; exact metadata retained privately",
+        "platform_session_id": "private-nonempty-verified",
+        "dispatch_receipt": {
+          "sha256": "f6591754a0861333f25e6d4b2176d4cadc155e8fe654f4dc43147cec9cfc85b5",
+          "contains_distinct_nonempty_platform_task_identity": true,
+          "public_value_withheld": true
+        }
       },
       "evaluator": {
         "alias": "case-E27-evaluator-01",
@@ -924,7 +941,7 @@
         "dispatch_receipt": null
       },
       "verdict": "PENDING",
-      "dependent_state": "PENDING_EXECUTION",
+      "dependent_state": "PENDING_INDEPENDENT_EVALUATION",
       "limitations": [],
       "support": [],
       "superseded_attempts": []
@@ -942,8 +959,21 @@
         "mode": "0444",
         "frozen": true
       },
-      "response": null,
-      "evaluation": null,
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E28/attempt-01/response.md",
+        "sha256": "cbbe19c0850347bc8e5faa3033318f417cf978181d95a022229681c5423f6c50",
+        "bytes": 6933,
+        "mode": "0444",
+        "closed": true
+      },
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E28/attempt-01/evaluation.md",
+        "prefix_sha256": "bf64008649f098acb494a984b12429444fae3d5c8825ef6bc7faf9cf20c03247",
+        "prefix_bytes": 1524,
+        "whole_sha256": null,
+        "whole_bytes": null,
+        "closed": false
+      },
       "executor": {
         "alias": "case-E28-executor-01",
         "requested_model": "gpt-5.6-sol",
@@ -952,9 +982,13 @@
         "accepted_reasoning": "Unknown",
         "verified_runtime_model": "Unknown",
         "verified_runtime_reasoning": "Unknown",
-        "fact_source": "Unknown",
-        "platform_session_id": "Unknown",
-        "dispatch_receipt": null
+        "fact_source": "native dispatch result; exact metadata retained privately",
+        "platform_session_id": "private-nonempty-verified",
+        "dispatch_receipt": {
+          "sha256": "1a6357831d47fca8aeab169552e1db5554985f77bdf608a26df278e53ecf2bd6",
+          "contains_distinct_nonempty_platform_task_identity": true,
+          "public_value_withheld": true
+        }
       },
       "evaluator": {
         "alias": "case-E28-evaluator-01",
@@ -969,7 +1003,7 @@
         "dispatch_receipt": null
       },
       "verdict": "PENDING",
-      "dependent_state": "PENDING_EXECUTION",
+      "dependent_state": "PENDING_INDEPENDENT_EVALUATION",
       "limitations": [],
       "support": [],
       "superseded_attempts": []
