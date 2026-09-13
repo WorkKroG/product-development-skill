@@ -709,8 +709,8 @@
       "id": "E13",
       "kind": "case",
       "attempt": 1,
-      "current": true,
-      "credit": "pending",
+      "current": false,
+      "credit": "non-credit",
       "request": null,
       "response": null,
       "evaluation": null,
@@ -738,9 +738,12 @@
         "platform_session_id": "Unknown",
         "dispatch_receipt": null
       },
-      "verdict": "PENDING",
-      "dependent_state": "PENDING_FINAL_M",
-      "limitations": [],
+      "verdict": "BLOCKED",
+      "dependent_state": "QUARANTINED_BEFORE_OUTER_EXECUTION",
+      "limitations": [
+        "The fresh M FINAL behavior returned FINAL_PASS, but its report disclosed an exact private platform task identity in public output. The exact 9274-byte report is retained read-only in private quarantine with SHA-256 ee3939aeafc7c6fbcc5638dd4e296621d7cb6a488e332d736d6630e008711689 and is not eligible for public credit.",
+        "No outer E13 executor or evaluator was dispatched for attempt 01. Attempt 02 restarts only the E13 nested FINAL flow on unchanged M."
+      ],
       "support": [
         {
           "kind": "final-M-request",
@@ -750,6 +753,12 @@
           "mode": "0444",
           "frozen": true,
           "response": null,
+          "quarantine": {
+            "sha256": "ee3939aeafc7c6fbcc5638dd4e296621d7cb6a488e332d736d6630e008711689",
+            "bytes": 9274,
+            "mode": "0444",
+            "reason": "exact private platform task identity disclosed in public report"
+          },
           "actor": {
             "alias": "case-E13-final-M-01",
             "requested_model": "gpt-6-astra",
@@ -758,12 +767,17 @@
             "accepted_reasoning": "Unknown",
             "verified_runtime_model": "Unknown",
             "verified_runtime_reasoning": "Unknown",
-            "fact_source": "Unknown",
-            "platform_session_id": "Unknown",
-            "dispatch_receipt": null
+            "fact_source": "native dispatch result; exact metadata retained privately",
+            "platform_session_id": "private-nonempty-verified",
+            "dispatch_receipt": {
+              "sha256": "69277e8637481fed51587d65466e058e36ed3a5f4b57b650261e37d133ce9cb7",
+              "contains_distinct_nonempty_platform_task_identity": true,
+              "public_value_withheld": true
+            }
           }
         }
       ],
+      "superseded_by_attempt": 2,
       "superseded_attempts": []
     }
   ],
