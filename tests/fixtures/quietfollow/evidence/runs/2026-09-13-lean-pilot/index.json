@@ -779,6 +779,69 @@
       ],
       "superseded_by_attempt": 2,
       "superseded_attempts": []
+    },
+    {
+      "id": "E13",
+      "kind": "case",
+      "attempt": 2,
+      "current": true,
+      "credit": "pending",
+      "request": null,
+      "response": null,
+      "evaluation": null,
+      "executor": {
+        "alias": "case-E13-executor-02",
+        "requested_model": "gpt-5.6-sol",
+        "requested_reasoning": "high",
+        "accepted_model": "Unknown",
+        "accepted_reasoning": "Unknown",
+        "verified_runtime_model": "Unknown",
+        "verified_runtime_reasoning": "Unknown",
+        "fact_source": "Unknown",
+        "platform_session_id": "Unknown",
+        "dispatch_receipt": null
+      },
+      "evaluator": {
+        "alias": "case-E13-evaluator-02",
+        "requested_model": "gpt-5.6-sol",
+        "requested_reasoning": "high",
+        "accepted_model": "Unknown",
+        "accepted_reasoning": "Unknown",
+        "verified_runtime_model": "Unknown",
+        "verified_runtime_reasoning": "Unknown",
+        "fact_source": "Unknown",
+        "platform_session_id": "Unknown",
+        "dispatch_receipt": null
+      },
+      "verdict": "PENDING",
+      "dependent_state": "PENDING_FINAL_M",
+      "limitations": [
+        "Attempt 02 restarts only E13 after attempt 01 was quarantined for a public privacy violation; M remains unchanged."
+      ],
+      "support": [
+        {
+          "kind": "final-M-request",
+          "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E13/attempt-02/support/final-M-request.md",
+          "sha256": "378756f41e0a3d855782f05d0a65b02c716fa5b3e709f2c0475918952161e738",
+          "bytes": 3590,
+          "mode": "0444",
+          "frozen": true,
+          "response": null,
+          "actor": {
+            "alias": "case-E13-final-M-02",
+            "requested_model": "gpt-6-astra",
+            "requested_reasoning": "high",
+            "accepted_model": "Unknown",
+            "accepted_reasoning": "Unknown",
+            "verified_runtime_model": "Unknown",
+            "verified_runtime_reasoning": "Unknown",
+            "fact_source": "Unknown",
+            "platform_session_id": "Unknown",
+            "dispatch_receipt": null
+          }
+        }
+      ],
+      "superseded_attempts": [1]
     }
   ],
   "readiness": {
