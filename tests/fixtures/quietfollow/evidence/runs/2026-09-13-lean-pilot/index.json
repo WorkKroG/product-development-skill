@@ -1155,6 +1155,48 @@
       "executor": {"alias": "case-E33-executor-02", "requested_model": "gpt-5.6-sol", "requested_reasoning": "high", "accepted_model": "Unknown", "accepted_reasoning": "Unknown", "verified_runtime_model": "Unknown", "verified_runtime_reasoning": "Unknown", "fact_source": "native dispatch result; exact metadata retained privately", "platform_session_id": "private-nonempty-verified", "dispatch_receipt": {"sha256": "6ca2b36c37b0e2213ffc56d5fedffec00cf58ff071a69b27db7af8e59c379d5e", "contains_distinct_nonempty_platform_task_identity": true, "public_value_withheld": true}},
       "evaluator": {"alias": "case-E33-evaluator-02", "requested_model": "gpt-5.6-sol", "requested_reasoning": "high", "accepted_model": "Unknown", "accepted_reasoning": "Unknown", "verified_runtime_model": "Unknown", "verified_runtime_reasoning": "Unknown", "fact_source": "native dispatch result; exact metadata retained privately", "platform_session_id": "private-nonempty-verified", "dispatch_receipt": {"sha256": "3a4520b583d8196c726af9e303ea472a45cd607b8f4e633dee2440cb478f0fe1", "contains_distinct_nonempty_platform_task_identity": true, "public_value_withheld": true}},
       "verdict": "PASS", "dependent_state": "IN_PROCESS_ARCHITECTURE_COVERED; SEPARATE_SERVICES_DEFERRED_WITH_TRIGGER; REHEARSAL_APPLICABLE_MISSING; PRODUCTION_UNAUTHORIZED", "limitations": ["Attempt 02 restarts E33 after attempt 01 omitted a quantitative revisit threshold; the corrected skill is unchanged."], "support": [], "superseded_attempts": [1]
+    },
+    {
+      "id": "E08", "kind": "case", "attempt": 1, "current": true, "credit": "pending",
+      "request": {"path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E08/attempt-01/request.md", "sha256": "eae612813bf081a010c46449929687ee841fff9c234188dac7ae8c7b57b229aa", "bytes": 1414, "mode": "0444", "frozen": true}, "response": null, "evaluation": null,
+      "executor": {"alias": "case-E08-executor-01", "requested_model": "gpt-5.6-sol", "requested_reasoning": "high", "accepted_model": "Unknown", "accepted_reasoning": "Unknown", "verified_runtime_model": "Unknown", "verified_runtime_reasoning": "Unknown", "fact_source": "Unknown", "platform_session_id": "Unknown", "dispatch_receipt": null},
+      "evaluator": {"alias": "case-E08-evaluator-01", "requested_model": "gpt-5.6-sol", "requested_reasoning": "high", "accepted_model": "Unknown", "accepted_reasoning": "Unknown", "verified_runtime_model": "Unknown", "verified_runtime_reasoning": "Unknown", "fact_source": "Unknown", "platform_session_id": "Unknown", "dispatch_receipt": null},
+      "verdict": "PENDING", "dependent_state": "PENDING_EXECUTOR", "limitations": [], "support": [], "superseded_attempts": []
+    },
+    {
+      "id": "E11", "kind": "case", "attempt": 1, "current": true, "credit": "pending",
+      "request": {"path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E11/attempt-01/request.md", "sha256": "f85006709d6efa801b2245a625a1a040f91bb33f117cab49836936ede02cbcda", "bytes": 1396, "mode": "0444", "frozen": true}, "response": null, "evaluation": null,
+      "executor": {"alias": "case-E11-executor-01", "requested_model": "gpt-5.6-sol", "requested_reasoning": "high", "accepted_model": "Unknown", "accepted_reasoning": "Unknown", "verified_runtime_model": "Unknown", "verified_runtime_reasoning": "Unknown", "fact_source": "Unknown", "platform_session_id": "Unknown", "dispatch_receipt": null},
+      "evaluator": {"alias": "case-E11-evaluator-01", "requested_model": "gpt-5.6-sol", "requested_reasoning": "high", "accepted_model": "Unknown", "accepted_reasoning": "Unknown", "verified_runtime_model": "Unknown", "verified_runtime_reasoning": "Unknown", "fact_source": "Unknown", "platform_session_id": "Unknown", "dispatch_receipt": null},
+      "verdict": "PENDING", "dependent_state": "PENDING_EXECUTOR", "limitations": [], "support": [], "superseded_attempts": []
+    },
+    {
+      "id": "E17", "kind": "case", "attempt": 1, "current": true, "credit": "pending",
+      "request": {"path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E17/attempt-01/request.md", "sha256": "0d9eec56a30c2b427e872a3f5f8f557dda50b140d3be36be6d165a0204726295", "bytes": 1455, "mode": "0444", "frozen": true}, "response": null, "evaluation": null,
+      "executor": {"alias": "case-E17-executor-01", "requested_model": "gpt-5.6-sol", "requested_reasoning": "high", "accepted_model": "Unknown", "accepted_reasoning": "Unknown", "verified_runtime_model": "Unknown", "verified_runtime_reasoning": "Unknown", "fact_source": "Unknown", "platform_session_id": "Unknown", "dispatch_receipt": null},
+      "evaluator": {"alias": "case-E17-evaluator-01", "requested_model": "gpt-5.6-sol", "requested_reasoning": "high", "accepted_model": "Unknown", "accepted_reasoning": "Unknown", "verified_runtime_model": "Unknown", "verified_runtime_reasoning": "Unknown", "fact_source": "Unknown", "platform_session_id": "Unknown", "dispatch_receipt": null},
+      "verdict": "PENDING", "dependent_state": "PENDING_EXECUTOR", "limitations": [], "support": [], "superseded_attempts": []
+    },
+    {
+      "id": "E20", "kind": "case", "attempt": 1, "current": true, "credit": "pending",
+      "request": {"path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E20/attempt-01/request.md", "sha256": "3be6142559c626f529616e3ace220a692dfd1a1965b88c2de71e4eb75793ffdf", "bytes": 1325, "mode": "0444", "frozen": true}, "response": null, "evaluation": null,
+      "executor": {"alias": "case-E20-executor-01", "requested_model": "gpt-5.6-sol", "requested_reasoning": "high", "accepted_model": "Unknown", "accepted_reasoning": "Unknown", "verified_runtime_model": "Unknown", "verified_runtime_reasoning": "Unknown", "fact_source": "Unknown", "platform_session_id": "Unknown", "dispatch_receipt": null},
+      "evaluator": {"alias": "case-E20-evaluator-01", "requested_model": "gpt-5.6-sol", "requested_reasoning": "high", "accepted_model": "Unknown", "accepted_reasoning": "Unknown", "verified_runtime_model": "Unknown", "verified_runtime_reasoning": "Unknown", "fact_source": "Unknown", "platform_session_id": "Unknown", "dispatch_receipt": null},
+      "verdict": "PENDING", "dependent_state": "PENDING_EXECUTOR", "limitations": [], "support": [], "superseded_attempts": []
+    },
+    {
+      "id": "E21", "kind": "case", "attempt": 1, "current": true, "credit": "pending",
+      "request": {"path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E21/attempt-01/request.md", "sha256": "2f27e2618e530b8d8f03a4f12d8b6b738e454c0e6a4cfc2e00629e599aa9a840", "bytes": 1285, "mode": "0444", "frozen": true}, "response": null, "evaluation": null,
+      "executor": {"alias": "case-E21-executor-01", "requested_model": "gpt-5.6-sol", "requested_reasoning": "high", "accepted_model": "Unknown", "accepted_reasoning": "Unknown", "verified_runtime_model": "Unknown", "verified_runtime_reasoning": "Unknown", "fact_source": "Unknown", "platform_session_id": "Unknown", "dispatch_receipt": null},
+      "evaluator": {"alias": "case-E21-evaluator-01", "requested_model": "gpt-5.6-sol", "requested_reasoning": "high", "accepted_model": "Unknown", "accepted_reasoning": "Unknown", "verified_runtime_model": "Unknown", "verified_runtime_reasoning": "Unknown", "fact_source": "Unknown", "platform_session_id": "Unknown", "dispatch_receipt": null},
+      "verdict": "PENDING", "dependent_state": "PENDING_EXECUTOR", "limitations": [], "support": [], "superseded_attempts": []
+    },
+    {
+      "id": "E22", "kind": "case", "attempt": 1, "current": true, "credit": "pending",
+      "request": {"path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E22/attempt-01/request.md", "sha256": "314a276c51d32a539d9ff6ef4cb62325cbf9c2db0058747bd9a3643478e3b712", "bytes": 1373, "mode": "0444", "frozen": true}, "response": null, "evaluation": null,
+      "executor": {"alias": "case-E22-executor-01", "requested_model": "gpt-5.6-sol", "requested_reasoning": "high", "accepted_model": "Unknown", "accepted_reasoning": "Unknown", "verified_runtime_model": "Unknown", "verified_runtime_reasoning": "Unknown", "fact_source": "Unknown", "platform_session_id": "Unknown", "dispatch_receipt": null},
+      "evaluator": {"alias": "case-E22-evaluator-01", "requested_model": "gpt-5.6-sol", "requested_reasoning": "high", "accepted_model": "Unknown", "accepted_reasoning": "Unknown", "verified_runtime_model": "Unknown", "verified_runtime_reasoning": "Unknown", "fact_source": "Unknown", "platform_session_id": "Unknown", "dispatch_receipt": null},
+      "verdict": "PENDING", "dependent_state": "PENDING_EXECUTOR", "limitations": [], "support": [], "superseded_attempts": []
     }
   ],
   "readiness": {
