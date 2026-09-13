@@ -1253,6 +1253,41 @@
         }
       ],
       "superseded_attempts": []
+    },
+    {
+      "id": "SU02", "kind": "probe", "attempt": 1, "current": true, "credit": "pending",
+      "request": {"path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU02/attempt-01/request.md", "sha256": "30045c5e9cdbb3d19d38e892f59c58f58763db04f1b8d7ab9b67b5fe371412c9", "bytes": 1388, "mode": "0444", "frozen": true}, "response": null, "evaluation": null,
+      "executor": {"alias": "probe-SU02-executor-01", "requested_model": "gpt-5.6-sol", "requested_reasoning": "high", "accepted_model": "Unknown", "accepted_reasoning": "Unknown", "verified_runtime_model": "Unknown", "verified_runtime_reasoning": "Unknown", "fact_source": "Unknown", "platform_session_id": "Unknown", "dispatch_receipt": null},
+      "evaluator": {"alias": "probe-SU02-evaluator-01", "requested_model": "gpt-5.6-sol", "requested_reasoning": "high", "accepted_model": "Unknown", "accepted_reasoning": "Unknown", "verified_runtime_model": "Unknown", "verified_runtime_reasoning": "Unknown", "fact_source": "Unknown", "platform_session_id": "Unknown", "dispatch_receipt": null},
+      "verdict": "PENDING", "dependent_state": "PENDING_EXECUTOR", "limitations": [], "support": [], "superseded_attempts": []
+    },
+    {
+      "id": "SU03", "kind": "probe", "attempt": 1, "current": true, "credit": "pending",
+      "request": {"path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU03/attempt-01/request.md", "sha256": "41f7bce26a87c63a07e489b4eb67e3e588fe093368628bc348714587e4e968ed", "bytes": 1243, "mode": "0444", "frozen": true}, "response": null, "evaluation": null,
+      "executor": {"alias": "probe-SU03-executor-01", "requested_model": "gpt-5.6-sol", "requested_reasoning": "high", "accepted_model": "Unknown", "accepted_reasoning": "Unknown", "verified_runtime_model": "Unknown", "verified_runtime_reasoning": "Unknown", "fact_source": "Unknown", "platform_session_id": "Unknown", "dispatch_receipt": null},
+      "evaluator": {"alias": "probe-SU03-evaluator-01", "requested_model": "gpt-5.6-sol", "requested_reasoning": "high", "accepted_model": "Unknown", "accepted_reasoning": "Unknown", "verified_runtime_model": "Unknown", "verified_runtime_reasoning": "Unknown", "fact_source": "Unknown", "platform_session_id": "Unknown", "dispatch_receipt": null},
+      "verdict": "PENDING", "dependent_state": "PENDING_EXECUTOR", "limitations": [], "support": [], "superseded_attempts": []
+    },
+    {
+      "id": "SU04", "kind": "probe", "attempt": 1, "current": true, "credit": "pending",
+      "request": {"path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU04/attempt-01/request.md", "sha256": "e9ed57de2589b6c5361dcab9ab1df0975f18be40f0781d5695da7a6ba693a3f9", "bytes": 1331, "mode": "0444", "frozen": true}, "response": null, "evaluation": null,
+      "executor": {"alias": "probe-SU04-executor-01", "requested_model": "gpt-5.6-sol", "requested_reasoning": "high", "accepted_model": "Unknown", "accepted_reasoning": "Unknown", "verified_runtime_model": "Unknown", "verified_runtime_reasoning": "Unknown", "fact_source": "Unknown", "platform_session_id": "Unknown", "dispatch_receipt": null},
+      "evaluator": {"alias": "probe-SU04-evaluator-01", "requested_model": "gpt-5.6-sol", "requested_reasoning": "high", "accepted_model": "Unknown", "accepted_reasoning": "Unknown", "verified_runtime_model": "Unknown", "verified_runtime_reasoning": "Unknown", "fact_source": "Unknown", "platform_session_id": "Unknown", "dispatch_receipt": null},
+      "verdict": "PENDING", "dependent_state": "PENDING_EXECUTOR", "limitations": [], "support": [], "superseded_attempts": []
+    },
+    {
+      "id": "SU05", "kind": "probe", "attempt": 1, "current": true, "credit": "pending",
+      "request": {"path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU05/attempt-01/request.md", "sha256": "6d558bab998f8a48f0a659eef80c355bafd5515b3edaf79859d4f913c25aaa58", "bytes": 1290, "mode": "0444", "frozen": true}, "response": null, "evaluation": null,
+      "executor": {"alias": "probe-SU05-executor-01", "requested_model": "gpt-5.6-sol", "requested_reasoning": "high", "accepted_model": "Unknown", "accepted_reasoning": "Unknown", "verified_runtime_model": "Unknown", "verified_runtime_reasoning": "Unknown", "fact_source": "Unknown", "platform_session_id": "Unknown", "dispatch_receipt": null},
+      "evaluator": {"alias": "probe-SU05-evaluator-01", "requested_model": "gpt-5.6-sol", "requested_reasoning": "high", "accepted_model": "Unknown", "accepted_reasoning": "Unknown", "verified_runtime_model": "Unknown", "verified_runtime_reasoning": "Unknown", "fact_source": "Unknown", "platform_session_id": "Unknown", "dispatch_receipt": null},
+      "verdict": "PENDING", "dependent_state": "PENDING_EXECUTOR", "limitations": [], "support": [], "superseded_attempts": []
+    },
+    {
+      "id": "SU06", "kind": "probe", "attempt": 1, "current": true, "credit": "pending",
+      "request": {"path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU06/attempt-01/request.md", "sha256": "2a090097924730e66077accc33fa7491e7e4bee7d86e7a8e899c687277a3e2d5", "bytes": 1382, "mode": "0444", "frozen": true}, "response": null, "evaluation": null,
+      "executor": {"alias": "probe-SU06-executor-01", "requested_model": "gpt-5.6-sol", "requested_reasoning": "high", "accepted_model": "Unknown", "accepted_reasoning": "Unknown", "verified_runtime_model": "Unknown", "verified_runtime_reasoning": "Unknown", "fact_source": "Unknown", "platform_session_id": "Unknown", "dispatch_receipt": null},
+      "evaluator": {"alias": "probe-SU06-evaluator-01", "requested_model": "gpt-5.6-sol", "requested_reasoning": "high", "accepted_model": "Unknown", "accepted_reasoning": "Unknown", "verified_runtime_model": "Unknown", "verified_runtime_reasoning": "Unknown", "fact_source": "Unknown", "platform_session_id": "Unknown", "dispatch_receipt": null},
+      "verdict": "PENDING", "dependent_state": "PENDING_EXECUTOR", "limitations": [], "support": [], "superseded_attempts": []
     }
   ],
   "readiness": {
