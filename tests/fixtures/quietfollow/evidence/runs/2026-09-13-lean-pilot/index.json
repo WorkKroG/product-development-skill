@@ -162,8 +162,8 @@
         {
           "kind": "change-review-B-request",
           "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E12/attempt-01/support/change-review-B-request.md",
-          "sha256": "5fde34d7d024d8308e7a4ac6d9fef553a84d8217939170054603ddf4132ba3b4",
-          "bytes": 10018,
+          "sha256": "9fc96b0387c446d1e6e91a4e5c1cc71a92d6a667aaed71121adf746d2e220888",
+          "bytes": 10017,
           "mode": "0444",
           "frozen": true,
           "actor": {
