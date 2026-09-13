@@ -785,7 +785,7 @@
       "kind": "case",
       "attempt": 2,
       "current": true,
-      "credit": "pending",
+      "credit": "PASS",
       "request": {
         "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E13/attempt-02/request.md",
         "sha256": "a7a7e184740bf9b875d0d704897f51cca548c593d7b05f5c75f6e428f7f7585e",
@@ -804,9 +804,10 @@
         "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E13/attempt-02/evaluation.md",
         "prefix_sha256": "f3a6d07c9e6ff30c591c9ebda8ae255a3afca184f1e551347a9c3754d9ce7e7a",
         "prefix_bytes": 2640,
-        "whole_sha256": null,
-        "whole_bytes": null,
-        "closed": false
+        "whole_sha256": "8859d2b12e06f64801a3934c008b3080b03a890f0949d3b9a8eea61c0329f413",
+        "whole_bytes": 8703,
+        "mode": "0444",
+        "closed": true
       },
       "executor": {
         "alias": "case-E13-executor-02",
@@ -832,14 +833,19 @@
         "accepted_reasoning": "Unknown",
         "verified_runtime_model": "Unknown",
         "verified_runtime_reasoning": "Unknown",
-        "fact_source": "Unknown",
-        "platform_session_id": "Unknown",
-        "dispatch_receipt": null
+        "fact_source": "native dispatch result; exact metadata retained privately",
+        "platform_session_id": "private-nonempty-verified",
+        "dispatch_receipt": {
+          "sha256": "b8b16e32ee0091a76005fec866b4ac30df77c06edad25f07426ded854acadcdc",
+          "contains_distinct_nonempty_platform_task_identity": true,
+          "public_value_withheld": true
+        }
       },
-      "verdict": "PENDING",
-      "dependent_state": "PENDING_INDEPENDENT_EVALUATION",
+      "verdict": "PASS",
+      "dependent_state": "DONE_FOR_UNCHANGED_LOCAL_SYNTHETIC_M_ONLY; RELEASE_UNASSESSED_AND_UNAUTHORIZED",
       "limitations": [
-        "Attempt 02 restarts only E13 after attempt 01 was quarantined for a public privacy violation; M remains unchanged."
+        "Attempt 02 restarts only E13 after attempt 01 was quarantined for a public privacy violation; M remains unchanged.",
+        "Runtime model remains Unknown; evidence is local and synthetic. The evaluator independently verified candidate identity, all five skill blobs, exact M state, and 15/15 product tests, but did not separately materialize the aggregate checksum list."
       ],
       "support": [
         {
