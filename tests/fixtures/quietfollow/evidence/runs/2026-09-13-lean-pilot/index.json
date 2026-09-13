@@ -1037,8 +1037,21 @@
         "mode": "0444",
         "frozen": true
       },
-      "response": null,
-      "evaluation": null,
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E28/attempt-02/response.md",
+        "sha256": "b34e654ffa20dd93349219e03f01047b2e95ec415a745ca4f342f22904de419c",
+        "bytes": 7296,
+        "mode": "0444",
+        "closed": true
+      },
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E28/attempt-02/evaluation.md",
+        "prefix_sha256": "2a0f5f2fbde15f8c84c9ddcb8cecdb7f84b2bc2065adbcfc27549452c7c1a409",
+        "prefix_bytes": 1705,
+        "whole_sha256": null,
+        "whole_bytes": null,
+        "closed": false
+      },
       "executor": {
         "alias": "case-E28-executor-02",
         "requested_model": "gpt-5.6-sol",
@@ -1047,9 +1060,13 @@
         "accepted_reasoning": "Unknown",
         "verified_runtime_model": "Unknown",
         "verified_runtime_reasoning": "Unknown",
-        "fact_source": "Unknown",
-        "platform_session_id": "Unknown",
-        "dispatch_receipt": null
+        "fact_source": "native dispatch result; exact metadata retained privately",
+        "platform_session_id": "private-nonempty-verified",
+        "dispatch_receipt": {
+          "sha256": "128b25fa67997e21131beb435bb32b3e635740745da2e1aee4c9bb68827c95bf",
+          "contains_distinct_nonempty_platform_task_identity": true,
+          "public_value_withheld": true
+        }
       },
       "evaluator": {
         "alias": "case-E28-evaluator-02",
@@ -1064,7 +1081,7 @@
         "dispatch_receipt": null
       },
       "verdict": "PENDING",
-      "dependent_state": "PENDING_FRESH_EXECUTOR",
+      "dependent_state": "PENDING_FRESH_INDEPENDENT_EVALUATION",
       "limitations": [
         "Attempt 02 restarts E28 after attempt 01 was blocked by incomplete private evaluator evidence routing; exact M is unchanged."
       ],
