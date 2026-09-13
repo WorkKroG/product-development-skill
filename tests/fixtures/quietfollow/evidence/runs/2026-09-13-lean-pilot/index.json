@@ -883,6 +883,96 @@
         }
       ],
       "superseded_attempts": [1]
+    },
+    {
+      "id": "E27",
+      "kind": "case",
+      "attempt": 1,
+      "current": true,
+      "credit": "pending",
+      "request": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E27/attempt-01/request.md",
+        "sha256": "7b44dc9aa268216d7e90de18c8c79726d6dd8e14861fd5e981095afd09048fcb",
+        "bytes": 2789,
+        "mode": "0444",
+        "frozen": true
+      },
+      "response": null,
+      "evaluation": null,
+      "executor": {
+        "alias": "case-E27-executor-01",
+        "requested_model": "gpt-5.6-sol",
+        "requested_reasoning": "high",
+        "accepted_model": "Unknown",
+        "accepted_reasoning": "Unknown",
+        "verified_runtime_model": "Unknown",
+        "verified_runtime_reasoning": "Unknown",
+        "fact_source": "Unknown",
+        "platform_session_id": "Unknown",
+        "dispatch_receipt": null
+      },
+      "evaluator": {
+        "alias": "case-E27-evaluator-01",
+        "requested_model": "gpt-5.6-sol",
+        "requested_reasoning": "high",
+        "accepted_model": "Unknown",
+        "accepted_reasoning": "Unknown",
+        "verified_runtime_model": "Unknown",
+        "verified_runtime_reasoning": "Unknown",
+        "fact_source": "Unknown",
+        "platform_session_id": "Unknown",
+        "dispatch_receipt": null
+      },
+      "verdict": "PENDING",
+      "dependent_state": "PENDING_EXECUTION",
+      "limitations": [],
+      "support": [],
+      "superseded_attempts": []
+    },
+    {
+      "id": "E28",
+      "kind": "case",
+      "attempt": 1,
+      "current": true,
+      "credit": "pending",
+      "request": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E28/attempt-01/request.md",
+        "sha256": "9093273b4883cdb260306d90f3b318fcd5cd9d27e7ed0b81b249feaefbdb9d4a",
+        "bytes": 2808,
+        "mode": "0444",
+        "frozen": true
+      },
+      "response": null,
+      "evaluation": null,
+      "executor": {
+        "alias": "case-E28-executor-01",
+        "requested_model": "gpt-5.6-sol",
+        "requested_reasoning": "high",
+        "accepted_model": "Unknown",
+        "accepted_reasoning": "Unknown",
+        "verified_runtime_model": "Unknown",
+        "verified_runtime_reasoning": "Unknown",
+        "fact_source": "Unknown",
+        "platform_session_id": "Unknown",
+        "dispatch_receipt": null
+      },
+      "evaluator": {
+        "alias": "case-E28-evaluator-01",
+        "requested_model": "gpt-5.6-sol",
+        "requested_reasoning": "high",
+        "accepted_model": "Unknown",
+        "accepted_reasoning": "Unknown",
+        "verified_runtime_model": "Unknown",
+        "verified_runtime_reasoning": "Unknown",
+        "fact_source": "Unknown",
+        "platform_session_id": "Unknown",
+        "dispatch_receipt": null
+      },
+      "verdict": "PENDING",
+      "dependent_state": "PENDING_EXECUTION",
+      "limitations": [],
+      "support": [],
+      "superseded_attempts": []
     }
   ],
   "readiness": {
