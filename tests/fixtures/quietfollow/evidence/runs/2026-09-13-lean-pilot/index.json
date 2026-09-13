@@ -541,7 +541,13 @@
       "attempt": 1,
       "current": true,
       "credit": "pending",
-      "request": null,
+      "request": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E14/attempt-01/request.md",
+        "sha256": "605407e1fb600666f85fdfa2e1953c6909a274ca0c11be0b86ba640d8539c3fe",
+        "bytes": 3661,
+        "mode": "0444",
+        "frozen": true
+      },
       "response": null,
       "evaluation": null,
       "executor": {
