@@ -2669,7 +2669,7 @@
       "id": "E41",
       "kind": "case",
       "attempt": 2,
-      "current": true,
+      "current": false,
       "credit": "non-credit",
       "request": {
         "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E41/attempt-02/request.md",
@@ -2735,7 +2735,8 @@
       "support": [],
       "superseded_attempts": [
         1
-      ]
+      ],
+      "superseded_by_attempt": 3
     },
     {
       "id": "E11",
@@ -3375,10 +3376,60 @@
       "superseded_attempts": [
         1
       ]
+    },
+    {
+      "id": "E41",
+      "kind": "case",
+      "attempt": 3,
+      "current": true,
+      "credit": "non-credit",
+      "request": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E41/attempt-03/request.md",
+        "sha256": "1da30d08cba2bd562cdfa564539ae8857d01bb737ff6e35010e5571fee5a8966",
+        "bytes": 3031,
+        "mode": "0444",
+        "frozen": true
+      },
+      "response": null,
+      "evaluation": null,
+      "executor": {
+        "alias": "case-E41-executor-03",
+        "requested_model": "gpt-5.6-sol",
+        "requested_reasoning": "high",
+        "accepted_model": "Unknown",
+        "accepted_reasoning": "Unknown",
+        "verified_runtime_model": "Unknown",
+        "verified_runtime_reasoning": "Unknown",
+        "fact_source": "Unknown",
+        "platform_session_id": "Unknown",
+        "dispatch_receipt": null
+      },
+      "evaluator": {
+        "alias": "case-E41-evaluator-03",
+        "requested_model": "gpt-5.6-sol",
+        "requested_reasoning": "high",
+        "accepted_model": "Unknown",
+        "accepted_reasoning": "Unknown",
+        "verified_runtime_model": "Unknown",
+        "verified_runtime_reasoning": "Unknown",
+        "fact_source": "Unknown",
+        "platform_session_id": "Unknown",
+        "dispatch_receipt": null
+      },
+      "verdict": "BLOCKED",
+      "dependent_state": "ATTEMPT_03_REQUEST_FROZEN; EXECUTION_PENDING",
+      "limitations": [
+        "Attempt 03 corrects the exact attempt-02 evaluation findings without changing candidate or scenario."
+      ],
+      "support": [],
+      "superseded_attempts": [
+        1,
+        2
+      ]
     }
   ],
   "readiness": {
     "claimed": false,
-    "state": "CORRECTION_RESULTS_RECORDED; E41_RERUN_REQUIRED"
+    "state": "E41_ATTEMPT_03_IN_PROGRESS"
   }
 }
