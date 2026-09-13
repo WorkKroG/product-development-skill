@@ -1,0 +1,47 @@
+{
+  "case": "E10",
+  "attempt": 1,
+  "decision_version": "E10-ARCH-v1",
+  "candidate": {
+    "commit": "0070e4c307e785cfeafae41ee4aa70151de1df7c",
+    "tree": "639c579dddec3b4039e347c89952d4f254e628b2",
+    "five_file_checksum_list_sha256": "c3e8c4dc28d76464118ae7aaa9175980dce7fac40f896e521ee67b1428707fdd"
+  },
+  "bound_package": {
+    "analysis_request_sha256": "d5f41947341a722d8cb5c1e013046f279ddd47d06a9cefbd33adddbac0537e08",
+    "analysis_sha256": "7d345f8b413c02d0fd0171e7060da745893cf5b2fa8888c00e4c17269e9ff28a",
+    "review_request_sha256": "4a14fd2a68cd3b4e5bda08179a4334e11a5df31221c7a19f0546f4def44febc4",
+    "review_sha256": "169b5be6284c1e4e2375ee372732633d839de22ff4359fcef6e1fb2171848ca8",
+    "review_verdict": "PASS"
+  },
+  "decision": "retain_current_shared_contract",
+  "contract_boundary": {
+    "reminder_due": "unchanged",
+    "follow_up_id": "unchanged",
+    "compatibility_layer": "not_authorized",
+    "breaking_replacement": "not_authorized"
+  },
+  "affected_tasks": [
+    {
+      "task": "Module A proposed shared-field replacement",
+      "state": "cancelled_as_unjustified; approved local plan v2 remains valid only where unchanged"
+    },
+    {
+      "task": "Module B proposed adapter migration",
+      "state": "cancelled_as_unjustified; existing current-contract scheduling work may continue"
+    }
+  ],
+  "unaffected_tasks": [
+    "Module A validation and tests independent of the proposed field replacement",
+    "Module B scheduling tests independent of the proposed field replacement",
+    "Module C analytics"
+  ],
+  "accepted_risks_and_limits": [
+    "No demonstrated requirement or defect currently justifies contract replacement.",
+    "The dependency inventory remains synthetic and must be rechecked if a concrete change is proposed.",
+    "This decision authorizes no implementation, integration, merge, deployment, or release action."
+  ],
+  "revisit_trigger": "A concrete user, product, interoperability, or defect requirement demonstrates that the current shared contract is insufficient.",
+  "next_authorized_action": "Record affected and unaffected routing against this exact decision without sending native messages or changing code.",
+  "real_native_action": false
+}

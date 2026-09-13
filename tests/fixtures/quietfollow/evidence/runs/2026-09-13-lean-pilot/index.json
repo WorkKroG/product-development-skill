@@ -1215,8 +1215,8 @@
       "request": null, "response": null, "evaluation": null,
       "executor": {"alias": "case-E10-executor-01", "requested_model": "gpt-5.6-sol", "requested_reasoning": "high", "accepted_model": "Unknown", "accepted_reasoning": "Unknown", "verified_runtime_model": "Unknown", "verified_runtime_reasoning": "Unknown", "fact_source": "Unknown", "platform_session_id": "Unknown", "dispatch_receipt": null},
       "evaluator": {"alias": "case-E10-evaluator-01", "requested_model": "gpt-5.6-sol", "requested_reasoning": "high", "accepted_model": "Unknown", "accepted_reasoning": "Unknown", "verified_runtime_model": "Unknown", "verified_runtime_reasoning": "Unknown", "fact_source": "Unknown", "platform_session_id": "Unknown", "dispatch_receipt": null},
-      "verdict": "PENDING", "dependent_state": "PENDING_INDEPENDENT_ARCHITECTURE_REVIEW",
-      "limitations": [],
+      "verdict": "PENDING", "dependent_state": "PENDING_REVISED_ROUTING",
+      "limitations": ["Architecture review PASS recorded one low-severity reviewer-process limitation: initial orientation read extra guidance outside its source allowlist; no material package finding resulted."],
       "support": [
         {
           "kind": "architecture-analysis-request",
@@ -1231,8 +1231,23 @@
           "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E10/attempt-01/support/architecture-review-request.md",
           "sha256": "4a14fd2a68cd3b4e5bda08179a4334e11a5df31221c7a19f0546f4def44febc4",
           "bytes": 1988, "mode": "0444", "frozen": true,
+          "response": {"path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E10/attempt-01/support/architecture-review.md", "sha256": "169b5be6284c1e4e2375ee372732633d839de22ff4359fcef6e1fb2171848ca8", "bytes": 7196, "mode": "0444", "closed": true, "verdict": "PASS", "finding_count": 0},
+          "actor": {"alias": "case-E10-architecture-review-01", "requested_model": "gpt-6-astra", "requested_reasoning": "high", "accepted_model": "Unknown", "accepted_reasoning": "Unknown", "verified_runtime_model": "Unknown", "verified_runtime_reasoning": "Unknown", "fact_source": "native dispatch result; exact metadata retained privately", "platform_session_id": "private-nonempty-verified", "dispatch_receipt": {"sha256": "20d4b58b84d8034c4ca684b9e76e482b8f6d27c5bf1d15b1257239b3b616b21a", "contains_distinct_nonempty_platform_task_identity": true, "public_value_withheld": true}}
+        },
+        {
+          "kind": "owner-decision",
+          "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E10/attempt-01/support/owner-decision.json",
+          "sha256": "61ee09de0f6e2df7c0ce03c0f7aaba1a7eb75e5bd87b475b42ed7a208ad4e74a",
+          "bytes": 2223, "mode": "0444", "frozen": true,
+          "decision_version": "E10-ARCH-v1", "real_native_action": false
+        },
+        {
+          "kind": "revised-routing-request",
+          "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E10/attempt-01/support/revised-routing-request.md",
+          "sha256": "d3764b8cf48f66f06241b313b240d2893ebe4001896ad306118d7fc3d1b13bcf",
+          "bytes": 1743, "mode": "0444", "frozen": true,
           "response": null,
-          "actor": {"alias": "case-E10-architecture-review-01", "requested_model": "gpt-6-astra", "requested_reasoning": "high", "accepted_model": "Unknown", "accepted_reasoning": "Unknown", "verified_runtime_model": "Unknown", "verified_runtime_reasoning": "Unknown", "fact_source": "Unknown", "platform_session_id": "Unknown", "dispatch_receipt": null}
+          "actor": {"alias": "case-E10-revised-routing-01", "requested_model": "gpt-5.6-sol", "requested_reasoning": "high", "accepted_model": "Unknown", "accepted_reasoning": "Unknown", "verified_runtime_model": "Unknown", "verified_runtime_reasoning": "Unknown", "fact_source": "Unknown", "platform_session_id": "Unknown", "dispatch_receipt": null}
         }
       ],
       "superseded_attempts": []
