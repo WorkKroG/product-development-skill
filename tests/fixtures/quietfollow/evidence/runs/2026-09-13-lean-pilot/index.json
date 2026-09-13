@@ -209,6 +209,69 @@
       "superseded_attempts": []
     },
     {
+      "id": "E12",
+      "kind": "case",
+      "attempt": 2,
+      "current": true,
+      "credit": "pending",
+      "request": null,
+      "response": null,
+      "evaluation": null,
+      "executor": {
+        "alias": "case-E12-executor-02",
+        "requested_model": "gpt-5.6-sol",
+        "requested_reasoning": "high",
+        "accepted_model": "Unknown",
+        "accepted_reasoning": "Unknown",
+        "verified_runtime_model": "Unknown",
+        "verified_runtime_reasoning": "Unknown",
+        "fact_source": "Unknown",
+        "platform_session_id": "Unknown",
+        "dispatch_receipt": null
+      },
+      "evaluator": {
+        "alias": "case-E12-evaluator-02",
+        "requested_model": "gpt-5.6-sol",
+        "requested_reasoning": "high",
+        "accepted_model": "Unknown",
+        "accepted_reasoning": "Unknown",
+        "verified_runtime_model": "Unknown",
+        "verified_runtime_reasoning": "Unknown",
+        "fact_source": "Unknown",
+        "platform_session_id": "Unknown",
+        "dispatch_receipt": null
+      },
+      "verdict": "PENDING",
+      "dependent_state": "PENDING_FRESH_B_REVIEW",
+      "limitations": [
+        "Attempt 02 restarts only the E12 request/support flow after attempt 01 was preserved as non-credit for dependent-request ordering."
+      ],
+      "support": [
+        {
+          "kind": "change-review-B-request",
+          "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E12/attempt-02/support/change-review-B-request.md",
+          "sha256": "298776064b5542d044b43250e5fc2a89f161b0bc51be0c2ce4c0957dd72b979a",
+          "bytes": 10088,
+          "mode": "0444",
+          "frozen": true,
+          "response": null,
+          "actor": {
+            "alias": "case-E12-change-review-B-02",
+            "requested_model": "gpt-5.6-sol",
+            "requested_reasoning": "high",
+            "accepted_model": "Unknown",
+            "accepted_reasoning": "Unknown",
+            "verified_runtime_model": "Unknown",
+            "verified_runtime_reasoning": "Unknown",
+            "fact_source": "Unknown",
+            "platform_session_id": "Unknown",
+            "dispatch_receipt": null
+          }
+        }
+      ],
+      "superseded_attempts": [1]
+    },
+    {
       "id": "SU01",
       "kind": "probe",
       "attempt": 1,
