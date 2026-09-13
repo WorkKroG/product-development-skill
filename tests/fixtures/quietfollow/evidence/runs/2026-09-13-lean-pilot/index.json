@@ -1212,10 +1212,12 @@
     },
     {
       "id": "E10", "kind": "case", "attempt": 1, "current": true, "credit": "pending",
-      "request": {"path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E10/attempt-01/request.md", "sha256": "209f8ee0e9c8b3c2b6ee4dbbaf294c91f97a9fa88de1c4493756ca7141e5eda4", "bytes": 2156, "mode": "0444", "frozen": true}, "response": null, "evaluation": null,
-      "executor": {"alias": "case-E10-executor-01", "requested_model": "gpt-5.6-sol", "requested_reasoning": "high", "accepted_model": "Unknown", "accepted_reasoning": "Unknown", "verified_runtime_model": "Unknown", "verified_runtime_reasoning": "Unknown", "fact_source": "Unknown", "platform_session_id": "Unknown", "dispatch_receipt": null},
+      "request": {"path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E10/attempt-01/request.md", "sha256": "209f8ee0e9c8b3c2b6ee4dbbaf294c91f97a9fa88de1c4493756ca7141e5eda4", "bytes": 2156, "mode": "0444", "frozen": true},
+      "response": {"path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E10/attempt-01/response.md", "sha256": "c41d4eea45c4114459790aeb8f467e64d815a38d8a450980697d3f94f319596c", "bytes": 7619, "mode": "0444", "closed": true},
+      "evaluation": {"path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E10/attempt-01/evaluation.md", "prefix_sha256": "7926abb593f7fef8318c5ec1bfe50f73bd50cdaa6ee21b68cdf3de3240456750", "prefix_bytes": 1598, "whole_sha256": null, "whole_bytes": null, "closed": false},
+      "executor": {"alias": "case-E10-executor-01", "requested_model": "gpt-5.6-sol", "requested_reasoning": "high", "accepted_model": "Unknown", "accepted_reasoning": "Unknown", "verified_runtime_model": "Unknown", "verified_runtime_reasoning": "Unknown", "fact_source": "native dispatch result; exact metadata retained privately", "platform_session_id": "private-nonempty-verified", "dispatch_receipt": {"sha256": "7730f178e79822c71d910bb609cb707dce6d66f29b4a1a5ba2955f49e42ae76e", "contains_distinct_nonempty_platform_task_identity": true, "public_value_withheld": true}},
       "evaluator": {"alias": "case-E10-evaluator-01", "requested_model": "gpt-5.6-sol", "requested_reasoning": "high", "accepted_model": "Unknown", "accepted_reasoning": "Unknown", "verified_runtime_model": "Unknown", "verified_runtime_reasoning": "Unknown", "fact_source": "Unknown", "platform_session_id": "Unknown", "dispatch_receipt": null},
-      "verdict": "PENDING", "dependent_state": "PENDING_OUTER_EXECUTOR",
+      "verdict": "PENDING", "dependent_state": "PENDING_INDEPENDENT_OUTER_EVALUATION",
       "limitations": ["Architecture review PASS recorded one low-severity reviewer-process limitation: initial orientation read extra guidance outside its source allowlist; no material package finding resulted."],
       "support": [
         {
