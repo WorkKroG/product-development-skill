@@ -582,7 +582,15 @@
           "bytes": 8842,
           "mode": "0444",
           "frozen": true,
-          "response": null,
+          "response": {
+            "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E14/attempt-01/support/change-review-C.md",
+            "sha256": "e91d437e167044b67709d9447df0999fe9ccc182643e4655749984229f9a0f0c",
+            "bytes": 6329,
+            "mode": "0444",
+            "closed": true,
+            "verdict": "CHANGES_REQUIRED",
+            "finding_count": 1
+          },
           "actor": {
             "alias": "case-E14-change-review-C-01",
             "requested_model": "gpt-5.6-sol",
@@ -591,9 +599,13 @@
             "accepted_reasoning": "Unknown",
             "verified_runtime_model": "Unknown",
             "verified_runtime_reasoning": "Unknown",
-            "fact_source": "Unknown",
-            "platform_session_id": "Unknown",
-            "dispatch_receipt": null
+            "fact_source": "native dispatch result; exact metadata retained privately",
+            "platform_session_id": "private-nonempty-verified",
+            "dispatch_receipt": {
+              "sha256": "80a9f886e5f5d19d5dbf9b4ffef960a250c1939b7f16d1ed68f081e7dfa8b98e",
+              "contains_distinct_nonempty_platform_task_identity": true,
+              "public_value_withheld": true
+            }
           }
         }
       ],
