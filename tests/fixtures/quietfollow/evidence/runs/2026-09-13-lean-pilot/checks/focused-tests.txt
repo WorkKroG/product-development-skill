@@ -13,6 +13,6 @@ test_product_bytes_are_canonical_and_suite_has_seven_outcome_tests (tests.test_p
 test_public_evidence_has_no_private_runtime_binding (tests.test_pilot_evidence.LeanPilotEvidenceContractTest.test_public_evidence_has_no_private_runtime_binding) ... ok
 
 ----------------------------------------------------------------------
-Ran 10 tests in 0.020s
+Ran 10 tests in 0.026s
 
 OK

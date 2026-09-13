@@ -100,7 +100,7 @@ class LeanPilotEvidenceContractTest(unittest.TestCase):
             if path.is_file()
         }
         self.assertEqual(actual, set(by_path))
-        self.assertEqual(111, len(actual))
+        self.assertEqual(147, len(actual))
 
     def test_evaluator_prefix_boundaries_match(self):
         for item in self.index["current_attempts"]:

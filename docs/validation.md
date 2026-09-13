@@ -9,6 +9,10 @@ The local synthetic pilot has exactly 27 current results: 21 selected E-cases an
 proportionality probes. Every current evaluation and credit verdict is PASS. Superseded, failed, or
 blocked attempts remain tracked as non-credit history and were not relabelled.
 
+The first exact-head review found incomplete request-hash/action logs in 11 results. New independent
+attempts corrected the evidence boundary without changing the candidate or scenario. Ten passed on
+attempt 2; E41 preserved its attempt-2 FAIL and passed the focused attempt 3.
+
 This is behavioral evidence for the tested boundaries. It does not establish full E01–E41 coverage,
 live routing, installation, integration, release readiness, or production behavior. A PASS may
 correctly coexist with a blocked dependent action.

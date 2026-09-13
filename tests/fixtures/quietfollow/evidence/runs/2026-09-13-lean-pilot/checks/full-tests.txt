@@ -148,6 +148,6 @@ test_work_item_delivery_sequence_preserves_one_reviewed_pr (test_skill_contract.
 test_worker_and_coordinator_identities_are_typed (test_skill_contract.SkillContractTest.test_worker_and_coordinator_identities_are_typed) ... ok
 
 ----------------------------------------------------------------------
-Ran 145 tests in 18.727s
+Ran 145 tests in 21.014s
 
 OK

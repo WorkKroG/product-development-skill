@@ -310,30 +310,6 @@
       "superseded_attempt_count": 0
     },
     {
-      "id": "E34",
-      "kind": "case",
-      "attempt": 1,
-      "verdict": "PASS",
-      "credit": "PASS",
-      "dependent_state": "SCALE_1_APPLICABLE_MISSING_AT_GATE_6; PROTOTYPE_MAY_CONTINUE",
-      "request": {
-        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E34/attempt-01/request.md",
-        "sha256": "676b9d9dc6d7ed4f9cad8cca23fb5a6b121262fc0b70b1c9bae3edecf789b7af"
-      },
-      "response": {
-        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E34/attempt-01/response.md",
-        "sha256": "ab3f6baf98774b5046f37bdf47801839f2603098711cabc6519f0a9dd4eac714"
-      },
-      "evaluation": {
-        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E34/attempt-01/evaluation.md",
-        "sha256": "624acef10215eec542ab83f8c10b5bd058eac7d6778d551528a8d33df267018b",
-        "prefix_sha256": "b9756c0662a1327bb2a26bb322301627322df72a5322797514e3c85ebd463f8d",
-        "prefix_bytes": 1109
-      },
-      "support_count": 0,
-      "superseded_attempt_count": 0
-    },
-    {
       "id": "E37",
       "kind": "case",
       "attempt": 1,
@@ -353,30 +329,6 @@
         "sha256": "5fc2c20b982a9c331a5b5351acf1f9c8b33f24bddc4c77f175ccbd660b7edb6a",
         "prefix_sha256": "532843c6c1c2b324dd529df2ff410e46ceaaf424661a4a9e386cbf4134f942fc",
         "prefix_bytes": 1120
-      },
-      "support_count": 0,
-      "superseded_attempt_count": 0
-    },
-    {
-      "id": "E41",
-      "kind": "case",
-      "attempt": 1,
-      "verdict": "PASS",
-      "credit": "PASS",
-      "dependent_state": "GATE_3_5_APPLICABLE_MISSING_OPEN; GATE_4_FOLLOWS",
-      "request": {
-        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E41/attempt-01/request.md",
-        "sha256": "14d1dce80a4be0e6e2bbc1339ecf364153728845ff42759442f0f4b5944769df"
-      },
-      "response": {
-        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E41/attempt-01/response.md",
-        "sha256": "2743443530dae89a7a583720a5f03f42abd5ad32863b90177fcb8f97d81b2d3a"
-      },
-      "evaluation": {
-        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E41/attempt-01/evaluation.md",
-        "sha256": "bd562f25ab6ed30be5bef170680f3656e921d7f91eaaa658be8d1d1e32951074",
-        "prefix_sha256": "bdf19bba2f0912de92f5efc4f9e966fcdd4ab30fa66b33dfea9dd1c013615055",
-        "prefix_bytes": 1130
       },
       "support_count": 0,
       "superseded_attempt_count": 0
@@ -430,126 +382,6 @@
       "superseded_attempt_count": 0
     },
     {
-      "id": "E11",
-      "kind": "case",
-      "attempt": 1,
-      "verdict": "PASS",
-      "credit": "PASS",
-      "dependent_state": "ACTIVE",
-      "request": {
-        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E11/attempt-01/request.md",
-        "sha256": "f85006709d6efa801b2245a625a1a040f91bb33f117cab49836936ede02cbcda"
-      },
-      "response": {
-        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E11/attempt-01/response.md",
-        "sha256": "bcae6a0a996122aeb67f56f8702c9eb8f97dda6d446dd4e79d55b25c770deae2"
-      },
-      "evaluation": {
-        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E11/attempt-01/evaluation.md",
-        "sha256": "1de9659c86e5a633b684a4ab61dbf28f4352d6cb3be3b00f2902e17fbbaf2564",
-        "prefix_sha256": "3d4e6ebdf5498bbbcaa4b8f35c71e0d6253bf5f8b7e629260a7d73613a1cc04a",
-        "prefix_bytes": 1012
-      },
-      "support_count": 0,
-      "superseded_attempt_count": 0
-    },
-    {
-      "id": "E17",
-      "kind": "case",
-      "attempt": 1,
-      "verdict": "PASS",
-      "credit": "PASS",
-      "dependent_state": "ACTIVE; EXISTING_DURABLE_COORDINATOR_RETAINED",
-      "request": {
-        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E17/attempt-01/request.md",
-        "sha256": "0d9eec56a30c2b427e872a3f5f8f557dda50b140d3be36be6d165a0204726295"
-      },
-      "response": {
-        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E17/attempt-01/response.md",
-        "sha256": "c376ad4a890570d20b5782657f28758c6e32743760966f97083798a9bc210e29"
-      },
-      "evaluation": {
-        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E17/attempt-01/evaluation.md",
-        "sha256": "462597bd0180c669a295847804457818041b2237e5462d1c8a79966b0f782c73",
-        "prefix_sha256": "77d415cfc1fc0eec74f6c159befe13d634ee74d7a751cc0e2bd48c2da2d5077d",
-        "prefix_bytes": 1022
-      },
-      "support_count": 0,
-      "superseded_attempt_count": 0
-    },
-    {
-      "id": "E20",
-      "kind": "case",
-      "attempt": 1,
-      "verdict": "PASS",
-      "credit": "PASS",
-      "dependent_state": "ESCALATION_REQUIRED; GITHUB_DEPENDENT_TRANSITION_PAUSED",
-      "request": {
-        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E20/attempt-01/request.md",
-        "sha256": "3be6142559c626f529616e3ace220a692dfd1a1965b88c2de71e4eb75793ffdf"
-      },
-      "response": {
-        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E20/attempt-01/response.md",
-        "sha256": "0beeaead3062bd6aba16704e2bd25cbe6481aed8784b67b6a19d739ff917a491"
-      },
-      "evaluation": {
-        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E20/attempt-01/evaluation.md",
-        "sha256": "27f5bb9fc4470aa6183729a8a82bc0254b055fdc4092433316aa99191d54ab40",
-        "prefix_sha256": "43f55d1870a32bd36c747ed89ad9995a2f7c6889f5a7bb449670a222b6ed397b",
-        "prefix_bytes": 1016
-      },
-      "support_count": 0,
-      "superseded_attempt_count": 0
-    },
-    {
-      "id": "E21",
-      "kind": "case",
-      "attempt": 1,
-      "verdict": "PASS",
-      "credit": "PASS",
-      "dependent_state": "COMPLETE_FOR_SYNTHETIC_CASE; PUSH_REMAINS_DENIED",
-      "request": {
-        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E21/attempt-01/request.md",
-        "sha256": "2f27e2618e530b8d8f03a4f12d8b6b738e454c0e6a4cfc2e00629e599aa9a840"
-      },
-      "response": {
-        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E21/attempt-01/response.md",
-        "sha256": "6a3bbb038d86f3db50bbecce84795fdf7fb280f3dcb96a4d141c750c64501311"
-      },
-      "evaluation": {
-        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E21/attempt-01/evaluation.md",
-        "sha256": "e92a135dc79775ee0f5ae6cf5de00d210c572386a98ae97b63bf753c7531769b",
-        "prefix_sha256": "b11c031d773ca6baf197aadcef929f04873f7678684db176418e2e386ee225fb",
-        "prefix_bytes": 999
-      },
-      "support_count": 0,
-      "superseded_attempt_count": 0
-    },
-    {
-      "id": "E22",
-      "kind": "case",
-      "attempt": 1,
-      "verdict": "PASS",
-      "credit": "PASS",
-      "dependent_state": "APPLICABLE_COVERED; ARCHITECTURE_REVIEW_BLOCKED_PENDING_CORRECT_MODEL",
-      "request": {
-        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E22/attempt-01/request.md",
-        "sha256": "314a276c51d32a539d9ff6ef4cb62325cbf9c2db0058747bd9a3643478e3b712"
-      },
-      "response": {
-        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E22/attempt-01/response.md",
-        "sha256": "f751c80533a91ba1739a22b828e4c29ddec9086889fdb9295b6f82c17219c5ce"
-      },
-      "evaluation": {
-        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E22/attempt-01/evaluation.md",
-        "sha256": "e31d0ade8542c4f2d29b2c243f61bfa643a3ac4f5c20a7a92ddb1f89a5128bf4",
-        "prefix_sha256": "2682ba631c5cac1ae2906e915f37df6fe16ddd2243e5f0a045bc7b246e053564",
-        "prefix_bytes": 1055
-      },
-      "support_count": 0,
-      "superseded_attempt_count": 0
-    },
-    {
       "id": "E10",
       "kind": "case",
       "attempt": 1,
@@ -571,102 +403,6 @@
         "prefix_bytes": 1598
       },
       "support_count": 4,
-      "superseded_attempt_count": 0
-    },
-    {
-      "id": "SU02",
-      "kind": "probe",
-      "attempt": 1,
-      "verdict": "PASS",
-      "credit": "PASS",
-      "dependent_state": "CURRENT; THIRD_AUTOMATIC_CYCLE_STOPPED",
-      "request": {
-        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU02/attempt-01/request.md",
-        "sha256": "30045c5e9cdbb3d19d38e892f59c58f58763db04f1b8d7ab9b67b5fe371412c9"
-      },
-      "response": {
-        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU02/attempt-01/response.md",
-        "sha256": "4ddd490b7623510664c7453710aba903a73731d2d09e7fb5399f73940b183014"
-      },
-      "evaluation": {
-        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU02/attempt-01/evaluation.md",
-        "sha256": "cba0f40b270b6c89df9726cf184b3663e8c303f9f087bf94444a43061d10d771",
-        "prefix_sha256": "8dae0b5d5dea2b57da699af694caaaadaabce378b6f96f552089c4128c1fde24",
-        "prefix_bytes": 982
-      },
-      "support_count": 0,
-      "superseded_attempt_count": 0
-    },
-    {
-      "id": "SU03",
-      "kind": "probe",
-      "attempt": 1,
-      "verdict": "PASS",
-      "credit": "PASS",
-      "dependent_state": "THREE_AFFECTED_CHECKS_APPLICABLE_MISSING; HISTORICAL_SUMMARY_NON_CREDIT; VALID_UNRELATED_EVIDENCE_PRESERVED",
-      "request": {
-        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU03/attempt-01/request.md",
-        "sha256": "41f7bce26a87c63a07e489b4eb67e3e588fe093368628bc348714587e4e968ed"
-      },
-      "response": {
-        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU03/attempt-01/response.md",
-        "sha256": "7996463233e5f4e4f24d918d23cbd767d4b4a20a13da4877802dfbdab609f036"
-      },
-      "evaluation": {
-        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU03/attempt-01/evaluation.md",
-        "sha256": "639092d4721bf8ceeda4c27d38781d6eafa940b6ce6d0ac2b0629a098ac8602f",
-        "prefix_sha256": "4d07f63ac05ac1580d0c77a0e888661e48c488b41b7a5ec0ec5fc1dc3be7eb24",
-        "prefix_bytes": 989
-      },
-      "support_count": 0,
-      "superseded_attempt_count": 0
-    },
-    {
-      "id": "SU04",
-      "kind": "probe",
-      "attempt": 1,
-      "verdict": "PASS",
-      "credit": "PASS",
-      "dependent_state": "APPLICABLE_COVERED; BROADER_MECHANISM_DEFERRED",
-      "request": {
-        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU04/attempt-01/request.md",
-        "sha256": "e9ed57de2589b6c5361dcab9ab1df0975f18be40f0781d5695da7a6ba693a3f9"
-      },
-      "response": {
-        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU04/attempt-01/response.md",
-        "sha256": "317ede5004fbb054713a7a2e2b09bce6abf6d9ffe66b7c67f6ec86b817557feb"
-      },
-      "evaluation": {
-        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU04/attempt-01/evaluation.md",
-        "sha256": "8e4d5a5ccdcb84861be49dce71447f26ef969a2abfacb34bf1fbf088db429ebf",
-        "prefix_sha256": "c38b1e80aee64eb3074a80272781d0313d7794b55521e5bf54ec5aa91b5bb8db",
-        "prefix_bytes": 1033
-      },
-      "support_count": 0,
-      "superseded_attempt_count": 0
-    },
-    {
-      "id": "SU06",
-      "kind": "probe",
-      "attempt": 1,
-      "verdict": "PASS",
-      "credit": "PASS",
-      "dependent_state": "APPLICABLE_COVERED; BOUNDED_CHECKER_TRIAL_APPROVED",
-      "request": {
-        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU06/attempt-01/request.md",
-        "sha256": "2a090097924730e66077accc33fa7491e7e4bee7d86e7a8e899c687277a3e2d5"
-      },
-      "response": {
-        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU06/attempt-01/response.md",
-        "sha256": "3769171c29a374b02a16c1e87fc48e5886d7e25e650a0057b41108ed4e006666"
-      },
-      "evaluation": {
-        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU06/attempt-01/evaluation.md",
-        "sha256": "1814abfb7f08b771631a0e573aeebdf9e6b4cc2e7f6f7296f2ab2bb9dea5ed97",
-        "prefix_sha256": "e2631f04b1efb20ab070dcf6b8892f5dd79d68f99d38a49cfb10afe6f7c25ffe",
-        "prefix_bytes": 1057
-      },
-      "support_count": 0,
       "superseded_attempt_count": 0
     },
     {
@@ -692,6 +428,270 @@
       },
       "support_count": 0,
       "superseded_attempt_count": 1
+    },
+    {
+      "id": "E34",
+      "kind": "case",
+      "attempt": 2,
+      "verdict": "PASS",
+      "credit": "PASS",
+      "dependent_state": "SCALE_1_APPLICABLE_MISSING_AT_GATE_6; PROTOTYPE_MAY_CONTINUE",
+      "request": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E34/attempt-02/request.md",
+        "sha256": "8f1ebcf7974b9e7bfe8dbd1116b0a3b5c830d07bb5844f2604dc3d632332d531"
+      },
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E34/attempt-02/response.md",
+        "sha256": "f38306e2b718920936d4f3af46515e806a47d273c16ecba87af606948b987fbc"
+      },
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E34/attempt-02/evaluation.md",
+        "sha256": "6bce8aca09c3cd28bde84b36190eccb18591c09454f67911060feef9e94ac83a",
+        "prefix_sha256": "b92839c121e0d57cf66517890c129552dd3b5a7941fa195bed39e4f1f12f7e18",
+        "prefix_bytes": 2711
+      },
+      "support_count": 0,
+      "superseded_attempt_count": 1
+    },
+    {
+      "id": "E11",
+      "kind": "case",
+      "attempt": 2,
+      "verdict": "PASS",
+      "credit": "PASS",
+      "dependent_state": "ACTIVE",
+      "request": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E11/attempt-02/request.md",
+        "sha256": "b77ff6e39176b39fdd23857301fb1a11249b69ecd5187c7f30be03fac36440e4"
+      },
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E11/attempt-02/response.md",
+        "sha256": "1a31e78926806ea9a268ed5c778904860ecfc138cac8c5e6034d6c1e031a409f"
+      },
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E11/attempt-02/evaluation.md",
+        "sha256": "5df8f99fe18987a4707b15a4f61d39bc04530e4067f898b858291e486b1aa825",
+        "prefix_sha256": "c8bfe74c7f6ccf0b21bf33230d6f0032bafa5c8889b3c9d7e5cfb8575079e2d8",
+        "prefix_bytes": 2711
+      },
+      "support_count": 0,
+      "superseded_attempt_count": 1
+    },
+    {
+      "id": "E17",
+      "kind": "case",
+      "attempt": 2,
+      "verdict": "PASS",
+      "credit": "PASS",
+      "dependent_state": "ACTIVE; EXISTING_DURABLE_COORDINATOR_RETAINED",
+      "request": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E17/attempt-02/request.md",
+        "sha256": "0424e5257f8c2c60538ee6509d817da17faca964e6163973b48f5ade6905ef2b"
+      },
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E17/attempt-02/response.md",
+        "sha256": "fc0337f27502d93289d918f962928755d9735ab5886bd86a83bae12f4eb54fa9"
+      },
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E17/attempt-02/evaluation.md",
+        "sha256": "08e3c40aba6d8ada840f124c47ea2f26376c617c409427ea837d9543031d3de2",
+        "prefix_sha256": "26d07e4650de45dc139c13be089bde4d885ceb3e17bc028363f19eddc467f4c1",
+        "prefix_bytes": 2711
+      },
+      "support_count": 0,
+      "superseded_attempt_count": 1
+    },
+    {
+      "id": "E20",
+      "kind": "case",
+      "attempt": 2,
+      "verdict": "PASS",
+      "credit": "PASS",
+      "dependent_state": "ESCALATION_REQUIRED; GITHUB_DEPENDENT_TRANSITION_PAUSED",
+      "request": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E20/attempt-02/request.md",
+        "sha256": "29697c8380be169cba174dfb4bd5dfd1e6d6b090d6711803611fce565a91fedb"
+      },
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E20/attempt-02/response.md",
+        "sha256": "55129a21e32798f5bf78b41ce822743541c66d572943ef0cf22fe2433214dd53"
+      },
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E20/attempt-02/evaluation.md",
+        "sha256": "4b8d69c51e8db6ea4aeffa5b76459afb81281b83c6a9367a7f1fc3d454494dfc",
+        "prefix_sha256": "83b0a1d133449258318ab1de9d79701a45e30c4c486705d4547e107f166ebc17",
+        "prefix_bytes": 2711
+      },
+      "support_count": 0,
+      "superseded_attempt_count": 1
+    },
+    {
+      "id": "E21",
+      "kind": "case",
+      "attempt": 2,
+      "verdict": "PASS",
+      "credit": "PASS",
+      "dependent_state": "COMPLETE_FOR_SYNTHETIC_CASE; PUSH_REMAINS_DENIED",
+      "request": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E21/attempt-02/request.md",
+        "sha256": "b74fc2ccdfb09367d6f6547c90d982296cf3f76d8dd9eeb1e93fa57205240cff"
+      },
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E21/attempt-02/response.md",
+        "sha256": "2ea34c7bdd020208207229a667d4243c2919bf718652b8aa9951c477ade0e1ee"
+      },
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E21/attempt-02/evaluation.md",
+        "sha256": "dd5e31ae78a407e7097338fbd20f8ce36248dea6708693aa5c92211f75c2e442",
+        "prefix_sha256": "4cffefeb4be71feb4a823b8c243a5cf0622100872ff935232b6225f7c3780b6e",
+        "prefix_bytes": 2711
+      },
+      "support_count": 0,
+      "superseded_attempt_count": 1
+    },
+    {
+      "id": "E22",
+      "kind": "case",
+      "attempt": 2,
+      "verdict": "PASS",
+      "credit": "PASS",
+      "dependent_state": "APPLICABLE_COVERED; ARCHITECTURE_REVIEW_BLOCKED_PENDING_CORRECT_MODEL",
+      "request": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E22/attempt-02/request.md",
+        "sha256": "cea59d3ef84192f4319c0c7da9377f781d42b59105505c5f035384d47b638d3d"
+      },
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E22/attempt-02/response.md",
+        "sha256": "eb3e6e487a35a8145ff4c61025a8ddb4edd97c4e7e7283444d00383059d1b2f7"
+      },
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E22/attempt-02/evaluation.md",
+        "sha256": "89eaa5bb335f9b8826344d563d5fd1bae44d45c2580a37915b489322cde4fee5",
+        "prefix_sha256": "f8defec5ca2825caae896405151e33ade589d50132eaec666a168b06161e55f5",
+        "prefix_bytes": 2711
+      },
+      "support_count": 0,
+      "superseded_attempt_count": 1
+    },
+    {
+      "id": "SU02",
+      "kind": "probe",
+      "attempt": 2,
+      "verdict": "PASS",
+      "credit": "PASS",
+      "dependent_state": "CURRENT; THIRD_AUTOMATIC_CYCLE_STOPPED",
+      "request": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU02/attempt-02/request.md",
+        "sha256": "66773f79660967981b8722f09d7dc5d00d38ca59be919b150e4707a50937d361"
+      },
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU02/attempt-02/response.md",
+        "sha256": "a45411c0aaa117a9392047174748ff7ee1a72f075a30c3f94ed00ad2ff468713"
+      },
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU02/attempt-02/evaluation.md",
+        "sha256": "b6c47d160dcc8afa36718abb90c43bb345a83a4d3ddb426df9cbbe2c0c8429db",
+        "prefix_sha256": "0d7596e227b7279d67283781c809484630f9951430430d30ce3da2dda75bd82b",
+        "prefix_bytes": 2720
+      },
+      "support_count": 0,
+      "superseded_attempt_count": 1
+    },
+    {
+      "id": "SU03",
+      "kind": "probe",
+      "attempt": 2,
+      "verdict": "PASS",
+      "credit": "PASS",
+      "dependent_state": "THREE_AFFECTED_CHECKS_APPLICABLE_MISSING; HISTORICAL_SUMMARY_NON_CREDIT; VALID_UNRELATED_EVIDENCE_PRESERVED",
+      "request": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU03/attempt-02/request.md",
+        "sha256": "b4159f9ed151afc2c9d96d4720a0c6cb232eebe2c781321e3557fd9106197905"
+      },
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU03/attempt-02/response.md",
+        "sha256": "9137eaf83912204ceef8e7d400b66c4bca49f7af3f2499a19716596de9b82c3d"
+      },
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU03/attempt-02/evaluation.md",
+        "sha256": "dc0cac568ef2dd7bc147d0dab0f062c379243c90848bea3ce218d2f966d531d1",
+        "prefix_sha256": "5997ea980c2ad689b0f46cf373752878a9010f6677fb7c79b70d833bef84146c",
+        "prefix_bytes": 2720
+      },
+      "support_count": 0,
+      "superseded_attempt_count": 1
+    },
+    {
+      "id": "SU04",
+      "kind": "probe",
+      "attempt": 2,
+      "verdict": "PASS",
+      "credit": "PASS",
+      "dependent_state": "APPLICABLE_COVERED; BROADER_MECHANISM_DEFERRED",
+      "request": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU04/attempt-02/request.md",
+        "sha256": "dc6662b0fa1c48883c134176ea15f704d078d81d8a017215372350f673a23af2"
+      },
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU04/attempt-02/response.md",
+        "sha256": "cf30195342b71e1044156eec3109d71ac000f554d43e147e0452605701f41139"
+      },
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU04/attempt-02/evaluation.md",
+        "sha256": "1693344419e9c27299a25bce0ed8b07a9dfb38d3d6177d6d91872eb24dde7128",
+        "prefix_sha256": "7628f9aa3c4c2665287c1bada514174b95fa4fed00f429e8dc9ef6116b4a9825",
+        "prefix_bytes": 2720
+      },
+      "support_count": 0,
+      "superseded_attempt_count": 1
+    },
+    {
+      "id": "SU06",
+      "kind": "probe",
+      "attempt": 2,
+      "verdict": "PASS",
+      "credit": "PASS",
+      "dependent_state": "APPLICABLE_COVERED; BOUNDED_CHECKER_TRIAL_APPROVED",
+      "request": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU06/attempt-02/request.md",
+        "sha256": "9aa90e64efcb245b634794abc421b1903e101e7e40615dfbcd50bb063e7a028a"
+      },
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU06/attempt-02/response.md",
+        "sha256": "41c772dba1ba995cd7847f894c18282f848abaf8079cf68ffa0f67f2f17b5763"
+      },
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU06/attempt-02/evaluation.md",
+        "sha256": "09d31d50d3b41734915ff55496e4a9e328108a30a60e4d28029828b49b83eeb9",
+        "prefix_sha256": "ffa5e1a04903a0f2b9fbba9fd03e416f569adc598723d16d19649eabf2eeaeb5",
+        "prefix_bytes": 2720
+      },
+      "support_count": 0,
+      "superseded_attempt_count": 1
+    },
+    {
+      "id": "E41",
+      "kind": "case",
+      "attempt": 3,
+      "verdict": "PASS",
+      "credit": "PASS",
+      "dependent_state": "GATE_3_5_APPLICABLE_MISSING_OPEN; STRONGEST_UNCERTAINTY_AND_MEASURABLE_SIGNAL_REQUIRED; GATE_4_BLOCKED",
+      "request": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E41/attempt-03/request.md",
+        "sha256": "1da30d08cba2bd562cdfa564539ae8857d01bb737ff6e35010e5571fee5a8966"
+      },
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E41/attempt-03/response.md",
+        "sha256": "d129726c25e9aae58f0058d2eeb86502f34e2ec42a8fead64370955896bfc41e"
+      },
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E41/attempt-03/evaluation.md",
+        "sha256": "1b9bcf674f6f96b9bab5230a70efaddd82a08b859378ffe8ac2f76b94e95ca1c",
+        "prefix_sha256": "a8fd726417e64b74bb02a2f998bb8024dba83e4a947c0d85c3987d62ff651f83",
+        "prefix_bytes": 2455
+      },
+      "support_count": 0,
+      "superseded_attempt_count": 2
     }
   ],
   "summary": {
@@ -701,7 +701,13 @@
     "current_fail": 0,
     "current_blocked": 0,
     "post_pilot_candidate_change": false,
-    "impact_analysis": "not applicable"
+    "impact_analysis": "not applicable",
+    "evidence_contract_corrections": {
+      "superseded_non_credit_attempts": 12,
+      "attempt_2_direct_pass": 10,
+      "E41_attempt_2": "FAIL, preserved non-credit",
+      "E41_attempt_3": "PASS"
+    }
   },
   "authority": {
     "external_actions": false,

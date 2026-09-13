@@ -23,6 +23,13 @@
     "current_fail": 0,
     "current_blocked": 0
   },
+  "evidence_contract_corrections": {
+    "superseded_non_credit_attempts": 12,
+    "attempt_2_direct_pass": 10,
+    "E41_attempt_2": "FAIL, preserved non-credit",
+    "E41_attempt_3": "PASS",
+    "candidate_changed": false
+  },
   "product_history": {
     "kind": "local synthetic only",
     "A": "723366bbbcb86f94a7f5999c1fd9080e5f668090",
@@ -36,11 +43,11 @@
   "bindings": {
     "index": {
       "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/index.json",
-      "sha256": "646d8f7780cde3ae472425690fc8b7bf5990df0b488ed410093d25cb1f7c5474"
+      "sha256": "39f5749b37c41f5fed5bc21f4ba157ff2badef9ff6d9bc708804b43aca20f957"
     },
     "execution_record": {
       "path": "tests/fixtures/quietfollow/evidence/execution-record.json",
-      "sha256": "f41faca3e8dfe4519768692d4af358a5342535b580fb60470d6478cdd8c04818"
+      "sha256": "85311929e6fdd7307ef9d8a4873d1e3b8e743fd3f50891d8caa6a3ddb32285fe"
     },
     "bundle": {
       "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/product-repo/quietfollow-pilot.bundle",
@@ -68,7 +75,7 @@
     {
       "id": "part-2",
       "path": "tests/fixtures/quietfollow/evidence/part-2-readiness.md",
-      "sha256": "bbeaa0b9d44ea4d8dfdc3be9c89a986e2f1a008fcee97e5fbf46c5eea6bf3c10"
+      "sha256": "56fab17a4d1f1f7e0bc35c96d71a019ae5891bbf9a5ecd5c44b7f39c04a628f3"
     },
     {
       "id": "part-3",
@@ -83,7 +90,7 @@
     {
       "id": "part-5",
       "path": "tests/fixtures/quietfollow/evidence/part-5-resume-scaling.md",
-      "sha256": "8457ac622db3ebe063f6889499c25c6a62f8c3f78478c64fcc1503fe64622eab"
+      "sha256": "dea425dc52b973f79b465cf958fc112f77b8347737031a493eb3986af9f208c1"
     }
   ],
   "provenance": {

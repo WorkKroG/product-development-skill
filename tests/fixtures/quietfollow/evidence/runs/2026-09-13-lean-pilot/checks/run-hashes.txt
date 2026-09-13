@@ -4,8 +4,8 @@ Date: 2026-09-13
 index-json: PASS
 required-ordered-sets: 21 cases + 6 probes PASS
 current-attempts: 27 unique; all verdict and credit PASS
-recorded raw case/probe files: 111
-actual raw case/probe files: 111
+recorded raw case/probe files: 147
+actual raw case/probe files: 147
 paths, hashes, bytes, modes, and evaluator prefixes: PASS
 missing, extra, duplicate, symlink, escape, rewrite, and rubric-leak checks: PASS
 post-pilot candidate change: none; impact analysis not applicable
@@ -35,6 +35,9 @@ d3764b8cf48f66f06241b313b240d2893ebe4001896ad306118d7fc3d1b13bcf  tests/fixtures
 1de9659c86e5a633b684a4ab61dbf28f4352d6cb3be3b00f2902e17fbbaf2564  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E11/attempt-01/evaluation.md
 f85006709d6efa801b2245a625a1a040f91bb33f117cab49836936ede02cbcda  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E11/attempt-01/request.md
 bcae6a0a996122aeb67f56f8702c9eb8f97dda6d446dd4e79d55b25c770deae2  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E11/attempt-01/response.md
+5df8f99fe18987a4707b15a4f61d39bc04530e4067f898b858291e486b1aa825  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E11/attempt-02/evaluation.md
+b77ff6e39176b39fdd23857301fb1a11249b69ecd5187c7f30be03fac36440e4  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E11/attempt-02/request.md
+1a31e78926806ea9a268ed5c778904860ecfc138cac8c5e6034d6c1e031a409f  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E11/attempt-02/response.md
 38fd81a0b7d21f5fb74bc6e53aa84ae17c6abe07e0c80d5a998b774b787bba33  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E12/attempt-01/request.md
 9fc96b0387c446d1e6e91a4e5c1cc71a92d6a667aaed71121adf746d2e220888  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E12/attempt-01/support/change-review-B-request.md
 ce8a8729035b473f1647fc9bb0553fb9a66de367e2c0e659684df25bd8d6a2a4  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E12/attempt-01/support/change-review-B.md
@@ -61,15 +64,27 @@ f0711e67faabef550701969a7b52c2c83683deb5112f4d6857f04355dc7e595a  tests/fixtures
 462597bd0180c669a295847804457818041b2237e5462d1c8a79966b0f782c73  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E17/attempt-01/evaluation.md
 0d9eec56a30c2b427e872a3f5f8f557dda50b140d3be36be6d165a0204726295  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E17/attempt-01/request.md
 c376ad4a890570d20b5782657f28758c6e32743760966f97083798a9bc210e29  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E17/attempt-01/response.md
+08e3c40aba6d8ada840f124c47ea2f26376c617c409427ea837d9543031d3de2  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E17/attempt-02/evaluation.md
+0424e5257f8c2c60538ee6509d817da17faca964e6163973b48f5ade6905ef2b  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E17/attempt-02/request.md
+fc0337f27502d93289d918f962928755d9735ab5886bd86a83bae12f4eb54fa9  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E17/attempt-02/response.md
 27f5bb9fc4470aa6183729a8a82bc0254b055fdc4092433316aa99191d54ab40  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E20/attempt-01/evaluation.md
 3be6142559c626f529616e3ace220a692dfd1a1965b88c2de71e4eb75793ffdf  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E20/attempt-01/request.md
 0beeaead3062bd6aba16704e2bd25cbe6481aed8784b67b6a19d739ff917a491  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E20/attempt-01/response.md
+4b8d69c51e8db6ea4aeffa5b76459afb81281b83c6a9367a7f1fc3d454494dfc  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E20/attempt-02/evaluation.md
+29697c8380be169cba174dfb4bd5dfd1e6d6b090d6711803611fce565a91fedb  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E20/attempt-02/request.md
+55129a21e32798f5bf78b41ce822743541c66d572943ef0cf22fe2433214dd53  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E20/attempt-02/response.md
 e92a135dc79775ee0f5ae6cf5de00d210c572386a98ae97b63bf753c7531769b  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E21/attempt-01/evaluation.md
 2f27e2618e530b8d8f03a4f12d8b6b738e454c0e6a4cfc2e00629e599aa9a840  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E21/attempt-01/request.md
 6a3bbb038d86f3db50bbecce84795fdf7fb280f3dcb96a4d141c750c64501311  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E21/attempt-01/response.md
+dd5e31ae78a407e7097338fbd20f8ce36248dea6708693aa5c92211f75c2e442  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E21/attempt-02/evaluation.md
+b74fc2ccdfb09367d6f6547c90d982296cf3f76d8dd9eeb1e93fa57205240cff  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E21/attempt-02/request.md
+2ea34c7bdd020208207229a667d4243c2919bf718652b8aa9951c477ade0e1ee  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E21/attempt-02/response.md
 e31d0ade8542c4f2d29b2c243f61bfa643a3ac4f5c20a7a92ddb1f89a5128bf4  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E22/attempt-01/evaluation.md
 314a276c51d32a539d9ff6ef4cb62325cbf9c2db0058747bd9a3643478e3b712  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E22/attempt-01/request.md
 f751c80533a91ba1739a22b828e4c29ddec9086889fdb9295b6f82c17219c5ce  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E22/attempt-01/response.md
+89eaa5bb335f9b8826344d563d5fd1bae44d45c2580a37915b489322cde4fee5  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E22/attempt-02/evaluation.md
+cea59d3ef84192f4319c0c7da9377f781d42b59105505c5f035384d47b638d3d  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E22/attempt-02/request.md
+eb3e6e487a35a8145ff4c61025a8ddb4edd97c4e7e7283444d00383059d1b2f7  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E22/attempt-02/response.md
 6d291f198d6e50635a094ca7674e373c351a290cccc2b2162fac2866a43a2236  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E25/attempt-01/evaluation.md
 e7f546c12cc27788476b765346f832d60842dd6a0afefa098610d955ed591a31  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E25/attempt-01/request.md
 a99b80e6c7abfa585dc4102f2576556c369dbdd3c1c775ba2fe5cea6ae75aa7a  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E25/attempt-01/response.md
@@ -94,6 +109,9 @@ cc7547185c349981384b9b2ac276197ccdc8e346155e3bc32ac9e841a13e522c  tests/fixtures
 624acef10215eec542ab83f8c10b5bd058eac7d6778d551528a8d33df267018b  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E34/attempt-01/evaluation.md
 676b9d9dc6d7ed4f9cad8cca23fb5a6b121262fc0b70b1c9bae3edecf789b7af  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E34/attempt-01/request.md
 ab3f6baf98774b5046f37bdf47801839f2603098711cabc6519f0a9dd4eac714  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E34/attempt-01/response.md
+6bce8aca09c3cd28bde84b36190eccb18591c09454f67911060feef9e94ac83a  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E34/attempt-02/evaluation.md
+8f1ebcf7974b9e7bfe8dbd1116b0a3b5c830d07bb5844f2604dc3d632332d531  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E34/attempt-02/request.md
+f38306e2b718920936d4f3af46515e806a47d273c16ecba87af606948b987fbc  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E34/attempt-02/response.md
 5fc2c20b982a9c331a5b5351acf1f9c8b33f24bddc4c77f175ccbd660b7edb6a  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E37/attempt-01/evaluation.md
 1468d0ac4df03c5595adaf1b1aac7287cb398cd3c7e962830ebc588c22261280  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E37/attempt-01/request.md
 81eaed4bf9f131dad6beba1bc8aab1395459c592fb3a061f0917292d93a172aa  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E37/attempt-01/response.md
@@ -106,20 +124,35 @@ eff5553788f7502b8672349fb799a9e18a3b38321e68bd0a1644e3fa954b99ea  tests/fixtures
 bd562f25ab6ed30be5bef170680f3656e921d7f91eaaa658be8d1d1e32951074  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E41/attempt-01/evaluation.md
 14d1dce80a4be0e6e2bbc1339ecf364153728845ff42759442f0f4b5944769df  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E41/attempt-01/request.md
 2743443530dae89a7a583720a5f03f42abd5ad32863b90177fcb8f97d81b2d3a  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E41/attempt-01/response.md
+0e752100eaf5cb480e7f9ed01c1810640572a8396b78e2dca4d320d525cfc4da  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E41/attempt-02/evaluation.md
+6927008d8a40b87814b9c5ca7f0b8ff1a16d4e236d1b246f3e96a89c7a57eadd  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E41/attempt-02/request.md
+2d84d73ebd8e6041f1562734b02100d3769a2882f9e652b9a1a495d75ff2e85a  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E41/attempt-02/response.md
+1b9bcf674f6f96b9bab5230a70efaddd82a08b859378ffe8ac2f76b94e95ca1c  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E41/attempt-03/evaluation.md
+1da30d08cba2bd562cdfa564539ae8857d01bb737ff6e35010e5571fee5a8966  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E41/attempt-03/request.md
+d129726c25e9aae58f0058d2eeb86502f34e2ec42a8fead64370955896bfc41e  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E41/attempt-03/response.md
 1c749002a4c5c8168d3a2b0febc903b4698f55a60ff76b8e24a2816a1888b901  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cleanup-report.md
-646d8f7780cde3ae472425690fc8b7bf5990df0b488ed410093d25cb1f7c5474  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/index.json
+39f5749b37c41f5fed5bc21f4ba157ff2badef9ff6d9bc708804b43aca20f957  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/index.json
 da675639f90be7a443931a487ac2729891166748e15c2d6d1fd6e3fe27adb333  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU01/attempt-01/evaluation.md
 5e191354906dbc130b1ebb21271327131661071a44a564962163eef145a690b7  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU01/attempt-01/request.md
 2a913520e26519e0827a000e773dbf80d719394c96c5b2f3550d1828ededc601  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU01/attempt-01/response.md
 cba0f40b270b6c89df9726cf184b3663e8c303f9f087bf94444a43061d10d771  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU02/attempt-01/evaluation.md
 30045c5e9cdbb3d19d38e892f59c58f58763db04f1b8d7ab9b67b5fe371412c9  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU02/attempt-01/request.md
 4ddd490b7623510664c7453710aba903a73731d2d09e7fb5399f73940b183014  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU02/attempt-01/response.md
+b6c47d160dcc8afa36718abb90c43bb345a83a4d3ddb426df9cbbe2c0c8429db  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU02/attempt-02/evaluation.md
+66773f79660967981b8722f09d7dc5d00d38ca59be919b150e4707a50937d361  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU02/attempt-02/request.md
+a45411c0aaa117a9392047174748ff7ee1a72f075a30c3f94ed00ad2ff468713  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU02/attempt-02/response.md
 639092d4721bf8ceeda4c27d38781d6eafa940b6ce6d0ac2b0629a098ac8602f  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU03/attempt-01/evaluation.md
 41f7bce26a87c63a07e489b4eb67e3e588fe093368628bc348714587e4e968ed  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU03/attempt-01/request.md
 7996463233e5f4e4f24d918d23cbd767d4b4a20a13da4877802dfbdab609f036  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU03/attempt-01/response.md
+dc0cac568ef2dd7bc147d0dab0f062c379243c90848bea3ce218d2f966d531d1  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU03/attempt-02/evaluation.md
+b4159f9ed151afc2c9d96d4720a0c6cb232eebe2c781321e3557fd9106197905  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU03/attempt-02/request.md
+9137eaf83912204ceef8e7d400b66c4bca49f7af3f2499a19716596de9b82c3d  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU03/attempt-02/response.md
 8e4d5a5ccdcb84861be49dce71447f26ef969a2abfacb34bf1fbf088db429ebf  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU04/attempt-01/evaluation.md
 e9ed57de2589b6c5361dcab9ab1df0975f18be40f0781d5695da7a6ba693a3f9  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU04/attempt-01/request.md
 317ede5004fbb054713a7a2e2b09bce6abf6d9ffe66b7c67f6ec86b817557feb  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU04/attempt-01/response.md
+1693344419e9c27299a25bce0ed8b07a9dfb38d3d6177d6d91872eb24dde7128  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU04/attempt-02/evaluation.md
+dc6662b0fa1c48883c134176ea15f704d078d81d8a017215372350f673a23af2  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU04/attempt-02/request.md
+cf30195342b71e1044156eec3109d71ac000f554d43e147e0452605701f41139  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU04/attempt-02/response.md
 532cc094c921b0a271f8c0268b87a27e64a7177e513549d867a468880f8362c9  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU05/attempt-01/evaluation.md
 6d558bab998f8a48f0a659eef80c355bafd5515b3edaf79859d4f913c25aaa58  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU05/attempt-01/request.md
 9c310bc5cbff4245c543acf3b3749a0317173a36ac865baa0a38c776b459f822  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU05/attempt-01/response.md
@@ -129,6 +162,9 @@ e9ed57de2589b6c5361dcab9ab1df0975f18be40f0781d5695da7a6ba693a3f9  tests/fixtures
 1814abfb7f08b771631a0e573aeebdf9e6b4cc2e7f6f7296f2ab2bb9dea5ed97  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU06/attempt-01/evaluation.md
 2a090097924730e66077accc33fa7491e7e4bee7d86e7a8e899c687277a3e2d5  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU06/attempt-01/request.md
 3769171c29a374b02a16c1e87fc48e5886d7e25e650a0057b41108ed4e006666  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU06/attempt-01/response.md
+09d31d50d3b41734915ff55496e4a9e328108a30a60e4d28029828b49b83eeb9  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU06/attempt-02/evaluation.md
+9aa90e64efcb245b634794abc421b1903e101e7e40615dfbcd50bb063e7a028a  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU06/attempt-02/request.md
+41c772dba1ba995cd7847f894c18282f848abaf8079cf68ffa0f67f2f17b5763  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU06/attempt-02/response.md
 6d96af31c0490dc7870b05f964a5575557fc278c38e7a4b609400669c1e9ba70  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/product-repo/README.md
 3158ec8c4029a226b25d2ba1fc8b15da91eeb468f23888751ebd005beb9a61dc  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/product-repo/bundle.sha256
 273a9b38a069f665c73dcfcfc8b5b3c324bd28bc2e52cf4e023e6984ce528f3f  tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/product-repo/quietfollow-pilot.bundle

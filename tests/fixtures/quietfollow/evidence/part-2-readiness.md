@@ -13,6 +13,8 @@ trigger. Its current evaluation is PASS at
 Current case evaluations are E02 `62039aac145661e1195fb102a65bf962738f6add69947ebe5aa414c24cb1ddc4`,
 E34 `624acef10215eec542ab83f8c10b5bd058eac7d6778d551528a8d33df267018b`,
 E37 `5fc2c20b982a9c331a5b5351acf1f9c8b33f24bddc4c77f175ccbd660b7edb6a`, and
-E41 `bd562f25ab6ed30be5bef170680f3656e921d7f91eaaa658be8d1d1e32951074`; all are PASS.
+E41 attempt 3 `1b9bcf674f6f96b9bab5230a70efaddd82a08b859378ffe8ac2f76b94e95ca1c`;
+all are PASS. E41 attempts 1 and 2 remain non-credit: the first lacked the required evidence log,
+and the second recorded an incorrect file count before the focused correction.
 
 No PASS here authorizes implementation, integration, installation, or release.

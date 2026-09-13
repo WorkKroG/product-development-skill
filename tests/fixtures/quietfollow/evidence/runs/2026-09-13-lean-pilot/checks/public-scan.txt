@@ -2,22 +2,22 @@ Module 6 final public-data scan summary
 Date: 2026-09-13
 
 Coverage
-- Enumerated public files: 149
+- Enumerated public files: 185
 - Enumeration source: tracked and nonignored untracked files under the exact approved public allowlist
-- Path contract: 149 unique sorted relative paths; all regular files; no symlinks, escapes, private work paths, tabs, or newlines
-- Initial literal pass coverage: 149/149
-- Initial portable pass coverage: 149/149
+- Path contract: 185 unique sorted relative paths; all regular files; no symlinks, escapes, private work paths, tabs, or newlines
+- Initial literal pass coverage: 185/185
+- Initial portable pass coverage: 185/185
 
 Observed-private-literal pass
-- Nonempty private deny literals: 74
+- Nonempty private deny literals: 99
 - Matches: 0
 - Tool errors or Unknown results: 0
 - Disposition: PASS; the hard zero-match gate is satisfied
 
 Portable candidate pass
-- Total occurrences: 13
+- Total occurrences: 15
 - Intentional synthetic test/policy literal: 3
-- Ordinary non-sensitive text: 10
+- Ordinary non-sensitive text: 12
 - Unsafe/private: 0
 - Unresolved: 0
 - Tool errors or Unknown results: 0

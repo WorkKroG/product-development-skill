@@ -22,3 +22,8 @@ Together with SU01, the six probes cover the Product proportionality rules. The 
 21 E-cases plus six probes, all current PASS. Requested model assignments do not prove accepted or
 runtime identities; unavailable provenance facts remain Unknown. No post-pilot candidate change was
 made, so no impact analysis or carried-forward credit was needed.
+
+The first exact-head Change Review found incomplete request-hash/action logs in seven cases and four
+probes. Their original bytes and evaluator verdicts remain historical non-credit evidence. Fresh
+separate executor/evaluator attempts supplied the missing evidence contract without changing the
+candidate or scenario; ten passed directly, while E41 required one focused third attempt.

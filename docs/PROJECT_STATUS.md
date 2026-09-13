@@ -15,7 +15,12 @@ summary is in `manifest.json` and `execution-record.json`, with the five readabl
 from `validation.md`. The synthetic A/B/C/D/M product history is preserved in a tracked Git bundle.
 
 No post-pilot skill or product defect was confirmed, so there was no candidate correction, impact
-analysis, rerun, or transferred credit after the 27 evaluations.
+analysis, candidate-impact rerun, or transferred credit.
+
+The first exact-head Change Review identified evidence-contract gaps in 11 then-current responses.
+Those attempts are retained as non-credit and were rerun with separate hash-first executor/evaluator
+sessions. Ten corrected attempts passed directly; E41 recorded one honest FAIL before its focused
+attempt 3 passed. The candidate skill and product bytes stayed unchanged throughout.
 
 ## Evidence boundary
 
