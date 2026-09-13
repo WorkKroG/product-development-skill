@@ -227,7 +227,7 @@
       "kind": "case",
       "attempt": 2,
       "current": true,
-      "credit": "pending",
+      "credit": "PASS",
       "request": {
         "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E12/attempt-02/request.md",
         "sha256": "016c3de88d7229db0dda8c1ced2106bb7d0a527f4ac64f79cd845d3107abc6d3",
@@ -246,9 +246,10 @@
         "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E12/attempt-02/evaluation.md",
         "prefix_sha256": "fbe311996323e4bc0ce61fc9d295a164524a4a2b8385da60eba6e7ddc3a86ef7",
         "prefix_bytes": 2913,
-        "whole_sha256": null,
-        "whole_bytes": null,
-        "closed": false
+        "whole_sha256": "1b53646841e272289cb7916fc593235f1b87183bd279a4618dd96120fafefbd7",
+        "whole_bytes": 11502,
+        "mode": "0444",
+        "closed": true
       },
       "executor": {
         "alias": "case-E12-executor-02",
@@ -274,14 +275,20 @@
         "accepted_reasoning": "Unknown",
         "verified_runtime_model": "Unknown",
         "verified_runtime_reasoning": "Unknown",
-        "fact_source": "Unknown",
-        "platform_session_id": "Unknown",
-        "dispatch_receipt": null
+        "fact_source": "native dispatch result; exact metadata retained privately",
+        "platform_session_id": "private-nonempty-verified",
+        "dispatch_receipt": {
+          "sha256": "345ba10af44430452e30035fe08cdab6ce00e292a6031087034910658e73176c",
+          "contains_distinct_nonempty_platform_task_identity": true,
+          "public_value_withheld": true
+        }
       },
-      "verdict": "PENDING",
-      "dependent_state": "PENDING_INDEPENDENT_EVALUATION",
+      "verdict": "PASS",
+      "dependent_state": "TASK_ACTIVE; INTEGRATION_AND_MERGE_BLOCKED_PENDING_CORRECTION_AND_FRESH_EXACT_HEAD_REVIEW_PASS",
       "limitations": [
-        "Attempt 02 restarts only the E12 request/support flow after attempt 01 was preserved as non-credit for dependent-request ordering."
+        "Attempt 02 restarts only the E12 request/support flow after attempt 01 was preserved as non-credit for dependent-request ordering.",
+        "The executor disclosed one nonessential process-guidance read outside the bounded evidence set; the evaluator classified it Minor because it supplied no product evidence, changed no outcome, and caused no prohibited effect.",
+        "Static evidence cannot prove the historical absence of every transient read-only command or network attempt."
       ],
       "support": [
         {
@@ -392,6 +399,6 @@
   ],
   "readiness": {
     "claimed": false,
-    "state": "NOT_CLAIMED"
+    "state": "CHECKPOINT_READY_ONLY"
   }
 }
