@@ -91,7 +91,14 @@
         "mode": "0444",
         "closed": true
       },
-      "evaluation": null,
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E38/attempt-01/evaluation.md",
+        "prefix_sha256": "44eaebbc0e93ea4512d07463488039205337a06dee72345381c5b165bdc9fcbc",
+        "prefix_bytes": 2589,
+        "whole_sha256": null,
+        "whole_bytes": null,
+        "closed": false
+      },
       "executor": {
         "alias": "case-E38-executor-01",
         "requested_model": "gpt-5.6-sol",
@@ -291,7 +298,14 @@
         "mode": "0444",
         "closed": true
       },
-      "evaluation": null,
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU01/attempt-01/evaluation.md",
+        "prefix_sha256": "45bda457cf1c776a7f2ecc959e94a37f61daee8a441b5a5d35210ec873918272",
+        "prefix_bytes": 2464,
+        "whole_sha256": null,
+        "whole_bytes": null,
+        "closed": false
+      },
       "executor": {
         "alias": "probe-SU01-executor-01",
         "requested_model": "gpt-5.6-sol",
