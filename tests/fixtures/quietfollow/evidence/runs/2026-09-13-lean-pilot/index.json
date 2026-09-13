@@ -401,7 +401,7 @@
       "kind": "case",
       "attempt": 1,
       "current": true,
-      "credit": "pending",
+      "credit": "PASS",
       "request": {
         "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E31/attempt-01/request.md",
         "sha256": "4d650ac364acb0648dc39d18ae1998d8ce4fba1b204b6e12d03d23434eaa1cc3",
@@ -420,9 +420,10 @@
         "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E31/attempt-01/evaluation.md",
         "prefix_sha256": "afbda14c7c7c90c976fcdf3da3534a99ddf8d9783e1dbee0407f2a7bdcea95b7",
         "prefix_bytes": 2330,
-        "whole_sha256": null,
-        "whole_bytes": null,
-        "closed": false
+        "whole_sha256": "112fc130921872ded3ba530ca228ecbe1e2725a8e2288037a23295f68888b158",
+        "whole_bytes": 7970,
+        "mode": "0444",
+        "closed": true
       },
       "executor": {
         "alias": "case-E31-executor-01",
@@ -448,13 +449,20 @@
         "accepted_reasoning": "Unknown",
         "verified_runtime_model": "Unknown",
         "verified_runtime_reasoning": "Unknown",
-        "fact_source": "Unknown",
-        "platform_session_id": "Unknown",
-        "dispatch_receipt": null
+        "fact_source": "native dispatch result; exact metadata retained privately",
+        "platform_session_id": "private-nonempty-verified",
+        "dispatch_receipt": {
+          "sha256": "ddb0dd4c7d36024e897b6b6ffd2ebef33adef6784bc47c2ff90f84967a2c2c49",
+          "contains_distinct_nonempty_platform_task_identity": true,
+          "public_value_withheld": true
+        }
       },
-      "verdict": "PENDING",
-      "dependent_state": "PENDING_INDEPENDENT_EVALUATION",
-      "limitations": [],
+      "verdict": "PASS",
+      "dependent_state": "GATE_3_5_APPLICABLE_MISSING; JOURNEY_BLOCKED; GATES_4_15_DEFERRED; NO_IMPLEMENTATION_OR_SERVICE_TRANSITION_AUTHORIZED",
+      "limitations": [
+        "The response leaves its final output hash, size, and mode to the executor handoff rather than the tracked operation log; the evaluator recorded this as Minor.",
+        "Static evidence cannot prove transient side-effect absence or runtime model assignment."
+      ],
       "support": [],
       "superseded_attempts": []
     },
@@ -463,7 +471,7 @@
       "kind": "case",
       "attempt": 1,
       "current": true,
-      "credit": "pending",
+      "credit": "PASS",
       "request": {
         "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E39/attempt-01/request.md",
         "sha256": "db8377151396349cea1759ba49478aa27b22e8a3280239f73afbc1d2fe6d9259",
@@ -482,9 +490,10 @@
         "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E39/attempt-01/evaluation.md",
         "prefix_sha256": "56e4858ff1dc83ad183b6081750dd3fc66a659410374aea572910ba274f9d60b",
         "prefix_bytes": 2504,
-        "whole_sha256": null,
-        "whole_bytes": null,
-        "closed": false
+        "whole_sha256": "33d97a62bff196f2bf5c59c4cf91a2f696c23527fb9a754bdba3e9a8ba4363df",
+        "whole_bytes": 6796,
+        "mode": "0444",
+        "closed": true
       },
       "executor": {
         "alias": "case-E39-executor-01",
@@ -510,13 +519,19 @@
         "accepted_reasoning": "Unknown",
         "verified_runtime_model": "Unknown",
         "verified_runtime_reasoning": "Unknown",
-        "fact_source": "Unknown",
-        "platform_session_id": "Unknown",
-        "dispatch_receipt": null
+        "fact_source": "native dispatch result; exact metadata retained privately",
+        "platform_session_id": "private-nonempty-verified",
+        "dispatch_receipt": {
+          "sha256": "f4d75f5430f4d6a9e57b0835cc6afe8a54ddcc0b425840a6b43b8e0793283e54",
+          "contains_distinct_nonempty_platform_task_identity": true,
+          "public_value_withheld": true
+        }
       },
-      "verdict": "PENDING",
-      "dependent_state": "PENDING_INDEPENDENT_EVALUATION",
-      "limitations": [],
+      "verdict": "PASS",
+      "dependent_state": "GATE_8_APPLICABLE_MISSING; PAID_BACKUP_TRANSITION_BLOCKED; NO_SPEND_JOURNEY_MAY_CONTINUE",
+      "limitations": [
+        "Static evidence cannot independently reconstruct executor file-access or network history; local identities and scoped Git state corroborate the operation log."
+      ],
       "support": [],
       "superseded_attempts": []
     }
