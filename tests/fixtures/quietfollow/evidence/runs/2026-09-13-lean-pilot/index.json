@@ -889,7 +889,7 @@
       "kind": "case",
       "attempt": 1,
       "current": true,
-      "credit": "pending",
+      "credit": "PASS",
       "request": {
         "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E27/attempt-01/request.md",
         "sha256": "7b44dc9aa268216d7e90de18c8c79726d6dd8e14861fd5e981095afd09048fcb",
@@ -908,9 +908,10 @@
         "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E27/attempt-01/evaluation.md",
         "prefix_sha256": "1479e706e647625372cc0dfe6050375a6b3d719fcd5ebb463bda876885d56df0",
         "prefix_bytes": 1538,
-        "whole_sha256": null,
-        "whole_bytes": null,
-        "closed": false
+        "whole_sha256": "4d33e04fcb2f8ae68b3a89dedca08ea418dd89ab1b0ca5b9e8e3e4b403ee6c74",
+        "whole_bytes": 8920,
+        "mode": "0444",
+        "closed": true
       },
       "executor": {
         "alias": "case-E27-executor-01",
@@ -936,13 +937,19 @@
         "accepted_reasoning": "Unknown",
         "verified_runtime_model": "Unknown",
         "verified_runtime_reasoning": "Unknown",
-        "fact_source": "Unknown",
-        "platform_session_id": "Unknown",
-        "dispatch_receipt": null
+        "fact_source": "native dispatch result; exact metadata retained privately",
+        "platform_session_id": "private-nonempty-verified",
+        "dispatch_receipt": {
+          "sha256": "9b04ced6e19fe393039fd17641a3e7cdb7bc515f55c07dcb98af3fa35b65c3d7",
+          "contains_distinct_nonempty_platform_task_identity": true,
+          "public_value_withheld": true
+        }
       },
-      "verdict": "PENDING",
-      "dependent_state": "PENDING_INDEPENDENT_EVALUATION",
-      "limitations": [],
+      "verdict": "PASS",
+      "dependent_state": "VERIFICATION_TO_RELEASE_OPEN_BUT_BLOCKED; RELEASE_NOT_READY",
+      "limitations": [
+        "The assessment correctly keeps accessibility and backup/restore evidence applicable-missing; E27 does not authorize rehearsal, deployment, production action, or release."
+      ],
       "support": [],
       "superseded_attempts": []
     },
@@ -950,8 +957,8 @@
       "id": "E28",
       "kind": "case",
       "attempt": 1,
-      "current": true,
-      "credit": "pending",
+      "current": false,
+      "credit": "non-credit",
       "request": {
         "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E28/attempt-01/request.md",
         "sha256": "9093273b4883cdb260306d90f3b318fcd5cd9d27e7ed0b81b249feaefbdb9d4a",
@@ -970,9 +977,10 @@
         "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E28/attempt-01/evaluation.md",
         "prefix_sha256": "bf64008649f098acb494a984b12429444fae3d5c8825ef6bc7faf9cf20c03247",
         "prefix_bytes": 1524,
-        "whole_sha256": null,
-        "whole_bytes": null,
-        "closed": false
+        "whole_sha256": "8cd9f45a05fec1e00a91635fb1911a78cea4d78ffab84c86bdc200fffe6067de",
+        "whole_bytes": 5691,
+        "mode": "0444",
+        "closed": true
       },
       "executor": {
         "alias": "case-E28-executor-01",
@@ -998,15 +1006,70 @@
         "accepted_reasoning": "Unknown",
         "verified_runtime_model": "Unknown",
         "verified_runtime_reasoning": "Unknown",
+        "fact_source": "native dispatch result; exact metadata retained privately",
+        "platform_session_id": "private-nonempty-verified",
+        "dispatch_receipt": {
+          "sha256": "d80a7fdf4eb979dc74eba471e6d296ff3d2c806f0345793165e45a85ed762daa",
+          "contains_distinct_nonempty_platform_task_identity": true,
+          "public_value_withheld": true
+        }
+      },
+      "verdict": "BLOCKED",
+      "dependent_state": "SUPERSEDED_EVALUATOR_INPUT_MAPPING_MISSING",
+      "limitations": [
+        "The evaluator correctly blocked because its dispatch omitted the private read-only mapping from the public disposable-repository alias to exact M; this is a coordinator evidence-routing defect, not a candidate behavior conclusion.",
+        "Attempt 02 restarts E28 with fresh executor and evaluator sessions and supplies the mapping privately while keeping it out of public evidence."
+      ],
+      "support": [],
+      "superseded_by_attempt": 2,
+      "superseded_attempts": []
+    },
+    {
+      "id": "E28",
+      "kind": "case",
+      "attempt": 2,
+      "current": true,
+      "credit": "pending",
+      "request": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E28/attempt-02/request.md",
+        "sha256": "50f17165e9b9c789d56976b1e05cab26bc1faed95adb399172f4bb8edbd009cb",
+        "bytes": 3244,
+        "mode": "0444",
+        "frozen": true
+      },
+      "response": null,
+      "evaluation": null,
+      "executor": {
+        "alias": "case-E28-executor-02",
+        "requested_model": "gpt-5.6-sol",
+        "requested_reasoning": "high",
+        "accepted_model": "Unknown",
+        "accepted_reasoning": "Unknown",
+        "verified_runtime_model": "Unknown",
+        "verified_runtime_reasoning": "Unknown",
+        "fact_source": "Unknown",
+        "platform_session_id": "Unknown",
+        "dispatch_receipt": null
+      },
+      "evaluator": {
+        "alias": "case-E28-evaluator-02",
+        "requested_model": "gpt-5.6-sol",
+        "requested_reasoning": "high",
+        "accepted_model": "Unknown",
+        "accepted_reasoning": "Unknown",
+        "verified_runtime_model": "Unknown",
+        "verified_runtime_reasoning": "Unknown",
         "fact_source": "Unknown",
         "platform_session_id": "Unknown",
         "dispatch_receipt": null
       },
       "verdict": "PENDING",
-      "dependent_state": "PENDING_INDEPENDENT_EVALUATION",
-      "limitations": [],
+      "dependent_state": "PENDING_FRESH_EXECUTOR",
+      "limitations": [
+        "Attempt 02 restarts E28 after attempt 01 was blocked by incomplete private evaluator evidence routing; exact M is unchanged."
+      ],
       "support": [],
-      "superseded_attempts": []
+      "superseded_attempts": [1]
     }
   ],
   "readiness": {
