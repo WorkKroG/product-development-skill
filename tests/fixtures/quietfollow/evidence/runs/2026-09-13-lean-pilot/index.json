@@ -1029,7 +1029,7 @@
       "kind": "case",
       "attempt": 2,
       "current": true,
-      "credit": "pending",
+      "credit": "PASS",
       "request": {
         "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E28/attempt-02/request.md",
         "sha256": "50f17165e9b9c789d56976b1e05cab26bc1faed95adb399172f4bb8edbd009cb",
@@ -1048,9 +1048,10 @@
         "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E28/attempt-02/evaluation.md",
         "prefix_sha256": "2a0f5f2fbde15f8c84c9ddcb8cecdb7f84b2bc2065adbcfc27549452c7c1a409",
         "prefix_bytes": 1705,
-        "whole_sha256": null,
-        "whole_bytes": null,
-        "closed": false
+        "whole_sha256": "b287261456e46cf033ff06eb130b7c53c6364db781795a0bba392037361df03b",
+        "whole_bytes": 6165,
+        "mode": "0444",
+        "closed": true
       },
       "executor": {
         "alias": "case-E28-executor-02",
@@ -1076,12 +1077,16 @@
         "accepted_reasoning": "Unknown",
         "verified_runtime_model": "Unknown",
         "verified_runtime_reasoning": "Unknown",
-        "fact_source": "Unknown",
-        "platform_session_id": "Unknown",
-        "dispatch_receipt": null
+        "fact_source": "native dispatch result; exact metadata retained privately",
+        "platform_session_id": "private-nonempty-verified",
+        "dispatch_receipt": {
+          "sha256": "47b03682c38c43954b4a88f7c0e9892ce0e3604101e70100a06b4ba2cf193d29",
+          "contains_distinct_nonempty_platform_task_identity": true,
+          "public_value_withheld": true
+        }
       },
-      "verdict": "PENDING",
-      "dependent_state": "PENDING_FRESH_INDEPENDENT_EVALUATION",
+      "verdict": "PASS",
+      "dependent_state": "GATE_14_APPLICABLE_MISSING; REHEARSAL_NOT_RUN; GATE_15_OPEN_BLOCKED; PRODUCTION_RELEASE_NOT_AUTHORIZED",
       "limitations": [
         "Attempt 02 restarts E28 after attempt 01 was blocked by incomplete private evaluator evidence routing; exact M is unchanged."
       ],
