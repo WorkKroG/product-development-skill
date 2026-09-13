@@ -569,7 +569,7 @@
         "dispatch_receipt": null
       },
       "verdict": "PENDING",
-      "dependent_state": "PENDING_CHANGE_REVIEW_D",
+      "dependent_state": "PENDING_OUTER_EXECUTION",
       "limitations": [
         "The private candidate-C writer dispatch receipt is locally retained with SHA-256 d2d7630ae1bbf874bbe270010444db207c570d460e52f6eca4b6a13cd1670be3; accepted and verified runtime model/reasoning remain Unknown.",
         "The writer handoff reported a non-full-index diff serialization; coordinator verification established the required full-index B..C identity as e093ffce59765feef1df089d739fa2ae4dc53b7b1a780c3d6b9551b6a712cca9 / 6055 bytes before review dispatch."
@@ -647,7 +647,15 @@
           "bytes": 3424,
           "mode": "0444",
           "frozen": true,
-          "response": null,
+          "response": {
+            "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E14/attempt-01/support/change-review-D.md",
+            "sha256": "adafd1833796a8a4e0dba1c4472179412b35fb5387feb9ecabe7c37c50124d44",
+            "bytes": 7394,
+            "mode": "0444",
+            "closed": true,
+            "verdict": "PASS",
+            "finding_count": 0
+          },
           "actor": {
             "alias": "case-E14-change-review-D-01",
             "requested_model": "gpt-5.6-sol",
@@ -656,9 +664,13 @@
             "accepted_reasoning": "Unknown",
             "verified_runtime_model": "Unknown",
             "verified_runtime_reasoning": "Unknown",
-            "fact_source": "Unknown",
-            "platform_session_id": "Unknown",
-            "dispatch_receipt": null
+            "fact_source": "native dispatch result; exact metadata retained privately",
+            "platform_session_id": "private-nonempty-verified",
+            "dispatch_receipt": {
+              "sha256": "bcab421b32aff4027575b3e618158fda719626898dab19cba24e24c48249d418",
+              "contains_distinct_nonempty_platform_task_identity": true,
+              "public_value_withheld": true
+            }
           }
         }
       ],
