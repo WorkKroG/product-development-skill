@@ -84,7 +84,13 @@
         "mode": "0444",
         "frozen": true
       },
-      "response": null,
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E38/attempt-01/response.md",
+        "sha256": "d9464d00c24e98c09c2a6b83f6777f18a9cb4ad4aa6e042fd65d4428261e407e",
+        "bytes": 5960,
+        "mode": "0444",
+        "closed": true
+      },
       "evaluation": null,
       "executor": {
         "alias": "case-E38-executor-01",
@@ -94,9 +100,13 @@
         "accepted_reasoning": "Unknown",
         "verified_runtime_model": "Unknown",
         "verified_runtime_reasoning": "Unknown",
-        "fact_source": "Unknown",
-        "platform_session_id": "Unknown",
-        "dispatch_receipt": null
+        "fact_source": "native dispatch result; exact metadata retained privately",
+        "platform_session_id": "private-nonempty-verified",
+        "dispatch_receipt": {
+          "sha256": "6ff02ac4adfad46569840539416cb8e0bb0132eb953b704e232c4df475684184",
+          "contains_distinct_nonempty_platform_task_identity": true,
+          "public_value_withheld": true
+        }
       },
       "evaluator": {
         "alias": "case-E38-evaluator-01",
@@ -111,7 +121,7 @@
         "dispatch_receipt": null
       },
       "verdict": "PENDING",
-      "dependent_state": "PENDING_EXECUTION",
+      "dependent_state": "PENDING_INDEPENDENT_EVALUATION",
       "limitations": [],
       "support": [],
       "superseded_attempts": []
@@ -120,8 +130,8 @@
       "id": "E12",
       "kind": "case",
       "attempt": 1,
-      "current": true,
-      "credit": "pending",
+      "current": false,
+      "credit": "non-credit",
       "request": {
         "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E12/attempt-01/request.md",
         "sha256": "38fd81a0b7d21f5fb74bc6e53aa84ae17c6abe07e0c80d5a998b774b787bba33",
@@ -155,9 +165,11 @@
         "platform_session_id": "Unknown",
         "dispatch_receipt": null
       },
-      "verdict": "PENDING",
-      "dependent_state": "PENDING_FRESH_B_REVIEW",
-      "limitations": [],
+      "verdict": "BLOCKED",
+      "dependent_state": "SUPERSEDED_BEFORE_OUTER_EXECUTION",
+      "limitations": [
+        "The outer request was prepared before its nested Change Review response closed, contrary to the required dependent-request ordering. No outer executor or evaluator was dispatched; the frozen bytes and completed nested review remain historical non-credit evidence."
+      ],
       "support": [
         {
           "kind": "change-review-B-request",
@@ -166,6 +178,15 @@
           "bytes": 10017,
           "mode": "0444",
           "frozen": true,
+          "response": {
+            "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E12/attempt-01/support/change-review-B.md",
+            "sha256": "ce8a8729035b473f1647fc9bb0553fb9a66de367e2c0e659684df25bd8d6a2a4",
+            "bytes": 5086,
+            "mode": "0444",
+            "closed": true,
+            "verdict": "CHANGES_REQUIRED",
+            "finding_count": 2
+          },
           "actor": {
             "alias": "case-E12-change-review-B-01",
             "requested_model": "gpt-5.6-sol",
@@ -174,12 +195,17 @@
             "accepted_reasoning": "Unknown",
             "verified_runtime_model": "Unknown",
             "verified_runtime_reasoning": "Unknown",
-            "fact_source": "Unknown",
-            "platform_session_id": "Unknown",
-            "dispatch_receipt": null
+            "fact_source": "native dispatch result; exact metadata retained privately",
+            "platform_session_id": "private-nonempty-verified",
+            "dispatch_receipt": {
+              "sha256": "cd7cc6fcd2df5ff028fa207e1c8a98af5729667b41e557aa75a2b0b376f1896f",
+              "contains_distinct_nonempty_platform_task_identity": true,
+              "public_value_withheld": true
+            }
           }
         }
       ],
+      "superseded_by_attempt": 2,
       "superseded_attempts": []
     },
     {
@@ -195,7 +221,13 @@
         "mode": "0444",
         "frozen": true
       },
-      "response": null,
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU01/attempt-01/response.md",
+        "sha256": "2a913520e26519e0827a000e773dbf80d719394c96c5b2f3550d1828ededc601",
+        "bytes": 4711,
+        "mode": "0444",
+        "closed": true
+      },
       "evaluation": null,
       "executor": {
         "alias": "probe-SU01-executor-01",
@@ -205,9 +237,13 @@
         "accepted_reasoning": "Unknown",
         "verified_runtime_model": "Unknown",
         "verified_runtime_reasoning": "Unknown",
-        "fact_source": "Unknown",
-        "platform_session_id": "Unknown",
-        "dispatch_receipt": null
+        "fact_source": "native dispatch result; exact metadata retained privately",
+        "platform_session_id": "private-nonempty-verified",
+        "dispatch_receipt": {
+          "sha256": "95a52f05f18713e0a382a991c836f57f11e166277b98166e855b90f5784a1ecb",
+          "contains_distinct_nonempty_platform_task_identity": true,
+          "public_value_withheld": true
+        }
       },
       "evaluator": {
         "alias": "probe-SU01-evaluator-01",
@@ -222,7 +258,7 @@
         "dispatch_receipt": null
       },
       "verdict": "PENDING",
-      "dependent_state": "PENDING_EXECUTION",
+      "dependent_state": "PENDING_INDEPENDENT_EVALUATION",
       "limitations": [],
       "support": [],
       "superseded_attempts": []
