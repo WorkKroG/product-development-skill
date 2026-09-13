@@ -1,0 +1,23 @@
+Command: python3 -B tests/fixtures/quietfollow/product/test_quietfollow.py -v
+Exit status: 0
+
+test_blank_outcome_is_rejected_without_mutating_state (__main__.TrackerTests.test_blank_outcome_is_rejected_without_mutating_state) ... ok
+test_completed_follow_up_is_hidden_by_default (__main__.TrackerTests.test_completed_follow_up_is_hidden_by_default) ... ok
+test_completed_outcome_survives_reconstruction (__main__.TrackerTests.test_completed_outcome_survives_reconstruction) ... ok
+test_confirmed_contact_survives_reconstruction_before_scheduling (__main__.TrackerTests.test_confirmed_contact_survives_reconstruction_before_scheduling) ... ok
+test_contacts_and_follow_ups_receive_distinct_ids (__main__.TrackerTests.test_contacts_and_follow_ups_receive_distinct_ids) ... ok
+test_corrupt_store_is_rejected_without_rewriting_it (__main__.TrackerTests.test_corrupt_store_is_rejected_without_rewriting_it) ... ok
+test_due_date_is_inclusive_and_returns_minimum_string_fields (__main__.TrackerTests.test_due_date_is_inclusive_and_returns_minimum_string_fields) ... ok
+test_inclusive_query_returns_completed_minimum_fields (__main__.TrackerTests.test_inclusive_query_returns_completed_minimum_fields) ... ok
+test_new_valid_store_has_no_due_follow_ups (__main__.TrackerTests.test_new_valid_store_has_no_due_follow_ups) ... ok
+test_reconstructed_due_item_includes_contact_name (__main__.TrackerTests.test_reconstructed_due_item_includes_contact_name) ... ok
+test_reconstructed_tracker_filters_persisted_completion_by_default (__main__.TrackerTests.test_reconstructed_tracker_filters_persisted_completion_by_default) ... ok
+test_scheduled_follow_up_survives_reconstruction (__main__.TrackerTests.test_scheduled_follow_up_survives_reconstruction) ... ok
+test_spaced_outcome_persists_exactly_across_two_reconstructions (__main__.TrackerTests.test_spaced_outcome_persists_exactly_across_two_reconstructions) ... ok
+test_unknown_contact_is_rejected_without_mutating_store (__main__.TrackerTests.test_unknown_contact_is_rejected_without_mutating_store) ... ok
+test_unknown_follow_up_outcome_is_rejected_without_mutating_store (__main__.TrackerTests.test_unknown_follow_up_outcome_is_rejected_without_mutating_store) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.005s
+
+OK

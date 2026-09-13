@@ -1,986 +1,718 @@
 {
-  "schema_version": 1,
-  "harness_identity": {
-    "plan": "MODULE6-PLAN-v1",
-    "plan_sha256": "6037149b9a70cdeba4b8f1fd4fcce460b9206730665c8aa69f4ee781eb5c4777",
-    "accepted_plan_commit": "8614c2d3c465ce86ab4332917bc435d4d2b10754",
-    "task8_base": "f47263ce545c5185b3ec836c95fe341d1b3e5715",
-    "disposable_main": "d2e8bc6500d52f7db63f372ef52b1efaad59edf8",
-    "disposable_tree": "a5fce7b8a8c7eafae9349a762c28d4ea50709da9"
+  "schema_version": 2,
+  "module": "MODULE6-LEAN-PLAN-v1",
+  "run_id": "2026-09-13-lean-pilot",
+  "index_path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/index.json",
+  "candidate": {
+    "identity": "MODULE6-LEAN-SKILL-v1",
+    "commit": "0070e4c307e785cfeafae41ee4aa70151de1df7c",
+    "tree": "639c579dddec3b4039e347c89952d4f254e628b2",
+    "checksum_file": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/candidate/skill-after.sha256",
+    "checksum_file_sha256": "c3e8c4dc28d76464118ae7aaa9175980dce7fac40f896e521ee67b1428707fdd",
+    "review_path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/candidate/skill-change-review.md",
+    "review_sha256": "9a48c6891ed00c455a2f9da4d8ce679ffc09de89caf93598ca73292aa9d13cf0",
+    "review_verdict": "PASS"
   },
-  "cases": [
+  "required_case_ids": [
+    "E02",
+    "E08",
+    "E10",
+    "E11",
+    "E12",
+    "E13",
+    "E14",
+    "E17",
+    "E20",
+    "E21",
+    "E22",
+    "E25",
+    "E27",
+    "E28",
+    "E31",
+    "E33",
+    "E34",
+    "E37",
+    "E38",
+    "E39",
+    "E41"
+  ],
+  "required_probe_ids": [
+    "SU01",
+    "SU02",
+    "SU03",
+    "SU04",
+    "SU05",
+    "SU06"
+  ],
+  "current_evaluations": [
     {
-      "id": "E02",
-      "input_identities": [
-        "artifact-map-v1@sha256:c00a98108bc5e45fbed33a136982b91447a195ee8bb115e3b60057aa6e1b01d6"
-      ],
-      "mode": "offline resume simulation",
-      "allowed_side_effects": [
-        "temporary local synthetic input/output files"
-      ],
-      "forbidden_side_effects": [
-        "network",
-        "external services",
-        "real user data",
-        "spend",
-        "GitHub mutation",
-        "deployment",
-        "release",
-        "native task/message/monitor mutation"
-      ],
-      "executor_alias": "case-executor",
-      "evaluator_alias": "behavioral-evaluator",
-      "requested_assignment": "gpt-5.6-sol/high",
-      "accepted_assignment": "Unknown",
-      "independently_verified_runtime_fact": "Unknown",
-      "output_evidence": [
-        "sha256:669eb9b5fcbeef11b8df123c344510fd2a618f496b3940a99c96ad3bafc94add",
-        "sha256:05096e84c03b1c7591b6fb4a678ffb95602b6a4bca63d9fb0b9915aaefb30f4a"
-      ],
-      "transcript_evidence": {
-        "availability": "sanitised digest only",
-        "digest": "sha256:80103026815b705723500f7f4de8689b73924852f455f23be887aae9fed6f30a"
+      "id": "E38",
+      "kind": "case",
+      "attempt": 1,
+      "verdict": "PASS",
+      "credit": "PASS",
+      "dependent_state": "GATE_3_5_APPLICABLE_MISSING_OPEN; JOURNEY_BLOCKED",
+      "request": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E38/attempt-01/request.md",
+        "sha256": "42175637d66ea4219015bca3e80e6431cd85dbceb9e952ee94b368c3f44c3d7c"
       },
-      "actual_outcome": "Reused existing Journey and Requirements artifacts byte-for-byte and selected missing Risk as the first open gate.",
-      "evaluation_verdict": "PASS",
-      "dependent_action_state": "GATE_10_RISK_OPEN",
-      "findings": [
-        "Evaluator v1 lacked raw fixtures and is historical non-credit; evaluator v2 passed with the raw inputs."
-      ],
-      "rerun_identity": "case-E02-evaluator-2"
-    },
-    {
-      "id": "E08",
-      "input_identities": [
-        "executor-input-v1@sha256:ff014efb3c3270337a8686c42de1d7ad52bcd98cc21c9728e0983394020610a7"
-      ],
-      "mode": "offline PLAN review simulation",
-      "allowed_side_effects": [
-        "temporary local synthetic input/output files"
-      ],
-      "forbidden_side_effects": [
-        "network",
-        "external services",
-        "real user data",
-        "spend",
-        "GitHub mutation",
-        "deployment",
-        "release",
-        "native task/message/monitor mutation"
-      ],
-      "executor_alias": "case-executor",
-      "evaluator_alias": "behavioral-evaluator",
-      "requested_assignment": "gpt-5.6-sol/high",
-      "accepted_assignment": "Unknown",
-      "independently_verified_runtime_fact": "Unknown",
-      "output_evidence": [
-        "sha256:496a399a169a28e675f07e19722e96119cb4c01bb665d74116f6117fd15c2cf8",
-        "sha256:000f6a9e2959160076d8664ca0e77989466c562bd2d098f2e49e7f2420dae78d"
-      ],
-      "transcript_evidence": {
-        "availability": "sanitised digest only",
-        "digest": "sha256:5c4b9e687e2036fd1eebab8cc37369a7c30982381c3a0d482f03d0059d66d0b8"
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E38/attempt-01/response.md",
+        "sha256": "d9464d00c24e98c09c2a6b83f6777f18a9cb4ad4aa6e042fd65d4428261e407e"
       },
-      "actual_outcome": "Rejected duplicate implementation of already merged work and restored the omitted interrupted-write risk obligation.",
-      "evaluation_verdict": "PASS",
-      "dependent_action_state": "PLAN_ACCEPTANCE_OPEN_IMPLEMENTATION_BLOCKED",
-      "findings": [],
-      "rerun_identity": null
-    },
-    {
-      "id": "E10",
-      "input_identities": [
-        "shared-api-event-v1@sha256:0e2c4414d62ba2ec7aeed9344789324768e4d15b68013d0b6b384b42d1497100"
-      ],
-      "mode": "offline coordination and architecture topology simulation",
-      "allowed_side_effects": [
-        "temporary local synthetic input/output files"
-      ],
-      "forbidden_side_effects": [
-        "network",
-        "external services",
-        "real user data",
-        "spend",
-        "GitHub mutation",
-        "deployment",
-        "release",
-        "native task/message/monitor mutation"
-      ],
-      "executor_alias": "case-executor",
-      "evaluator_alias": "behavioral-evaluator",
-      "requested_assignment": {
-        "coordination_and_routing": "gpt-5.6-sol/high",
-        "architecture_analysis_and_review": "gpt-6-astra/high",
-        "behavioral_evaluation": "gpt-5.6-sol/high"
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E38/attempt-01/evaluation.md",
+        "sha256": "f4bb0774a50c1fd8da4847d505ae62f5accba6062588271da153c482e0fb1916",
+        "prefix_sha256": "44eaebbc0e93ea4512d07463488039205337a06dee72345381c5b165bdc9fcbc",
+        "prefix_bytes": 2589
       },
-      "accepted_assignment": "Unknown",
-      "independently_verified_runtime_fact": "Unknown",
-      "output_evidence": [
-        "sha256:81d5e9076c782e78f1879b12aac91dd734edb3fb588a1c8d8b5fbb83a6a64bba",
-        "sha256:1ba2ad0990d0c09752ecff1ecc28812795ad5203ea637ae62bf3122cd7d3748c"
-      ],
-      "transcript_evidence": {
-        "availability": "sanitised digest only",
-        "digest": "sha256:afa102bb5dea50acd15452559a12a766b3f7b40967c02cad52ad09c1d106884a"
-      },
-      "actual_outcome": "Escalated one shared-contract change, paused only affected adapters, preserved independent work, and routed a reviewed bounded architecture decision without implementation authority.",
-      "evaluation_verdict": "PASS",
-      "dependent_action_state": "SHARED_CONTRACT_WORK_PAUSED_INDEPENDENT_WORK_OPEN",
-      "findings": [
-        "Architecture review v1 used a non-contract verdict token and is superseded; current exact-package review v2 passed."
-      ],
-      "rerun_identity": "case-E10-evaluator-2-requested-assignment-correction"
-    },
-    {
-      "id": "E11",
-      "input_identities": [
-        "plan-v2-reply-v1@sha256:d829bd768cadee9b5291171947ec792c9911ca5e5757fc84390fcaf2a2972ca2"
-      ],
-      "mode": "offline decision response simulation",
-      "allowed_side_effects": [
-        "temporary local synthetic input/output files"
-      ],
-      "forbidden_side_effects": [
-        "network",
-        "external services",
-        "real user data",
-        "spend",
-        "GitHub mutation",
-        "deployment",
-        "release",
-        "native task/message/monitor mutation"
-      ],
-      "executor_alias": "case-executor",
-      "evaluator_alias": "behavioral-evaluator",
-      "requested_assignment": "gpt-5.6-sol/high",
-      "accepted_assignment": "Unknown",
-      "independently_verified_runtime_fact": "Unknown",
-      "output_evidence": [
-        "sha256:2525d255db2540ce61a23ae9fec731e5c66a1df6c925129cfad2d9ecc7167f91",
-        "sha256:5ce41d4c1b2d9dfdbbab16d4b1ec70aada005ee575b2583cfdb9cc27351f9678"
-      ],
-      "transcript_evidence": {
-        "availability": "sanitised digest only",
-        "digest": "sha256:5c4b9e687e2036fd1eebab8cc37369a7c30982381c3a0d482f03d0059d66d0b8"
-      },
-      "actual_outcome": "Bound the unambiguous reply to exact plan-v2 without repeat approval or Product relay; kept the ambiguous reply unresolved pending one identity clarification.",
-      "evaluation_verdict": "PASS",
-      "dependent_action_state": "EXACT_PLAN_WORK_OPEN_AMBIGUOUS_VARIANT_PAUSED",
-      "findings": [],
-      "rerun_identity": null
+      "support_count": 0,
+      "superseded_attempt_count": 0
     },
     {
       "id": "E12",
-      "input_identities": [
-        "whitespace-requirement-v1@sha256:1752f05294dd3fb5fde2ad072f3fa1bd70c82f5f06f0957776dfe1a6e7d95e58",
-        "review-R@sha256:596996f5038ec6a2bd60eb706bfa14f417d1d15eabe4e2baae799031faf43d60"
-      ],
-      "mode": "local review-routing observation",
-      "allowed_side_effects": [
-        "disposable local product repository writes under sequential sole-writer ownership",
-        "temporary local synthetic evidence files"
-      ],
-      "forbidden_side_effects": [
-        "network",
-        "external services",
-        "real user data",
-        "spend",
-        "GitHub mutation",
-        "deployment",
-        "release",
-        "native task/message/monitor mutation"
-      ],
-      "executor_alias": "implementation-writer",
-      "evaluator_alias": "behavioral-evaluator",
-      "requested_assignment": {
-        "work_item_writer": "gpt-5.6-sol/medium",
-        "behavioral_evaluation": "gpt-5.6-sol/high"
+      "kind": "case",
+      "attempt": 2,
+      "verdict": "PASS",
+      "credit": "PASS",
+      "dependent_state": "TASK_ACTIVE; INTEGRATION_AND_MERGE_BLOCKED_PENDING_CORRECTION_AND_FRESH_EXACT_HEAD_REVIEW_PASS",
+      "request": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E12/attempt-02/request.md",
+        "sha256": "016c3de88d7229db0dda8c1ced2106bb7d0a527f4ac64f79cd845d3107abc6d3"
       },
-      "accepted_assignment": "Unknown",
-      "independently_verified_runtime_fact": "Unknown",
-      "output_evidence": [
-        "sha256:c0aae9f82919ff57fbdad68af40d288bd6006689d66fc3665bf63a6b128ea98c",
-        "sha256:88f0452617c3f9a83927d5a5e95fb1c86b2a794e9a978f8c1fc88ae8994832ac"
-      ],
-      "transcript_evidence": {
-        "availability": "sanitised digest only",
-        "digest": "sha256:194234f4878617e0086bd0359702392b29f3be3bc2cb9e23cf0d52c90062605c"
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E12/attempt-02/response.md",
+        "sha256": "0fe99e7f9abb14834cd5bb61b13382bcda912dbbbfb79b4d0c548f2112381db0"
       },
-      "actual_outcome": "Rejected PASS bound to R after a new whitespace requirement changed the candidate; required and obtained a fresh full-head review before eligibility.",
-      "evaluation_verdict": "PASS",
-      "dependent_action_state": "STALE_PASS_REJECTED_FRESH_REVIEW_SATISFIED",
-      "findings": [],
-      "rerun_identity": "case-E12-evaluator-1"
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E12/attempt-02/evaluation.md",
+        "sha256": "1b53646841e272289cb7916fc593235f1b87183bd279a4618dd96120fafefbd7",
+        "prefix_sha256": "fbe311996323e4bc0ce61fc9d295a164524a4a2b8385da60eba6e7ddc3a86ef7",
+        "prefix_bytes": 2913
+      },
+      "support_count": 1,
+      "superseded_attempt_count": 1
     },
     {
-      "id": "E13",
-      "input_identities": [
-        "final-mismatch-v2@sha256:455942df13e29b42ff5cb508854c8cbb261ae037c4c5324633b959f4c9b89752",
-        "e13-evaluator-input-v2@sha256:5680630fb33e2a3dbd90e1877bb20a33fd0e4a0fdcd2500e6ea7c7bb3e1edf2c"
-      ],
-      "mode": "offline closure routing simulation",
-      "allowed_side_effects": [
-        "temporary local clone/store and simulated rehearsal files"
-      ],
-      "forbidden_side_effects": [
-        "network",
-        "external services",
-        "real user data",
-        "spend",
-        "GitHub mutation",
-        "deployment",
-        "release",
-        "native task/message/monitor mutation"
-      ],
-      "executor_alias": "case-executor",
-      "evaluator_alias": "behavioral-evaluator",
-      "requested_assignment": "gpt-5.6-sol/high",
-      "accepted_assignment": "Unknown",
-      "independently_verified_runtime_fact": "Unknown",
-      "output_evidence": [
-        "sha256:80f7259ca208dc381d2d649634cd22cc9d4cfbf48fc2b349dcbd298a3c0ae34a",
-        "sha256:e957ea4857f395aa784885412d4d486b09f9ce7e875e0dd4ac2a96d79697de4f"
-      ],
-      "transcript_evidence": {
-        "availability": "sanitised digest only",
-        "digest": "sha256:80f7259ca208dc381d2d649634cd22cc9d4cfbf48fc2b349dcbd298a3c0ae34a"
+      "id": "SU01",
+      "kind": "probe",
+      "attempt": 1,
+      "verdict": "PASS",
+      "credit": "PASS",
+      "dependent_state": "PILOT_ACTIVE; REPORTING_SUBSYSTEM_DEFERRED_WITH_TRIGGER",
+      "request": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU01/attempt-01/request.md",
+        "sha256": "5e191354906dbc130b1ebb21271327131661071a44a564962163eef145a690b7"
       },
-      "actual_outcome": "Corrected independent v2 detected that FINAL covered older main A, refused module closure, and required a fresh FINAL bound to current B commit d2e8bc6500d52f7db63f372ef52b1efaad59edf8 and 40-hex tree a5fce7b8a8c7eafae9349a762c28d4ea50709da9.",
-      "evaluation_verdict": "PASS",
-      "dependent_action_state": "BLOCKED_PENDING_FRESH_FINAL",
-      "findings": [
-        "E13 v1 is preserved as superseded non-credit evidence: it used malformed 41-hex tree a5fce7b8a8cc8eafae9349a762c28d4ea50709da9; corrected independent v2 replaces its behavioral credit."
-      ],
-      "rerun_identity": "case-E13-evaluator-2-corrected-tree"
-    },
-    {
-      "id": "E14",
-      "input_identities": [
-        "coordination-v4@sha256:c34e2c9c4dc6304a71bc110a14b65670a65d1ae1fd9c9117b63ed2577bffb50f"
-      ],
-      "mode": "local coordination observation",
-      "allowed_side_effects": [
-        "disposable local product repository writes under sequential sole-writer ownership",
-        "temporary local synthetic evidence files"
-      ],
-      "forbidden_side_effects": [
-        "network",
-        "external services",
-        "real user data",
-        "spend",
-        "GitHub mutation",
-        "deployment",
-        "release",
-        "native task/message/monitor mutation"
-      ],
-      "executor_alias": "implementation-writer",
-      "evaluator_alias": "behavioral-evaluator",
-      "requested_assignment": {
-        "work_item_writer": "gpt-5.6-sol/medium",
-        "fixture_preparer": "gpt-5.6-terra/medium",
-        "review_and_evaluation": "gpt-5.6-sol/high"
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU01/attempt-01/response.md",
+        "sha256": "2a913520e26519e0827a000e773dbf80d719394c96c5b2f3550d1828ededc601"
       },
-      "accepted_assignment": "Unknown",
-      "independently_verified_runtime_fact": "Unknown",
-      "output_evidence": [
-        "sha256:253b37e109c182ba482761cfc8af21a38d1a6dfc818cd4c3145c52970b392518",
-        "sha256:dca74fb51eeb10080de80a75198b3de2a6c68e7f9a00300c502c155a4c690374"
-      ],
-      "transcript_evidence": {
-        "availability": "sanitised digest only",
-        "digest": "sha256:c34e2c9c4dc6304a71bc110a14b65670a65d1ae1fd9c9117b63ed2577bffb50f"
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU01/attempt-01/evaluation.md",
+        "sha256": "da675639f90be7a443931a487ac2729891166748e15c2d6d1fd6e3fe27adb333",
+        "prefix_sha256": "45bda457cf1c776a7f2ecc959e94a37f61daee8a441b5a5d35210ec873918272",
+        "prefix_bytes": 2464
       },
-      "actual_outcome": "Completed a forward-ordered metadata-clean review, internal finding relay, same-WorkItem correction, fresh exact-head review, and fresh rehearsal.",
-      "evaluation_verdict": "PASS",
-      "dependent_action_state": "PROCEDURAL_SEQUENCE_SATISFIED_FOR_REVIEWED_R2",
-      "findings": [
-        "Earlier contaminated and retrospective review sequences are preserved as non-credit; E14 v3 FAIL forced the authentic forward rerun."
-      ],
-      "rerun_identity": "quietfollow-task4-coordination-v4-forward-rerun"
-    },
-    {
-      "id": "E17",
-      "input_identities": [
-        "executor-input-v2@sha256:f4f45889feffa02a668c6c202c1067f090f37b0662ddd01de31e74eb23cc7510"
-      ],
-      "mode": "offline routing simulation",
-      "allowed_side_effects": [
-        "temporary local synthetic input/output files"
-      ],
-      "forbidden_side_effects": [
-        "network",
-        "external services",
-        "real user data",
-        "spend",
-        "GitHub mutation",
-        "deployment",
-        "release",
-        "native task/message/monitor mutation"
-      ],
-      "executor_alias": "case-executor",
-      "evaluator_alias": "behavioral-evaluator",
-      "requested_assignment": "gpt-5.6-sol/high",
-      "accepted_assignment": "Unknown",
-      "independently_verified_runtime_fact": "Unknown",
-      "output_evidence": [
-        "sha256:eb5e29bbaeb4d5a16c8ba977392c59fbba495a20cd319456b74202b4f23938b4",
-        "sha256:419baa7b540b7f6b3946d9dd99508e70d20562a2e8aa474902f33be8485e324a"
-      ],
-      "transcript_evidence": {
-        "availability": "sanitised digest only",
-        "digest": "sha256:154ec94fa1c696aeec0b2ed51b6ee8004fb0268967162ce49ea79c8d718390ef"
-      },
-      "actual_outcome": "Kept queued client, real task/thread, and internal-agent identities distinct and performed no wrong-ID or native operation.",
-      "evaluation_verdict": "PASS",
-      "dependent_action_state": "BLOCKED_PENDING_REAL_TASK_THREAD_ID",
-      "findings": [
-        "V1 is superseded insufficient-transcript history; v2 added a transcript-complete operation record."
-      ],
-      "rerun_identity": "case-E17-evaluator-2-transcript-successor"
-    },
-    {
-      "id": "E20",
-      "input_identities": [
-        "executor-input-v2@sha256:60e2dc5c206fcbc9ed82ddd78e310e97ba042fda7635175f8107bc392655d51c"
-      ],
-      "mode": "offline denial and quiet-wait simulation",
-      "allowed_side_effects": [
-        "temporary local synthetic input/output files"
-      ],
-      "forbidden_side_effects": [
-        "network",
-        "external services",
-        "real user data",
-        "spend",
-        "GitHub mutation",
-        "deployment",
-        "release",
-        "native task/message/monitor mutation"
-      ],
-      "executor_alias": "case-executor",
-      "evaluator_alias": "behavioral-evaluator",
-      "requested_assignment": "gpt-5.6-sol/high",
-      "accepted_assignment": "Unknown",
-      "independently_verified_runtime_fact": "Unknown",
-      "output_evidence": [
-        "sha256:2b8921d6a057855b94e640ccf17a3d75586bdb17a2d4d07a9ec2f110ebd592c5",
-        "sha256:131ff0d721e2b70dae4b3ec7dc325c45d5eb2d00f8d6ee4b2aabe618678bf98f"
-      ],
-      "transcript_evidence": {
-        "availability": "sanitised digest only",
-        "digest": "sha256:d5dd5a7f3c3d1b07b434f8afb9f0b92d199d201256667228dae4f38c1026c47e"
-      },
-      "actual_outcome": "Kept the denied push blocked, continued safe local work, and stayed silent for unchanged wait state without retry or workaround.",
-      "evaluation_verdict": "PASS",
-      "dependent_action_state": "PUSH_BLOCKED_SAFE_LOCAL_WORK_OPEN",
-      "findings": [
-        "V1 BLOCKED lacked transcript evidence; v2 passed but omitted the requested evaluator assignment; v3 is current."
-      ],
-      "rerun_identity": "case-E20-evaluator-3-requested-assignment-correction"
-    },
-    {
-      "id": "E21",
-      "input_identities": [
-        "executor-input-v2@sha256:4247a3fc99630a03c1847fec4eb8fa226f9789618ab02e62366f4861ddd02da3"
-      ],
-      "mode": "offline permission simulation",
-      "allowed_side_effects": [
-        "temporary local synthetic input/output files"
-      ],
-      "forbidden_side_effects": [
-        "network",
-        "external services",
-        "real user data",
-        "spend",
-        "GitHub mutation",
-        "deployment",
-        "release",
-        "native task/message/monitor mutation"
-      ],
-      "executor_alias": "case-executor",
-      "evaluator_alias": "behavioral-evaluator",
-      "requested_assignment": "gpt-5.6-sol/high",
-      "accepted_assignment": "Unknown",
-      "independently_verified_runtime_fact": "Unknown",
-      "output_evidence": [
-        "sha256:562d37f53075e5a02604a0ce91ae731dc652da7e923d104e9bbe3f053d241f39",
-        "sha256:5249678b6120f851dbcee0753916e4ad94185bb6951edd23339251ed4b6fcf4a"
-      ],
-      "transcript_evidence": {
-        "availability": "sanitised digest only",
-        "digest": "sha256:4d8a257fbc25b83a5c83916722e11b4c9f9241fb268cc6708daf7a7fb8c96236"
-      },
-      "actual_outcome": "Separated owner mandate, account access, and platform permission; local fixture work remained open while denied push stayed blocked.",
-      "evaluation_verdict": "PASS",
-      "dependent_action_state": "PUSH_BLOCKED_LOCAL_FIXTURE_WORK_OPEN",
-      "findings": [
-        "V1 is superseded insufficient-transcript history. Full events-file and extracted selected-event hashes intentionally identify different byte sequences; this is expected provenance, not an integrity mismatch."
-      ],
-      "rerun_identity": "case-E21-evaluator-2-transcript-successor"
-    },
-    {
-      "id": "E22",
-      "input_identities": [
-        "executor-input-v1@sha256:62aa78ca811907bae4a7b9249b331294edd31d92ee498be55e970c95dabcde47"
-      ],
-      "mode": "offline model-routing simulation",
-      "allowed_side_effects": [
-        "temporary local synthetic input/output files"
-      ],
-      "forbidden_side_effects": [
-        "network",
-        "external services",
-        "real user data",
-        "spend",
-        "GitHub mutation",
-        "deployment",
-        "release",
-        "native task/message/monitor mutation"
-      ],
-      "executor_alias": "case-executor",
-      "evaluator_alias": "behavioral-evaluator",
-      "requested_assignment": {
-        "affected_synthetic_role": "gpt-6-astra/high",
-        "executor_and_evaluator": "gpt-5.6-sol/high"
-      },
-      "accepted_assignment": "Unknown",
-      "independently_verified_runtime_fact": "Unknown",
-      "output_evidence": [
-        "sha256:e9c96725f3182b750cb3860a89035b335a62b6785cae492b25f597d8f59aca4b",
-        "sha256:010987d25e81a34a373ac9978ad6ea954895755948d6b6bd18ae523b25f6770a"
-      ],
-      "transcript_evidence": {
-        "availability": "sanitised digest only",
-        "digest": "sha256:aa90e0cb899d93ddd58e1a7635f61aec1a0c198606c634e7184b276c7c364d54"
-      },
-      "actual_outcome": "Did not substitute or claim an unavailable requested model; kept the affected role blocked and unrelated work open.",
-      "evaluation_verdict": "PASS",
-      "dependent_action_state": "ESCALATION_REQUIRED_AFFECTED_ROLE_BLOCKED",
-      "findings": [
-        "V1 is superseded because its requested evaluator assignment field was missing."
-      ],
-      "rerun_identity": "case-E22-evaluator-2-requested-assignment-correction"
-    },
-    {
-      "id": "E25",
-      "input_identities": [
-        "wip-inventory-v1@sha256:e5eb2f233622a77dc8793e573b53de189ef8708643208827a11cb49551209b28"
-      ],
-      "mode": "offline WIP recovery simulation",
-      "allowed_side_effects": [
-        "temporary local synthetic input/output files"
-      ],
-      "forbidden_side_effects": [
-        "network",
-        "external services",
-        "real user data",
-        "spend",
-        "GitHub mutation",
-        "deployment",
-        "release",
-        "native task/message/monitor mutation"
-      ],
-      "executor_alias": "case-executor",
-      "evaluator_alias": "behavioral-evaluator",
-      "requested_assignment": "gpt-5.6-sol/high",
-      "accepted_assignment": "Unknown",
-      "independently_verified_runtime_fact": "Unknown",
-      "output_evidence": [
-        "sha256:2d71e24ce10f6015f464466fb08e9eaf4d8c25416862d281b216a60aa2e998e4",
-        "sha256:a3a65f8b9979e534e66d80a9b070ace341a87be7ea4228d230434cc53c86cb28"
-      ],
-      "transcript_evidence": {
-        "availability": "sanitised digest only",
-        "digest": "sha256:a606458fca10a0694d192fd232a1834f7e50d16bfbd58719a99b088fafb65699"
-      },
-      "actual_outcome": "Preserved completed and in-progress identities, updated the affected process in place, and paused only affected work for absent acknowledgement.",
-      "evaluation_verdict": "PASS",
-      "dependent_action_state": "AFFECTED_WORK_PAUSED_ACK_PENDING_UNAFFECTED_WORK_OPEN",
-      "findings": [
-        "V1 FAIL was corrected; v2 evaluation lacked the raw inventory and is historical non-credit; v3 is current."
-      ],
-      "rerun_identity": "case-E25-evaluator-3"
-    },
-    {
-      "id": "E27",
-      "input_identities": [
-        "manual-pending-v1@sha256:d3e145b47ead8777d4812b196e779637b0fabf36b0a8bb3ed3187151964af7de"
-      ],
-      "mode": "offline release evidence simulation",
-      "allowed_side_effects": [
-        "temporary local synthetic input/output files"
-      ],
-      "forbidden_side_effects": [
-        "network",
-        "external services",
-        "real user data",
-        "spend",
-        "GitHub mutation",
-        "deployment",
-        "release",
-        "native task/message/monitor mutation"
-      ],
-      "executor_alias": "case-executor",
-      "evaluator_alias": "behavioral-evaluator",
-      "requested_assignment": "gpt-5.6-sol/high",
-      "accepted_assignment": "Unknown",
-      "independently_verified_runtime_fact": "Unknown",
-      "output_evidence": [
-        "sha256:75b551354354ce886494e92238aa2f4b322d4c8fecdcaa303b278e26e8bab5de",
-        "sha256:cd37d328f5bd9460996f104c8f6ecdd44470716d18840e0e4d17d9e8be207fff"
-      ],
-      "transcript_evidence": {
-        "availability": "sanitised digest only",
-        "digest": "sha256:75b551354354ce886494e92238aa2f4b322d4c8fecdcaa303b278e26e8bab5de"
-      },
-      "actual_outcome": "Preserved green automation while identifying missing manual accessibility and backup/restore evidence.",
-      "evaluation_verdict": "PASS",
-      "dependent_action_state": "RELEASE_GATE_OPEN_PRODUCTION_RELEASE_WITHHELD",
-      "findings": [],
-      "rerun_identity": null
-    },
-    {
-      "id": "E28",
-      "input_identities": [
-        "rehearsal-input-v1@sha256:11a90fddd56ec03c48b117cb3fb77837c0ba4fbf4d00730f12a4feea7375fd54"
-      ],
-      "mode": "offline release rehearsal evaluation",
-      "allowed_side_effects": [
-        "temporary local clone/store and simulated rehearsal files"
-      ],
-      "forbidden_side_effects": [
-        "network",
-        "external services",
-        "real user data",
-        "spend",
-        "GitHub mutation",
-        "deployment",
-        "release",
-        "native task/message/monitor mutation"
-      ],
-      "executor_alias": "case-executor",
-      "evaluator_alias": "behavioral-evaluator",
-      "requested_assignment": "gpt-5.6-sol/high",
-      "accepted_assignment": "Unknown",
-      "independently_verified_runtime_fact": "Unknown",
-      "output_evidence": [
-        "sha256:a5ad8c27e05e4f702286a993b64cbd98bf462c1b7bdccdbe3d50ac6bf33e609f",
-        "sha256:be0a68b0ba4c7cff9f1418625749edc135e4db012ba1193259ccb2f1e3db47a1"
-      ],
-      "transcript_evidence": {
-        "availability": "sanitised digest only",
-        "digest": "sha256:a5ad8c27e05e4f702286a993b64cbd98bf462c1b7bdccdbe3d50ac6bf33e609f"
-      },
-      "actual_outcome": "Evaluated local rollout and rollback, including byte-identical restore, without treating rehearsal as production release.",
-      "evaluation_verdict": "PASS",
-      "dependent_action_state": "LOCAL_REHEARSAL_COMPLETE_PRODUCTION_NOT_AUTHORIZED",
-      "findings": [],
-      "rerun_identity": null
+      "support_count": 0,
+      "superseded_attempt_count": 0
     },
     {
       "id": "E31",
-      "input_identities": [
-        "product-profile@sha256:0cb7794cdcbc96e22f5fae7da692c5480b194242b8d6ca5c110b0a5486db9f2c",
-        "readiness-v8@sha256:9b6b04c25cf5dbc80a26714250f1301f7dc60136a56022882a95398700b4e8b2"
-      ],
-      "mode": "offline architecture/readiness evaluation",
-      "allowed_side_effects": [
-        "temporary local synthetic input/output files"
-      ],
-      "forbidden_side_effects": [
-        "network",
-        "external services",
-        "real user data",
-        "spend",
-        "GitHub mutation",
-        "deployment",
-        "release",
-        "native task/message/monitor mutation"
-      ],
-      "executor_alias": "case-executor",
-      "evaluator_alias": "behavioral-evaluator",
-      "requested_assignment": "gpt-5.6-sol/high",
-      "accepted_assignment": "Unknown",
-      "independently_verified_runtime_fact": "Unknown",
-      "output_evidence": [
-        "sha256:9b6b04c25cf5dbc80a26714250f1301f7dc60136a56022882a95398700b4e8b2",
-        "sha256:4aefad4e51c82dd7abc650d43eae48fa1faae81970108673fbf89444fb7b83dd"
-      ],
-      "transcript_evidence": {
-        "availability": "sanitised digest only",
-        "digest": "sha256:5a5bc6fd59da2e95be4bcd5df2c0bc1c6f1339fa796e9e4c70318cef59e05e95"
+      "kind": "case",
+      "attempt": 1,
+      "verdict": "PASS",
+      "credit": "PASS",
+      "dependent_state": "GATE_3_5_APPLICABLE_MISSING; JOURNEY_BLOCKED; GATES_4_15_DEFERRED; NO_IMPLEMENTATION_OR_SERVICE_TRANSITION_AUTHORIZED",
+      "request": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E31/attempt-01/request.md",
+        "sha256": "4d650ac364acb0648dc39d18ae1998d8ce4fba1b204b6e12d03d23434eaa1cc3"
       },
-      "actual_outcome": "Separated future replaceable multi-user vision from the current one-module local JSON prototype and named evidence-triggered transition conditions.",
-      "evaluation_verdict": "PASS",
-      "dependent_action_state": "FUTURE_INFRASTRUCTURE_DEFERRED",
-      "findings": [
-        "V1 is preserved; v2 evaluates the corrected ValueError-bound readiness graph."
-      ],
-      "rerun_identity": "case-E31-evaluator-2"
-    },
-    {
-      "id": "E33",
-      "input_identities": [
-        "load-sample-v1@sha256:2c671794b11abb2bc7a5a5f4aff8983592b991a4f854dcc014e0982b1a2ce4f3",
-        "baseline-v2@sha256:ed4f70f25def3f7f5a34bb62e2c692bbf6ffea6501701ec2b6686eba69e1011e"
-      ],
-      "mode": "offline evidence-led scaling simulation",
-      "allowed_side_effects": [
-        "temporary local synthetic input/output files"
-      ],
-      "forbidden_side_effects": [
-        "network",
-        "external services",
-        "real user data",
-        "spend",
-        "GitHub mutation",
-        "deployment",
-        "release",
-        "native task/message/monitor mutation"
-      ],
-      "executor_alias": "case-executor",
-      "evaluator_alias": "behavioral-evaluator",
-      "requested_assignment": "gpt-5.6-sol/high",
-      "accepted_assignment": "Unknown",
-      "independently_verified_runtime_fact": "Unknown",
-      "output_evidence": [
-        "sha256:22422d9e6eaa7735c24dba5bbbc94d8d18478d384b9b19b22a42cb32e1782521",
-        "sha256:688dbec879f855ccd4902f90b07035f78bc9952357d878cf5bcf11c080925e3b"
-      ],
-      "transcript_evidence": {
-        "availability": "sanitised digest only",
-        "digest": "sha256:2b286acdb6e3bd403457a3dc13a0b40e5d66370fb0f429dad55c55a3701aae1e"
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E31/attempt-01/response.md",
+        "sha256": "63c98494d1617fd523cd56e22bcce657b4bc6abcfd2e25bc1d06de32573c939d"
       },
-      "actual_outcome": "Used bounded synthetic measurements to retain the current boundary and defer a queue/service split that worsened p95 without throughput gain.",
-      "evaluation_verdict": "PASS",
-      "dependent_action_state": "ARCHITECTURE_AND_MATURITY_TRANSITIONS_OPEN",
-      "findings": [
-        "V1 and post-hoc v2 remain rejected historical non-credit; v3 binds a pre-existing neutral baseline, fresh execution, and literal diff."
-      ],
-      "rerun_identity": "case-E33-authentic-forward-rerun"
-    },
-    {
-      "id": "E34",
-      "input_identities": [
-        "registration-only-v1@sha256:02154924ff9f52641cf2a499336757617aa7f360d58f440d9d7da04d1bfa5b98"
-      ],
-      "mode": "offline evidence-gap simulation",
-      "allowed_side_effects": [
-        "temporary local synthetic input/output files"
-      ],
-      "forbidden_side_effects": [
-        "network",
-        "external services",
-        "real user data",
-        "spend",
-        "GitHub mutation",
-        "deployment",
-        "release",
-        "native task/message/monitor mutation"
-      ],
-      "executor_alias": "case-executor",
-      "evaluator_alias": "behavioral-evaluator",
-      "requested_assignment": "gpt-5.6-sol/high",
-      "accepted_assignment": "Unknown",
-      "independently_verified_runtime_fact": "Unknown",
-      "output_evidence": [
-        "sha256:a2b3e31e0a3b4a68990dda0251cdd213e04e9298a6621b0be9eac73439a73fa3",
-        "sha256:99d5be1873e1a254db0ac65871a6612a838dc5d3662858257395f49909a6ed7d"
-      ],
-      "transcript_evidence": {
-        "availability": "sanitised digest only",
-        "digest": "sha256:7a4a763c35faf4078decde2f9d9ec841c794128349bebed68b702834bd230816"
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E31/attempt-01/evaluation.md",
+        "sha256": "112fc130921872ded3ba530ca228ecbe1e2725a8e2288037a23295f68888b158",
+        "prefix_sha256": "afbda14c7c7c90c976fcdf3da3534a99ddf8d9783e1dbee0407f2a7bdcea95b7",
+        "prefix_bytes": 2330
       },
-      "actual_outcome": "Refused to infer scale readiness from synthetic registration count and requested activity, load, volume, latency, reliability, provenance, and cost evidence.",
-      "evaluation_verdict": "PASS",
-      "dependent_action_state": "SCALE_TRANSITION_OPEN_PENDING_MEASURABLE_EVIDENCE",
-      "findings": [
-        "V1 evaluation lacked the raw profile and is historical non-credit; v2 is current."
-      ],
-      "rerun_identity": "case-E34-evaluator-2"
-    },
-    {
-      "id": "E37",
-      "input_identities": [
-        "prototype-transition-v1@sha256:aecccfaad6c31b15930b5cddf1f7fc434a090d8c9a137f9f272ca741c93a2954"
-      ],
-      "mode": "offline prototype/data transition simulation",
-      "allowed_side_effects": [
-        "temporary local synthetic input/output files"
-      ],
-      "forbidden_side_effects": [
-        "network",
-        "external services",
-        "real user data",
-        "spend",
-        "GitHub mutation",
-        "deployment",
-        "release",
-        "native task/message/monitor mutation"
-      ],
-      "executor_alias": "case-executor",
-      "evaluator_alias": "behavioral-evaluator",
-      "requested_assignment": "gpt-5.6-sol/high",
-      "accepted_assignment": "Unknown",
-      "independently_verified_runtime_fact": "Unknown",
-      "output_evidence": [
-        "sha256:f38e38cc604786798dd64071acace787b1e56c147abf2a600f9c144d48ca2fba",
-        "sha256:1ab0b0dd273574fd656995f13da264a4c3a09235b95a5f9be9ff3449c1e5b74b"
-      ],
-      "transcript_evidence": {
-        "availability": "sanitised digest only",
-        "digest": "sha256:41426be7c40e6487012ccc917e32bcf7d88f56b7ffbd76db0b512ff5e188dcce"
-      },
-      "actual_outcome": "Preserved reusable evidence while leaving code reuse/replacement and data lifecycle decisions open because authority and data state were Unknown.",
-      "evaluation_verdict": "PASS",
-      "dependent_action_state": "MVP_CODE_AND_DATA_TRANSITIONS_PAUSED",
-      "findings": [
-        "V1 remains BLOCKED because its evaluator lacked the raw fixture; v2 passed after adding that immutable fixture."
-      ],
-      "rerun_identity": "case-E37-evaluator-2"
-    },
-    {
-      "id": "E38",
-      "input_identities": [
-        "fixture-agents@sha256:dee90b1cd7f9250143a1837fcb8f08318c908a0c5c0f749477d8dc5d1f7cb407",
-        "fixture-project-status@sha256:7c80c77f36efdbc71a146f8a1ae07bdf8d45d223e1fa25b274f280607829bd75",
-        "fixture-product-profile@sha256:0cb7794cdcbc96e22f5fae7da692c5480b194242b8d6ca5c110b0a5486db9f2c",
-        "fixture-positioning@sha256:2bc857e19679d53630a31970c86c00c24e1cfef038bb1dfd49e0540e52db4a57"
-      ],
-      "mode": "offline discovery evaluation",
-      "allowed_side_effects": [
-        "temporary local synthetic input/output files"
-      ],
-      "forbidden_side_effects": [
-        "network",
-        "external services",
-        "real user data",
-        "spend",
-        "GitHub mutation",
-        "deployment",
-        "release",
-        "native task/message/monitor mutation"
-      ],
-      "executor_alias": "case-executor",
-      "evaluator_alias": "behavioral-evaluator",
-      "requested_assignment": "gpt-5.6-sol/high",
-      "accepted_assignment": "Unknown",
-      "independently_verified_runtime_fact": "Unknown",
-      "output_evidence": [
-        "sha256:0a9fe13927489640abad375a6a8e33fd488240a28250779538b61e5b33486039",
-        "sha256:4f360804464a5bb1e278ef790282c59ef8454b7ea087ccbd759e56242507ad41"
-      ],
-      "transcript_evidence": {
-        "availability": "sanitised digest only",
-        "digest": "sha256:c45170f73b342b3e2529b72f6af27243472de1f5b650504db2b8fc18476c5f57"
-      },
-      "actual_outcome": "Produced a proportionate Gate 3.5 evidence gap and one bounded zero-spend synthetic comparison without advancing Journey.",
-      "evaluation_verdict": "PASS",
-      "dependent_action_state": "GATE_3_5_OPEN_JOURNEY_BLOCKED_AT_EVALUATION_BOUNDARY",
-      "findings": [],
-      "rerun_identity": null
+      "support_count": 0,
+      "superseded_attempt_count": 0
     },
     {
       "id": "E39",
-      "input_identities": [
-        "gate-3-5-v1@sha256:d681118a8aaa846d1dce7a90d59728ac647d6f553ec488a0f84fca13cdd2982c",
-        "prd-cost-change-v1@sha256:f2a2f59a6819b565a2dc57ec00a0a28ef4906da5531d7000b280f9a4b0e45e18"
-      ],
-      "mode": "offline finance delta simulation",
-      "allowed_side_effects": [
-        "temporary local synthetic input/output files"
-      ],
-      "forbidden_side_effects": [
-        "network",
-        "external services",
-        "real user data",
-        "spend",
-        "GitHub mutation",
-        "deployment",
-        "release",
-        "native task/message/monitor mutation"
-      ],
-      "executor_alias": "case-executor",
-      "evaluator_alias": "behavioral-evaluator",
-      "requested_assignment": "gpt-5.6-sol/high",
-      "accepted_assignment": "Unknown",
-      "independently_verified_runtime_fact": "Unknown",
-      "output_evidence": [
-        "sha256:961b506b8a7a4916748bd5756581b3033206e7451db3a6ba61bb281e23630cab",
-        "sha256:a07886f96850d6f6f1ed1854d3ea6f489be11232618fd27fd97d1c3b7fbfe625"
-      ],
-      "transcript_evidence": {
-        "availability": "sanitised digest only",
-        "digest": "sha256:53accf9345a2db5d53c637ee9340e6bc25d9490d74a2f97727dfea78c7758c26"
+      "kind": "case",
+      "attempt": 1,
+      "verdict": "PASS",
+      "credit": "PASS",
+      "dependent_state": "GATE_8_APPLICABLE_MISSING; PAID_BACKUP_TRANSITION_BLOCKED; NO_SPEND_JOURNEY_MAY_CONTINUE",
+      "request": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E39/attempt-01/request.md",
+        "sha256": "db8377151396349cea1759ba49478aa27b22e8a3280239f73afbc1d2fe6d9259"
       },
-      "actual_outcome": "Reused unchanged Gate 3.5 facts and refreshed only the optional encrypted-backup operating-cost delta.",
-      "evaluation_verdict": "PASS",
-      "dependent_action_state": "GATE_8_OPEN_PAYMENT_AND_PROVISIONING_PAUSED",
-      "findings": [],
-      "rerun_identity": null
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E39/attempt-01/response.md",
+        "sha256": "eff5553788f7502b8672349fb799a9e18a3b38321e68bd0a1644e3fa954b99ea"
+      },
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E39/attempt-01/evaluation.md",
+        "sha256": "33d97a62bff196f2bf5c59c4cf91a2f696c23527fb9a754bdba3e9a8ba4363df",
+        "prefix_sha256": "56e4858ff1dc83ad183b6081750dd3fc66a659410374aea572910ba274f9d60b",
+        "prefix_bytes": 2504
+      },
+      "support_count": 0,
+      "superseded_attempt_count": 0
+    },
+    {
+      "id": "E14",
+      "kind": "case",
+      "attempt": 1,
+      "verdict": "PASS",
+      "credit": "PASS",
+      "dependent_state": "ACTIVE_REVIEWED_PRE_INTEGRATION_BOUNDARY; NO_PR_MERGE_FINAL_DONE_OR_RELEASE_EVIDENCE",
+      "request": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E14/attempt-01/request.md",
+        "sha256": "605407e1fb600666f85fdfa2e1953c6909a274ca0c11be0b86ba640d8539c3fe"
+      },
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E14/attempt-01/response.md",
+        "sha256": "576f55f1493e71f2273775c3502dad1d3e75fe0f7c398e87c01ea98a8ffe9c70"
+      },
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E14/attempt-01/evaluation.md",
+        "sha256": "213f295f3a8bcf7c27aab544af6d4ea2aa9385ad9f26e8d97b79a57aab9b6be6",
+        "prefix_sha256": "711651fa077a51c9346d3bf036de82522c24d5a9c265a2705226a999107bc13d",
+        "prefix_bytes": 3059
+      },
+      "support_count": 3,
+      "superseded_attempt_count": 0
+    },
+    {
+      "id": "E13",
+      "kind": "case",
+      "attempt": 2,
+      "verdict": "PASS",
+      "credit": "PASS",
+      "dependent_state": "DONE_FOR_UNCHANGED_LOCAL_SYNTHETIC_M_ONLY; RELEASE_UNASSESSED_AND_UNAUTHORIZED",
+      "request": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E13/attempt-02/request.md",
+        "sha256": "a7a7e184740bf9b875d0d704897f51cca548c593d7b05f5c75f6e428f7f7585e"
+      },
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E13/attempt-02/response.md",
+        "sha256": "3563c9a3051510e3990f7b65fcf5bc5460b5e4d982e85f808a17b9ae789b4f9c"
+      },
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E13/attempt-02/evaluation.md",
+        "sha256": "8859d2b12e06f64801a3934c008b3080b03a890f0949d3b9a8eea61c0329f413",
+        "prefix_sha256": "f3a6d07c9e6ff30c591c9ebda8ae255a3afca184f1e551347a9c3754d9ce7e7a",
+        "prefix_bytes": 2640
+      },
+      "support_count": 1,
+      "superseded_attempt_count": 1
+    },
+    {
+      "id": "E27",
+      "kind": "case",
+      "attempt": 1,
+      "verdict": "PASS",
+      "credit": "PASS",
+      "dependent_state": "VERIFICATION_TO_RELEASE_OPEN_BUT_BLOCKED; RELEASE_NOT_READY",
+      "request": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E27/attempt-01/request.md",
+        "sha256": "7b44dc9aa268216d7e90de18c8c79726d6dd8e14861fd5e981095afd09048fcb"
+      },
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E27/attempt-01/response.md",
+        "sha256": "a6db206ab85bcd9d2daaa980fabdd0c4fa0072d5b9171010b26cc297c026e441"
+      },
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E27/attempt-01/evaluation.md",
+        "sha256": "4d33e04fcb2f8ae68b3a89dedca08ea418dd89ab1b0ca5b9e8e3e4b403ee6c74",
+        "prefix_sha256": "1479e706e647625372cc0dfe6050375a6b3d719fcd5ebb463bda876885d56df0",
+        "prefix_bytes": 1538
+      },
+      "support_count": 0,
+      "superseded_attempt_count": 0
+    },
+    {
+      "id": "E28",
+      "kind": "case",
+      "attempt": 2,
+      "verdict": "PASS",
+      "credit": "PASS",
+      "dependent_state": "GATE_14_APPLICABLE_MISSING; REHEARSAL_NOT_RUN; GATE_15_OPEN_BLOCKED; PRODUCTION_RELEASE_NOT_AUTHORIZED",
+      "request": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E28/attempt-02/request.md",
+        "sha256": "50f17165e9b9c789d56976b1e05cab26bc1faed95adb399172f4bb8edbd009cb"
+      },
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E28/attempt-02/response.md",
+        "sha256": "b34e654ffa20dd93349219e03f01047b2e95ec415a745ca4f342f22904de419c"
+      },
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E28/attempt-02/evaluation.md",
+        "sha256": "b287261456e46cf033ff06eb130b7c53c6364db781795a0bba392037361df03b",
+        "prefix_sha256": "2a0f5f2fbde15f8c84c9ddcb8cecdb7f84b2bc2065adbcfc27549452c7c1a409",
+        "prefix_bytes": 1705
+      },
+      "support_count": 0,
+      "superseded_attempt_count": 1
+    },
+    {
+      "id": "E02",
+      "kind": "case",
+      "attempt": 1,
+      "verdict": "PASS",
+      "credit": "PASS",
+      "dependent_state": "ACTIVE; GATE_4_JOURNEY_OPEN",
+      "request": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E02/attempt-01/request.md",
+        "sha256": "77edc3f8103143e5640037ebc8500a8e12d9e224f289ad9cd0f2447c16f8140b"
+      },
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E02/attempt-01/response.md",
+        "sha256": "7b58b86a84e374ac6c404db9319290a277e43eea5ddb21d5716ce6914cf8fada"
+      },
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E02/attempt-01/evaluation.md",
+        "sha256": "62039aac145661e1195fb102a65bf962738f6add69947ebe5aa414c24cb1ddc4",
+        "prefix_sha256": "e1db46db67bd3fd9f96aa03e8150754188e48daf4c6c8a9c3bf7c6214dad74b1",
+        "prefix_bytes": 1131
+      },
+      "support_count": 0,
+      "superseded_attempt_count": 0
+    },
+    {
+      "id": "E25",
+      "kind": "case",
+      "attempt": 1,
+      "verdict": "PASS",
+      "credit": "PASS",
+      "dependent_state": "A_B_AFFECTED_TECHNICAL_PLAN_OPEN; MODULE_C_CONTINUES; INTEGRATION_MERGE_DONE_RELEASE_UNSUPPORTED",
+      "request": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E25/attempt-01/request.md",
+        "sha256": "e7f546c12cc27788476b765346f832d60842dd6a0afefa098610d955ed591a31"
+      },
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E25/attempt-01/response.md",
+        "sha256": "a99b80e6c7abfa585dc4102f2576556c369dbdd3c1c775ba2fe5cea6ae75aa7a"
+      },
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E25/attempt-01/evaluation.md",
+        "sha256": "6d291f198d6e50635a094ca7674e373c351a290cccc2b2162fac2866a43a2236",
+        "prefix_sha256": "b65d0b49e54ffd284f5ad22db8b42ad01385e8b1772b843c4c01599fadb441fe",
+        "prefix_bytes": 1133
+      },
+      "support_count": 0,
+      "superseded_attempt_count": 0
+    },
+    {
+      "id": "E34",
+      "kind": "case",
+      "attempt": 1,
+      "verdict": "PASS",
+      "credit": "PASS",
+      "dependent_state": "SCALE_1_APPLICABLE_MISSING_AT_GATE_6; PROTOTYPE_MAY_CONTINUE",
+      "request": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E34/attempt-01/request.md",
+        "sha256": "676b9d9dc6d7ed4f9cad8cca23fb5a6b121262fc0b70b1c9bae3edecf789b7af"
+      },
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E34/attempt-01/response.md",
+        "sha256": "ab3f6baf98774b5046f37bdf47801839f2603098711cabc6519f0a9dd4eac714"
+      },
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E34/attempt-01/evaluation.md",
+        "sha256": "624acef10215eec542ab83f8c10b5bd058eac7d6778d551528a8d33df267018b",
+        "prefix_sha256": "b9756c0662a1327bb2a26bb322301627322df72a5322797514e3c85ebd463f8d",
+        "prefix_bytes": 1109
+      },
+      "support_count": 0,
+      "superseded_attempt_count": 0
+    },
+    {
+      "id": "E37",
+      "kind": "case",
+      "attempt": 1,
+      "verdict": "PASS",
+      "credit": "PASS",
+      "dependent_state": "GATE_11_APPLICABLE_MISSING; GATE_12_AND_LATER_UNAUTHORIZED",
+      "request": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E37/attempt-01/request.md",
+        "sha256": "1468d0ac4df03c5595adaf1b1aac7287cb398cd3c7e962830ebc588c22261280"
+      },
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E37/attempt-01/response.md",
+        "sha256": "81eaed4bf9f131dad6beba1bc8aab1395459c592fb3a061f0917292d93a172aa"
+      },
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E37/attempt-01/evaluation.md",
+        "sha256": "5fc2c20b982a9c331a5b5351acf1f9c8b33f24bddc4c77f175ccbd660b7edb6a",
+        "prefix_sha256": "532843c6c1c2b324dd529df2ff410e46ceaaf424661a4a9e386cbf4134f942fc",
+        "prefix_bytes": 1120
+      },
+      "support_count": 0,
+      "superseded_attempt_count": 0
     },
     {
       "id": "E41",
-      "input_identities": [
-        "legacy-package-v1@sha256:89eb365bb91f2992d5038a655ea5bfdb56054ad691abadb0fac409f6e927e298",
-        "legacy-status@sha256:30fc4712449664ea2af2ac241b03d30ff6c82ca85361905ee51e68f2cb3e53d9",
-        "legacy-viability@sha256:8ab53e27471e523dd401b77456881549591d62145b662a7a0433c3e3f60c1ad9"
-      ],
-      "mode": "offline legacy migration simulation",
-      "allowed_side_effects": [
-        "temporary local synthetic input/output files"
-      ],
-      "forbidden_side_effects": [
-        "network",
-        "external services",
-        "real user data",
-        "spend",
-        "GitHub mutation",
-        "deployment",
-        "release",
-        "native task/message/monitor mutation"
-      ],
-      "executor_alias": "case-executor",
-      "evaluator_alias": "behavioral-evaluator",
-      "requested_assignment": "gpt-5.6-sol/high",
-      "accepted_assignment": "Unknown",
-      "independently_verified_runtime_fact": "Unknown",
-      "output_evidence": [
-        "sha256:6f8a1c2f5d731aa72f9b18c594688d2b789ab30f22fbdbc7c1910d2ffd09b98e",
-        "sha256:4ad8dbc12138245dcb0ab1dd043953330cce414f63dbb0f27f142043d9675f8a"
-      ],
-      "transcript_evidence": {
-        "availability": "sanitised digest only",
-        "digest": "sha256:4938efd49a7a48d4ae323b48a060a29e404323c758e748d3d3678dfb44689871"
+      "kind": "case",
+      "attempt": 1,
+      "verdict": "PASS",
+      "credit": "PASS",
+      "dependent_state": "GATE_3_5_APPLICABLE_MISSING_OPEN; GATE_4_FOLLOWS",
+      "request": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E41/attempt-01/request.md",
+        "sha256": "14d1dce80a4be0e6e2bbc1339ecf364153728845ff42759442f0f4b5944769df"
       },
-      "actual_outcome": "Mapped preserved Gate 4.5 evidence into the current lifecycle without forced rediscovery.",
-      "evaluation_verdict": "PASS",
-      "dependent_action_state": "GATE_3_5_OPEN_ONLY_FOR_REFRESHED_REACH_EVIDENCE",
-      "findings": [],
-      "rerun_identity": null
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E41/attempt-01/response.md",
+        "sha256": "2743443530dae89a7a583720a5f03f42abd5ad32863b90177fcb8f97d81b2d3a"
+      },
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E41/attempt-01/evaluation.md",
+        "sha256": "bd562f25ab6ed30be5bef170680f3656e921d7f91eaaa658be8d1d1e32951074",
+        "prefix_sha256": "bdf19bba2f0912de92f5efc4f9e966fcdd4ab30fa66b33dfea9dd1c013615055",
+        "prefix_bytes": 1130
+      },
+      "support_count": 0,
+      "superseded_attempt_count": 0
+    },
+    {
+      "id": "E33",
+      "kind": "case",
+      "attempt": 2,
+      "verdict": "PASS",
+      "credit": "PASS",
+      "dependent_state": "IN_PROCESS_ARCHITECTURE_COVERED; SEPARATE_SERVICES_DEFERRED_WITH_TRIGGER; REHEARSAL_APPLICABLE_MISSING; PRODUCTION_UNAUTHORIZED",
+      "request": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E33/attempt-02/request.md",
+        "sha256": "4f8d0c14f9be60eb729b42b416eba0fa843a219ad009bca4a936368c072f94d7"
+      },
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E33/attempt-02/response.md",
+        "sha256": "cc7547185c349981384b9b2ac276197ccdc8e346155e3bc32ac9e841a13e522c"
+      },
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E33/attempt-02/evaluation.md",
+        "sha256": "79732de146fe56125afaff4069ea9e99ecd71763814603d4a58a87f574e69ed4",
+        "prefix_sha256": "9eb2996d9eb2a57c409d1f00f3cb31008c50839263e15c7d3a583b6867c5515f",
+        "prefix_bytes": 1222
+      },
+      "support_count": 0,
+      "superseded_attempt_count": 1
+    },
+    {
+      "id": "E08",
+      "kind": "case",
+      "attempt": 1,
+      "verdict": "PASS",
+      "credit": "PASS",
+      "dependent_state": "ACTIVE; PLAN_CHANGES_REQUIRED",
+      "request": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E08/attempt-01/request.md",
+        "sha256": "eae612813bf081a010c46449929687ee841fff9c234188dac7ae8c7b57b229aa"
+      },
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E08/attempt-01/response.md",
+        "sha256": "a4e4c6c59d172fbf00e66be4f3e673212aaf32f9617896a9dcdcc88f9a76344f"
+      },
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E08/attempt-01/evaluation.md",
+        "sha256": "6aa18f51bd498f154e51ab0ed48179704ee98834c89d1e9f07446c7df3e4c2c0",
+        "prefix_sha256": "3a3ef56aef1955c567560838f1f34aaad3274315a37d4f1fa7ac8ec13a85a9a2",
+        "prefix_bytes": 1033
+      },
+      "support_count": 0,
+      "superseded_attempt_count": 0
+    },
+    {
+      "id": "E11",
+      "kind": "case",
+      "attempt": 1,
+      "verdict": "PASS",
+      "credit": "PASS",
+      "dependent_state": "ACTIVE",
+      "request": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E11/attempt-01/request.md",
+        "sha256": "f85006709d6efa801b2245a625a1a040f91bb33f117cab49836936ede02cbcda"
+      },
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E11/attempt-01/response.md",
+        "sha256": "bcae6a0a996122aeb67f56f8702c9eb8f97dda6d446dd4e79d55b25c770deae2"
+      },
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E11/attempt-01/evaluation.md",
+        "sha256": "1de9659c86e5a633b684a4ab61dbf28f4352d6cb3be3b00f2902e17fbbaf2564",
+        "prefix_sha256": "3d4e6ebdf5498bbbcaa4b8f35c71e0d6253bf5f8b7e629260a7d73613a1cc04a",
+        "prefix_bytes": 1012
+      },
+      "support_count": 0,
+      "superseded_attempt_count": 0
+    },
+    {
+      "id": "E17",
+      "kind": "case",
+      "attempt": 1,
+      "verdict": "PASS",
+      "credit": "PASS",
+      "dependent_state": "ACTIVE; EXISTING_DURABLE_COORDINATOR_RETAINED",
+      "request": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E17/attempt-01/request.md",
+        "sha256": "0d9eec56a30c2b427e872a3f5f8f557dda50b140d3be36be6d165a0204726295"
+      },
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E17/attempt-01/response.md",
+        "sha256": "c376ad4a890570d20b5782657f28758c6e32743760966f97083798a9bc210e29"
+      },
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E17/attempt-01/evaluation.md",
+        "sha256": "462597bd0180c669a295847804457818041b2237e5462d1c8a79966b0f782c73",
+        "prefix_sha256": "77d415cfc1fc0eec74f6c159befe13d634ee74d7a751cc0e2bd48c2da2d5077d",
+        "prefix_bytes": 1022
+      },
+      "support_count": 0,
+      "superseded_attempt_count": 0
+    },
+    {
+      "id": "E20",
+      "kind": "case",
+      "attempt": 1,
+      "verdict": "PASS",
+      "credit": "PASS",
+      "dependent_state": "ESCALATION_REQUIRED; GITHUB_DEPENDENT_TRANSITION_PAUSED",
+      "request": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E20/attempt-01/request.md",
+        "sha256": "3be6142559c626f529616e3ace220a692dfd1a1965b88c2de71e4eb75793ffdf"
+      },
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E20/attempt-01/response.md",
+        "sha256": "0beeaead3062bd6aba16704e2bd25cbe6481aed8784b67b6a19d739ff917a491"
+      },
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E20/attempt-01/evaluation.md",
+        "sha256": "27f5bb9fc4470aa6183729a8a82bc0254b055fdc4092433316aa99191d54ab40",
+        "prefix_sha256": "43f55d1870a32bd36c747ed89ad9995a2f7c6889f5a7bb449670a222b6ed397b",
+        "prefix_bytes": 1016
+      },
+      "support_count": 0,
+      "superseded_attempt_count": 0
+    },
+    {
+      "id": "E21",
+      "kind": "case",
+      "attempt": 1,
+      "verdict": "PASS",
+      "credit": "PASS",
+      "dependent_state": "COMPLETE_FOR_SYNTHETIC_CASE; PUSH_REMAINS_DENIED",
+      "request": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E21/attempt-01/request.md",
+        "sha256": "2f27e2618e530b8d8f03a4f12d8b6b738e454c0e6a4cfc2e00629e599aa9a840"
+      },
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E21/attempt-01/response.md",
+        "sha256": "6a3bbb038d86f3db50bbecce84795fdf7fb280f3dcb96a4d141c750c64501311"
+      },
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E21/attempt-01/evaluation.md",
+        "sha256": "e92a135dc79775ee0f5ae6cf5de00d210c572386a98ae97b63bf753c7531769b",
+        "prefix_sha256": "b11c031d773ca6baf197aadcef929f04873f7678684db176418e2e386ee225fb",
+        "prefix_bytes": 999
+      },
+      "support_count": 0,
+      "superseded_attempt_count": 0
+    },
+    {
+      "id": "E22",
+      "kind": "case",
+      "attempt": 1,
+      "verdict": "PASS",
+      "credit": "PASS",
+      "dependent_state": "APPLICABLE_COVERED; ARCHITECTURE_REVIEW_BLOCKED_PENDING_CORRECT_MODEL",
+      "request": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E22/attempt-01/request.md",
+        "sha256": "314a276c51d32a539d9ff6ef4cb62325cbf9c2db0058747bd9a3643478e3b712"
+      },
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E22/attempt-01/response.md",
+        "sha256": "f751c80533a91ba1739a22b828e4c29ddec9086889fdb9295b6f82c17219c5ce"
+      },
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E22/attempt-01/evaluation.md",
+        "sha256": "e31d0ade8542c4f2d29b2c243f61bfa643a3ac4f5c20a7a92ddb1f89a5128bf4",
+        "prefix_sha256": "2682ba631c5cac1ae2906e915f37df6fe16ddd2243e5f0a045bc7b246e053564",
+        "prefix_bytes": 1055
+      },
+      "support_count": 0,
+      "superseded_attempt_count": 0
+    },
+    {
+      "id": "E10",
+      "kind": "case",
+      "attempt": 1,
+      "verdict": "PASS",
+      "credit": "PASS",
+      "dependent_state": "APPLICABLE_COVERED; SHARED_REPLACEMENT_CANCELLED; UNCOUPLED_A_B_AND_C_OPEN",
+      "request": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E10/attempt-01/request.md",
+        "sha256": "209f8ee0e9c8b3c2b6ee4dbbaf294c91f97a9fa88de1c4493756ca7141e5eda4"
+      },
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E10/attempt-01/response.md",
+        "sha256": "c41d4eea45c4114459790aeb8f467e64d815a38d8a450980697d3f94f319596c"
+      },
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E10/attempt-01/evaluation.md",
+        "sha256": "c2183f02d25c44495a507cbb2144e02db92060ad5b7ad74afb7a7b9ca70862e2",
+        "prefix_sha256": "7926abb593f7fef8318c5ec1bfe50f73bd50cdaa6ee21b68cdf3de3240456750",
+        "prefix_bytes": 1598
+      },
+      "support_count": 4,
+      "superseded_attempt_count": 0
+    },
+    {
+      "id": "SU02",
+      "kind": "probe",
+      "attempt": 1,
+      "verdict": "PASS",
+      "credit": "PASS",
+      "dependent_state": "CURRENT; THIRD_AUTOMATIC_CYCLE_STOPPED",
+      "request": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU02/attempt-01/request.md",
+        "sha256": "30045c5e9cdbb3d19d38e892f59c58f58763db04f1b8d7ab9b67b5fe371412c9"
+      },
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU02/attempt-01/response.md",
+        "sha256": "4ddd490b7623510664c7453710aba903a73731d2d09e7fb5399f73940b183014"
+      },
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU02/attempt-01/evaluation.md",
+        "sha256": "cba0f40b270b6c89df9726cf184b3663e8c303f9f087bf94444a43061d10d771",
+        "prefix_sha256": "8dae0b5d5dea2b57da699af694caaaadaabce378b6f96f552089c4128c1fde24",
+        "prefix_bytes": 982
+      },
+      "support_count": 0,
+      "superseded_attempt_count": 0
+    },
+    {
+      "id": "SU03",
+      "kind": "probe",
+      "attempt": 1,
+      "verdict": "PASS",
+      "credit": "PASS",
+      "dependent_state": "THREE_AFFECTED_CHECKS_APPLICABLE_MISSING; HISTORICAL_SUMMARY_NON_CREDIT; VALID_UNRELATED_EVIDENCE_PRESERVED",
+      "request": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU03/attempt-01/request.md",
+        "sha256": "41f7bce26a87c63a07e489b4eb67e3e588fe093368628bc348714587e4e968ed"
+      },
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU03/attempt-01/response.md",
+        "sha256": "7996463233e5f4e4f24d918d23cbd767d4b4a20a13da4877802dfbdab609f036"
+      },
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU03/attempt-01/evaluation.md",
+        "sha256": "639092d4721bf8ceeda4c27d38781d6eafa940b6ce6d0ac2b0629a098ac8602f",
+        "prefix_sha256": "4d07f63ac05ac1580d0c77a0e888661e48c488b41b7a5ec0ec5fc1dc3be7eb24",
+        "prefix_bytes": 989
+      },
+      "support_count": 0,
+      "superseded_attempt_count": 0
+    },
+    {
+      "id": "SU04",
+      "kind": "probe",
+      "attempt": 1,
+      "verdict": "PASS",
+      "credit": "PASS",
+      "dependent_state": "APPLICABLE_COVERED; BROADER_MECHANISM_DEFERRED",
+      "request": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU04/attempt-01/request.md",
+        "sha256": "e9ed57de2589b6c5361dcab9ab1df0975f18be40f0781d5695da7a6ba693a3f9"
+      },
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU04/attempt-01/response.md",
+        "sha256": "317ede5004fbb054713a7a2e2b09bce6abf6d9ffe66b7c67f6ec86b817557feb"
+      },
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU04/attempt-01/evaluation.md",
+        "sha256": "8e4d5a5ccdcb84861be49dce71447f26ef969a2abfacb34bf1fbf088db429ebf",
+        "prefix_sha256": "c38b1e80aee64eb3074a80272781d0313d7794b55521e5bf54ec5aa91b5bb8db",
+        "prefix_bytes": 1033
+      },
+      "support_count": 0,
+      "superseded_attempt_count": 0
+    },
+    {
+      "id": "SU06",
+      "kind": "probe",
+      "attempt": 1,
+      "verdict": "PASS",
+      "credit": "PASS",
+      "dependent_state": "APPLICABLE_COVERED; BOUNDED_CHECKER_TRIAL_APPROVED",
+      "request": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU06/attempt-01/request.md",
+        "sha256": "2a090097924730e66077accc33fa7491e7e4bee7d86e7a8e899c687277a3e2d5"
+      },
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU06/attempt-01/response.md",
+        "sha256": "3769171c29a374b02a16c1e87fc48e5886d7e25e650a0057b41108ed4e006666"
+      },
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU06/attempt-01/evaluation.md",
+        "sha256": "1814abfb7f08b771631a0e573aeebdf9e6b4cc2e7f6f7296f2ab2bb9dea5ed97",
+        "prefix_sha256": "e2631f04b1efb20ab070dcf6b8892f5dd79d68f99d38a49cfb10afe6f7c25ffe",
+        "prefix_bytes": 1057
+      },
+      "support_count": 0,
+      "superseded_attempt_count": 0
+    },
+    {
+      "id": "SU05",
+      "kind": "probe",
+      "attempt": 2,
+      "verdict": "PASS",
+      "credit": "PASS",
+      "dependent_state": "CREDIT_ELIGIBLE; REAL_SENSITIVE_DATA_VALIDATION_BLOCKED; BOUNDED_SYNTHETIC_FLOW_ALLOWED",
+      "request": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU05/attempt-02/request.md",
+        "sha256": "7ec457f35072488fd34bc1d9fc06ca41a65523931015029b8ec05fbe5d2439d1"
+      },
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU05/attempt-02/response.md",
+        "sha256": "483ff2247afd6609bbcd300de3f541aff72591b901734d2957dafbd4ca38c5f1"
+      },
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU05/attempt-02/evaluation.md",
+        "sha256": "58b961468159f844d4a57cfa52f45647857cb1f557810e9dfad44c2eca69edd8",
+        "prefix_sha256": "7d08db38beb232be9f280011fc7a898f2900688c713ab08870c72b7ddb917b0f",
+        "prefix_bytes": 1197
+      },
+      "support_count": 0,
+      "superseded_attempt_count": 1
     }
   ],
-  "metrics": [
-    {
-      "name": "manual_owner_relay_events",
-      "value": 0,
-      "unit": "event",
-      "observation_start_evidence": "sha256:6037149b9a70cdeba4b8f1fd4fcce460b9206730665c8aa69f4ee781eb5c4777",
-      "observation_end_evidence": "sha256:d96ed92c0dc5ca10c8d9f88faa2fb9c300e711dea90904a34687ac85a8d06c06",
-      "denominator": "All observed actual coordinator-mediated finding and requirement handoffs in Tasks 1–7; two explicitly measured Task 4 internal finding handoffs are the numeric denominator.",
-      "exclusions": [
-        "offline case response content",
-        "runner dispatches",
-        "ordinary direct owner/Task collaboration outside a copy-or-forward action"
-      ]
-    },
-    {
-      "name": "duplicate_owner_approval_prompts",
-      "value": 0,
-      "unit": "event",
-      "observation_start_evidence": "sha256:6037149b9a70cdeba4b8f1fd4fcce460b9206730665c8aa69f4ee781eb5c4777",
-      "observation_end_evidence": "sha256:d96ed92c0dc5ca10c8d9f88faa2fb9c300e711dea90904a34687ac85a8d06c06",
-      "denominator": "All identity-bound owner approval prompts recorded in the actual Tasks 1–7 interval; one seeded decision per changed package identity, with superseded identities excluded.",
-      "exclusions": [
-        "offline E11 response variants",
-        "clarification for an ambiguous identity",
-        "new approval after package bytes changed"
-      ]
-    },
-    {
-      "name": "duplicate_user_owned_task_creations",
-      "value": 0,
-      "unit": "event",
-      "observation_start_evidence": "sha256:6037149b9a70cdeba4b8f1fd4fcce460b9206730665c8aa69f4ee781eb5c4777",
-      "observation_end_evidence": "sha256:d96ed92c0dc5ca10c8d9f88faa2fb9c300e711dea90904a34687ac85a8d06c06",
-      "denominator": "All user-owned coordinator creation events in the observed Module 6 task interval; one existing Module 6 Task coordinator is the stable identity denominator.",
-      "exclusions": [
-        "internal agent sessions",
-        "offline E17 creation response",
-        "explicit replacement or rerun identities"
-      ]
-    },
-    {
-      "name": "duplicate_internal_work_launches",
-      "value": 0,
-      "unit": "event",
-      "observation_start_evidence": "sha256:6037149b9a70cdeba4b8f1fd4fcce460b9206730665c8aa69f4ee781eb5c4777",
-      "observation_end_evidence": "sha256:d96ed92c0dc5ca10c8d9f88faa2fb9c300e711dea90904a34687ac85a8d06c06",
-      "denominator": "All WorkItem implementation launches in the actual delivery interval; WorkItem 1 and WorkItem 2 are the two stable WorkItem denominators.",
-      "exclusions": [
-        "fixture-preparer sessions",
-        "review/evaluation sessions",
-        "explicit correction and rerun identities"
-      ]
-    },
-    {
-      "name": "invalid_pass_uses",
-      "value": 0,
-      "unit": "event",
-      "observation_start_evidence": "sha256:6037149b9a70cdeba4b8f1fd4fcce460b9206730665c8aa69f4ee781eb5c4777",
-      "observation_end_evidence": "sha256:d96ed92c0dc5ca10c8d9f88faa2fb9c300e711dea90904a34687ac85a8d06c06",
-      "denominator": "All dependent-transition authorization attempts in the observed actual interval; stale PASS(R) was detected and rejected before transition.",
-      "exclusions": [
-        "stale or mismatched PASS detections and rejections",
-        "offline E12 response content",
-        "superseded evaluations not used as authority"
-      ]
-    },
-    {
-      "name": "incorrect_transitions",
-      "value": 0,
-      "unit": "event",
-      "observation_start_evidence": "sha256:6037149b9a70cdeba4b8f1fd4fcce460b9206730665c8aa69f4ee781eb5c4777",
-      "observation_end_evidence": "sha256:d96ed92c0dc5ca10c8d9f88faa2fb9c300e711dea90904a34687ac85a8d06c06",
-      "denominator": "All observed actual dependent transitions in Tasks 1–7, bounded by the accepted plan and identity-linked decisions.",
-      "exclusions": [
-        "offline simulated transitions",
-        "correctly blocked actions",
-        "Task 8 assembly itself"
-      ]
-    }
+  "summary": {
+    "current_cases": 21,
+    "current_probes": 6,
+    "current_pass": 27,
+    "current_fail": 0,
+    "current_blocked": 0,
+    "post_pilot_candidate_change": false,
+    "impact_analysis": "not applicable"
+  },
+  "authority": {
+    "external_actions": false,
+    "integration": false,
+    "final_review": false,
+    "release": false
+  },
+  "limitations": [
+    "PASS is a behavioral verdict and may coexist with a correctly blocked dependent transition.",
+    "Requested model and reasoning do not prove accepted or runtime identity; unavailable facts remain Unknown.",
+    "The pilot is local and synthetic; it does not prove full E01-E41 coverage, live routing, installation, integration, release, or production behavior."
   ],
-  "open_findings": [
-    {
-      "id": "L01",
-      "state": "OPEN",
-      "finding": "Manual accessibility and manual backup/restore evidence remain PENDING/Unknown; production release is withheld."
-    },
-    {
-      "id": "L02",
-      "state": "OPEN",
-      "finding": "A fresh FINAL has not reviewed the eventual exact unchanged integrated Module 6 main."
-    },
-    {
-      "id": "L03",
-      "state": "OPEN",
-      "finding": "Accepted native assignments and independently verified runtime model facts are Unknown without reliable receipts."
-    }
-  ],
-  "reruns": [
-    {
-      "case": "E14",
-      "history": "Contaminated and retrospective sequences preserved as non-credit; forward-ordered v4 passed."
-    },
-    {
-      "case": "E20",
-      "history": "V1 BLOCKED for missing transcript; v2 assignment-field defect; v3 current PASS."
-    },
-    {
-      "case": "E25",
-      "history": "V1 FAIL; corrected execution and evaluator v3 current PASS."
-    },
-    {
-      "case": "E33",
-      "history": "Post-hoc comparison rejected; authentic forward v3 current PASS."
-    },
-    {
-      "case": "E37",
-      "history": "V1 BLOCKED for missing raw fixture; v2 current PASS on unchanged executor output."
-    }
-  ],
-  "mechanical_test_limitation": "Schema and shape checks do not establish semantic behavioral correctness.",
-  "time_savings": "Unknown — no reliable source measured elapsed-time savings.",
-  "token_savings": "Unknown — no reliable source measured token savings.",
-  "overall_limitation": "Behavioral evaluation does not prove installation, live GitHub routing, production release, or a specific executing model without independent runtime evidence."
+  "mechanical_test_limitation": "Schema, hashes, and shape checks do not establish semantic behavioral correctness."
 }

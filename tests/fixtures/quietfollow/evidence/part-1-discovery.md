@@ -1,29 +1,16 @@
-# Part 1 — discovery and bounded Gate 3.5 experiment
+# Part 1 — discovery and proportional entry gates
 
-QuietFollow is a synthetic local product for a solo consultant who needs to remember promised
-follow-ups. The immutable four-file input described the product and left Gate 3.5 open. A fresh
-discovery execution identified the strongest unknown as whether a focused follow-up loop is more
-useful than a general task tool. Market reach, conversion, price, revenue, and operating economics
-remained Unknown. The first output therefore selected only a zero-spend synthetic comparison and
-kept Journey blocked.
+The lean QuietFollow pilot used only local synthetic inputs. It did not contact users, spend money,
+install a skill, or call an external service. E38 kept Journey blocked when Gate 3.5 was applicable
+but missing and proposed one bounded experiment instead of a large research program. E31 likewise
+separated a future service vision from the current decision boundary. E39 reused unchanged evidence
+and refreshed only the affected backup-cost question.
 
-The discovery output is bound to `sha256:0a9fe13927489640abad375a6a8e33fd488240a28250779538b61e5b33486039`.
-E38 independently evaluated this exact boundary as PASS at
-`sha256:4f360804464a5bb1e278ef790282c59ef8454b7ea087ccbd759e56242507ad41`;
-the dependent state was still an open Gate 3.5 and blocked Journey.
+Current evaluations:
 
-A later seeded synthetic decision, not a real owner product decision, supplied a finite 60-minute
-local experiment and observations for the exact discovery identity. Corrected decision v2 is
-`sha256:b71518106e943aa03f83231a896424b001952526ad42a59b54c43ce19642bc54`.
-It authorized no contact with users, research, spending, implementation, external service, MVP,
-or release. It permitted only continuation of the synthetic artifact exercise.
+- E38 attempt 1 — PASS; evaluation SHA-256 `f4bb0774a50c1fd8da4847d505ae62f5accba6062588271da153c482e0fb1916`.
+- E31 attempt 1 — PASS; evaluation SHA-256 `112fc130921872ded3ba530ca228ecbe1e2725a8e2288037a23295f68888b158`.
+- E39 attempt 1 — PASS; evaluation SHA-256 `33d97a62bff196f2bf5c59c4cf91a2f696c23527fb9a754bdba3e9a8ba4363df`.
 
-Journey v2 (`sha256:9b4625931728da46cf51ca5d6a57925c749285cbe5e422382574082fa99e84e3`)
-then mapped: create contact → schedule follow-up → see due item → record outcome → reconstruct
-the tracker. It recorded empty, invalid-reference, corrupt-state, interruption, reload, and reset
-states; preserved backup/restore as Unknown; and stopped at Scope. Future signals are expressed as
-targets with unit, boundary, denominator, and exclusions, not as observed production results.
-
-Requested executor/evaluator assignments were `gpt-5.6-sol/high`; accepted native assignments
-and independently verified runtime facts are Unknown because no reliable runtime receipt exists.
-Shared-filesystem isolation was procedural only.
+These PASS verdicts confirm the tested routing behavior only. Missing gates and dependent transitions
+remain open or blocked exactly as recorded in the run index.

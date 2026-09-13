@@ -1,278 +1,110 @@
 {
-  "schema_version": 1,
-  "module": "MODULE6-PLAN-v1",
-  "repository": {
-    "source_parent": "1d9b6f8242fbea8548a423b172534b8c8d20b6e0",
-    "accepted_plan_commit": "8614c2d3c465ce86ab4332917bc435d4d2b10754",
-    "task8_base": "f47263ce545c5185b3ec836c95fe341d1b3e5715",
-    "candidate_identity": "local committed candidate; exact head and review state are owned by Task 9 task-local evidence and final review record; integration and FINAL are unperformed",
-    "disposable_product_repository": "local synthetic repository",
-    "disposable_product_repository_head": "d2e8bc6500d52f7db63f372ef52b1efaad59edf8",
-    "disposable_product_tree": "a5fce7b8a8c7eafae9349a762c28d4ea50709da9",
-    "product_tests_at_source": "15/15 PASS",
-    "source_copy_hashes": [
-      {
-        "path": "tests/fixtures/quietfollow/product/quietfollow.py",
-        "source_sha256": "ff37f7ab71804c9207995e5451919ecd134a38d5569547f619c22093f9df8347",
-        "copy_sha256": "ff37f7ab71804c9207995e5451919ecd134a38d5569547f619c22093f9df8347"
-      },
-      {
-        "path": "tests/fixtures/quietfollow/product/test_quietfollow.py",
-        "source_sha256": "71e63584dcaa2c333b363f8071b376b58d4c954be5b9ba7f0b8331c444d182e9",
-        "copy_sha256": "71e63584dcaa2c333b363f8071b376b58d4c954be5b9ba7f0b8331c444d182e9"
-      }
-    ]
+  "schema_version": 2,
+  "module": "MODULE6-LEAN-PLAN-v1",
+  "run_id": "2026-09-13-lean-pilot",
+  "plan": {
+    "path": "docs/superpowers/plans/2026-09-13-module-6-lean-quietfollow-pilot.md",
+    "sha256": "182e45c458fc631a9b367635c384e3b8c0af409355bd7a75e08fea345e65f1ed",
+    "commit": "feebad5d67614da5d25439c0ae38c2164becdbf2",
+    "tree": "db52321f6fe978a03953f0ed6c5c3e2d6bd88370",
+    "review_verdict": "PLAN_PASS"
   },
-  "snapshots": [
-    {
-      "alias": "accepted-plan",
-      "sha256": "6037149b9a70cdeba4b8f1fd4fcce460b9206730665c8aa69f4ee781eb5c4777"
-    },
-    {
-      "alias": "active-structural-revision",
-      "sha256": "7280143c1ba0c498912b86cb5439f9f87f35fce29e7f1e7d441490d50546dab4"
-    },
-    {
-      "alias": "active-skill-entrypoint",
-      "sha256": "69d473f9dea0ab8930c3d778445db54710c0446e878a50f63946d31fffb095f0"
-    },
-    {
-      "alias": "fixture-agents",
-      "sha256": "dee90b1cd7f9250143a1837fcb8f08318c908a0c5c0f749477d8dc5d1f7cb407"
-    },
-    {
-      "alias": "fixture-project-status",
-      "sha256": "7c80c77f36efdbc71a146f8a1ae07bdf8d45d223e1fa25b274f280607829bd75"
-    },
-    {
-      "alias": "fixture-product-profile",
-      "sha256": "0cb7794cdcbc96e22f5fae7da692c5480b194242b8d6ca5c110b0a5486db9f2c"
-    },
-    {
-      "alias": "fixture-positioning",
-      "sha256": "2bc857e19679d53630a31970c86c00c24e1cfef038bb1dfd49e0540e52db4a57"
-    },
-    {
-      "alias": "legacy-status",
-      "sha256": "30fc4712449664ea2af2ac241b03d30ff6c82ca85361905ee51e68f2cb3e53d9"
-    },
-    {
-      "alias": "legacy-viability",
-      "sha256": "8ab53e27471e523dd401b77456881549591d62145b662a7a0433c3e3f60c1ad9"
-    },
-    {
-      "alias": "review-events",
-      "sha256": "d377118162c2c5c511f8993c50ab1722e702694b23daaaf4d1fc11d92887d938"
-    },
-    {
-      "alias": "module5-reviewer-rubric",
-      "sha256": "06e22dc2b79814379e924ac55cb6b0dfa699909985ecbe03bb3d000f770d1cc9"
-    },
-    {
-      "alias": "workflow-checker",
-      "sha256": "3edd5b6b8962773fe4ac0cc970e314827fa4b08849f158c0a1061af9bafbe794"
-    },
-    {
-      "alias": "e13-corrected-input-v2",
-      "sha256": "455942df13e29b42ff5cb508854c8cbb261ae037c4c5324633b959f4c9b89752"
-    },
-    {
-      "alias": "e13-evaluator-input-v2",
-      "sha256": "5680630fb33e2a3dbd90e1877bb20a33fd0e4a0fdcd2500e6ea7c7bb3e1edf2c"
-    }
-  ],
-  "permissions": {
-    "public_alias_vocabulary": [
-      "task-coordinator",
-      "discovery-executor",
-      "readiness-executor",
-      "challenge-reviewer",
-      "implementation-writer",
-      "fixture-preparer",
-      "change-reviewer",
-      "rehearsal-executor",
-      "case-executor",
-      "behavioral-evaluator",
-      "module-assembler"
-    ],
-    "network": "denied",
-    "external_services": "denied",
-    "github_mutation": "denied",
-    "installation": "denied",
-    "release": "denied",
-    "real_user_data": "denied",
-    "shared_filesystem_isolation": "procedural-only",
-    "verified_os_sandbox": "Unknown",
-    "executor_bundle_excluded": [
-      "reviewer rubric",
-      "evaluation scenarios",
-      "Module 6 plan",
-      "reference answers",
-      "evaluator notes"
-    ]
+  "skill": {
+    "identity": "MODULE6-LEAN-SKILL-v1",
+    "commit": "0070e4c307e785cfeafae41ee4aa70151de1df7c",
+    "tree": "639c579dddec3b4039e347c89952d4f254e628b2",
+    "review_verdict": "PASS",
+    "post_pilot_change": false
   },
-  "roles": [
-    {
-      "alias": "task-coordinator",
-      "requested_assignment": "gpt-5.6-sol/high",
-      "accepted_native_assignment": "Unknown",
-      "independently_verified_runtime_fact": "Unknown",
-      "private_evidence_digest": "sha256:6d4a1aa09f0a1192d256c0aae9de27a33596810c25ab6aca06a5a5d5ab1f2900"
+  "matrix": {
+    "required_cases": 21,
+    "required_probes": 6,
+    "current_pass": 27,
+    "current_fail": 0,
+    "current_blocked": 0
+  },
+  "product_history": {
+    "kind": "local synthetic only",
+    "A": "723366bbbcb86f94a7f5999c1fd9080e5f668090",
+    "B": "896bb88d845ee79d4434e5e48e19638d4db6a042",
+    "C": "ee20e639506f7acf2b026a1db1baa4973b092ef6",
+    "D": "88cf48e67c8c89a23ddcf72a119dbb18051fd483",
+    "M": "7234844e90fc587e1807bc85fd5376382b5736cc",
+    "D_and_M_tree": "f37b16ae45b46ab97def300bae8673bad13bc79f",
+    "verification": "bundle complete; fresh clone fsck PASS; M has two parents; D is ancestor of M; D/M trees match"
+  },
+  "bindings": {
+    "index": {
+      "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/index.json",
+      "sha256": "646d8f7780cde3ae472425690fc8b7bf5990df0b488ed410093d25cb1f7c5474"
     },
-    {
-      "alias": "discovery-executor",
-      "requested_assignment": "gpt-5.6-sol/high",
-      "accepted_native_assignment": "Unknown",
-      "independently_verified_runtime_fact": "Unknown",
-      "private_evidence_digest": "sha256:0a9fe13927489640abad375a6a8e33fd488240a28250779538b61e5b33486039"
+    "execution_record": {
+      "path": "tests/fixtures/quietfollow/evidence/execution-record.json",
+      "sha256": "f41faca3e8dfe4519768692d4af358a5342535b580fb60470d6478cdd8c04818"
     },
-    {
-      "alias": "readiness-executor",
-      "requested_assignment": "gpt-5.6-sol/high",
-      "accepted_native_assignment": "Unknown",
-      "independently_verified_runtime_fact": "Unknown",
-      "private_evidence_digest": "sha256:9b6b04c25cf5dbc80a26714250f1301f7dc60136a56022882a95398700b4e8b2"
+    "bundle": {
+      "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/product-repo/quietfollow-pilot.bundle",
+      "sha256": "273a9b38a069f665c73dcfcfc8b5b3c324bd28bc2e52cf4e023e6984ce528f3f"
     },
-    {
-      "alias": "challenge-reviewer",
-      "requested_assignment": "gpt-5.6-sol/high",
-      "accepted_native_assignment": "Unknown",
-      "independently_verified_runtime_fact": "Unknown",
-      "private_evidence_digest": "sha256:9180eb3c16b1ce271d3195e62f0794ca3cdf444ec1407442841d4ba05ee147f4"
+    "product_source": {
+      "path": "tests/fixtures/quietfollow/product/quietfollow.py",
+      "sha256": "ff37f7ab71804c9207995e5451919ecd134a38d5569547f619c22093f9df8347"
     },
-    {
-      "alias": "implementation-writer",
-      "requested_assignment": "gpt-5.6-sol/medium",
-      "accepted_native_assignment": "Unknown",
-      "independently_verified_runtime_fact": "Unknown",
-      "private_evidence_digest": "sha256:253b37e109c182ba482761cfc8af21a38d1a6dfc818cd4c3145c52970b392518"
+    "product_tests": {
+      "path": "tests/fixtures/quietfollow/product/test_quietfollow.py",
+      "sha256": "71e63584dcaa2c333b363f8071b376b58d4c954be5b9ba7f0b8331c444d182e9"
     },
-    {
-      "alias": "fixture-preparer",
-      "requested_assignment": "gpt-5.6-terra/medium",
-      "accepted_native_assignment": "Unknown",
-      "independently_verified_runtime_fact": "Unknown",
-      "private_evidence_digest": "sha256:0187cee88896b68a49d5b2bafa94b435a1ab3f939a1c5ce33af69dd9a0ac8993"
-    },
-    {
-      "alias": "change-reviewer",
-      "requested_assignment": "gpt-5.6-sol/high",
-      "accepted_native_assignment": "Unknown",
-      "independently_verified_runtime_fact": "Unknown",
-      "private_evidence_digest": "sha256:3bcfb13ebce592ddbf6e96b2a918d42de593314177c485530c0c5df54fab5352"
-    },
-    {
-      "alias": "rehearsal-executor",
-      "requested_assignment": "gpt-5.6-sol/medium",
-      "accepted_native_assignment": "Unknown",
-      "independently_verified_runtime_fact": "Unknown",
-      "private_evidence_digest": "sha256:374676bce987895d49f66ae71e6cdc3a1f0fb04dc4fa24b9ac4e6265ca0116fe"
-    },
-    {
-      "alias": "case-executor",
-      "requested_assignment": "gpt-5.6-sol/high",
-      "accepted_native_assignment": "Unknown",
-      "independently_verified_runtime_fact": "Unknown",
-      "private_evidence_digest": "sha256:5c4b9e687e2036fd1eebab8cc37369a7c30982381c3a0d482f03d0059d66d0b8"
-    },
-    {
-      "alias": "behavioral-evaluator",
-      "requested_assignment": "gpt-5.6-sol/high",
-      "accepted_native_assignment": "Unknown",
-      "independently_verified_runtime_fact": "Unknown",
-      "private_evidence_digest": "sha256:d96ed92c0dc5ca10c8d9f88faa2fb9c300e711dea90904a34687ac85a8d06c06"
-    },
-    {
-      "alias": "module-assembler",
-      "requested_assignment": "gpt-5.6-sol/medium",
-      "accepted_native_assignment": "Unknown",
-      "independently_verified_runtime_fact": "Unknown",
-      "private_evidence_digest": "sha256:17159518c88cdb276e77715b3cb2958a365e132ac7e452e1d568fd15099180a4"
+    "skill_checksums": {
+      "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/candidate/skill-after.sha256",
+      "sha256": "c3e8c4dc28d76464118ae7aaa9175980dce7fac40f896e521ee67b1428707fdd"
     }
-  ],
+  },
   "parts": [
     {
       "id": "part-1",
       "path": "tests/fixtures/quietfollow/evidence/part-1-discovery.md",
-      "sha256": "de7a67dcd9bc5eacc1206eb7d2999f1cdc531b2752ebe06c5e316e9bd1e43b93",
-      "sources": [
-        "discovery v1",
-        "decision v2",
-        "Journey v2"
-      ]
+      "sha256": "b3b45cd0a5aa0b2845c83f6838d58aa558edc99cce53008bcf4cd83d98da2e81"
     },
     {
       "id": "part-2",
       "path": "tests/fixtures/quietfollow/evidence/part-2-readiness.md",
-      "sha256": "989097654dfde3c63a042b3c111e895875d89c9a1567085a68530e2950c699cc",
-      "sources": [
-        "readiness v8",
-        "Challenge v8",
-        "E31 v2",
-        "E39 v1"
-      ]
+      "sha256": "bbeaa0b9d44ea4d8dfdc3be9c89a986e2f1a008fcee97e5fbf46c5eea6bf3c10"
     },
     {
       "id": "part-3",
       "path": "tests/fixtures/quietfollow/evidence/part-3-delivery.md",
-      "sha256": "170a83b848538efcbeef6d8e483d0c275a1faa8404acc79eaf274861f5550998",
-      "sources": [
-        "private Part 3 source v2"
-      ]
+      "sha256": "894a0fb357ba5e70b21544c79dabd8e4a6ab14a0a89f235e5419296bcc1c2c12"
     },
     {
       "id": "part-4",
       "path": "tests/fixtures/quietfollow/evidence/part-4-release-rehearsal.md",
-      "sha256": "168662f63ba45ca3e700e3ba850ef4df5ad23033dc2db986bd882ce7459f0518",
-      "sources": [
-        "private Part 4 source v2",
-        "corrected independent E13 v2"
-      ]
+      "sha256": "37d06a152e2bf76a6a256948753d8e27e64b1807ab2841790158ba171f686c08"
     },
     {
       "id": "part-5",
       "path": "tests/fixtures/quietfollow/evidence/part-5-resume-scaling.md",
-      "sha256": "1d88a0405a029e5a186a1eb7bd1b4d525180579ca5ac81f4bc8a2d9908c92787",
-      "sources": [
-        "private Part 5 source v3",
-        "private Part 6 source v2"
-      ]
+      "sha256": "8457ac622db3ebe063f6889499c25c6a62f8c3f78478c64fcc1503fe64622eab"
     }
   ],
-  "transcript_digests": [
-    {
-      "alias": "task4-forward-sequence",
-      "sha256": "c34e2c9c4dc6304a71bc110a14b65670a65d1ae1fd9c9117b63ed2577bffb50f"
-    },
-    {
-      "alias": "task7-zero-live-side-effect-boundary",
-      "sha256": "aa90e0cb899d93ddd58e1a7635f61aec1a0c198606c634e7184b276c7c364d54"
-    },
-    {
-      "alias": "task7-runner-chain",
-      "sha256": "f3d474c0847a175b9225476c39616b3e13b62301984023583d6f15da34f64567"
-    },
-    {
-      "alias": "e13-executor-record-v2",
-      "sha256": "80f7259ca208dc381d2d649634cd22cc9d4cfbf48fc2b349dcbd298a3c0ae34a"
-    },
-    {
-      "alias": "e13-evaluation-v2",
-      "sha256": "e957ea4857f395aa784885412d4d486b09f9ce7e875e0dd4ac2a96d79697de4f"
-    }
-  ],
-  "redaction": {
-    "private_denylist_value_count": 57,
-    "matched_occurrences": 0,
-    "denylist_sha256": "8f65ff9319a7507001fc8f853f70857b1df7e69e1c56d902b3a281278ae97926",
-    "scanner_output_sha256": "8fbf4c26e578e4a15d10a49fa39a586d89c052ea7f2afee6a2a6d6df645d6fc3"
+  "provenance": {
+    "requested_assignments": "recorded per attempt",
+    "accepted_assignments": "Unknown where no reliable platform fact was available",
+    "runtime_identity": "Unknown where not independently verified",
+    "private_runtime_values_published": false
+  },
+  "authority": {
+    "external_actions": false,
+    "installation": false,
+    "integration": false,
+    "public_push": false,
+    "release": false,
+    "task_10_authorized": false
   },
   "limitations": [
-    "Shared filesystem boundaries provide procedural isolation only; no operating-system sandbox is proven.",
-    "Requested assignment, accepted native assignment, and independently verified runtime facts are distinct; accepted/runtime facts remain Unknown without reliable receipts.",
-    "Behavioral PASS can mean a dependent action was correctly blocked.",
-    "The 21 selected cases are not full E01–E41 coverage.",
-    "No installation, live GitHub routing, production release, or executing-model identity is proven.",
-    "Time and token savings are Unknown because no reliable source measured them."
+    "PASS may coexist with a correctly blocked dependent transition.",
+    "The 21 selected cases and six probes are not full E01-E41 coverage.",
+    "No installation, live routing, integration, publication, deployment, release, or production behavior is proven.",
+    "Time and token savings are Unknown because no reliable source measured them.",
+    "PyYAML-dependent quick validation was not run because installation was not authorized."
   ]
 }

@@ -1,0 +1,18 @@
+Command: python3 -B -m unittest tests.test_pilot_evidence -v
+Exit status: 0
+
+test_compact_execution_record_matches_current_index (tests.test_pilot_evidence.LeanPilotEvidenceContractTest.test_compact_execution_record_matches_current_index) ... ok
+test_contract_is_mechanical_not_semantic_pass (tests.test_pilot_evidence.LeanPilotEvidenceContractTest.test_contract_is_mechanical_not_semantic_pass) ... ok
+test_evaluator_prefix_boundaries_match (tests.test_pilot_evidence.LeanPilotEvidenceContractTest.test_evaluator_prefix_boundaries_match) ... ok
+test_every_recorded_raw_artifact_matches_bytes_hash_and_mode (tests.test_pilot_evidence.LeanPilotEvidenceContractTest.test_every_recorded_raw_artifact_matches_bytes_hash_and_mode) ... ok
+test_exact_ordered_requirements_and_current_pass_matrix (tests.test_pilot_evidence.LeanPilotEvidenceContractTest.test_exact_ordered_requirements_and_current_pass_matrix) ... ok
+test_exact_plan_and_candidate_identity (tests.test_pilot_evidence.LeanPilotEvidenceContractTest.test_exact_plan_and_candidate_identity) ... ok
+test_manifest_binds_parts_index_bundle_product_and_skill (tests.test_pilot_evidence.LeanPilotEvidenceContractTest.test_manifest_binds_parts_index_bundle_product_and_skill) ... ok
+test_navigation_preserves_authority_and_one_next_action (tests.test_pilot_evidence.LeanPilotEvidenceContractTest.test_navigation_preserves_authority_and_one_next_action) ... ok
+test_product_bytes_are_canonical_and_suite_has_seven_outcome_tests (tests.test_pilot_evidence.LeanPilotEvidenceContractTest.test_product_bytes_are_canonical_and_suite_has_seven_outcome_tests) ... ok
+test_public_evidence_has_no_private_runtime_binding (tests.test_pilot_evidence.LeanPilotEvidenceContractTest.test_public_evidence_has_no_private_runtime_binding) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.020s
+
+OK

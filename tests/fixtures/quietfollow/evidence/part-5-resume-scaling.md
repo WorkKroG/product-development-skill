@@ -1,33 +1,24 @@
-# Part 5 — resume, scaling reconsideration, and offline coordination
+# Part 5 — coordination, scaling, and stress probes
 
-This public part combines two independently reviewed private sources: resume/scaling v3
-`sha256:0e4cd30f8c9405781778fde4c6a629151e3e95ff26186dce2b4b4a18762cc283`
-and offline coordination v2
-`sha256:a5d682ade662f7722bac049a1d42c6376cd760deb173fd280b806eca452b8e62`.
-Their final reviews are bound by
-`sha256:0f2d5d41c4730d4cfa891bab2e73e64c8ddd85b8aeb568772902d9b9709d339e`
-and `sha256:d96ed92c0dc5ca10c8d9f88faa2fb9c300e711dea90904a34687ac85a8d06c06`.
+The remaining cases exercised plan review, decision reuse, durable task routing, permission denial,
+model constraints, WIP preservation, architecture reconsideration, and a bounded cross-module
+decision. E10 used four distinct tracked stages: architecture analysis, independent review, one
+synthetic owner decision, and revised affected/unaffected routing. No real native message or external
+action was sent.
 
-Resume/migration results preserved existing Journey, Requirements, completed work, WIP, and legacy
-evidence. Missing Risk remained open; absent process acknowledgement paused only affected work.
-The Gate 4.5 legacy package mapped to the current lifecycle by reference while Gate 3.5 reopened
-only for refreshed reach evidence.
+Current case results are all PASS: E08, E10, E11, E17, E20, E21, E22, E25, and E33. Their exact
+request, response, evaluation, evaluator-prefix, and support hashes are recorded in the run index and
+the compact execution record.
 
-Scaling cases used seeded synthetic facts, never live scale claims. E33's authentic forward rerun
-retained the current boundary and rejected an unhelpful queue/service split: seeded p95 moved from
-120 ms to 135 ms with no throughput gain, while file-lock wait represented 70% of measured write
-latency. The architecture and maturity transitions stayed open. E34 refused to infer readiness from
-100,000 synthetic registrations when active-user window, concurrency, operations, data volume,
-heavy path, latency/reliability evidence, and cost were Unknown. E37 preserved knowledge while
-leaving code reuse/replacement and data lifecycle actions paused.
+Stress probes SU02–SU06 are also current PASS:
 
-Offline coordination cases preserved identity-bound plans and decisions, escalated a shared contract
-without granting implementation authority, rejected ambiguous approval, waited quietly after a
-platform denial, kept native routing blocked without a real task identity, and blocked a model-bound
-role when the requested model was unavailable. These were response simulations, not live Task,
-message, monitor, push, or service actions.
+- SU02 stopped an automatic third cycle after two fruitless rounds.
+- SU03 preserved valid bytes, rejected reconstruction, and reran only missing evidence.
+- SU04 separated a required guarantee from a reviewer's broader preferred mechanism.
+- SU05 attempt 2 retained non-negotiable sensitive-data protection while allowing bounded synthetic work.
+- SU06 permitted a bounded checker trial after measured repetition and risk justified it.
 
-E21 used both a full events-file digest and an extracted selected-event digest. Their difference is
-expected provenance because they identify different byte sequences; it is not an integrity mismatch.
-All requested evaluator assignments were recorded separately from accepted/runtime facts, which
-remain Unknown without reliable receipts.
+Together with SU01, the six probes cover the Product proportionality rules. The complete matrix is
+21 E-cases plus six probes, all current PASS. Requested model assignments do not prove accepted or
+runtime identities; unavailable provenance facts remain Unknown. No post-pilot candidate change was
+made, so no impact analysis or carried-forward credit was needed.

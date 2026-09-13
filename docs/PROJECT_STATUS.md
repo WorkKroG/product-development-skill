@@ -1,41 +1,35 @@
 # Project status
 
-Date: 2026-09-12. Product: Product Development Workflow.
+Date: 2026-09-13. Product: Product Development Workflow.
 
 ## Current stage
 
-Module 6 has a local committed candidate descended from exact base
-`f47263ce545c5185b3ec836c95fe341d1b3e5715`. It contains the reviewed local product copy, five
-public evidence parts, a 21-case execution record, and mechanical evidence-contract tests. Exact
-candidate head and review state are owned by Task 9 task-local evidence and its final review record,
-so this durable navigation does not embed a self-referential commit identity. Integration and FINAL
-are unperformed; the module is not `DONE`.
+Module 6 has an assembled local candidate under the approved lean plan
+`MODULE6-LEAN-PLAN-v1`. The bounded five-file skill change is `MODULE6-LEAN-SKILL-v1` and
+its independent exact-skill review is PASS. The local synthetic QuietFollow pilot contains exactly
+21 required E-cases and six proportionality probes; all 27 current evaluations are PASS.
 
-Owner/Product's 2026-09-12 Task 9 ruling adds `README.md` to the Module 6 File Map only for the
-root-navigation correction and regression authorized by finding `M6-CR2-I01`. The accepted plan
-bytes and SHA-256 remain unchanged; README is now the thirteenth candidate File Map path. This
-scope amendment does not authorize Task 10, FINAL, integration, publication, installation, or
-release.
+The raw request, response, evaluation, evaluator-prefix, and support identities are recorded in
+`tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/index.json`. A compact public
+summary is in `manifest.json` and `execution-record.json`, with the five readable parts linked
+from `validation.md`. The synthetic A/B/C/D/M product history is preserved in a tracked Git bundle.
 
-Navigate from [validation.md](validation.md) to the five-part human-readable chain. Machine-readable
-identity, source/copy hashes, role facts, permissions, and limitations are in
-`tests/fixtures/quietfollow/evidence/manifest.json`; per-case outcomes, verdicts, dependent states,
-reruns, findings, and metrics are in `tests/fixtures/quietfollow/evidence/execution-record.json`.
-The disposable product source is `d2e8bc6500d52f7db63f372ef52b1efaad59edf8`, tree
-`a5fce7b8a8c7eafae9349a762c28d4ea50709da9`.
+No post-pilot skill or product defect was confirmed, so there was no candidate correction, impact
+analysis, rerun, or transferred credit after the 27 evaluations.
 
 ## Evidence boundary
 
-The pilot covers exactly E02, E08, E10–E14, E17, E20–E22, E25, E27–E28, E31, E33–E34,
-E37–E39, and E41. Current behavioral verdicts are recorded separately from dependent states.
-This is local synthetic evidence, not full E01–E41 coverage and not proof of installation, live
-GitHub routing, production behavior, production release, or executing-model identity.
+PASS is a behavioral verdict, not transition authority. Several PASS results correctly retain a
+blocked dependent state, including missing release evidence, unavailable model provenance, or denied
+external actions. Requested assignments do not prove accepted or runtime identity; those unavailable
+facts remain Unknown.
 
-Manual accessibility and backup/restore evidence remain PENDING/Unknown. The exact Task 9 review
-state is kept in the task-local final review record. Integration is unperformed, and a distinct
-fresh FINAL on exact unchanged integrated main remains required before module closure.
+The candidate is local and synthetic: кандидат не интегрирован, installed, published, deployed, or
+released. No external service action, public push, PR, real merge, or production operation occurred.
+The pilot covers 21 selected E-cases rather than all E01–E41, plus six targeted probes.
 
 ## Next action
 
-Owner/Product decides whether to authorize Task 10 integration for the exact locally reviewed
-candidate identified by Task 9's final review record.
+Task 9 performs an independent exact-head Change Review and stops with a recommendation. Only a PASS
+recommendation may yield `READY_FOR_INTEGRATION`. Task 10 integration remains a separate owner/Product
+decision and is not authorized by this module plan.

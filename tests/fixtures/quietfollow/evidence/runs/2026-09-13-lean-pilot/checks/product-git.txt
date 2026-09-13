@@ -1,0 +1,55 @@
+Module 6 QuietFollow disposable Git verification
+Recorded: 2026-09-13
+
+Scope
+- Synthetic local repository alias: <DISPOSABLE_PRODUCT_REPO>
+- Bundle: tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/product-repo/quietfollow-pilot.bundle
+- Bundle SHA-256: 273a9b38a069f665c73dcfcfc8b5b3c324bd28bc2e52cf4e023e6984ce528f3f
+
+Bundle verification (exit 0)
+../../../../../tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/product-repo/quietfollow-pilot.bundle is okay
+The bundle contains these 8 refs:
+7234844e90fc587e1807bc85fd5376382b5736cc refs/heads/main
+896bb88d845ee79d4434e5e48e19638d4db6a042 refs/heads/case/e12-b
+88cf48e67c8c89a23ddcf72a119dbb18051fd483 refs/heads/case/e14-d
+723366bbbcb86f94a7f5999c1fd9080e5f668090 refs/tags/pilot-A
+896bb88d845ee79d4434e5e48e19638d4db6a042 refs/tags/pilot-B
+ee20e639506f7acf2b026a1db1baa4973b092ef6 refs/tags/pilot-C
+88cf48e67c8c89a23ddcf72a119dbb18051fd483 refs/tags/pilot-D
+7234844e90fc587e1807bc85fd5376382b5736cc refs/tags/pilot-M
+The bundle records a complete history.
+The bundle uses this hash algorithm: sha1
+
+Fresh clone and object verification
+- Destination did not exist before clone: PASS
+- Clone from tracked bundle: exit 0
+- git fsck --full: exit 0; no findings
+
+Merge identity and ancestry
+Command: git rev-list --parents -n 1 refs/tags/pilot-M
+Output:
+7234844e90fc587e1807bc85fd5376382b5736cc 723366bbbcb86f94a7f5999c1fd9080e5f668090 88cf48e67c8c89a23ddcf72a119dbb18051fd483
+Disposition: PASS; M has exactly two parents A and D.
+
+Command: git merge-base --is-ancestor refs/tags/pilot-D refs/tags/pilot-M
+Output: <empty>
+Exit: 0
+Disposition: PASS; D is an ancestor of M.
+
+Command: git rev-parse 'refs/tags/pilot-D^{tree}' 'refs/tags/pilot-M^{tree}'
+Output:
+f37b16ae45b46ab97def300bae8673bad13bc79f
+f37b16ae45b46ab97def300bae8673bad13bc79f
+Disposition: PASS; D and M have identical trees.
+
+Command: git ls-tree -r refs/tags/pilot-A
+Output:
+100644 blob 19c4dd796314c996e4421067234a46bea9400ef0	README.md
+
+Command: git ls-tree -r refs/tags/pilot-M
+Output:
+100644 blob 19c4dd796314c996e4421067234a46bea9400ef0	README.md
+100644 blob 22dbc440a02a08f5321ae6b6a234b8f754d22a6e	quietfollow.py
+100644 blob cad0ad2f66a507dd5369558ecb0aa7305982980d	test_quietfollow.py
+
+Overall: PASS

@@ -1,0 +1,33 @@
+Module 6 final public-data scan summary
+Date: 2026-09-13
+
+Coverage
+- Enumerated public files: 149
+- Enumeration source: tracked and nonignored untracked files under the exact approved public allowlist
+- Path contract: 149 unique sorted relative paths; all regular files; no symlinks, escapes, private work paths, tabs, or newlines
+- Initial literal pass coverage: 149/149
+- Initial portable pass coverage: 149/149
+
+Observed-private-literal pass
+- Nonempty private deny literals: 74
+- Matches: 0
+- Tool errors or Unknown results: 0
+- Disposition: PASS; the hard zero-match gate is satisfied
+
+Portable candidate pass
+- Total occurrences: 13
+- Intentional synthetic test/policy literal: 3
+- Ordinary non-sensitive text: 10
+- Unsafe/private: 0
+- Unresolved: 0
+- Tool errors or Unknown results: 0
+- Disposition: PASS; every occurrence has an exact private file/line/column classification for independent review
+
+Limitations
+- The portable patterns are bounded candidate detectors, not a universal secret scanner.
+- Safe classifications do not waive the observed-private-literal hard gate.
+- Binary bundle bytes were scanned with text mode as required; Git object integrity and provenance were checked separately.
+- The private raw outputs and literal values are withheld from public evidence.
+
+Overall initial disposition: PASS
+Final disposition: pending the required read-only repeat over these now-final public bytes.

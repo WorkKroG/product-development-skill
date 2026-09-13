@@ -1,0 +1,10 @@
+Command: shasum -a 256 -c BASELINE.sha256
+Exit status: 0
+
+baseline/product-development-cycle/SKILL.md: OK
+baseline/product-development-cycle/agents/openai.yaml: OK
+baseline/product-development-cycle/assets/AGENTS.template.md: OK
+baseline/product-development-cycle/references/agentic-development.md: OK
+baseline/product-development-cycle/references/financial-model.md: OK
+baseline/product-development-cycle/references/lifecycle.md: OK
+baseline/product-development-cycle/references/quality-gates.md: OK
