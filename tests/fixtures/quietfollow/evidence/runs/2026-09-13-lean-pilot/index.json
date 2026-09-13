@@ -704,6 +704,67 @@
         }
       ],
       "superseded_attempts": []
+    },
+    {
+      "id": "E13",
+      "kind": "case",
+      "attempt": 1,
+      "current": true,
+      "credit": "pending",
+      "request": null,
+      "response": null,
+      "evaluation": null,
+      "executor": {
+        "alias": "case-E13-executor-01",
+        "requested_model": "gpt-5.6-sol",
+        "requested_reasoning": "high",
+        "accepted_model": "Unknown",
+        "accepted_reasoning": "Unknown",
+        "verified_runtime_model": "Unknown",
+        "verified_runtime_reasoning": "Unknown",
+        "fact_source": "Unknown",
+        "platform_session_id": "Unknown",
+        "dispatch_receipt": null
+      },
+      "evaluator": {
+        "alias": "case-E13-evaluator-01",
+        "requested_model": "gpt-5.6-sol",
+        "requested_reasoning": "high",
+        "accepted_model": "Unknown",
+        "accepted_reasoning": "Unknown",
+        "verified_runtime_model": "Unknown",
+        "verified_runtime_reasoning": "Unknown",
+        "fact_source": "Unknown",
+        "platform_session_id": "Unknown",
+        "dispatch_receipt": null
+      },
+      "verdict": "PENDING",
+      "dependent_state": "PENDING_FINAL_M",
+      "limitations": [],
+      "support": [
+        {
+          "kind": "final-M-request",
+          "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E13/attempt-01/support/final-M-request.md",
+          "sha256": "9cce2e8caa36158cb4af7acdff7aa5640085d140ae5aa52f3b0c1546181b1420",
+          "bytes": 3782,
+          "mode": "0444",
+          "frozen": true,
+          "response": null,
+          "actor": {
+            "alias": "case-E13-final-M-01",
+            "requested_model": "gpt-6-astra",
+            "requested_reasoning": "high",
+            "accepted_model": "Unknown",
+            "accepted_reasoning": "Unknown",
+            "verified_runtime_model": "Unknown",
+            "verified_runtime_reasoning": "Unknown",
+            "fact_source": "Unknown",
+            "platform_session_id": "Unknown",
+            "dispatch_receipt": null
+          }
+        }
+      ],
+      "superseded_attempts": []
     }
   ],
   "readiness": {
