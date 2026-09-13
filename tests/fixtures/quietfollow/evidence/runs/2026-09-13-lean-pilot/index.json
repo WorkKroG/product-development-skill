@@ -76,7 +76,7 @@
       "kind": "case",
       "attempt": 1,
       "current": true,
-      "credit": "pending",
+      "credit": "PASS",
       "request": {
         "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E38/attempt-01/request.md",
         "sha256": "42175637d66ea4219015bca3e80e6431cd85dbceb9e952ee94b368c3f44c3d7c",
@@ -95,9 +95,10 @@
         "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E38/attempt-01/evaluation.md",
         "prefix_sha256": "44eaebbc0e93ea4512d07463488039205337a06dee72345381c5b165bdc9fcbc",
         "prefix_bytes": 2589,
-        "whole_sha256": null,
-        "whole_bytes": null,
-        "closed": false
+        "whole_sha256": "f4bb0774a50c1fd8da4847d505ae62f5accba6062588271da153c482e0fb1916",
+        "whole_bytes": 9793,
+        "mode": "0444",
+        "closed": true
       },
       "executor": {
         "alias": "case-E38-executor-01",
@@ -123,13 +124,19 @@
         "accepted_reasoning": "Unknown",
         "verified_runtime_model": "Unknown",
         "verified_runtime_reasoning": "Unknown",
-        "fact_source": "Unknown",
-        "platform_session_id": "Unknown",
-        "dispatch_receipt": null
+        "fact_source": "native dispatch result; exact metadata retained privately",
+        "platform_session_id": "private-nonempty-verified",
+        "dispatch_receipt": {
+          "sha256": "0e5a2706923e8480f3407fb0eb833a477053cab2bab783d2d53ec47f70f03421",
+          "contains_distinct_nonempty_platform_task_identity": true,
+          "public_value_withheld": true
+        }
       },
-      "verdict": "PENDING",
-      "dependent_state": "PENDING_INDEPENDENT_EVALUATION",
-      "limitations": [],
+      "verdict": "PASS",
+      "dependent_state": "GATE_3_5_APPLICABLE_MISSING_OPEN; JOURNEY_BLOCKED",
+      "limitations": [
+        "Static tracked evidence does not independently prove executor runtime/model provenance or every unrecorded transient effect; the response appropriately makes no such claim."
+      ],
       "support": [],
       "superseded_attempts": []
     },
@@ -301,7 +308,7 @@
       "kind": "probe",
       "attempt": 1,
       "current": true,
-      "credit": "pending",
+      "credit": "PASS",
       "request": {
         "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU01/attempt-01/request.md",
         "sha256": "5e191354906dbc130b1ebb21271327131661071a44a564962163eef145a690b7",
@@ -320,9 +327,10 @@
         "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU01/attempt-01/evaluation.md",
         "prefix_sha256": "45bda457cf1c776a7f2ecc959e94a37f61daee8a441b5a5d35210ec873918272",
         "prefix_bytes": 2464,
-        "whole_sha256": null,
-        "whole_bytes": null,
-        "closed": false
+        "whole_sha256": "da675639f90be7a443931a487ac2729891166748e15c2d6d1fd6e3fe27adb333",
+        "whole_bytes": 8135,
+        "mode": "0444",
+        "closed": true
       },
       "executor": {
         "alias": "probe-SU01-executor-01",
@@ -348,13 +356,19 @@
         "accepted_reasoning": "Unknown",
         "verified_runtime_model": "Unknown",
         "verified_runtime_reasoning": "Unknown",
-        "fact_source": "Unknown",
-        "platform_session_id": "Unknown",
-        "dispatch_receipt": null
+        "fact_source": "native dispatch result; exact metadata retained privately",
+        "platform_session_id": "private-nonempty-verified",
+        "dispatch_receipt": {
+          "sha256": "73081ebb7b51f16fe167b6333446c96bdae778e21390857bff362324e888037f",
+          "contains_distinct_nonempty_platform_task_identity": true,
+          "public_value_withheld": true
+        }
       },
-      "verdict": "PENDING",
-      "dependent_state": "PENDING_INDEPENDENT_EVALUATION",
-      "limitations": [],
+      "verdict": "PASS",
+      "dependent_state": "PILOT_ACTIVE; REPORTING_SUBSYSTEM_DEFERRED_WITH_TRIGGER",
+      "limitations": [
+        "Static tracked evidence cannot independently prove historical runtime/model provenance or unrecorded external or transient effects."
+      ],
       "support": [],
       "superseded_attempts": []
     }
