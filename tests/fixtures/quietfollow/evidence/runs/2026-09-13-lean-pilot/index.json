@@ -25,7 +25,7 @@
     "sha256": "44ff96efe60ef9ffefe6b1688f6b800a7bb3d5928d1bb376fabc3a241fa91dc6"
   },
   "current_skill": {
-    "state": "corrected candidate; independent exact-skill review PASS; behavioral pilot evidence correction in progress",
+    "state": "corrected candidate; independent exact-skill review PASS; behavioral pilot corrections complete",
     "identity": "MODULE6-LEAN-SKILL-v1",
     "commit": "0070e4c307e785cfeafae41ee4aa70151de1df7c",
     "tree": "639c579dddec3b4039e347c89952d4f254e628b2",
@@ -3382,7 +3382,7 @@
       "kind": "case",
       "attempt": 3,
       "current": true,
-      "credit": "non-credit",
+      "credit": "PASS",
       "request": {
         "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E41/attempt-03/request.md",
         "sha256": "1da30d08cba2bd562cdfa564539ae8857d01bb737ff6e35010e5571fee5a8966",
@@ -3401,10 +3401,10 @@
         "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E41/attempt-03/evaluation.md",
         "prefix_sha256": "a8fd726417e64b74bb02a2f998bb8024dba83e4a947c0d85c3987d62ff651f83",
         "prefix_bytes": 2455,
-        "whole_sha256": null,
-        "whole_bytes": null,
-        "mode": "0644",
-        "closed": false
+        "whole_sha256": "1b9bcf674f6f96b9bab5230a70efaddd82a08b859378ffe8ac2f76b94e95ca1c",
+        "whole_bytes": 9073,
+        "mode": "0444",
+        "closed": true
       },
       "executor": {
         "alias": "case-E41-executor-03",
@@ -3430,12 +3430,16 @@
         "accepted_reasoning": "Unknown",
         "verified_runtime_model": "Unknown",
         "verified_runtime_reasoning": "Unknown",
-        "fact_source": "Unknown",
-        "platform_session_id": "Unknown",
-        "dispatch_receipt": null
+        "fact_source": "native dispatch result; exact metadata retained privately",
+        "platform_session_id": "private-nonempty-verified",
+        "dispatch_receipt": {
+          "sha256": "161fe93692989b6810a8f43b8fd2e5aa0f82d337057aa0c73bf3c93eaf38a763",
+          "contains_distinct_nonempty_platform_task_identity": true,
+          "public_value_withheld": true
+        }
       },
-      "verdict": "BLOCKED",
-      "dependent_state": "RESPONSE_CLOSED; EVALUATION_PREFIX_FROZEN; EVALUATION_PENDING",
+      "verdict": "PASS",
+      "dependent_state": "GATE_3_5_APPLICABLE_MISSING_OPEN; STRONGEST_UNCERTAINTY_AND_MEASURABLE_SIGNAL_REQUIRED; GATE_4_BLOCKED",
       "limitations": [
         "Attempt 03 corrects the exact attempt-02 evaluation findings without changing candidate or scenario."
       ],
@@ -3448,6 +3452,6 @@
   ],
   "readiness": {
     "claimed": false,
-    "state": "E41_ATTEMPT_03_EVALUATION_PENDING"
+    "state": "BEHAVIOR_MATRIX_COMPLETE_PENDING_REASSEMBLY_AND_EXACT_HEAD_REVIEW"
   }
 }
