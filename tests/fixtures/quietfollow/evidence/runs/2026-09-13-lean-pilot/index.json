@@ -1,6 +1,3 @@
-Warning: truncated output (original token count: 32765)
-Total output lines: 3141
-
 {
   "run_id": "2026-09-13-lean-pilot",
   "plan": {
@@ -1392,7 +1389,273 @@ Total output lines: 3141
       "response": {
         "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E37/attempt-01/response.md",
         "sha256": "81eaed4bf9f131dad6beba1bc8aab1395459c592fb3a061f0917292d93a172aa",
-        "bytes": …2765 tokens truncated…tures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E11/attempt-01/request.md",
+        "bytes": 7311,
+        "mode": "0444",
+        "closed": true
+      },
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E37/attempt-01/evaluation.md",
+        "prefix_sha256": "532843c6c1c2b324dd529df2ff410e46ceaaf424661a4a9e386cbf4134f942fc",
+        "prefix_bytes": 1120,
+        "whole_sha256": "5fc2c20b982a9c331a5b5351acf1f9c8b33f24bddc4c77f175ccbd660b7edb6a",
+        "whole_bytes": 7711,
+        "mode": "0444",
+        "closed": true
+      },
+      "executor": {
+        "alias": "case-E37-executor-01",
+        "requested_model": "gpt-5.6-sol",
+        "requested_reasoning": "high",
+        "accepted_model": "Unknown",
+        "accepted_reasoning": "Unknown",
+        "verified_runtime_model": "Unknown",
+        "verified_runtime_reasoning": "Unknown",
+        "fact_source": "native dispatch result; exact metadata retained privately",
+        "platform_session_id": "private-nonempty-verified",
+        "dispatch_receipt": {
+          "sha256": "692568adf30689b15a7d9629b5c99f3c383a590a96faacfdf76f8e73b6a4008d",
+          "contains_distinct_nonempty_platform_task_identity": true,
+          "public_value_withheld": true
+        }
+      },
+      "evaluator": {
+        "alias": "case-E37-evaluator-01",
+        "requested_model": "gpt-5.6-sol",
+        "requested_reasoning": "high",
+        "accepted_model": "Unknown",
+        "accepted_reasoning": "Unknown",
+        "verified_runtime_model": "Unknown",
+        "verified_runtime_reasoning": "Unknown",
+        "fact_source": "native dispatch result; exact metadata retained privately",
+        "platform_session_id": "private-nonempty-verified",
+        "dispatch_receipt": {
+          "sha256": "516b3c0d3c376538242102b165329a61813e6a18d150b6c1c223468f1a5d0fea",
+          "contains_distinct_nonempty_platform_task_identity": true,
+          "public_value_withheld": true
+        }
+      },
+      "verdict": "PASS",
+      "dependent_state": "GATE_11_APPLICABLE_MISSING; GATE_12_AND_LATER_UNAUTHORIZED",
+      "limitations": [],
+      "support": [],
+      "superseded_attempts": []
+    },
+    {
+      "id": "E41",
+      "kind": "case",
+      "attempt": 1,
+      "current": false,
+      "credit": "non-credit",
+      "request": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E41/attempt-01/request.md",
+        "sha256": "14d1dce80a4be0e6e2bbc1339ecf364153728845ff42759442f0f4b5944769df",
+        "bytes": 1445,
+        "mode": "0444",
+        "frozen": true
+      },
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E41/attempt-01/response.md",
+        "sha256": "2743443530dae89a7a583720a5f03f42abd5ad32863b90177fcb8f97d81b2d3a",
+        "bytes": 5194,
+        "mode": "0444",
+        "closed": true
+      },
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E41/attempt-01/evaluation.md",
+        "prefix_sha256": "bdf19bba2f0912de92f5efc4f9e966fcdd4ab30fa66b33dfea9dd1c013615055",
+        "prefix_bytes": 1130,
+        "whole_sha256": "bd562f25ab6ed30be5bef170680f3656e921d7f91eaaa658be8d1d1e32951074",
+        "whole_bytes": 6386,
+        "mode": "0444",
+        "closed": true
+      },
+      "executor": {
+        "alias": "case-E41-executor-01",
+        "requested_model": "gpt-5.6-sol",
+        "requested_reasoning": "high",
+        "accepted_model": "Unknown",
+        "accepted_reasoning": "Unknown",
+        "verified_runtime_model": "Unknown",
+        "verified_runtime_reasoning": "Unknown",
+        "fact_source": "native dispatch result; exact metadata retained privately",
+        "platform_session_id": "private-nonempty-verified",
+        "dispatch_receipt": {
+          "sha256": "8ef98e46f8246876f2d4e8e96db4a50a289533af8c7c3d47a56b22c6464e5b8c",
+          "contains_distinct_nonempty_platform_task_identity": true,
+          "public_value_withheld": true
+        }
+      },
+      "evaluator": {
+        "alias": "case-E41-evaluator-01",
+        "requested_model": "gpt-5.6-sol",
+        "requested_reasoning": "high",
+        "accepted_model": "Unknown",
+        "accepted_reasoning": "Unknown",
+        "verified_runtime_model": "Unknown",
+        "verified_runtime_reasoning": "Unknown",
+        "fact_source": "native dispatch result; exact metadata retained privately",
+        "platform_session_id": "private-nonempty-verified",
+        "dispatch_receipt": {
+          "sha256": "68fc0a56632ef82b1282740694a637a13dbc80aaec9d910889efc423c72d439d",
+          "contains_distinct_nonempty_platform_task_identity": true,
+          "public_value_withheld": true
+        }
+      },
+      "verdict": "PASS",
+      "dependent_state": "GATE_3_5_APPLICABLE_MISSING_OPEN; GATE_4_FOLLOWS",
+      "limitations": [
+        "Task 9 Change Review M6-CR1-I01 found the response evidence contract incomplete: request-hash verification and/or a real chronological action/result log was not recorded. Original frozen bytes and observed evaluator verdict are preserved as historical non-credit evidence."
+      ],
+      "support": [],
+      "superseded_attempts": [],
+      "superseded_by_attempt": 2
+    },
+    {
+      "id": "E33",
+      "kind": "case",
+      "attempt": 2,
+      "current": true,
+      "credit": "PASS",
+      "request": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E33/attempt-02/request.md",
+        "sha256": "4f8d0c14f9be60eb729b42b416eba0fa843a219ad009bca4a936368c072f94d7",
+        "bytes": 1931,
+        "mode": "0444",
+        "frozen": true
+      },
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E33/attempt-02/response.md",
+        "sha256": "cc7547185c349981384b9b2ac276197ccdc8e346155e3bc32ac9e841a13e522c",
+        "bytes": 4623,
+        "mode": "0444",
+        "closed": true
+      },
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E33/attempt-02/evaluation.md",
+        "prefix_sha256": "9eb2996d9eb2a57c409d1f00f3cb31008c50839263e15c7d3a583b6867c5515f",
+        "prefix_bytes": 1222,
+        "whole_sha256": "79732de146fe56125afaff4069ea9e99ecd71763814603d4a58a87f574e69ed4",
+        "whole_bytes": 6553,
+        "mode": "0444",
+        "closed": true
+      },
+      "executor": {
+        "alias": "case-E33-executor-02",
+        "requested_model": "gpt-5.6-sol",
+        "requested_reasoning": "high",
+        "accepted_model": "Unknown",
+        "accepted_reasoning": "Unknown",
+        "verified_runtime_model": "Unknown",
+        "verified_runtime_reasoning": "Unknown",
+        "fact_source": "native dispatch result; exact metadata retained privately",
+        "platform_session_id": "private-nonempty-verified",
+        "dispatch_receipt": {
+          "sha256": "6ca2b36c37b0e2213ffc56d5fedffec00cf58ff071a69b27db7af8e59c379d5e",
+          "contains_distinct_nonempty_platform_task_identity": true,
+          "public_value_withheld": true
+        }
+      },
+      "evaluator": {
+        "alias": "case-E33-evaluator-02",
+        "requested_model": "gpt-5.6-sol",
+        "requested_reasoning": "high",
+        "accepted_model": "Unknown",
+        "accepted_reasoning": "Unknown",
+        "verified_runtime_model": "Unknown",
+        "verified_runtime_reasoning": "Unknown",
+        "fact_source": "native dispatch result; exact metadata retained privately",
+        "platform_session_id": "private-nonempty-verified",
+        "dispatch_receipt": {
+          "sha256": "3a4520b583d8196c726af9e303ea472a45cd607b8f4e633dee2440cb478f0fe1",
+          "contains_distinct_nonempty_platform_task_identity": true,
+          "public_value_withheld": true
+        }
+      },
+      "verdict": "PASS",
+      "dependent_state": "IN_PROCESS_ARCHITECTURE_COVERED; SEPARATE_SERVICES_DEFERRED_WITH_TRIGGER; REHEARSAL_APPLICABLE_MISSING; PRODUCTION_UNAUTHORIZED",
+      "limitations": [
+        "Attempt 02 restarts E33 after attempt 01 omitted a quantitative revisit threshold; the corrected skill is unchanged."
+      ],
+      "support": [],
+      "superseded_attempts": [
+        1
+      ]
+    },
+    {
+      "id": "E08",
+      "kind": "case",
+      "attempt": 1,
+      "current": true,
+      "credit": "PASS",
+      "request": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E08/attempt-01/request.md",
+        "sha256": "eae612813bf081a010c46449929687ee841fff9c234188dac7ae8c7b57b229aa",
+        "bytes": 1414,
+        "mode": "0444",
+        "frozen": true
+      },
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E08/attempt-01/response.md",
+        "sha256": "a4e4c6c59d172fbf00e66be4f3e673212aaf32f9617896a9dcdcc88f9a76344f",
+        "bytes": 3629,
+        "mode": "0444",
+        "closed": true
+      },
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E08/attempt-01/evaluation.md",
+        "prefix_sha256": "3a3ef56aef1955c567560838f1f34aaad3274315a37d4f1fa7ac8ec13a85a9a2",
+        "prefix_bytes": 1033,
+        "whole_sha256": "6aa18f51bd498f154e51ab0ed48179704ee98834c89d1e9f07446c7df3e4c2c0",
+        "whole_bytes": 6369,
+        "mode": "0444",
+        "closed": true
+      },
+      "executor": {
+        "alias": "case-E08-executor-01",
+        "requested_model": "gpt-5.6-sol",
+        "requested_reasoning": "high",
+        "accepted_model": "Unknown",
+        "accepted_reasoning": "Unknown",
+        "verified_runtime_model": "Unknown",
+        "verified_runtime_reasoning": "Unknown",
+        "fact_source": "native dispatch result; exact metadata retained privately",
+        "platform_session_id": "private-nonempty-verified",
+        "dispatch_receipt": {
+          "sha256": "edad6072653eb052433d0436216e8472da2ce44848513e79200c12725290bac6",
+          "contains_distinct_nonempty_platform_task_identity": true,
+          "public_value_withheld": true
+        }
+      },
+      "evaluator": {
+        "alias": "case-E08-evaluator-01",
+        "requested_model": "gpt-5.6-sol",
+        "requested_reasoning": "high",
+        "accepted_model": "Unknown",
+        "accepted_reasoning": "Unknown",
+        "verified_runtime_model": "Unknown",
+        "verified_runtime_reasoning": "Unknown",
+        "fact_source": "native dispatch result; exact metadata retained privately",
+        "platform_session_id": "private-nonempty-verified",
+        "dispatch_receipt": {
+          "sha256": "f4aa6609f519f1c8ace4b1ca193b69296be8ba28cf9d4ceb875ba37292654944",
+          "contains_distinct_nonempty_platform_task_identity": true,
+          "public_value_withheld": true
+        }
+      },
+      "verdict": "PASS",
+      "dependent_state": "ACTIVE; PLAN_CHANGES_REQUIRED",
+      "limitations": [],
+      "support": [],
+      "superseded_attempts": []
+    },
+    {
+      "id": "E11",
+      "kind": "case",
+      "attempt": 1,
+      "current": false,
+      "credit": "non-credit",
+      "request": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E11/attempt-01/request.md",
         "sha256": "f85006709d6efa801b2245a625a1a040f91bb33f117cab49836936ede02cbcda",
         "bytes": 1396,
         "mode": "0444",
@@ -2344,8 +2607,22 @@ Total output lines: 3141
         "mode": "0444",
         "frozen": true
       },
-      "response": null,
-      "evaluation": null,
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E34/attempt-02/response.md",
+        "sha256": "f38306e2b718920936d4f3af46515e806a47d273c16ecba87af606948b987fbc",
+        "bytes": 4836,
+        "mode": "0444",
+        "closed": true
+      },
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E34/attempt-02/evaluation.md",
+        "prefix_sha256": "b92839c121e0d57cf66517890c129552dd3b5a7941fa195bed39e4f1f12f7e18",
+        "prefix_bytes": 2711,
+        "whole_sha256": null,
+        "whole_bytes": null,
+        "mode": "0644",
+        "closed": false
+      },
       "executor": {
         "alias": "case-E34-executor-02",
         "requested_model": "gpt-5.6-sol",
@@ -2354,9 +2631,13 @@ Total output lines: 3141
         "accepted_reasoning": "Unknown",
         "verified_runtime_model": "Unknown",
         "verified_runtime_reasoning": "Unknown",
-        "fact_source": "Unknown",
-        "platform_session_id": "Unknown",
-        "dispatch_receipt": null
+        "fact_source": "native dispatch result; exact metadata retained privately",
+        "platform_session_id": "private-nonempty-verified",
+        "dispatch_receipt": {
+          "sha256": "0b9bbaec3f88ac042a89b6b3fda3fefd6555b90c00c5fefdfad638d0c721da4c",
+          "contains_distinct_nonempty_platform_task_identity": true,
+          "public_value_withheld": true
+        }
       },
       "evaluator": {
         "alias": "case-E34-evaluator-02",
@@ -2371,7 +2652,7 @@ Total output lines: 3141
         "dispatch_receipt": null
       },
       "verdict": "BLOCKED",
-      "dependent_state": "CORRECTION_ATTEMPT_REQUEST_FROZEN; EXECUTION_PENDING",
+      "dependent_state": "RESPONSE_CLOSED; EVALUATION_PREFIX_FROZEN; EVALUATION_PENDING",
       "limitations": [
         "Fresh attempt required by exact-head Change Review M6-CR1-I01; candidate and scenario are unchanged."
       ],
@@ -2393,8 +2674,22 @@ Total output lines: 3141
         "mode": "0444",
         "frozen": true
       },
-      "response": null,
-      "evaluation": null,
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E41/attempt-02/response.md",
+        "sha256": "2d84d73ebd8e6041f1562734b02100d3769a2882f9e652b9a1a495d75ff2e85a",
+        "bytes": 5394,
+        "mode": "0444",
+        "closed": true
+      },
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E41/attempt-02/evaluation.md",
+        "prefix_sha256": "e3d63a965b7f8b29cfeaf2f5f15ec6a89988cc1428670a138c1fbce9d6e79f39",
+        "prefix_bytes": 2711,
+        "whole_sha256": null,
+        "whole_bytes": null,
+        "mode": "0644",
+        "closed": false
+      },
       "executor": {
         "alias": "case-E41-executor-02",
         "requested_model": "gpt-5.6-sol",
@@ -2403,9 +2698,13 @@ Total output lines: 3141
         "accepted_reasoning": "Unknown",
         "verified_runtime_model": "Unknown",
         "verified_runtime_reasoning": "Unknown",
-        "fact_source": "Unknown",
-        "platform_session_id": "Unknown",
-        "dispatch_receipt": null
+        "fact_source": "native dispatch result; exact metadata retained privately",
+        "platform_session_id": "private-nonempty-verified",
+        "dispatch_receipt": {
+          "sha256": "8adc2bc73d513bfcae0f2f9f2e73be83b17fe874906ccbbfa1c829026dbcb567",
+          "contains_distinct_nonempty_platform_task_identity": true,
+          "public_value_withheld": true
+        }
       },
       "evaluator": {
         "alias": "case-E41-evaluator-02",
@@ -2420,7 +2719,7 @@ Total output lines: 3141
         "dispatch_receipt": null
       },
       "verdict": "BLOCKED",
-      "dependent_state": "CORRECTION_ATTEMPT_REQUEST_FROZEN; EXECUTION_PENDING",
+      "dependent_state": "RESPONSE_CLOSED; EVALUATION_PREFIX_FROZEN; EVALUATION_PENDING",
       "limitations": [
         "Fresh attempt required by exact-head Change Review M6-CR1-I01; candidate and scenario are unchanged."
       ],
@@ -2442,8 +2741,22 @@ Total output lines: 3141
         "mode": "0444",
         "frozen": true
       },
-      "response": null,
-      "evaluation": null,
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E11/attempt-02/response.md",
+        "sha256": "1a31e78926806ea9a268ed5c778904860ecfc138cac8c5e6034d6c1e031a409f",
+        "bytes": 3883,
+        "mode": "0444",
+        "closed": true
+      },
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E11/attempt-02/evaluation.md",
+        "prefix_sha256": "c8bfe74c7f6ccf0b21bf33230d6f0032bafa5c8889b3c9d7e5cfb8575079e2d8",
+        "prefix_bytes": 2711,
+        "whole_sha256": null,
+        "whole_bytes": null,
+        "mode": "0644",
+        "closed": false
+      },
       "executor": {
         "alias": "case-E11-executor-02",
         "requested_model": "gpt-5.6-sol",
@@ -2452,9 +2765,13 @@ Total output lines: 3141
         "accepted_reasoning": "Unknown",
         "verified_runtime_model": "Unknown",
         "verified_runtime_reasoning": "Unknown",
-        "fact_source": "Unknown",
-        "platform_session_id": "Unknown",
-        "dispatch_receipt": null
+        "fact_source": "native dispatch result; exact metadata retained privately",
+        "platform_session_id": "private-nonempty-verified",
+        "dispatch_receipt": {
+          "sha256": "c6dcb30b30fb39283d87b617ce93f515df0d8a232310472be6d8088835a3677d",
+          "contains_distinct_nonempty_platform_task_identity": true,
+          "public_value_withheld": true
+        }
       },
       "evaluator": {
         "alias": "case-E11-evaluator-02",
@@ -2469,7 +2786,7 @@ Total output lines: 3141
         "dispatch_receipt": null
       },
       "verdict": "BLOCKED",
-      "dependent_state": "CORRECTION_ATTEMPT_REQUEST_FROZEN; EXECUTION_PENDING",
+      "dependent_state": "RESPONSE_CLOSED; EVALUATION_PREFIX_FROZEN; EVALUATION_PENDING",
       "limitations": [
         "Fresh attempt required by exact-head Change Review M6-CR1-I01; candidate and scenario are unchanged."
       ],
@@ -2491,8 +2808,22 @@ Total output lines: 3141
         "mode": "0444",
         "frozen": true
       },
-      "response": null,
-      "evaluation": null,
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E17/attempt-02/response.md",
+        "sha256": "fc0337f27502d93289d918f962928755d9735ab5886bd86a83bae12f4eb54fa9",
+        "bytes": 4399,
+        "mode": "0444",
+        "closed": true
+      },
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E17/attempt-02/evaluation.md",
+        "prefix_sha256": "26d07e4650de45dc139c13be089bde4d885ceb3e17bc028363f19eddc467f4c1",
+        "prefix_bytes": 2711,
+        "whole_sha256": null,
+        "whole_bytes": null,
+        "mode": "0644",
+        "closed": false
+      },
       "executor": {
         "alias": "case-E17-executor-02",
         "requested_model": "gpt-5.6-sol",
@@ -2501,9 +2832,13 @@ Total output lines: 3141
         "accepted_reasoning": "Unknown",
         "verified_runtime_model": "Unknown",
         "verified_runtime_reasoning": "Unknown",
-        "fact_source": "Unknown",
-        "platform_session_id": "Unknown",
-        "dispatch_receipt": null
+        "fact_source": "native dispatch result; exact metadata retained privately",
+        "platform_session_id": "private-nonempty-verified",
+        "dispatch_receipt": {
+          "sha256": "39fd55117adcd5dd1c30126c76f70724cb64319f6a87c8ee642f16b93cc0687e",
+          "contains_distinct_nonempty_platform_task_identity": true,
+          "public_value_withheld": true
+        }
       },
       "evaluator": {
         "alias": "case-E17-evaluator-02",
@@ -2518,7 +2853,7 @@ Total output lines: 3141
         "dispatch_receipt": null
       },
       "verdict": "BLOCKED",
-      "dependent_state": "CORRECTION_ATTEMPT_REQUEST_FROZEN; EXECUTION_PENDING",
+      "dependent_state": "RESPONSE_CLOSED; EVALUATION_PREFIX_FROZEN; EVALUATION_PENDING",
       "limitations": [
         "Fresh attempt required by exact-head Change Review M6-CR1-I01; candidate and scenario are unchanged."
       ],
@@ -2540,8 +2875,22 @@ Total output lines: 3141
         "mode": "0444",
         "frozen": true
       },
-      "response": null,
-      "evaluation": null,
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E20/attempt-02/response.md",
+        "sha256": "55129a21e32798f5bf78b41ce822743541c66d572943ef0cf22fe2433214dd53",
+        "bytes": 3781,
+        "mode": "0444",
+        "closed": true
+      },
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E20/attempt-02/evaluation.md",
+        "prefix_sha256": "83b0a1d133449258318ab1de9d79701a45e30c4c486705d4547e107f166ebc17",
+        "prefix_bytes": 2711,
+        "whole_sha256": null,
+        "whole_bytes": null,
+        "mode": "0644",
+        "closed": false
+      },
       "executor": {
         "alias": "case-E20-executor-02",
         "requested_model": "gpt-5.6-sol",
@@ -2550,9 +2899,13 @@ Total output lines: 3141
         "accepted_reasoning": "Unknown",
         "verified_runtime_model": "Unknown",
         "verified_runtime_reasoning": "Unknown",
-        "fact_source": "Unknown",
-        "platform_session_id": "Unknown",
-        "dispatch_receipt": null
+        "fact_source": "native dispatch result; exact metadata retained privately",
+        "platform_session_id": "private-nonempty-verified",
+        "dispatch_receipt": {
+          "sha256": "2533dc14198440626e54a6f14d76635aa43defe272b9dacdc7d6ad62f59836a9",
+          "contains_distinct_nonempty_platform_task_identity": true,
+          "public_value_withheld": true
+        }
       },
       "evaluator": {
         "alias": "case-E20-evaluator-02",
@@ -2567,7 +2920,7 @@ Total output lines: 3141
         "dispatch_receipt": null
       },
       "verdict": "BLOCKED",
-      "dependent_state": "CORRECTION_ATTEMPT_REQUEST_FROZEN; EXECUTION_PENDING",
+      "dependent_state": "RESPONSE_CLOSED; EVALUATION_PREFIX_FROZEN; EVALUATION_PENDING",
       "limitations": [
         "Fresh attempt required by exact-head Change Review M6-CR1-I01; candidate and scenario are unchanged."
       ],
@@ -2589,8 +2942,22 @@ Total output lines: 3141
         "mode": "0444",
         "frozen": true
       },
-      "response": null,
-      "evaluation": null,
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E21/attempt-02/response.md",
+        "sha256": "2ea34c7bdd020208207229a667d4243c2919bf718652b8aa9951c477ade0e1ee",
+        "bytes": 3144,
+        "mode": "0444",
+        "closed": true
+      },
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E21/attempt-02/evaluation.md",
+        "prefix_sha256": "4cffefeb4be71feb4a823b8c243a5cf0622100872ff935232b6225f7c3780b6e",
+        "prefix_bytes": 2711,
+        "whole_sha256": null,
+        "whole_bytes": null,
+        "mode": "0644",
+        "closed": false
+      },
       "executor": {
         "alias": "case-E21-executor-02",
         "requested_model": "gpt-5.6-sol",
@@ -2599,9 +2966,13 @@ Total output lines: 3141
         "accepted_reasoning": "Unknown",
         "verified_runtime_model": "Unknown",
         "verified_runtime_reasoning": "Unknown",
-        "fact_source": "Unknown",
-        "platform_session_id": "Unknown",
-        "dispatch_receipt": null
+        "fact_source": "native dispatch result; exact metadata retained privately",
+        "platform_session_id": "private-nonempty-verified",
+        "dispatch_receipt": {
+          "sha256": "f7b16c4eb31a8ff9aa69f04ac5749c102f7d6c22a89355832b5300ef48d25224",
+          "contains_distinct_nonempty_platform_task_identity": true,
+          "public_value_withheld": true
+        }
       },
       "evaluator": {
         "alias": "case-E21-evaluator-02",
@@ -2616,7 +2987,7 @@ Total output lines: 3141
         "dispatch_receipt": null
       },
       "verdict": "BLOCKED",
-      "dependent_state": "CORRECTION_ATTEMPT_REQUEST_FROZEN; EXECUTION_PENDING",
+      "dependent_state": "RESPONSE_CLOSED; EVALUATION_PREFIX_FROZEN; EVALUATION_PENDING",
       "limitations": [
         "Fresh attempt required by exact-head Change Review M6-CR1-I01; candidate and scenario are unchanged."
       ],
@@ -2638,8 +3009,22 @@ Total output lines: 3141
         "mode": "0444",
         "frozen": true
       },
-      "response": null,
-      "evaluation": null,
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E22/attempt-02/response.md",
+        "sha256": "eb3e6e487a35a8145ff4c61025a8ddb4edd97c4e7e7283444d00383059d1b2f7",
+        "bytes": 5143,
+        "mode": "0444",
+        "closed": true
+      },
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E22/attempt-02/evaluation.md",
+        "prefix_sha256": "f8defec5ca2825caae896405151e33ade589d50132eaec666a168b06161e55f5",
+        "prefix_bytes": 2711,
+        "whole_sha256": null,
+        "whole_bytes": null,
+        "mode": "0644",
+        "closed": false
+      },
       "executor": {
         "alias": "case-E22-executor-02",
         "requested_model": "gpt-5.6-sol",
@@ -2648,9 +3033,13 @@ Total output lines: 3141
         "accepted_reasoning": "Unknown",
         "verified_runtime_model": "Unknown",
         "verified_runtime_reasoning": "Unknown",
-        "fact_source": "Unknown",
-        "platform_session_id": "Unknown",
-        "dispatch_receipt": null
+        "fact_source": "native dispatch result; exact metadata retained privately",
+        "platform_session_id": "private-nonempty-verified",
+        "dispatch_receipt": {
+          "sha256": "8f65deeffb090a88287aa878aeb08dabc75d5912c45c98c0a589a39d15506854",
+          "contains_distinct_nonempty_platform_task_identity": true,
+          "public_value_withheld": true
+        }
       },
       "evaluator": {
         "alias": "case-E22-evaluator-02",
@@ -2665,7 +3054,7 @@ Total output lines: 3141
         "dispatch_receipt": null
       },
       "verdict": "BLOCKED",
-      "dependent_state": "CORRECTION_ATTEMPT_REQUEST_FROZEN; EXECUTION_PENDING",
+      "dependent_state": "RESPONSE_CLOSED; EVALUATION_PREFIX_FROZEN; EVALUATION_PENDING",
       "limitations": [
         "Fresh attempt required by exact-head Change Review M6-CR1-I01; candidate and scenario are unchanged."
       ],
@@ -2687,8 +3076,22 @@ Total output lines: 3141
         "mode": "0444",
         "frozen": true
       },
-      "response": null,
-      "evaluation": null,
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU02/attempt-02/response.md",
+        "sha256": "a45411c0aaa117a9392047174748ff7ee1a72f075a30c3f94ed00ad2ff468713",
+        "bytes": 3679,
+        "mode": "0444",
+        "closed": true
+      },
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU02/attempt-02/evaluation.md",
+        "prefix_sha256": "0d7596e227b7279d67283781c809484630f9951430430d30ce3da2dda75bd82b",
+        "prefix_bytes": 2720,
+        "whole_sha256": null,
+        "whole_bytes": null,
+        "mode": "0644",
+        "closed": false
+      },
       "executor": {
         "alias": "probe-SU02-executor-02",
         "requested_model": "gpt-5.6-sol",
@@ -2697,9 +3100,13 @@ Total output lines: 3141
         "accepted_reasoning": "Unknown",
         "verified_runtime_model": "Unknown",
         "verified_runtime_reasoning": "Unknown",
-        "fact_source": "Unknown",
-        "platform_session_id": "Unknown",
-        "dispatch_receipt": null
+        "fact_source": "native dispatch result; exact metadata retained privately",
+        "platform_session_id": "private-nonempty-verified",
+        "dispatch_receipt": {
+          "sha256": "1c4e0b83a6c152e46448c976a2341b0bff5d9c6b55323177da0397f5ec0ac800",
+          "contains_distinct_nonempty_platform_task_identity": true,
+          "public_value_withheld": true
+        }
       },
       "evaluator": {
         "alias": "probe-SU02-evaluator-02",
@@ -2714,7 +3121,7 @@ Total output lines: 3141
         "dispatch_receipt": null
       },
       "verdict": "BLOCKED",
-      "dependent_state": "CORRECTION_ATTEMPT_REQUEST_FROZEN; EXECUTION_PENDING",
+      "dependent_state": "RESPONSE_CLOSED; EVALUATION_PREFIX_FROZEN; EVALUATION_PENDING",
       "limitations": [
         "Fresh attempt required by exact-head Change Review M6-CR1-I01; candidate and scenario are unchanged."
       ],
@@ -2736,8 +3143,22 @@ Total output lines: 3141
         "mode": "0444",
         "frozen": true
       },
-      "response": null,
-      "evaluation": null,
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU03/attempt-02/response.md",
+        "sha256": "9137eaf83912204ceef8e7d400b66c4bca49f7af3f2499a19716596de9b82c3d",
+        "bytes": 5533,
+        "mode": "0444",
+        "closed": true
+      },
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU03/attempt-02/evaluation.md",
+        "prefix_sha256": "5997ea980c2ad689b0f46cf373752878a9010f6677fb7c79b70d833bef84146c",
+        "prefix_bytes": 2720,
+        "whole_sha256": null,
+        "whole_bytes": null,
+        "mode": "0644",
+        "closed": false
+      },
       "executor": {
         "alias": "probe-SU03-executor-02",
         "requested_model": "gpt-5.6-sol",
@@ -2746,9 +3167,13 @@ Total output lines: 3141
         "accepted_reasoning": "Unknown",
         "verified_runtime_model": "Unknown",
         "verified_runtime_reasoning": "Unknown",
-        "fact_source": "Unknown",
-        "platform_session_id": "Unknown",
-        "dispatch_receipt": null
+        "fact_source": "native dispatch result; exact metadata retained privately",
+        "platform_session_id": "private-nonempty-verified",
+        "dispatch_receipt": {
+          "sha256": "9af94d2f89bc5dedc28c1dd97b064e6ec7f0aaebfba6dc1ceb3cb0bafb626aed",
+          "contains_distinct_nonempty_platform_task_identity": true,
+          "public_value_withheld": true
+        }
       },
       "evaluator": {
         "alias": "probe-SU03-evaluator-02",
@@ -2763,7 +3188,7 @@ Total output lines: 3141
         "dispatch_receipt": null
       },
       "verdict": "BLOCKED",
-      "dependent_state": "CORRECTION_ATTEMPT_REQUEST_FROZEN; EXECUTION_PENDING",
+      "dependent_state": "RESPONSE_CLOSED; EVALUATION_PREFIX_FROZEN; EVALUATION_PENDING",
       "limitations": [
         "Fresh attempt required by exact-head Change Review M6-CR1-I01; candidate and scenario are unchanged."
       ],
@@ -2785,8 +3210,22 @@ Total output lines: 3141
         "mode": "0444",
         "frozen": true
       },
-      "response": null,
-      "evaluation": null,
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU04/attempt-02/response.md",
+        "sha256": "cf30195342b71e1044156eec3109d71ac000f554d43e147e0452605701f41139",
+        "bytes": 4271,
+        "mode": "0444",
+        "closed": true
+      },
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU04/attempt-02/evaluation.md",
+        "prefix_sha256": "7628f9aa3c4c2665287c1bada514174b95fa4fed00f429e8dc9ef6116b4a9825",
+        "prefix_bytes": 2720,
+        "whole_sha256": null,
+        "whole_bytes": null,
+        "mode": "0644",
+        "closed": false
+      },
       "executor": {
         "alias": "probe-SU04-executor-02",
         "requested_model": "gpt-5.6-sol",
@@ -2795,9 +3234,13 @@ Total output lines: 3141
         "accepted_reasoning": "Unknown",
         "verified_runtime_model": "Unknown",
         "verified_runtime_reasoning": "Unknown",
-        "fact_source": "Unknown",
-        "platform_session_id": "Unknown",
-        "dispatch_receipt": null
+        "fact_source": "native dispatch result; exact metadata retained privately",
+        "platform_session_id": "private-nonempty-verified",
+        "dispatch_receipt": {
+          "sha256": "82e470610bf8c67c899f38f475442f888014720d975faadf04dfde45066c9f52",
+          "contains_distinct_nonempty_platform_task_identity": true,
+          "public_value_withheld": true
+        }
       },
       "evaluator": {
         "alias": "probe-SU04-evaluator-02",
@@ -2812,7 +3255,7 @@ Total output lines: 3141
         "dispatch_receipt": null
       },
       "verdict": "BLOCKED",
-      "dependent_state": "CORRECTION_ATTEMPT_REQUEST_FROZEN; EXECUTION_PENDING",
+      "dependent_state": "RESPONSE_CLOSED; EVALUATION_PREFIX_FROZEN; EVALUATION_PENDING",
       "limitations": [
         "Fresh attempt required by exact-head Change Review M6-CR1-I01; candidate and scenario are unchanged."
       ],
@@ -2834,8 +3277,22 @@ Total output lines: 3141
         "mode": "0444",
         "frozen": true
       },
-      "response": null,
-      "evaluation": null,
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU06/attempt-02/response.md",
+        "sha256": "41c772dba1ba995cd7847f894c18282f848abaf8079cf68ffa0f67f2f17b5763",
+        "bytes": 5789,
+        "mode": "0444",
+        "closed": true
+      },
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/probes/SU06/attempt-02/evaluation.md",
+        "prefix_sha256": "ffa5e1a04903a0f2b9fbba9fd03e416f569adc598723d16d19649eabf2eeaeb5",
+        "prefix_bytes": 2720,
+        "whole_sha256": null,
+        "whole_bytes": null,
+        "mode": "0644",
+        "closed": false
+      },
       "executor": {
         "alias": "probe-SU06-executor-02",
         "requested_model": "gpt-5.6-sol",
@@ -2844,9 +3301,13 @@ Total output lines: 3141
         "accepted_reasoning": "Unknown",
         "verified_runtime_model": "Unknown",
         "verified_runtime_reasoning": "Unknown",
-        "fact_source": "Unknown",
-        "platform_session_id": "Unknown",
-        "dispatch_receipt": null
+        "fact_source": "native dispatch result; exact metadata retained privately",
+        "platform_session_id": "private-nonempty-verified",
+        "dispatch_receipt": {
+          "sha256": "763cb7d7a72773083807f6fb5b893cef3554148f9f4ad5b7a7624ad11d89259c",
+          "contains_distinct_nonempty_platform_task_identity": true,
+          "public_value_withheld": true
+        }
       },
       "evaluator": {
         "alias": "probe-SU06-evaluator-02",
@@ -2861,7 +3322,7 @@ Total output lines: 3141
         "dispatch_receipt": null
       },
       "verdict": "BLOCKED",
-      "dependent_state": "CORRECTION_ATTEMPT_REQUEST_FROZEN; EXECUTION_PENDING",
+      "dependent_state": "RESPONSE_CLOSED; EVALUATION_PREFIX_FROZEN; EVALUATION_PENDING",
       "limitations": [
         "Fresh attempt required by exact-head Change Review M6-CR1-I01; candidate and scenario are unchanged."
       ],
@@ -2873,6 +3334,6 @@ Total output lines: 3141
   ],
   "readiness": {
     "claimed": false,
-    "state": "CORRECTION_ATTEMPTS_IN_PROGRESS"
+    "state": "CORRECTION_EVALUATIONS_PENDING"
   }
 }

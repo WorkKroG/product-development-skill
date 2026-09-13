@@ -1,0 +1,19 @@
+# Task-coordinator response
+
+I bind the owner's approval to the already recorded identity of local plan v2 and its exact checksum. The approval authorizes only the next action already contained in that plan; scope, non-goals, shared architecture and contracts, dependencies and task order, cost, risk, schedule, merge, and release authority remain unchanged.
+
+The Task record must preserve one identity-bound local-decision record: plan v2 and its checksum, the owner as decision authority in this Task, the approval outcome, the existing scope and non-goals, consequences and material risks already presented, approved boundaries, and the next authorized action. Any existing independent PLAN result and exact base remain attached to their recorded identities; this event does not create missing evidence or silently refresh an invalidated review.
+
+Upward reporting is limited to a project-state transition. If this approval changes the recorded module state from planning to delivery, report `ACTIVE` once with the Task identity, a short reason that exact plan v2 was approved and bounded delivery may begin, and a pointer to the versioned Task decision record. No requested decision is included. If the Task was already `ACTIVE`, send nothing because the state is unchanged.
+
+The local approval itself is not relayed to Product for approval, and Product is not asked to approve it again. Ordinary implementation details, the complete decision package, internal agent logs, and full conversation transcripts also remain in Task. Product becomes involved only if later evidence crosses a shared architecture or contract boundary, project scope, dependency or ordering boundary, or creates a material cost, risk, or schedule change.
+
+The next bounded action is to reconcile the unchanged plan identity and exact base, then prepare the first already-approved Work Item package for its Implementation session with permitted paths, acceptance criteria, checks, constraints, and reporting identity. This action exits when Implementation returns a stable candidate identity, changed paths, fresh check results, limitations, and the next review handoff, or earlier if evidence requires an `ESCALATION_REQUIRED` transition; only the affected work pauses in that case. No merge or release is authorized.
+
+## Chronological operation log
+
+1. Computed SHA-256 for `tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E11/attempt-02/request.md` before scenario reasoning; exit 0; result `b77ff6e39176b39fdd23857301fb1a11249b69ecd5187c7f30be03fac36440e4`, exactly matching the coordinator-supplied dispatch hash.
+2. Read the mandatory platform skill-discovery note and the complete 30-line request in one bounded read-only action; exit 0; result: the platform note explicitly exempts a specifically dispatched executor from its general workflow, and the frozen event, boundaries, and evidence contract were loaded.
+3. Enumerated repository `SKILL.md` paths to resolve the corrected candidate; exit 0; result: identified `skills/product-development-workflow/SKILL.md` as the active corrected skill and distinguished it from the preserved historical baseline.
+4. Counted and read all 96 lines of `skills/product-development-workflow/SKILL.md`; exit 0; result: loaded the Task/Product authority split, local-decision rule, event vocabulary, and required delivery-coordination references.
+5. Counted and read the complete linked coordination reference and delivery templates—380 lines total across `skills/product-development-workflow/references/agentic-development.md`, `skills/product-development-workflow/assets/role-prompts.md`, and `skills/product-development-workflow/assets/work-item-and-review-templates.md`; exit 0; result: confirmed identity-bound approval, transition-only upward reporting, non-relay of local decisions, and the bounded next-action contract used above.
