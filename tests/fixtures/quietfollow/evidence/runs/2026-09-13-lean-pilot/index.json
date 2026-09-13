@@ -793,8 +793,21 @@
         "mode": "0444",
         "frozen": true
       },
-      "response": null,
-      "evaluation": null,
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E13/attempt-02/response.md",
+        "sha256": "3563c9a3051510e3990f7b65fcf5bc5460b5e4d982e85f808a17b9ae789b4f9c",
+        "bytes": 4520,
+        "mode": "0444",
+        "closed": true
+      },
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E13/attempt-02/evaluation.md",
+        "prefix_sha256": "f3a6d07c9e6ff30c591c9ebda8ae255a3afca184f1e551347a9c3754d9ce7e7a",
+        "prefix_bytes": 2640,
+        "whole_sha256": null,
+        "whole_bytes": null,
+        "closed": false
+      },
       "executor": {
         "alias": "case-E13-executor-02",
         "requested_model": "gpt-5.6-sol",
@@ -803,9 +816,13 @@
         "accepted_reasoning": "Unknown",
         "verified_runtime_model": "Unknown",
         "verified_runtime_reasoning": "Unknown",
-        "fact_source": "Unknown",
-        "platform_session_id": "Unknown",
-        "dispatch_receipt": null
+        "fact_source": "native dispatch result; exact metadata retained privately",
+        "platform_session_id": "private-nonempty-verified",
+        "dispatch_receipt": {
+          "sha256": "dc3b27d8d80e58ce6b5e4aa1c9191d70a673195c0997376f93326f2dce2a971a",
+          "contains_distinct_nonempty_platform_task_identity": true,
+          "public_value_withheld": true
+        }
       },
       "evaluator": {
         "alias": "case-E13-evaluator-02",
@@ -820,7 +837,7 @@
         "dispatch_receipt": null
       },
       "verdict": "PENDING",
-      "dependent_state": "PENDING_OUTER_EXECUTION",
+      "dependent_state": "PENDING_INDEPENDENT_EVALUATION",
       "limitations": [
         "Attempt 02 restarts only E13 after attempt 01 was quarantined for a public privacy violation; M remains unchanged."
       ],
