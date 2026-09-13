@@ -4,6 +4,19 @@ Use this reference to classify evidence for the current product scope and maturi
 
 Keep common lifecycle and quality rules in the distributed skill. Keep product-specific configuration and decisions in the project's profile, guidance, and status pointer. Keep live Issue, PR, CI, and merge state in GitHub. Keep transient executable paths, access-check observations, and current task identities in runtime handoffs rather than shared templates.
 
+## Guarantees and mechanisms
+
+Preservation of raw results, independent review, version freshness, safety, and privacy are
+guarantees. Markdown or JSON, custom validators, and dedicated recorder roles are possible
+mechanisms, not guarantees themselves. A reviewer identifies the violated guarantee and
+observable harm. It may assess candidate corrections, but it cannot impose a new
+architecture as the only correction without the decision required for material scope.
+
+Safety and privacy remain non-negotiable when applicable. Simplifying a mechanism,
+stopping an unproductive correction cycle, or lacking a preferred tool never converts a
+missing safety or privacy guarantee into PASS; block only the transition that depends on it
+and name the evidence or correction needed.
+
 ## Evidence states
 
 - **applicable-covered** — required in the current scope/stage and supported by current identified evidence that meets the gate's exit need.

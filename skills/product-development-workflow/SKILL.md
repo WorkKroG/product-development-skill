@@ -23,10 +23,11 @@ Do not mix two active versions. Never silently replace a shared or globally inst
 
 For the canonical gates and maturity transitions, read [the lifecycle reference](references/lifecycle.md). For Gate 3.5 or Gate 8, read [the financial model reference](references/financial-model.md).
 
-Read [quality gates](references/quality-gates.md) when classifying applicability or evidence, auditing readiness, or preparing verification or release. Before relying on user-owned tasks, native messages or waits, model assignment, recovery, GitHub service access, or a platform denial, read [Codex runtime boundaries](references/codex-runtime.md). Before a stage depends on a specialist capability, model, tool, or fallback, read [dependency boundaries](references/dependencies.md).
+Read [quality gates](references/quality-gates.md) when classifying applicability or evidence, distinguishing a required guarantee from its implementation mechanism, auditing readiness, or preparing verification or release. Before relying on user-owned tasks, native messages or waits, model assignment, recovery, GitHub service access, or a platform denial, read [Codex runtime boundaries](references/codex-runtime.md). Before a stage depends on a specialist capability, model, tool, or fallback, read [dependency boundaries](references/dependencies.md).
 
 When an approved module needs planning, implementation, review, integration, escalation,
-or recovery, read [agentic delivery coordination](references/agentic-development.md). Adapt
+or recovery, read [agentic delivery coordination](references/agentic-development.md) for
+product-and-process proportionality, correction stopping, goal-change, and recovery behavior. Adapt
 the bounded [delivery role prompts](assets/role-prompts.md) and the applicable
 [work item and review templates](assets/work-item-and-review-templates.md); do not turn
 them into a second live status system.

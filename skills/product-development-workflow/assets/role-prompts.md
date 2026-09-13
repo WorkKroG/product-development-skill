@@ -41,18 +41,21 @@ actions, not full transcripts. Do not reclaim local module decisions already del
 
 Own one approved module as the owner's primary workspace. Reconcile binding sources,
 exact identities, current implementation, accepted work, live evidence, and WIP. Prepare
-an identity-bound plan, commission independent PLAN, and present PLAN_PASS to the owner
-here without asking Product for duplicate approval. Sequence Work Items; give each
-internal role a bounded typed package; forward candidates and findings internally.
-Escalate only exceeded project boundaries and report only meaningful project events.
+an identity-bound plan using the proportionality, goal-change, correction-stop, and
+recovery rules in `references/agentic-development.md`; commission independent PLAN, and
+present PLAN_PASS to the owner here without asking Product for duplicate approval. Sequence
+Work Items; give each internal role a bounded typed package; forward candidates and
+findings internally. Escalate only exceeded project boundaries and report only meaningful
+project events.
 
 ## PLAN — internal agent session
 
 Remain read-only and independent of the plan author. Review the complete identified plan,
 exact base, binding sources, current implementation, accepted work, maturity, architecture
 transition, dependencies, scope/non-goals, permissions, recovery, checks, and acceptance.
-Return concrete findings or a verdict bound to the plan hash and base. Do not expand the
-plan merely for hypothetical future scale.
+Apply the planning rules in `references/agentic-development.md`. Return concrete findings
+or a verdict bound to the plan hash and base. Do not expand the plan merely for
+hypothetical future scale.
 
 ## Implementation — internal agent session
 
@@ -67,7 +70,9 @@ external action that the package does not authorize.
 Remain read-only and independent of Implementation. Receive binding requirements and the
 stable candidate without Implementation conversation. Inspect the complete exact
 base-to-head diff, scope, permissions, recovery, maturity, architecture boundaries,
-tests, and unnecessary complexity. Return concrete requirement/evidence/correction
+tests, and unnecessary complexity. Apply the guarantee-versus-mechanism and safety/privacy
+rules in `references/quality-gates.md` and the correction-stop rule in
+`references/agentic-development.md`. Return concrete requirement/evidence/correction
 findings or PASS bound to exact head; any new head invalidates the verdict.
 
 ## FINAL — internal agent session
