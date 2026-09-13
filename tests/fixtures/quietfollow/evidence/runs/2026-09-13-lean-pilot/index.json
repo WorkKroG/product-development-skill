@@ -3390,8 +3390,22 @@
         "mode": "0444",
         "frozen": true
       },
-      "response": null,
-      "evaluation": null,
+      "response": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E41/attempt-03/response.md",
+        "sha256": "d129726c25e9aae58f0058d2eeb86502f34e2ec42a8fead64370955896bfc41e",
+        "bytes": 7970,
+        "mode": "0444",
+        "closed": true
+      },
+      "evaluation": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E41/attempt-03/evaluation.md",
+        "prefix_sha256": "a8fd726417e64b74bb02a2f998bb8024dba83e4a947c0d85c3987d62ff651f83",
+        "prefix_bytes": 2455,
+        "whole_sha256": null,
+        "whole_bytes": null,
+        "mode": "0644",
+        "closed": false
+      },
       "executor": {
         "alias": "case-E41-executor-03",
         "requested_model": "gpt-5.6-sol",
@@ -3400,9 +3414,13 @@
         "accepted_reasoning": "Unknown",
         "verified_runtime_model": "Unknown",
         "verified_runtime_reasoning": "Unknown",
-        "fact_source": "Unknown",
-        "platform_session_id": "Unknown",
-        "dispatch_receipt": null
+        "fact_source": "native dispatch result; exact metadata retained privately",
+        "platform_session_id": "private-nonempty-verified",
+        "dispatch_receipt": {
+          "sha256": "f13130a361a428c9b8cb675d47a10baadedd8cbb896088942c4ddde165ad6139",
+          "contains_distinct_nonempty_platform_task_identity": true,
+          "public_value_withheld": true
+        }
       },
       "evaluator": {
         "alias": "case-E41-evaluator-03",
@@ -3417,7 +3435,7 @@
         "dispatch_receipt": null
       },
       "verdict": "BLOCKED",
-      "dependent_state": "ATTEMPT_03_REQUEST_FROZEN; EXECUTION_PENDING",
+      "dependent_state": "RESPONSE_CLOSED; EVALUATION_PREFIX_FROZEN; EVALUATION_PENDING",
       "limitations": [
         "Attempt 03 corrects the exact attempt-02 evaluation findings without changing candidate or scenario."
       ],
@@ -3430,6 +3448,6 @@
   ],
   "readiness": {
     "claimed": false,
-    "state": "E41_ATTEMPT_03_IN_PROGRESS"
+    "state": "E41_ATTEMPT_03_EVALUATION_PENDING"
   }
 }
