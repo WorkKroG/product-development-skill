@@ -1215,7 +1215,7 @@
       "request": null, "response": null, "evaluation": null,
       "executor": {"alias": "case-E10-executor-01", "requested_model": "gpt-5.6-sol", "requested_reasoning": "high", "accepted_model": "Unknown", "accepted_reasoning": "Unknown", "verified_runtime_model": "Unknown", "verified_runtime_reasoning": "Unknown", "fact_source": "Unknown", "platform_session_id": "Unknown", "dispatch_receipt": null},
       "evaluator": {"alias": "case-E10-evaluator-01", "requested_model": "gpt-5.6-sol", "requested_reasoning": "high", "accepted_model": "Unknown", "accepted_reasoning": "Unknown", "verified_runtime_model": "Unknown", "verified_runtime_reasoning": "Unknown", "fact_source": "Unknown", "platform_session_id": "Unknown", "dispatch_receipt": null},
-      "verdict": "PENDING", "dependent_state": "PENDING_ARCHITECTURE_ANALYSIS",
+      "verdict": "PENDING", "dependent_state": "PENDING_INDEPENDENT_ARCHITECTURE_REVIEW",
       "limitations": [],
       "support": [
         {
@@ -1223,8 +1223,16 @@
           "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E10/attempt-01/support/architecture-analysis-request.md",
           "sha256": "d5f41947341a722d8cb5c1e013046f279ddd47d06a9cefbd33adddbac0537e08",
           "bytes": 1926, "mode": "0444", "frozen": true,
+          "response": {"path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E10/attempt-01/support/architecture-analysis.md", "sha256": "7d345f8b413c02d0fd0171e7060da745893cf5b2fa8888c00e4c17269e9ff28a", "bytes": 9406, "mode": "0444", "closed": true},
+          "actor": {"alias": "case-E10-architecture-analysis-01", "requested_model": "gpt-6-astra", "requested_reasoning": "high", "accepted_model": "Unknown", "accepted_reasoning": "Unknown", "verified_runtime_model": "Unknown", "verified_runtime_reasoning": "Unknown", "fact_source": "native dispatch result; exact metadata retained privately", "platform_session_id": "private-nonempty-verified", "dispatch_receipt": {"sha256": "4c4e71afb1cdb963fcc4046fa451772749570f417e0a232521c993da02666520", "contains_distinct_nonempty_platform_task_identity": true, "public_value_withheld": true}}
+        },
+        {
+          "kind": "architecture-review-request",
+          "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E10/attempt-01/support/architecture-review-request.md",
+          "sha256": "4a14fd2a68cd3b4e5bda08179a4334e11a5df31221c7a19f0546f4def44febc4",
+          "bytes": 1988, "mode": "0444", "frozen": true,
           "response": null,
-          "actor": {"alias": "case-E10-architecture-analysis-01", "requested_model": "gpt-6-astra", "requested_reasoning": "high", "accepted_model": "Unknown", "accepted_reasoning": "Unknown", "verified_runtime_model": "Unknown", "verified_runtime_reasoning": "Unknown", "fact_source": "Unknown", "platform_session_id": "Unknown", "dispatch_receipt": null}
+          "actor": {"alias": "case-E10-architecture-review-01", "requested_model": "gpt-6-astra", "requested_reasoning": "high", "accepted_model": "Unknown", "accepted_reasoning": "Unknown", "verified_runtime_model": "Unknown", "verified_runtime_reasoning": "Unknown", "fact_source": "Unknown", "platform_session_id": "Unknown", "dispatch_receipt": null}
         }
       ],
       "superseded_attempts": []
