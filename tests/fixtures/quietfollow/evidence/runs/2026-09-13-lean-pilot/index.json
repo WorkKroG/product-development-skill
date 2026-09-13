@@ -615,7 +615,14 @@
           "bytes": 3483,
           "mode": "0444",
           "frozen": true,
-          "response": null,
+          "response": {
+            "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E14/attempt-01/support/correction-D.md",
+            "sha256": "1a29d51b1ac5b9e7de9162aa4866364d1474311a2d78dcf1d468945570751407",
+            "bytes": 3252,
+            "mode": "0444",
+            "closed": true,
+            "result": "RED_FOCUSED_THEN_GREEN_FOCUSED_AND_15_OF_15_FULL_SUITE; D_COMMITTED"
+          },
           "actor": {
             "alias": "case-E14-correction-D-01",
             "requested_model": "gpt-5.6-sol",
@@ -624,9 +631,13 @@
             "accepted_reasoning": "Unknown",
             "verified_runtime_model": "Unknown",
             "verified_runtime_reasoning": "Unknown",
-            "fact_source": "Unknown",
-            "platform_session_id": "Unknown",
-            "dispatch_receipt": null
+            "fact_source": "native dispatch result; exact metadata retained privately",
+            "platform_session_id": "private-nonempty-verified",
+            "dispatch_receipt": {
+              "sha256": "28df16492c3c256062a0b6288055e63d50d80bcf17b3a9c87046423895c0d0ae",
+              "contains_distinct_nonempty_platform_task_identity": true,
+              "public_value_withheld": true
+            }
           }
         }
       ],
