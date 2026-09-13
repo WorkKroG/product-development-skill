@@ -221,7 +221,13 @@
       "attempt": 2,
       "current": true,
       "credit": "pending",
-      "request": null,
+      "request": {
+        "path": "tests/fixtures/quietfollow/evidence/runs/2026-09-13-lean-pilot/cases/E12/attempt-02/request.md",
+        "sha256": "016c3de88d7229db0dda8c1ced2106bb7d0a527f4ac64f79cd845d3107abc6d3",
+        "bytes": 2736,
+        "mode": "0444",
+        "frozen": true
+      },
       "response": null,
       "evaluation": null,
       "executor": {
@@ -249,7 +255,7 @@
         "dispatch_receipt": null
       },
       "verdict": "PENDING",
-      "dependent_state": "PENDING_FRESH_B_REVIEW",
+      "dependent_state": "PENDING_OUTER_EXECUTION",
       "limitations": [
         "Attempt 02 restarts only the E12 request/support flow after attempt 01 was preserved as non-credit for dependent-request ordering."
       ],
