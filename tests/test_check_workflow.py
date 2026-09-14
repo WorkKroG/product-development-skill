@@ -153,7 +153,7 @@ class WorkflowCheckerCoreTest(unittest.TestCase):
     def test_optional_validation_through_dangling_ancestor_is_external_state_invariant(self):
         outside_docs = Path(self.tempdir.name) / "outside-docs"
         (self.root / "docs").symlink_to(outside_docs, target_is_directory=True)
-        relative_path = "docs/validation.md"
+        relative_path = "docs/development/validation.md"
 
         before = self.checker.compute_revision(self.root)
         self.assertEqual(
@@ -1425,13 +1425,13 @@ class WorkflowPrivateBindingTest(unittest.TestCase):
         ignored_paths = (
             "tests/ignored-leak.md",
             "baseline/product-development-cycle/ignored-leak.md",
-            "SPEC.md",
-            "AUDIT.md",
-            "EVALUATION.md",
-            "HANDOFF.md",
-            "SOURCES.md",
-            "VERIFICATION.md",
-            "docs/superpowers/plans/ignored-leak.md",
+            "docs/development/SPEC.md",
+            "docs/development/AUDIT.md",
+            "docs/development/EVALUATION.md",
+            "docs/development/HANDOFF.md",
+            "docs/development/SOURCES.md",
+            "docs/development/VERIFICATION.md",
+            "docs/development/plans/ignored-leak.md",
         )
         for relative_path in ignored_paths:
             ignored = self.root / relative_path

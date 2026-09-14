@@ -1,5 +1,8 @@
 # Module 4 C03 Exact Local Destination — Plan Addendum
 
+Historical plan. File-path examples describe the layout at the time; see the
+[development index](../README.md) for current locations and scope.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: use `superpowers:subagent-driven-development` and
 > `superpowers:test-driven-development`. Do not begin Implementation until the owner accepts this
 > exact addendum identity.

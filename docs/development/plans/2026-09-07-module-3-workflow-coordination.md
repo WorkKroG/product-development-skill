@@ -1,5 +1,8 @@
 # Product Development Workflow — Module 3 Implementation Plan
 
+Historical plan. File-path examples describe the layout at the time; see the
+[development index](../README.md) for current locations and scope.
+
 > **For agentic workers:** Use the owner-approved Product/Task coordinator topology and
 > internal implementation/review subagents from SPEC.md §§6–8. Apply
 > `superpowers:subagent-driven-development` with those project-specific authority and

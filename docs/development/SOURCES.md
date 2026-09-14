@@ -8,8 +8,8 @@ Observations below are historical reports, not independently reproducible public
 ## S1. Original product-development-cycle
 
 The owner's existing seven-file skill is preserved unchanged under
-[baseline/product-development-cycle](baseline/product-development-cycle/SKILL.md).
-[BASELINE.sha256](BASELINE.sha256) identifies each file. The first local bootstrap commit preserves
+[baseline/product-development-cycle](../../baseline/product-development-cycle/SKILL.md).
+[BASELINE.sha256](../../BASELINE.sha256) identifies each file. The first local bootstrap commit preserves
 this snapshot; it does not reconstruct earlier history. Ownership/licensing of redistributed
 materials must be established before public distribution; do not invent a license.
 
@@ -69,5 +69,7 @@ The installed skill and historical baseline remain unchanged.
 
 ## Limits
 
-The full new-product lifecycle, proposed E01–E41 scenarios, independent review of this specification,
-whole-module FINAL, production release and clean-environment installation have not been demonstrated.
+The observations above describe the original transfer, not the current validation state.
+See [the validation summary](validation.md) for subsequent bounded synthetic results and
+remaining limits. They do not establish full lifecycle, production release, or
+clean-environment installation readiness.

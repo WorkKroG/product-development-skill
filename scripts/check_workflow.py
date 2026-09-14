@@ -34,7 +34,7 @@ REQUIRED_ACTIVE_FILES = (
     "BASELINE.sha256",
     "README.md",
     "CHANGELOG.md",
-    "docs/PROJECT_STATUS.md",
+    "docs/development/PROJECT_STATUS.md",
     "skills/product-development-workflow/SKILL.md",
     "skills/product-development-workflow/agents/openai.yaml",
     "skills/product-development-workflow/assets/AGENTS.template.md",
@@ -290,9 +290,9 @@ def _file_frame(root: Path, relative_path: str) -> tuple[bytes, bytes]:
 
 def compute_revision(root: Path) -> str:
     paths = set(REVISION_PATHS)
-    validation = root / "docs/validation.md"
+    validation = root / "docs/development/validation.md"
     if _has_symlink_component(root, validation) or validation.exists():
-        paths.add("docs/validation.md")
+        paths.add("docs/development/validation.md")
 
     digest = hashlib.sha256()
     digest.update(b"PDW-STRUCTURAL-REVISION-v1\0")
@@ -760,8 +760,8 @@ def _private_binding_files(root: Path) -> list[Path]:
     if _is_bounded_directory(root, active):
         for suffix in ("*.md", "*.yaml"):
             files.extend(active.rglob(suffix))
-    files.extend(root / relative for relative in ("README.md", "CHANGELOG.md", "docs/PROJECT_STATUS.md"))
-    validation = root / "docs/validation.md"
+    files.extend(root / relative for relative in ("README.md", "CHANGELOG.md", "docs/development/PROJECT_STATUS.md"))
+    validation = root / "docs/development/validation.md"
     if validation.exists() or validation.is_symlink():
         files.append(validation)
     return sorted(set(files), key=lambda path: path.relative_to(root).as_posix())
@@ -789,8 +789,8 @@ def _operational_files(root: Path) -> list[Path]:
     references = active / "references"
     if _is_bounded_directory(root, references):
         files.extend(sorted(references.glob("*")))
-    files.extend(root / relative for relative in ("README.md", "CHANGELOG.md", "docs/PROJECT_STATUS.md"))
-    validation = root / "docs/validation.md"
+    files.extend(root / relative for relative in ("README.md", "CHANGELOG.md", "docs/development/PROJECT_STATUS.md"))
+    validation = root / "docs/development/validation.md"
     if validation.exists() or validation.is_symlink():
         files.append(validation)
     return files

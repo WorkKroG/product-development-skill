@@ -1,120 +1,68 @@
 # Product Development Workflow
 
-Название продукта утверждено 2026-09-07. Активный скилл: `product-development-workflow`,
-вызов: `$product-development-workflow`. Это развитие прежнего `product-development-cycle`;
-исторический baseline и установленная глобальная копия сохраняют прежнее имя.
-Адрес GitHub-репозитория пока остаётся `WorkKroG/product-development-harness`.
+A Codex skill for moving a digital product from an idea or existing codebase to
+its next useful, verified result. Identify what is already known, decide what
+needs attention next, and coordinate implementation and independent review
+without repeating completed work.
 
-Основа подготовлена 2026-09-05 по опыту предыдущего проекта. Репозиторий теперь содержит
-**Unreleased candidate** активного lifecycle core; workflow ещё не выпущен и не установлен.
-Основа — существующий product-development-cycle.
-Целевая среда первой версии — Codex с возможностями desktop-координации, использованными в Recipes.
-Обновлён 2026-09-06: добавлены согласованное поэтапное развитие архитектуры
-и лёгкая оценка целесообразности между Positioning и Journey.
-Владелец разрешил перенести пакет в отдельный проект и указал публичный репозиторий
-`WorkKroG/product-development-harness`. Modules 3–5 интегрировали координацию,
-структурную проверку C01–C12 и поведенческие fixtures. Compact-кандидат Module 6 уточняет
-пропорциональность процесса, остановку бесполезных correction loops, смену цели и recovery.
-Инструкции проекта: [AGENTS.md](AGENTS.md), состояние: [PROJECT_STATUS](docs/PROJECT_STATUS.md).
+**Unreleased candidate — experimental, for supervised testing.** This is
+an instruction-based workflow, not an autonomous project-management service.
 
-## Что читать
+## Get started
 
-1. [Спецификация v0.1](SPEC.md) — что должен делать workflow и где заканчиваются его полномочия.
-2. [Аудит и решения](AUDIT.md) — какие правила переносим, меняем, оставляем настройками или ещё проверяем.
-3. [Сценарии проверки](EVALUATION.md) — как доказать, что будущая реализация работает.
-4. [Передача в новый проект](HANDOFF.md) — готовое задание следующему координатору.
-5. [Источники и границы доказательств](SOURCES.md).
-6. [Что проверено в самом пакете](VERIFICATION.md).
-7. [Результат и ограничения синтетической валидации](docs/validation.md).
+1. Follow the [installation guide](docs/installation.md) to install a pinned copy
+   of `skills/product-development-workflow/` into your chosen project.
+2. Open that project in Codex and verify that the expected skill is available.
+3. Start with an audit before authorizing changes:
 
-## Что сохранено
-
-- baseline/product-development-cycle — точная копия семи файлов установленного skill.
-- .local-handoff — исходный пакет переноса, включая девять исторических файлов предыдущего
-  приватного проекта; хранится только локально и исключён из Git.
-- [Контрольные суммы исходного skill](BASELINE.sha256).
-
-Копии в baseline и локальном пакете служат исходниками и историческими доказательствами.
-Их нельзя загружать как действующие инструкции нового продукта. Публичное описание
-происхождения находится в SOURCES.md; приватные адреса и IDs остаются только локально.
-
-## Активный кандидат и проверка
-
-Активная точка входа находится в `skills/product-development-workflow/SKILL.md`. Она
-поддерживает stage-aware lifecycle, лёгкий Gate 3.5, пропорциональный Gate 8 и правила
-координации для планирования, реализации, независимого review и recovery.
-Контракт кандидата проверяется командой:
-
-```bash
-python3 -m unittest tests.test_skill_contract -v
+```text
+$product-development-workflow
+Inspect this existing project without changing files. Identify its current
+stage, reusable decisions and evidence, and any conflicts with this workflow.
+Recommend one bounded next step. Do not restart discovery or overwrite AGENTS.md.
 ```
 
-Детерминированный структурный checker запускается с корнем пакета и предоставленным
-review-state:
+For a new product, ongoing development, and resuming interrupted work, see the
+[usage guide](docs/usage.md).
 
-```bash
-python3 scripts/check_workflow.py \
-  --root . \
-  --review-state tests/fixtures/review-state/valid-final.json \
-  --json
-```
+## How it works
 
-Синтетические review-state файлы — только offline inputs. Checker строго проверяет фазовую
-схему PLAN, Change Review или FINAL и равенство `reviewed`/`current`, но не подтверждает
-происхождение данных из Git, GitHub, Codex, reviewer или назначенной модели.
+- **Start where the product is.** Reuse existing research, decisions, code, and
+  checks; revisit only what is missing or invalidated.
+- **Choose the next decision.** The workflow covers discovery, viability, scope,
+  UX, architecture, delivery, verification, release, and learning. A gate means
+  a decision supported by evidence, not a requirement to create a document.
+- **Keep effort proportional.** Detail the nearest deliverable; treat later
+  scale as assumptions and revisit triggers. Reassess unproductive correction loops.
+- **Separate delivery roles.** The Product coordinator handles project-wide
+  direction. You work with a Task coordinator on an approved module; bounded
+  internal agents handle planning, implementation, independent review, and final
+  verification when the required native capabilities are available.
+- **Keep control.** Installing the skill does not authorize project edits,
+  spending, publication, merge, or release. Material decisions stay with you.
 
-Результат содержит `revision`, упорядоченные `passed` и `failed`, а также двенадцать записей
-`checks` C01–C12 с относительным evidence. `revision` — вычисленная SHA-256 identity выбранного
-структурного содержимого; review-state и live/runtime state в неё не входят. Без `--json`
-выводится эквивалентный упорядоченный текстовый отчёт.
+The agent instructions live in [SKILL.md](skills/product-development-workflow/SKILL.md).
+You do not need to read the development specification to use the skill.
 
-- Exit `0`: C01–C12 прошли.
-- Exit `1`: входы корректны, но одна или несколько структурных проверок не прошли.
-- Exit `2`: аргументы или review-state непригодны; JSON post-parse error содержит пустое ядро
-  результата и стабильные `code`/`message`.
+## Requirements and known limitations
 
-Structural checks do not prove behavioral correctness.
+The current workflow targets Codex. Full coordination depends on native task,
+subagent, messaging, and review capabilities; availability must be checked in
+your environment. Missing capabilities must be disclosed, not simulated.
+Specialist tools are needed only for the stage that actually requires them.
 
-Неизменность исторической основы проверяется отдельно:
+A bounded synthetic pilot exercised selected workflow behaviors. It did not
+prove live cross-task routing, production readiness, or end-to-end installation,
+upgrade, and rollback in another project. Start with a supervised, low-risk task;
+see the [validation summary](docs/development/validation.md) for the exact limits.
 
-```bash
-shasum -a 256 -c BASELINE.sha256
-```
+## For contributors
 
-## Known limitations
+[Development documentation](docs/development/README.md) contains the specification,
+project decisions, historical plans, provenance, and verification instructions.
+[CHANGELOG.md](CHANGELOG.md) summarizes the current candidate.
 
-- Локальный синтетический QuietFollow pilot дал PASS для 21 выбранного E-case и шести
-  пропорциональных проб на точном пятифайловом skill-снимке. E28 release rehearsal не проводился;
-  это не полное покрытие E01–E41 и не доказательство live routing или production behavior.
-- Raw pilot archive и runnable QuietFollow product не входят в compact-кандидат. Ранее созданный
-  PR #12 и его Git history уже публичны; compact-кандидат не утверждает обратного.
-- Кандидат не установлен глобально и не проверен на чистой установке, обновлении или rollback.
-  Запрошенные runtime model/reasoning identities остаются Unknown без нативного подтверждения.
-- GitHub automation, merge, выпуск и установка этим изменением не выполняются.
-
-## Уже решено владельцем
-
-- Развивать существующий product-development-cycle.
-- Сделать отдельный Git-репозиторий для повторного использования.
-- Первая версия — для работы в Codex.
-- Сохранить согласованные роли, независимое ревью, модели и ручной merge.
-- Проектные решения вести в главном чате; план, локальные продуктовые согласования и приёмку
-  модуля — непосредственно в его Task coordinator. Реализация и независимое ревью — субагенты.
-- Наверх отправлять только основные смены состояния и эскалации. Существенную пересборку
-  архитектуры и набора задач координирует главный чат, при необходимости через отдельный таск.
-- Не требовать от владельца пересылать сообщения между задачами или погружаться в обычные детали реализации.
-- Проектировать с учётом будущего масштаба, реализовывать архитектуру поэтапно
-  и пересматривать решения перед масштабированием.
-- Использовать пять ступеней: рабочий прототип, MVP, ориентиры 10 тысяч и 100 тысяч
-  пользователей, зрелая эксплуатация. Конкретные нагрузочные критерии задаются продуктом.
-- Код первого прототипа допустимо выбросить полностью; обязательной переписи нет,
-  пригодные части сохраняются после проверки.
-- Между Positioning и Journey нужна краткая оценка рынка, конкуренции и экономики
-  для решения о следующем шаге. Она заменяет прежний ранний Gate 4.5;
-  подробная финансовая модель не требуется на этом этапе.
-
-## Границы compact-кандидата
-
-Module 6 меняет только пять файлов активного skill и три навигационно-статусных документа.
-Большой pilot archive, продукт QuietFollow, recovery/RCA history и отдельная evidence subsystem
-не переносятся. Merge, выпуск и установка остаются отдельными решениями владельца.
+This skill evolved from `product-development-cycle`. The historical `baseline/`
+is not the package to install. See [sources and provenance](docs/development/SOURCES.md)
+for the original materials and redistribution boundaries; no license is inferred
+from the repository being public.

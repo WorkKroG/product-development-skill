@@ -142,7 +142,7 @@ class BehavioralFixtureContractTest(unittest.TestCase):
                     self.assertEqual(1, section.count(f"- {field}:"), field)
 
     def test_evaluation_links_prepared_coverage_without_execution_claim(self):
-        evaluation = (ROOT / "EVALUATION.md").read_text(encoding="utf-8")
-        self.assertIn("[Module 5 reviewer rubric](tests/scenarios.md)", evaluation)
+        evaluation = (ROOT / "docs/development/EVALUATION.md").read_text(encoding="utf-8")
+        self.assertIn("[Module 5 reviewer rubric](../../tests/scenarios.md)", evaluation)
         self.assertIn("prepared coverage, not executed evidence", evaluation)
         self.assertNotIn("Module 5 cases passed", evaluation)
