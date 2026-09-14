@@ -13,6 +13,9 @@ agent API. A queued client ID is provisional, not a usable Native ID.
 
 - Work Item/module identity: `<stable identity>`
 - Outcome/why: `<observable result and reason>`
+- Nearest verifiable result: `<next observable result this work must produce>`
+- Deliberately not building: `<preparation or mechanism excluded from this work>`
+- Revisit trigger: `<event or fitted limit that requires reassessing the path>`
 - Scope/non-goals: `<included and excluded work>`
 - Binding sources: `<authoritative artifacts and identities>`
 - Dependencies: `<ordering and stable shared contracts>`
@@ -43,6 +46,7 @@ agent API. A queued client ID is provisional, not a usable Native ID.
 - Reviewed plan hash or base/head/main: `<exact identity required by phase>`
 - Binding sources: `<complete identified set>`
 - Checks: `<fresh results and environment>`
+- Nearest-result boundaries: `<assess the stated result, not-building boundary, and revisit trigger>`
 - Findings: `<violated requirement, evidence, observable correction; or none>`
 - Verdict: `<PLAN_PASS, PASS, FINAL_PASS, or changes required>`
 - Invalidation condition: `<plan/base change, new head, or main drift>`

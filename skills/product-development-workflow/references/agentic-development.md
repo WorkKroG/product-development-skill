@@ -51,6 +51,20 @@ read-only to the reviewer.
 
 ## Planning and local decisions
 
+Before planning, Task names the nearest observable result and the minimum sufficient path
+to it. Apply proportionality to testing, orchestration, reporting, recovery, tools, and
+agent count as well as to application architecture. A proposed support system must name
+the present mandatory need or risk, why existing means are insufficient, a simpler option,
+and its operating cost. Future usefulness and sunk effort are not justification; automation
+remains appropriate when measured volume, repetition, or risk supports it. Route a material
+scope, dependency, cost, risk, or schedule effect to the appropriate coordinator before
+continuing.
+
+Setup, documentation, and file-copy work stays inside the work item it supports unless it
+has an independent observable result and a reason for another writer. Do not impose a
+universal token, hour, or process-overhead budget; choose a revisit event or limit that fits
+the work and its risk.
+
 Task connects observable behavior, failure and recovery, non-goals, and acceptance
 criteria to the current maturity stage, architecture vision, current implementation,
 and transition plan. PLAN independently checks the complete plan and exact base against
@@ -72,9 +86,16 @@ invalidates Change Review PASS.
 Pre-merge corrections stay in the same Work Item and branch. Task forwards candidate
 identity and findings internally. If the original Implementation or reviewer session is
 unavailable, explicitly record a replacement internal agent session and give it the
-preserved package and evidence. After two unsuccessful correction cycles on the same
-finding, or a genuine technical dead end, request an independent second opinion; this
-does not expand scope or automatically involve the owner.
+preserved package and evidence.
+
+After two consecutive correction/review cycles in one auxiliary branch without a new
+accepted result for the original goal, stop the automatic next cycle and reassess the
+approach. New finding IDs, phases, roles, or reviewers do not reset the stop. Choose the
+minimum fix, simplify or cancel the mechanism, or justify one bounded checkpoint. Record
+the decision in existing status rather than creating a counter service. Escalate material
+scope, cost, or risk immediately rather than waiting for two cycles. A second opinion may
+inform the reassessment but does not expand scope, reset the stop, or make an unresolved
+safety requirement pass.
 
 After manual merge of all planned and corrective changes, a distinct FINAL agent reviews
 the integrated result on the exact current main. Main drift invalidates `FINAL_PASS`.
@@ -95,6 +116,12 @@ fresh GitHub or native state. Send `READY_FOR_INTEGRATION` only with a current C
 Review and a ready PR when a PR is authorized. For delivery work, send `DONE` only after
 manual merge and FINAL_PASS on unchanged main; merge alone is insufficient.
 
+Make a change of goal visible before continuing. If work to verify a prototype becomes
+work to build verification tooling, Task reports the dependency or scope change to Product
+even when each individual file remains allowed. Readiness reporting distinguishes a
+working result, preparation, and blockers; completed subtask count is not product
+completion percentage.
+
 ## Escalation and architecture return
 
 Escalate once when evidence shows a boundary beyond Task authority: a shared
@@ -113,11 +140,15 @@ The architecture decision does not itself authorize new implementation scope.
 
 ## Recovery and process drift
 
-After interruption, restart, stale guidance, or process drift, first reconcile repository
-guidance and decisions, current Git identity and changed paths, authorized live Issue/PR/
-CI/merge evidence, native task state, agent sessions, findings, and actual WIP. Fresh
-owning-system evidence overrides stale status pointers. Preserve valid work and evidence;
-do not replay completed work, duplicate tasks or monitors, or claim unattended events.
+After interruption, restart, stale guidance, or process drift, first identify exactly what
+results were lost and what was preserved. Reconcile repository guidance and decisions,
+current Git identity and changed paths, authorized live Issue/PR/CI/merge evidence, native
+task state, agent sessions, findings, and actual WIP. Fresh owning-system evidence overrides
+stale status pointers. Compare restoration with a bounded rerun, and use durable locations
+and simple identities for retained results. Never reconstruct old hashes from summaries,
+rewrite history, or build a universal recovery platform without a current justified need.
+Preserve valid work and evidence; do not replay completed work, duplicate tasks or monitors,
+or claim unattended events.
 
 Write a recovery record with the old/new process identity, actual repository/session/WIP
 state, preserved evidence, superseded verdicts, acknowledged instruction update, and
