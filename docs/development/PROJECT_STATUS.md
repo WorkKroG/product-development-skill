@@ -1,14 +1,18 @@
-# Project status
+# Project direction
 
-Date: 2026-09-13. Product: Product Development Workflow.
+Date: 2026-09-14. Product: Product Development Workflow.
 Repository: `WorkKroG/product-development-harness` (repository slug unchanged).
 
 ## Current stage
 
-Modules 3–5 are integrated on base `1d9b6f8242fbea8548a423b172534b8c8d20b6e0`.
-The local compact Module 6 candidate changes five active skill files plus `README.md`, this
-status, and `docs/validation.md`. It adds proportional planning, a two-cycle correction stop,
-explicit goal-change reporting, bounded recovery, and guarantee-versus-mechanism review guidance.
+Prepare the existing candidate for supervised external-user testing through English
+installation and usage documentation. Move development records out of the repository
+entry point without changing skill behavior or adding infrastructure.
+
+The documentation work starts from merge commit
+`83ba5f5a3f4cac6e3cc69f03c22aae5a97266c37`, which includes compact Module 6.
+GitHub remains the source of truth for live PR, CI, and merge state; this page is
+a direction and evidence pointer, not a replacement status database.
 
 ## Validation state
 
@@ -33,6 +37,15 @@ Requested runtime model and reasoning identities remain Unknown without native e
 
 ## Next action
 
-Run an independent Change Review against the exact compact head. Any new head invalidates the
-verdict. If it passes, present the local candidate for the owner's publication decision; do not
-mutate PR #12 or publish automatically.
+Review and integrate the documentation, then select an existing project with the owner
+and test adoption from the public repository at a fixed version. Audit first without
+changes; preserve instructions, decisions, and work in progress. Agree on necessary
+process changes and validate one bounded real task, including review and resume.
+This remains unexecuted target-project work.
+
+The target project and allowed changes must be agreed before that trial. This
+documentation scope does not authorize global installation, project migration,
+publication of private project data, automatic merge, or release.
+
+Hydra/context telemetry remains a deferred question, not an integration or
+dependency of installation. Cumulative token usage is not current context occupancy.

@@ -1,5 +1,8 @@
 # Module 6 synthetic validation
 
+This is a bounded historical result, not a first-run installation certificate.
+For package checks, see [development verification](README.md#verification).
+
 Date: 2026-09-13.
 
 ## Outcome

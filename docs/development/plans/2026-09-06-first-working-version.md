@@ -1,5 +1,8 @@
 # Product Development Harness First Working Version Implementation Plan
 
+Historical plan. File-path examples describe the layout at the time; see the
+[development index](../README.md) for current locations and scope.
+
 > **Historical FWP-PLAN-v1 (2026-09-06).** Preserve completed-module evidence and this
 > plan's original examples. The owner replaced its naming and user-owned worker topology
 > on 2026-09-07: use SPEC.md §§6–8 and

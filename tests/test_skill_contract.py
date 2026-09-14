@@ -492,9 +492,10 @@ class SkillContractTest(unittest.TestCase):
     def test_candidate_docs_do_not_claim_release_or_installation_support(self):
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
         changelog = (ROOT / "CHANGELOG.md").read_text(encoding="utf-8")
+        development = (ROOT / "docs/development/README.md").read_text(encoding="utf-8")
         self.assertIn("Unreleased candidate", readme)
-        self.assertIn("python3 -m unittest tests.test_skill_contract -v", readme)
-        self.assertIn("Known limitations", readme)
+        self.assertIn("python3 -B -m unittest tests.test_skill_contract -v", development)
+        self.assertIn("known limitations", readme.lower())
         self.assertIn("## Unreleased", changelog)
         self.assertNotIn("Installation is supported", readme)
         self.assertNotIn("Released", changelog)

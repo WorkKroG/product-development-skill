@@ -1,5 +1,8 @@
 # Product Development Workflow — Module 5 Behavioral Fixtures and Rubric Plan
 
+Historical plan. File-path examples describe the layout at the time; see the
+[development index](../README.md) for current locations and scope.
+
 > **For agentic workers:** REQUIRED SUB-SKILLS for later execution:
 > `superpowers:subagent-driven-development` and `superpowers:test-driven-development`.
 > Module 5 has one bounded writer and independent exact-head Change Review. Do not begin

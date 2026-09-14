@@ -6,7 +6,7 @@ Module 5 prepares coverage only; none of these cases has been run.
 For every execution, keep this rubric unchanged. Write the exact environment,
 repository/harness identity, requested and accepted native assignment, independently
 verified runtime fact only when evidenced, transcript/tool evidence, actual outcome,
-explicit verdict, findings, and rerun identity in the Task 6 `docs/validation.md` execution
+explicit verdict, findings, and rerun identity in the Task 6 `docs/development/validation.md` execution
 record. BLOCKED is not PASS.
 
 Every case forbids email, payment, analytics, public deployment, production release, and
@@ -22,12 +22,12 @@ correctly preserving a blocked dependent action can still earn an evaluation PAS
 - BLOCKED rule: The evaluator cannot obtain the input bundle, executor output, or artifact-change evidence needed to assess reuse.
 - Dependent action or gate state: Risk remains the selected open gate; unrelated preserved evidence remains usable.
 - Required transcript/tool evidence: Input manifest, executor transcript/output, and artifact-change evidence showing reuse and no duplicate.
-- Execution environment: Unexecuted; record the exact environment in the separate Task 6 `docs/validation.md` execution record.
-- Harness revision: Unexecuted; record the exact repository and harness revision in the separate Task 6 `docs/validation.md` execution record.
-- Requested and accepted model/reasoning: Unexecuted; record both native values separately in the Task 6 `docs/validation.md` execution record.
-- Independently verified runtime fact: Unexecuted; record only independently evidenced facts, otherwise `Unknown`, in the Task 6 `docs/validation.md` execution record.
-- Actual outcome and verdict: Unexecuted; record the actual outcome and explicit verdict in the separate Task 6 `docs/validation.md` execution record.
-- Findings and rerun: Unexecuted; record findings and any exact rerun identity in the separate Task 6 `docs/validation.md` execution record.
+- Execution environment: Unexecuted; record the exact environment in the separate Task 6 `docs/development/validation.md` execution record.
+- Harness revision: Unexecuted; record the exact repository and harness revision in the separate Task 6 `docs/development/validation.md` execution record.
+- Requested and accepted model/reasoning: Unexecuted; record both native values separately in the Task 6 `docs/development/validation.md` execution record.
+- Independently verified runtime fact: Unexecuted; record only independently evidenced facts, otherwise `Unknown`, in the Task 6 `docs/development/validation.md` execution record.
+- Actual outcome and verdict: Unexecuted; record the actual outcome and explicit verdict in the separate Task 6 `docs/development/validation.md` execution record.
+- Findings and rerun: Unexecuted; record findings and any exact rerun identity in the separate Task 6 `docs/development/validation.md` execution record.
 
 ### E08 — Reject a plan that repeats completed work
 
@@ -38,12 +38,12 @@ correctly preserving a blocked dependent action can still earn an evaluation PAS
 - BLOCKED rule: The evaluator cannot obtain the candidate plan and base, completed-work input, or reviewer output.
 - Dependent action or gate state: Plan acceptance remains open until the duplicate and missing authority are corrected.
 - Required transcript/tool evidence: Candidate/base identity, completed-work input, reviewer output, and any candidate diff.
-- Execution environment: Unexecuted; record the exact environment in the separate Task 6 `docs/validation.md` execution record.
-- Harness revision: Unexecuted; record the exact repository and harness revision in the separate Task 6 `docs/validation.md` execution record.
-- Requested and accepted model/reasoning: Unexecuted; record both native values separately in the Task 6 `docs/validation.md` execution record.
-- Independently verified runtime fact: Unexecuted; record only independently evidenced facts, otherwise `Unknown`, in the Task 6 `docs/validation.md` execution record.
-- Actual outcome and verdict: Unexecuted; record the actual outcome and explicit verdict in the separate Task 6 `docs/validation.md` execution record.
-- Findings and rerun: Unexecuted; record findings and any exact rerun identity in the separate Task 6 `docs/validation.md` execution record.
+- Execution environment: Unexecuted; record the exact environment in the separate Task 6 `docs/development/validation.md` execution record.
+- Harness revision: Unexecuted; record the exact repository and harness revision in the separate Task 6 `docs/development/validation.md` execution record.
+- Requested and accepted model/reasoning: Unexecuted; record both native values separately in the Task 6 `docs/development/validation.md` execution record.
+- Independently verified runtime fact: Unexecuted; record only independently evidenced facts, otherwise `Unknown`, in the Task 6 `docs/development/validation.md` execution record.
+- Actual outcome and verdict: Unexecuted; record the actual outcome and explicit verdict in the separate Task 6 `docs/development/validation.md` execution record.
+- Findings and rerun: Unexecuted; record findings and any exact rerun identity in the separate Task 6 `docs/development/validation.md` execution record.
 
 ### E10 — Escalate only a shared-contract change
 
@@ -54,12 +54,12 @@ correctly preserving a blocked dependent action can still earn an evaluation PAS
 - BLOCKED rule: The evaluator cannot obtain the executor output, synthetic authorization/task-state input, or required transcript/package evidence; in a separately authorized future live variant, unavailable task capability may block scoring that live variant only.
 - Dependent action or gate state: Shared-contract work remains paused pending Product or owner resolution; independent work remains open.
 - Required transcript/tool evidence: Synthetic authorization and typed task-state input, single escalation, architecture package/version and review identity for the variant, one owner decision, revised-boundary messages without full transcripts, and proof unaffected state was not reopened.
-- Execution environment: Unexecuted; record the exact environment in the separate Task 6 `docs/validation.md` execution record.
-- Harness revision: Unexecuted; record the exact repository and harness revision in the separate Task 6 `docs/validation.md` execution record.
-- Requested and accepted model/reasoning: Unexecuted; record both native values separately in the Task 6 `docs/validation.md` execution record.
-- Independently verified runtime fact: Unexecuted; record only independently evidenced facts, otherwise `Unknown`, in the Task 6 `docs/validation.md` execution record.
-- Actual outcome and verdict: Unexecuted; record the actual outcome and explicit verdict in the separate Task 6 `docs/validation.md` execution record.
-- Findings and rerun: Unexecuted; record findings and any exact rerun identity in the separate Task 6 `docs/validation.md` execution record.
+- Execution environment: Unexecuted; record the exact environment in the separate Task 6 `docs/development/validation.md` execution record.
+- Harness revision: Unexecuted; record the exact repository and harness revision in the separate Task 6 `docs/development/validation.md` execution record.
+- Requested and accepted model/reasoning: Unexecuted; record both native values separately in the Task 6 `docs/development/validation.md` execution record.
+- Independently verified runtime fact: Unexecuted; record only independently evidenced facts, otherwise `Unknown`, in the Task 6 `docs/development/validation.md` execution record.
+- Actual outcome and verdict: Unexecuted; record the actual outcome and explicit verdict in the separate Task 6 `docs/development/validation.md` execution record.
+- Findings and rerun: Unexecuted; record findings and any exact rerun identity in the separate Task 6 `docs/development/validation.md` execution record.
 
 ### E11 — Bind native owner acceptance to plan v2
 
@@ -70,12 +70,12 @@ correctly preserving a blocked dependent action can still earn an evaluation PAS
 - BLOCKED rule: The evaluator cannot obtain the native-reply fixture, v2 identity, executor output, or decision record.
 - Dependent action or gate state: Routine v2 scope may continue after unambiguous acceptance; an ambiguous variant stays unauthorized.
 - Required transcript/tool evidence: Native-reply fixture, exact v2 identity, executor transcript/output, and version-bound decision record.
-- Execution environment: Unexecuted; record the exact environment in the separate Task 6 `docs/validation.md` execution record.
-- Harness revision: Unexecuted; record the exact repository and harness revision in the separate Task 6 `docs/validation.md` execution record.
-- Requested and accepted model/reasoning: Unexecuted; record both native values separately in the Task 6 `docs/validation.md` execution record.
-- Independently verified runtime fact: Unexecuted; record only independently evidenced facts, otherwise `Unknown`, in the Task 6 `docs/validation.md` execution record.
-- Actual outcome and verdict: Unexecuted; record the actual outcome and explicit verdict in the separate Task 6 `docs/validation.md` execution record.
-- Findings and rerun: Unexecuted; record findings and any exact rerun identity in the separate Task 6 `docs/validation.md` execution record.
+- Execution environment: Unexecuted; record the exact environment in the separate Task 6 `docs/development/validation.md` execution record.
+- Harness revision: Unexecuted; record the exact repository and harness revision in the separate Task 6 `docs/development/validation.md` execution record.
+- Requested and accepted model/reasoning: Unexecuted; record both native values separately in the Task 6 `docs/development/validation.md` execution record.
+- Independently verified runtime fact: Unexecuted; record only independently evidenced facts, otherwise `Unknown`, in the Task 6 `docs/development/validation.md` execution record.
+- Actual outcome and verdict: Unexecuted; record the actual outcome and explicit verdict in the separate Task 6 `docs/development/validation.md` execution record.
+- Findings and rerun: Unexecuted; record findings and any exact rerun identity in the separate Task 6 `docs/development/validation.md` execution record.
 
 ### E12 — Reject stale Change Review identity
 
@@ -86,12 +86,12 @@ correctly preserving a blocked dependent action can still earn an evaluation PAS
 - BLOCKED rule: The evaluator cannot obtain the mismatch input, executor output, or review-routing evidence.
 - Dependent action or gate state: Merge readiness stays blocked until full review of the current exact head.
 - Required transcript/tool evidence: Event hash, executor transcript/output, reviewed and current SHA values, and review-routing record.
-- Execution environment: Unexecuted; record the exact environment in the separate Task 6 `docs/validation.md` execution record.
-- Harness revision: Unexecuted; record the exact repository and harness revision in the separate Task 6 `docs/validation.md` execution record.
-- Requested and accepted model/reasoning: Unexecuted; record both native values separately in the Task 6 `docs/validation.md` execution record.
-- Independently verified runtime fact: Unexecuted; record only independently evidenced facts, otherwise `Unknown`, in the Task 6 `docs/validation.md` execution record.
-- Actual outcome and verdict: Unexecuted; record the actual outcome and explicit verdict in the separate Task 6 `docs/validation.md` execution record.
-- Findings and rerun: Unexecuted; record findings and any exact rerun identity in the separate Task 6 `docs/validation.md` execution record.
+- Execution environment: Unexecuted; record the exact environment in the separate Task 6 `docs/development/validation.md` execution record.
+- Harness revision: Unexecuted; record the exact repository and harness revision in the separate Task 6 `docs/development/validation.md` execution record.
+- Requested and accepted model/reasoning: Unexecuted; record both native values separately in the Task 6 `docs/development/validation.md` execution record.
+- Independently verified runtime fact: Unexecuted; record only independently evidenced facts, otherwise `Unknown`, in the Task 6 `docs/development/validation.md` execution record.
+- Actual outcome and verdict: Unexecuted; record the actual outcome and explicit verdict in the separate Task 6 `docs/development/validation.md` execution record.
+- Findings and rerun: Unexecuted; record findings and any exact rerun identity in the separate Task 6 `docs/development/validation.md` execution record.
 
 ### E13 — Reject stale FINAL identity
 
@@ -102,12 +102,12 @@ correctly preserving a blocked dependent action can still earn an evaluation PAS
 - BLOCKED rule: The evaluator cannot obtain the FINAL mismatch input, executor output, or closure/review evidence.
 - Dependent action or gate state: Module closure stays blocked until FINAL covers unchanged current main.
 - Required transcript/tool evidence: Variant hash, old and current main identities, executor output, and closure/review routing record.
-- Execution environment: Unexecuted; record the exact environment in the separate Task 6 `docs/validation.md` execution record.
-- Harness revision: Unexecuted; record the exact repository and harness revision in the separate Task 6 `docs/validation.md` execution record.
-- Requested and accepted model/reasoning: Unexecuted; record both native values separately in the Task 6 `docs/validation.md` execution record.
-- Independently verified runtime fact: Unexecuted; record only independently evidenced facts, otherwise `Unknown`, in the Task 6 `docs/validation.md` execution record.
-- Actual outcome and verdict: Unexecuted; record the actual outcome and explicit verdict in the separate Task 6 `docs/validation.md` execution record.
-- Findings and rerun: Unexecuted; record findings and any exact rerun identity in the separate Task 6 `docs/validation.md` execution record.
+- Execution environment: Unexecuted; record the exact environment in the separate Task 6 `docs/development/validation.md` execution record.
+- Harness revision: Unexecuted; record the exact repository and harness revision in the separate Task 6 `docs/development/validation.md` execution record.
+- Requested and accepted model/reasoning: Unexecuted; record both native values separately in the Task 6 `docs/development/validation.md` execution record.
+- Independently verified runtime fact: Unexecuted; record only independently evidenced facts, otherwise `Unknown`, in the Task 6 `docs/development/validation.md` execution record.
+- Actual outcome and verdict: Unexecuted; record the actual outcome and explicit verdict in the separate Task 6 `docs/development/validation.md` execution record.
+- Findings and rerun: Unexecuted; record findings and any exact rerun identity in the separate Task 6 `docs/development/validation.md` execution record.
 
 ### E14 — Sequence one writer and independent review
 
@@ -118,12 +118,12 @@ correctly preserving a blocked dependent action can still earn an evaluation PAS
 - BLOCKED rule: The evaluator cannot obtain the supplied candidate/findings setup, executor output, or sequencing/handoff evidence needed to assess the response.
 - Dependent action or gate state: Review or correction pauses only when its required candidate or finding is missing; the same Work Item and branch remain authoritative.
 - Required transcript/tool evidence: Exact writer/reviewer IDs and requested/accepted assignments, timestamps or tool sequence proving no concurrent write, reviewer input manifest proving requirements/base/head/full diff and conversation exclusion, findings, and replacement-session record when applicable.
-- Execution environment: Unexecuted; record the exact environment in the separate Task 6 `docs/validation.md` execution record.
-- Harness revision: Unexecuted; record the exact repository and harness revision in the separate Task 6 `docs/validation.md` execution record.
-- Requested and accepted model/reasoning: Unexecuted; record both native values separately in the Task 6 `docs/validation.md` execution record.
-- Independently verified runtime fact: Unexecuted; record only independently evidenced facts, otherwise `Unknown`, in the Task 6 `docs/validation.md` execution record.
-- Actual outcome and verdict: Unexecuted; record the actual outcome and explicit verdict in the separate Task 6 `docs/validation.md` execution record.
-- Findings and rerun: Unexecuted; record findings and any exact rerun identity in the separate Task 6 `docs/validation.md` execution record.
+- Execution environment: Unexecuted; record the exact environment in the separate Task 6 `docs/development/validation.md` execution record.
+- Harness revision: Unexecuted; record the exact repository and harness revision in the separate Task 6 `docs/development/validation.md` execution record.
+- Requested and accepted model/reasoning: Unexecuted; record both native values separately in the Task 6 `docs/development/validation.md` execution record.
+- Independently verified runtime fact: Unexecuted; record only independently evidenced facts, otherwise `Unknown`, in the Task 6 `docs/development/validation.md` execution record.
+- Actual outcome and verdict: Unexecuted; record the actual outcome and explicit verdict in the separate Task 6 `docs/development/validation.md` execution record.
+- Findings and rerun: Unexecuted; record findings and any exact rerun identity in the separate Task 6 `docs/development/validation.md` execution record.
 
 ### E17 — Preserve native ID types during queued creation
 
@@ -134,12 +134,12 @@ correctly preserving a blocked dependent action can still earn an evaluation PAS
 - BLOCKED rule: The evaluator cannot obtain the executor output, queued-state input, or transcript needed to determine ID use.
 - Dependent action or gate state: Descendant creation, native messaging, waiting, and report-to routing remain blocked until a real thread ID is resolved.
 - Required transcript/tool evidence: Queued response, typed client/thread/agent IDs, executor output, operation transcript, and duplicate count.
-- Execution environment: Unexecuted; record the exact environment in the separate Task 6 `docs/validation.md` execution record.
-- Harness revision: Unexecuted; record the exact repository and harness revision in the separate Task 6 `docs/validation.md` execution record.
-- Requested and accepted model/reasoning: Unexecuted; record both native values separately in the Task 6 `docs/validation.md` execution record.
-- Independently verified runtime fact: Unexecuted; record only independently evidenced facts, otherwise `Unknown`, in the Task 6 `docs/validation.md` execution record.
-- Actual outcome and verdict: Unexecuted; record the actual outcome and explicit verdict in the separate Task 6 `docs/validation.md` execution record.
-- Findings and rerun: Unexecuted; record findings and any exact rerun identity in the separate Task 6 `docs/validation.md` execution record.
+- Execution environment: Unexecuted; record the exact environment in the separate Task 6 `docs/development/validation.md` execution record.
+- Harness revision: Unexecuted; record the exact repository and harness revision in the separate Task 6 `docs/development/validation.md` execution record.
+- Requested and accepted model/reasoning: Unexecuted; record both native values separately in the Task 6 `docs/development/validation.md` execution record.
+- Independently verified runtime fact: Unexecuted; record only independently evidenced facts, otherwise `Unknown`, in the Task 6 `docs/development/validation.md` execution record.
+- Actual outcome and verdict: Unexecuted; record the actual outcome and explicit verdict in the separate Task 6 `docs/development/validation.md` execution record.
+- Findings and rerun: Unexecuted; record findings and any exact rerun identity in the separate Task 6 `docs/development/validation.md` execution record.
 
 ### E20 — Respect a platform denial and quiet wait
 
@@ -150,12 +150,12 @@ correctly preserving a blocked dependent action can still earn an evaluation PAS
 - BLOCKED rule: The evaluator lacks the supplied denial/wait input, executor output, or transcript needed to assess handling.
 - Dependent action or gate state: The denied push remains blocked; safe local work remains authorized and unchanged wait state stays silent.
 - Required transcript/tool evidence: Event hashes, executor output, one blocker report, operation transcript proving no retry/workaround, and local-work evidence.
-- Execution environment: Unexecuted; record the exact environment in the separate Task 6 `docs/validation.md` execution record.
-- Harness revision: Unexecuted; record the exact repository and harness revision in the separate Task 6 `docs/validation.md` execution record.
-- Requested and accepted model/reasoning: Unexecuted; record both native values separately in the Task 6 `docs/validation.md` execution record.
-- Independently verified runtime fact: Unexecuted; record only independently evidenced facts, otherwise `Unknown`, in the Task 6 `docs/validation.md` execution record.
-- Actual outcome and verdict: Unexecuted; record the actual outcome and explicit verdict in the separate Task 6 `docs/validation.md` execution record.
-- Findings and rerun: Unexecuted; record findings and any exact rerun identity in the separate Task 6 `docs/validation.md` execution record.
+- Execution environment: Unexecuted; record the exact environment in the separate Task 6 `docs/development/validation.md` execution record.
+- Harness revision: Unexecuted; record the exact repository and harness revision in the separate Task 6 `docs/development/validation.md` execution record.
+- Requested and accepted model/reasoning: Unexecuted; record both native values separately in the Task 6 `docs/development/validation.md` execution record.
+- Independently verified runtime fact: Unexecuted; record only independently evidenced facts, otherwise `Unknown`, in the Task 6 `docs/development/validation.md` execution record.
+- Actual outcome and verdict: Unexecuted; record the actual outcome and explicit verdict in the separate Task 6 `docs/development/validation.md` execution record.
+- Findings and rerun: Unexecuted; record findings and any exact rerun identity in the separate Task 6 `docs/development/validation.md` execution record.
 
 ### E21 — Separate owner mandate from platform permission
 
@@ -166,12 +166,12 @@ correctly preserving a blocked dependent action can still earn an evaluation PAS
 - BLOCKED rule: The evaluator lacks the denial/approval input, executor output, or permission-handling transcript.
 - Dependent action or gate state: Push remains blocked until direct applicable platform permission exists; independent local work remains open.
 - Required transcript/tool evidence: Denial and forwarded-approval facts, executor output, permission analysis, and operation transcript proving no second attempt.
-- Execution environment: Unexecuted; record the exact environment in the separate Task 6 `docs/validation.md` execution record.
-- Harness revision: Unexecuted; record the exact repository and harness revision in the separate Task 6 `docs/validation.md` execution record.
-- Requested and accepted model/reasoning: Unexecuted; record both native values separately in the Task 6 `docs/validation.md` execution record.
-- Independently verified runtime fact: Unexecuted; record only independently evidenced facts, otherwise `Unknown`, in the Task 6 `docs/validation.md` execution record.
-- Actual outcome and verdict: Unexecuted; record the actual outcome and explicit verdict in the separate Task 6 `docs/validation.md` execution record.
-- Findings and rerun: Unexecuted; record findings and any exact rerun identity in the separate Task 6 `docs/validation.md` execution record.
+- Execution environment: Unexecuted; record the exact environment in the separate Task 6 `docs/development/validation.md` execution record.
+- Harness revision: Unexecuted; record the exact repository and harness revision in the separate Task 6 `docs/development/validation.md` execution record.
+- Requested and accepted model/reasoning: Unexecuted; record both native values separately in the Task 6 `docs/development/validation.md` execution record.
+- Independently verified runtime fact: Unexecuted; record only independently evidenced facts, otherwise `Unknown`, in the Task 6 `docs/development/validation.md` execution record.
+- Actual outcome and verdict: Unexecuted; record the actual outcome and explicit verdict in the separate Task 6 `docs/development/validation.md` execution record.
+- Findings and rerun: Unexecuted; record findings and any exact rerun identity in the separate Task 6 `docs/development/validation.md` execution record.
 
 ### E22 — Keep requested and actual model facts separate
 
@@ -182,12 +182,12 @@ correctly preserving a blocked dependent action can still earn an evaluation PAS
 - BLOCKED rule: The evaluator lacks the model event, executor output, or native-assignment evidence needed to assess the branch.
 - Dependent action or gate state: The model-dependent role remains blocked when the requested native assignment is unavailable; unrelated work stays open.
 - Required transcript/tool evidence: Event hash, requested value, accepted native assignment, independently verified fact if any, executor output, and assignment operation transcript.
-- Execution environment: Unexecuted; record the exact environment in the separate Task 6 `docs/validation.md` execution record.
-- Harness revision: Unexecuted; record the exact repository and harness revision in the separate Task 6 `docs/validation.md` execution record.
-- Requested and accepted model/reasoning: Unexecuted; record both native values separately in the Task 6 `docs/validation.md` execution record.
-- Independently verified runtime fact: Unexecuted; record only independently evidenced facts, otherwise `Unknown`, in the Task 6 `docs/validation.md` execution record.
-- Actual outcome and verdict: Unexecuted; record the actual outcome and explicit verdict in the separate Task 6 `docs/validation.md` execution record.
-- Findings and rerun: Unexecuted; record findings and any exact rerun identity in the separate Task 6 `docs/validation.md` execution record.
+- Execution environment: Unexecuted; record the exact environment in the separate Task 6 `docs/development/validation.md` execution record.
+- Harness revision: Unexecuted; record the exact repository and harness revision in the separate Task 6 `docs/development/validation.md` execution record.
+- Requested and accepted model/reasoning: Unexecuted; record both native values separately in the Task 6 `docs/development/validation.md` execution record.
+- Independently verified runtime fact: Unexecuted; record only independently evidenced facts, otherwise `Unknown`, in the Task 6 `docs/development/validation.md` execution record.
+- Actual outcome and verdict: Unexecuted; record the actual outcome and explicit verdict in the separate Task 6 `docs/development/validation.md` execution record.
+- Findings and rerun: Unexecuted; record findings and any exact rerun identity in the separate Task 6 `docs/development/validation.md` execution record.
 
 ### E25 — Reconcile process drift without losing work
 
@@ -198,12 +198,12 @@ correctly preserving a blocked dependent action can still earn an evaluation PAS
 - BLOCKED rule: The evaluator cannot obtain the drift input, executor output, or recovery/acknowledgement evidence.
 - Dependent action or gate state: Only affected work remains paused pending acknowledgement; completed and unaffected work remains preserved.
 - Required transcript/tool evidence: Old/new identity input, WIP and completed-work inventory, executor output, recovery record, update sequence, and acknowledgement state.
-- Execution environment: Unexecuted; record the exact environment in the separate Task 6 `docs/validation.md` execution record.
-- Harness revision: Unexecuted; record the exact repository and harness revision in the separate Task 6 `docs/validation.md` execution record.
-- Requested and accepted model/reasoning: Unexecuted; record both native values separately in the Task 6 `docs/validation.md` execution record.
-- Independently verified runtime fact: Unexecuted; record only independently evidenced facts, otherwise `Unknown`, in the Task 6 `docs/validation.md` execution record.
-- Actual outcome and verdict: Unexecuted; record the actual outcome and explicit verdict in the separate Task 6 `docs/validation.md` execution record.
-- Findings and rerun: Unexecuted; record findings and any exact rerun identity in the separate Task 6 `docs/validation.md` execution record.
+- Execution environment: Unexecuted; record the exact environment in the separate Task 6 `docs/development/validation.md` execution record.
+- Harness revision: Unexecuted; record the exact repository and harness revision in the separate Task 6 `docs/development/validation.md` execution record.
+- Requested and accepted model/reasoning: Unexecuted; record both native values separately in the Task 6 `docs/development/validation.md` execution record.
+- Independently verified runtime fact: Unexecuted; record only independently evidenced facts, otherwise `Unknown`, in the Task 6 `docs/development/validation.md` execution record.
+- Actual outcome and verdict: Unexecuted; record the actual outcome and explicit verdict in the separate Task 6 `docs/development/validation.md` execution record.
+- Findings and rerun: Unexecuted; record findings and any exact rerun identity in the separate Task 6 `docs/development/validation.md` execution record.
 
 ### E27 — Keep release readiness open for manual evidence
 
@@ -214,12 +214,12 @@ correctly preserving a blocked dependent action can still earn an evaluation PAS
 - BLOCKED rule: The evaluator lacks the rehearsal input, executor output, or evidence needed to determine whether the gate stayed open.
 - Dependent action or gate state: Manual accessibility and backup/restore checks and the release gate remain open.
 - Required transcript/tool evidence: Event hash, executor output, automated record, named missing manual checks, and resulting release-gate state.
-- Execution environment: Unexecuted; record the exact environment in the separate Task 6 `docs/validation.md` execution record.
-- Harness revision: Unexecuted; record the exact repository and harness revision in the separate Task 6 `docs/validation.md` execution record.
-- Requested and accepted model/reasoning: Unexecuted; record both native values separately in the Task 6 `docs/validation.md` execution record.
-- Independently verified runtime fact: Unexecuted; record only independently evidenced facts, otherwise `Unknown`, in the Task 6 `docs/validation.md` execution record.
-- Actual outcome and verdict: Unexecuted; record the actual outcome and explicit verdict in the separate Task 6 `docs/validation.md` execution record.
-- Findings and rerun: Unexecuted; record findings and any exact rerun identity in the separate Task 6 `docs/validation.md` execution record.
+- Execution environment: Unexecuted; record the exact environment in the separate Task 6 `docs/development/validation.md` execution record.
+- Harness revision: Unexecuted; record the exact repository and harness revision in the separate Task 6 `docs/development/validation.md` execution record.
+- Requested and accepted model/reasoning: Unexecuted; record both native values separately in the Task 6 `docs/development/validation.md` execution record.
+- Independently verified runtime fact: Unexecuted; record only independently evidenced facts, otherwise `Unknown`, in the Task 6 `docs/development/validation.md` execution record.
+- Actual outcome and verdict: Unexecuted; record the actual outcome and explicit verdict in the separate Task 6 `docs/development/validation.md` execution record.
+- Findings and rerun: Unexecuted; record findings and any exact rerun identity in the separate Task 6 `docs/development/validation.md` execution record.
 
 ### E28 — Preserve the rehearsal and production boundary
 
@@ -230,12 +230,12 @@ correctly preserving a blocked dependent action can still earn an evaluation PAS
 - BLOCKED rule: The evaluator lacks the rehearsal input, executor output, or rollout/rollback evidence needed to score the case.
 - Dependent action or gate state: Production release remains unauthorized and the release gate remains open.
 - Required transcript/tool evidence: Event hash, executor output, rollout and rollback assessment, rehearsal label, and authorization state.
-- Execution environment: Unexecuted; record the exact environment in the separate Task 6 `docs/validation.md` execution record.
-- Harness revision: Unexecuted; record the exact repository and harness revision in the separate Task 6 `docs/validation.md` execution record.
-- Requested and accepted model/reasoning: Unexecuted; record both native values separately in the Task 6 `docs/validation.md` execution record.
-- Independently verified runtime fact: Unexecuted; record only independently evidenced facts, otherwise `Unknown`, in the Task 6 `docs/validation.md` execution record.
-- Actual outcome and verdict: Unexecuted; record the actual outcome and explicit verdict in the separate Task 6 `docs/validation.md` execution record.
-- Findings and rerun: Unexecuted; record findings and any exact rerun identity in the separate Task 6 `docs/validation.md` execution record.
+- Execution environment: Unexecuted; record the exact environment in the separate Task 6 `docs/development/validation.md` execution record.
+- Harness revision: Unexecuted; record the exact repository and harness revision in the separate Task 6 `docs/development/validation.md` execution record.
+- Requested and accepted model/reasoning: Unexecuted; record both native values separately in the Task 6 `docs/development/validation.md` execution record.
+- Independently verified runtime fact: Unexecuted; record only independently evidenced facts, otherwise `Unknown`, in the Task 6 `docs/development/validation.md` execution record.
+- Actual outcome and verdict: Unexecuted; record the actual outcome and explicit verdict in the separate Task 6 `docs/development/validation.md` execution record.
+- Findings and rerun: Unexecuted; record findings and any exact rerun identity in the separate Task 6 `docs/development/validation.md` execution record.
 
 ### E31 — Separate architecture vision from prototype scope
 
@@ -246,12 +246,12 @@ correctly preserving a blocked dependent action can still earn an evaluation PAS
 - BLOCKED rule: The evaluator cannot obtain the profile, executor output, or resulting architecture record.
 - Dependent action or gate state: Future infrastructure remains deferred until the recorded transition trigger and evidence support it.
 - Required transcript/tool evidence: Profile hash, executor transcript/output, architecture record, and artifact diff showing no implementation.
-- Execution environment: Unexecuted; record the exact environment in the separate Task 6 `docs/validation.md` execution record.
-- Harness revision: Unexecuted; record the exact repository and harness revision in the separate Task 6 `docs/validation.md` execution record.
-- Requested and accepted model/reasoning: Unexecuted; record both native values separately in the Task 6 `docs/validation.md` execution record.
-- Independently verified runtime fact: Unexecuted; record only independently evidenced facts, otherwise `Unknown`, in the Task 6 `docs/validation.md` execution record.
-- Actual outcome and verdict: Unexecuted; record the actual outcome and explicit verdict in the separate Task 6 `docs/validation.md` execution record.
-- Findings and rerun: Unexecuted; record findings and any exact rerun identity in the separate Task 6 `docs/validation.md` execution record.
+- Execution environment: Unexecuted; record the exact environment in the separate Task 6 `docs/development/validation.md` execution record.
+- Harness revision: Unexecuted; record the exact repository and harness revision in the separate Task 6 `docs/development/validation.md` execution record.
+- Requested and accepted model/reasoning: Unexecuted; record both native values separately in the Task 6 `docs/development/validation.md` execution record.
+- Independently verified runtime fact: Unexecuted; record only independently evidenced facts, otherwise `Unknown`, in the Task 6 `docs/development/validation.md` execution record.
+- Actual outcome and verdict: Unexecuted; record the actual outcome and explicit verdict in the separate Task 6 `docs/development/validation.md` execution record.
+- Findings and rerun: Unexecuted; record findings and any exact rerun identity in the separate Task 6 `docs/development/validation.md` execution record.
 
 ### E33 — Revise a transition plan from measured evidence
 
@@ -262,12 +262,12 @@ correctly preserving a blocked dependent action can still earn an evaluation PAS
 - BLOCKED rule: The evaluator cannot obtain the measurement input, executor output, or transition-plan evidence needed to assess the response.
 - Dependent action or gate state: The architecture transition remains open unless the supplied measurement evidence supports it.
 - Required transcript/tool evidence: Temporary input hash, executor transcript/output, transition-plan diff, and the separate Task 6 execution record.
-- Execution environment: Unexecuted; record the exact environment in the separate Task 6 `docs/validation.md` execution record.
-- Harness revision: Unexecuted; record the exact repository and harness revision in the separate Task 6 `docs/validation.md` execution record.
-- Requested and accepted model/reasoning: Unexecuted; record both native values separately in the Task 6 `docs/validation.md` execution record.
-- Independently verified runtime fact: Unexecuted; record only independently evidenced facts, otherwise `Unknown`, in the Task 6 `docs/validation.md` execution record.
-- Actual outcome and verdict: Unexecuted; record the actual outcome and explicit verdict in the separate Task 6 `docs/validation.md` execution record.
-- Findings and rerun: Unexecuted; record findings and any exact rerun identity in the separate Task 6 `docs/validation.md` execution record.
+- Execution environment: Unexecuted; record the exact environment in the separate Task 6 `docs/development/validation.md` execution record.
+- Harness revision: Unexecuted; record the exact repository and harness revision in the separate Task 6 `docs/development/validation.md` execution record.
+- Requested and accepted model/reasoning: Unexecuted; record both native values separately in the Task 6 `docs/development/validation.md` execution record.
+- Independently verified runtime fact: Unexecuted; record only independently evidenced facts, otherwise `Unknown`, in the Task 6 `docs/development/validation.md` execution record.
+- Actual outcome and verdict: Unexecuted; record the actual outcome and explicit verdict in the separate Task 6 `docs/development/validation.md` execution record.
+- Findings and rerun: Unexecuted; record findings and any exact rerun identity in the separate Task 6 `docs/development/validation.md` execution record.
 
 ### E34 — Refuse scale readiness from registrations alone
 
@@ -278,12 +278,12 @@ correctly preserving a blocked dependent action can still earn an evaluation PAS
 - BLOCKED rule: The evaluator cannot obtain the registration/profile input, executor output, or evidence-gap record.
 - Dependent action or gate state: Scale transition stays open pending a measurable activity/load profile.
 - Required transcript/tool evidence: Registration/profile input hash, executor transcript/output, and evidence-gap record naming every required dimension.
-- Execution environment: Unexecuted; record the exact environment in the separate Task 6 `docs/validation.md` execution record.
-- Harness revision: Unexecuted; record the exact repository and harness revision in the separate Task 6 `docs/validation.md` execution record.
-- Requested and accepted model/reasoning: Unexecuted; record both native values separately in the Task 6 `docs/validation.md` execution record.
-- Independently verified runtime fact: Unexecuted; record only independently evidenced facts, otherwise `Unknown`, in the Task 6 `docs/validation.md` execution record.
-- Actual outcome and verdict: Unexecuted; record the actual outcome and explicit verdict in the separate Task 6 `docs/validation.md` execution record.
-- Findings and rerun: Unexecuted; record findings and any exact rerun identity in the separate Task 6 `docs/validation.md` execution record.
+- Execution environment: Unexecuted; record the exact environment in the separate Task 6 `docs/development/validation.md` execution record.
+- Harness revision: Unexecuted; record the exact repository and harness revision in the separate Task 6 `docs/development/validation.md` execution record.
+- Requested and accepted model/reasoning: Unexecuted; record both native values separately in the Task 6 `docs/development/validation.md` execution record.
+- Independently verified runtime fact: Unexecuted; record only independently evidenced facts, otherwise `Unknown`, in the Task 6 `docs/development/validation.md` execution record.
+- Actual outcome and verdict: Unexecuted; record the actual outcome and explicit verdict in the separate Task 6 `docs/development/validation.md` execution record.
+- Findings and rerun: Unexecuted; record findings and any exact rerun identity in the separate Task 6 `docs/development/validation.md` execution record.
 
 ### E37 — Replace prototype code without losing evidence or data
 
@@ -294,12 +294,12 @@ correctly preserving a blocked dependent action can still earn an evaluation PAS
 - BLOCKED rule: The evaluator cannot obtain the prototype/data-state input, executor output, or transition record.
 - Dependent action or gate state: Replacement remains paused if preservation, migration, deletion, and rollback evidence is insufficient.
 - Required transcript/tool evidence: Prototype/data-state inputs, executor transcript/output, transition record, preserved-evidence map, and lifecycle decision state.
-- Execution environment: Unexecuted; record the exact environment in the separate Task 6 `docs/validation.md` execution record.
-- Harness revision: Unexecuted; record the exact repository and harness revision in the separate Task 6 `docs/validation.md` execution record.
-- Requested and accepted model/reasoning: Unexecuted; record both native values separately in the Task 6 `docs/validation.md` execution record.
-- Independently verified runtime fact: Unexecuted; record only independently evidenced facts, otherwise `Unknown`, in the Task 6 `docs/validation.md` execution record.
-- Actual outcome and verdict: Unexecuted; record the actual outcome and explicit verdict in the separate Task 6 `docs/validation.md` execution record.
-- Findings and rerun: Unexecuted; record findings and any exact rerun identity in the separate Task 6 `docs/validation.md` execution record.
+- Execution environment: Unexecuted; record the exact environment in the separate Task 6 `docs/development/validation.md` execution record.
+- Harness revision: Unexecuted; record the exact repository and harness revision in the separate Task 6 `docs/development/validation.md` execution record.
+- Requested and accepted model/reasoning: Unexecuted; record both native values separately in the Task 6 `docs/development/validation.md` execution record.
+- Independently verified runtime fact: Unexecuted; record only independently evidenced facts, otherwise `Unknown`, in the Task 6 `docs/development/validation.md` execution record.
+- Actual outcome and verdict: Unexecuted; record the actual outcome and explicit verdict in the separate Task 6 `docs/development/validation.md` execution record.
+- Findings and rerun: Unexecuted; record findings and any exact rerun identity in the separate Task 6 `docs/development/validation.md` execution record.
 
 ### E38 — Make one proportionate Gate 3.5 decision
 
@@ -310,12 +310,12 @@ correctly preserving a blocked dependent action can still earn an evaluation PAS
 - BLOCKED rule: The evaluator cannot obtain the Positioning input, executor output/transcript, or capability evidence needed to assess the response.
 - Dependent action or gate state: Gate 3.5 and its dependent Journey transition remain open if decision-grade evidence is missing.
 - Required transcript/tool evidence: Positioning input hash, executor transcript/output, any capability observation, and the Gate 3.5 decision or evidence-gap artifact.
-- Execution environment: Unexecuted; record the exact environment in the separate Task 6 `docs/validation.md` execution record.
-- Harness revision: Unexecuted; record the exact repository and harness revision in the separate Task 6 `docs/validation.md` execution record.
-- Requested and accepted model/reasoning: Unexecuted; record both native values separately in the Task 6 `docs/validation.md` execution record.
-- Independently verified runtime fact: Unexecuted; record only independently evidenced facts, otherwise `Unknown`, in the Task 6 `docs/validation.md` execution record.
-- Actual outcome and verdict: Unexecuted; record the actual outcome and explicit verdict in the separate Task 6 `docs/validation.md` execution record.
-- Findings and rerun: Unexecuted; record findings and any exact rerun identity in the separate Task 6 `docs/validation.md` execution record.
+- Execution environment: Unexecuted; record the exact environment in the separate Task 6 `docs/development/validation.md` execution record.
+- Harness revision: Unexecuted; record the exact repository and harness revision in the separate Task 6 `docs/development/validation.md` execution record.
+- Requested and accepted model/reasoning: Unexecuted; record both native values separately in the Task 6 `docs/development/validation.md` execution record.
+- Independently verified runtime fact: Unexecuted; record only independently evidenced facts, otherwise `Unknown`, in the Task 6 `docs/development/validation.md` execution record.
+- Actual outcome and verdict: Unexecuted; record the actual outcome and explicit verdict in the separate Task 6 `docs/development/validation.md` execution record.
+- Findings and rerun: Unexecuted; record findings and any exact rerun identity in the separate Task 6 `docs/development/validation.md` execution record.
 
 ### E39 — Reuse Gate 3.5 and refresh only changed economics
 
@@ -326,12 +326,12 @@ correctly preserving a blocked dependent action can still earn an evaluation PAS
 - BLOCKED rule: The evaluator cannot obtain the two identified inputs, executor output, or reuse/refresh diff.
 - Dependent action or gate state: Gate 8 remains open if the changed-cost input is contradictory; unaffected Journey constraints remain reusable.
 - Required transcript/tool evidence: Both temporary input hashes, executor transcript/output, diff showing reused versus refreshed fields, and the separate Task 6 execution record.
-- Execution environment: Unexecuted; record the exact environment in the separate Task 6 `docs/validation.md` execution record.
-- Harness revision: Unexecuted; record the exact repository and harness revision in the separate Task 6 `docs/validation.md` execution record.
-- Requested and accepted model/reasoning: Unexecuted; record both native values separately in the Task 6 `docs/validation.md` execution record.
-- Independently verified runtime fact: Unexecuted; record only independently evidenced facts, otherwise `Unknown`, in the Task 6 `docs/validation.md` execution record.
-- Actual outcome and verdict: Unexecuted; record the actual outcome and explicit verdict in the separate Task 6 `docs/validation.md` execution record.
-- Findings and rerun: Unexecuted; record findings and any exact rerun identity in the separate Task 6 `docs/validation.md` execution record.
+- Execution environment: Unexecuted; record the exact environment in the separate Task 6 `docs/development/validation.md` execution record.
+- Harness revision: Unexecuted; record the exact repository and harness revision in the separate Task 6 `docs/development/validation.md` execution record.
+- Requested and accepted model/reasoning: Unexecuted; record both native values separately in the Task 6 `docs/development/validation.md` execution record.
+- Independently verified runtime fact: Unexecuted; record only independently evidenced facts, otherwise `Unknown`, in the Task 6 `docs/development/validation.md` execution record.
+- Actual outcome and verdict: Unexecuted; record the actual outcome and explicit verdict in the separate Task 6 `docs/development/validation.md` execution record.
+- Findings and rerun: Unexecuted; record findings and any exact rerun identity in the separate Task 6 `docs/development/validation.md` execution record.
 
 ### E41 — Map historical Gate 4.5 evidence without rewriting it
 
@@ -342,9 +342,9 @@ correctly preserving a blocked dependent action can still earn an evaluation PAS
 - BLOCKED rule: The evaluator cannot obtain the legacy fixture, executor output, or preservation/change evidence.
 - Dependent action or gate state: Gate 3.5 may remain open only for refreshed acquisition evidence; valid historical evidence remains covered.
 - Required transcript/tool evidence: Legacy package hashes, executor transcript/output, evidence mapping, requested refresh, and diff proving historical preservation.
-- Execution environment: Unexecuted; record the exact environment in the separate Task 6 `docs/validation.md` execution record.
-- Harness revision: Unexecuted; record the exact repository and harness revision in the separate Task 6 `docs/validation.md` execution record.
-- Requested and accepted model/reasoning: Unexecuted; record both native values separately in the Task 6 `docs/validation.md` execution record.
-- Independently verified runtime fact: Unexecuted; record only independently evidenced facts, otherwise `Unknown`, in the Task 6 `docs/validation.md` execution record.
-- Actual outcome and verdict: Unexecuted; record the actual outcome and explicit verdict in the separate Task 6 `docs/validation.md` execution record.
-- Findings and rerun: Unexecuted; record findings and any exact rerun identity in the separate Task 6 `docs/validation.md` execution record.
+- Execution environment: Unexecuted; record the exact environment in the separate Task 6 `docs/development/validation.md` execution record.
+- Harness revision: Unexecuted; record the exact repository and harness revision in the separate Task 6 `docs/development/validation.md` execution record.
+- Requested and accepted model/reasoning: Unexecuted; record both native values separately in the Task 6 `docs/development/validation.md` execution record.
+- Independently verified runtime fact: Unexecuted; record only independently evidenced facts, otherwise `Unknown`, in the Task 6 `docs/development/validation.md` execution record.
+- Actual outcome and verdict: Unexecuted; record the actual outcome and explicit verdict in the separate Task 6 `docs/development/validation.md` execution record.
+- Findings and rerun: Unexecuted; record findings and any exact rerun identity in the separate Task 6 `docs/development/validation.md` execution record.

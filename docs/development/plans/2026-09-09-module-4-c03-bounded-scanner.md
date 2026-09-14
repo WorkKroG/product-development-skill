@@ -1,5 +1,8 @@
 # Product Development Workflow — Module 4 C03 Bounded Scanner Implementation Plan
 
+Historical plan. File-path examples describe the layout at the time; see the
+[development index](../README.md) for current locations and scope.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use `superpowers:subagent-driven-development`
 > to implement this plan task-by-task under the Task topology in `AGENTS.md`. PLAN,
 > Implementation, Change Review, adversarial review, and FINAL are distinct bounded internal
